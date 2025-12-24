@@ -1,0 +1,33 @@
+# Логи
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Каталоги зависимостей `Node.js`
+node_modules
+
+# Каталоги результата сборки
+dist
+dist-ssr
+
+# Каталоги и файлы редакторов
+# .vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Временные файлы
+*.~
+
+# Конфиденциальные файлы и переменные окружения
+/.env
+*.local

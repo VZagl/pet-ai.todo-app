@@ -1,73 +1,102 @@
-# React + TypeScript + Vite
+# TODO Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Экспериментальный проект разработки TODO приложения с помощью ИИ-ассистента (Claude Sonnet 4.5) и системы [Memory Bank](https://github.com/vanzan01/cursor-memory-bank).
 
-Currently, two official plugins are available:
+## 🎯 О проекте
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Это pet-проект для изучения возможностей AI-assisted разработки. Приложение создано с помощью ИИ, используя структурированный подход Memory Bank System для управления процессом разработки.
 
-## React Compiler
+### Что такое Memory Bank?
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+[Memory Bank System](https://github.com/vanzan01/cursor-memory-bank) - это фреймворк для структурированной разработки с ИИ, который использует специализированные команды Cursor для управления жизненным циклом разработки:
 
-## Expanding the ESLint configuration
+- `/van` - инициализация проекта
+- `/plan` - планирование задач
+- `/creative` - проектирование решений
+- `/build` - реализация
+- `/reflect` - анализ результатов
+- `/archive` - документирование
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Весь процесс разработки этого приложения задокументирован в директории `memory-bank/`.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## ✨ Возможности приложения
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- ✅ Создание, редактирование и удаление задач
+- ☑️ Отметка задач как выполненных
+- 🔍 Фильтрация: все / активные / завершённые
+- 💾 Автосохранение в localStorage
+- ♿ Accessibility (WCAG AA)
+- 📱 Адаптивный дизайн
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🚀 Технологии
+
+- React 19 + TypeScript
+- Vite (сборка)
+- Vitest (тестирование, 77 тестов, >80% покрытие)
+- ESLint + Prettier
+
+## 📦 Быстрый старт
+
+```bash
+# Установить зависимости (требуется pnpm)
+pnpm install
+
+# Запустить dev-сервер
+pnpm dev
+
+# Запустить тесты
+pnpm test
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Структура
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/     # React компоненты
+├── hooks/          # Custom hooks
+├── utils/          # Утилиты и helpers
+├── types/          # TypeScript типы
+└── constants/      # Константы приложения
+
+memory-bank/        # Документация процесса разработки
+├── archive/        # Архив завершённых задач
+├── creative/       # Документы проектирования
+└── reflection/     # Анализ и рефлексия
+```
+
+## 🧪 Тестирование
+
+```bash
+pnpm test              # Запустить тесты
+pnpm test:ui           # UI для тестов
+pnpm test:coverage     # Покрытие кода
+```
+
+## 📝 Результаты эксперимента
+
+### Что получилось
+
+- ✅ Полностью рабочее приложение
+- ✅ Comprehensive тестирование
+- ✅ Чистая архитектура с разделением ответственности
+- ✅ Полная документация процесса в Memory Bank
+- ✅ Production-ready код
+
+### Процесс разработки
+
+Весь процесс задокументирован в `memory-bank/`:
+
+1. **Планирование** (`plan-todo-app.md`) - детальный план реализации
+2. **Проектирование** (`creative/`) - архитектурные и UI/UX решения
+3. **Реализация** (`progress.md`) - пошаговая реализация
+4. **Рефлексия** (`reflection/`) - анализ процесса и результатов
+5. **Архив** (`archive/`) - финальная документация
+
+## 🔗 Полезные ссылки
+
+- [Memory Bank System](https://github.com/vanzan01/cursor-memory-bank) - фреймворк для AI-assisted разработки
+- [Документация процесса](./memory-bank/) - полная история разработки проекта
+
+## 📄 Лицензия
+
+[The Unlicense](./LICENSE) - используйте проект как угодно, без каких-либо ограничений и обязательств.

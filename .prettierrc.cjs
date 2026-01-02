@@ -11,10 +11,6 @@ module.exports = {
 	printWidth: 140,
 	semi: true,
 	embeddedLanguageFormatting: 'auto',
-	plugins: [
-		'prettier-plugin-organize-imports',
-		'prettier-plugin-organize-attributes',
-		'prettier-plugin-css-order',
-	],
+	plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-organize-attributes', 'prettier-plugin-css-order'],
 	organizeImportsSkipDestructiveCodeActions: true,
 };

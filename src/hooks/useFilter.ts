@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react';
-import type { Todo, FilterType } from '../types/todo';
+import { useMemo, useState } from 'react';
+import type { FilterType, Todo } from '../types/todo';
 import { filterTodos } from '../utils/todoHelpers';
 
 /**

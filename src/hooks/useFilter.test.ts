@@ -1,7 +1,7 @@
-import { describe, it, expect } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
-import { useFilter } from './useFilter';
+import { act, renderHook } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
 import type { Todo } from '../types/todo';
+import { useFilter } from './useFilter';
 
 describe('useFilter', () => {
 	const mockTodos: Todo[] = [
@@ -85,12 +85,9 @@ describe('useFilter', () => {
 	});
 
 	it('должен реагировать на изменение списка задач', () => {
-		const { result, rerender } = renderHook(
-			({ todos }) => useFilter(todos),
-			{
-				initialProps: { todos: mockTodos },
-			}
-		);
+		const { result, rerender } = renderHook(({ todos }) => useFilter(todos), {
+			initialProps: { todos: mockTodos },
+		});
 
 		// Устанавливаем фильтр active
 		act(() => {

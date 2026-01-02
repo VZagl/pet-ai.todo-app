@@ -1,4 +1,4 @@
-import type { Todo, FilterType } from '../types/todo';
+import type { FilterType, Todo } from '../types/todo';
 
 /**
  * Генерирует уникальный идентификатор для задачи

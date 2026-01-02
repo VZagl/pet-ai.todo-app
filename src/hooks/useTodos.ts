@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import type { Todo } from '../types/todo';
-import { useLocalStorage } from './useLocalStorage';
-import { generateId, getActiveCount } from '../utils/todoHelpers';
 import { STORAGE_KEY } from '../constants/todo';
+import type { Todo } from '../types/todo';
+import { generateId, getActiveCount } from '../utils/todoHelpers';
+import { useLocalStorage } from './useLocalStorage';
 
 /**
  * Кастомный хук для управления состоянием задач с CRUD операциями
@@ -25,7 +25,7 @@ export function useTodos() {
 			};
 			setTodos((prev) => [...prev, newTodo]);
 		},
-		[setTodos]
+		[setTodos],
 	);
 
 	/**
@@ -34,13 +34,9 @@ export function useTodos() {
 	 */
 	const toggleTodo = useCallback(
 		(id: string) => {
-			setTodos((prev) =>
-				prev.map((todo) =>
-					todo.id === id ? { ...todo, completed: !todo.completed } : todo
-				)
-			);
+			setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
 		},
-		[setTodos]
+		[setTodos],
 	);
 
 	/**
@@ -51,7 +47,7 @@ export function useTodos() {
 		(id: string) => {
 			setTodos((prev) => prev.filter((todo) => todo.id !== id));
 		},
-		[setTodos]
+		[setTodos],
 	);
 
 	/**
@@ -61,13 +57,9 @@ export function useTodos() {
 	 */
 	const updateTodo = useCallback(
 		(id: string, text: string) => {
-			setTodos((prev) =>
-				prev.map((todo) =>
-					todo.id === id ? { ...todo, text: text.trim() } : todo
-				)
-			);
+			setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, text: text.trim() } : todo)));
 		},
-		[setTodos]
+		[setTodos],
 	);
 
 	// Подсчет активных задач

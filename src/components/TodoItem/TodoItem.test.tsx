@@ -1,8 +1,8 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { TodoItem } from './TodoItem';
+import { describe, expect, it, vi } from 'vitest';
 import type { Todo } from '../../types/todo';
+import { TodoItem } from './TodoItem';
 
 describe('TodoItem', () => {
 	const mockTodo: Todo = {
@@ -16,9 +16,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		expect(screen.getByText('Test task')).toBeInTheDocument();
 	});
@@ -27,9 +25,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		const checkbox = screen.getByRole('checkbox');
 		expect(checkbox).toBeInTheDocument();
@@ -41,9 +37,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={completedTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={completedTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		const checkbox = screen.getByRole('checkbox');
 		expect(checkbox).toBeChecked();
@@ -54,9 +48,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		const checkbox = screen.getByRole('checkbox');
 		await user.click(checkbox);
@@ -70,9 +62,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		const deleteButton = screen.getByRole('button', {
 			name: /удалить задачу/i,
@@ -88,9 +78,7 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		const { container } = render(
-			<TodoItem todo={completedTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		const { container } = render(<TodoItem todo={completedTodo} onToggle={onToggle} onDelete={onDelete} />);
 
 		const todoItem = container.querySelector('.todo-item');
 		expect(todoItem).toHaveClass('completed');
@@ -100,15 +88,9 @@ describe('TodoItem', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoItem todo={mockTodo} onToggle={onToggle} onDelete={onDelete} />);
 
-		expect(
-			screen.getByLabelText(/отметить задачу "Test task" как выполненную/i)
-		).toBeInTheDocument();
-		expect(
-			screen.getByLabelText(/удалить задачу "Test task"/i)
-		).toBeInTheDocument();
+		expect(screen.getByLabelText(/отметить задачу "Test task" как выполненную/i)).toBeInTheDocument();
+		expect(screen.getByLabelText(/удалить задачу "Test task"/i)).toBeInTheDocument();
 	});
 });

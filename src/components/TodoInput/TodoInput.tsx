@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
 import './TodoInput.css';
 

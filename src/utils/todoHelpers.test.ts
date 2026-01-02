@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
-import { generateId, filterTodos, getActiveCount } from './todoHelpers';
+import { describe, expect, it } from 'vitest';
 import type { Todo } from '../types/todo';
+import { filterTodos, generateId, getActiveCount } from './todoHelpers';
 
 describe('todoHelpers', () => {
 	describe('generateId', () => {

@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach } from 'vitest';
-import { renderHook, act } from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { useLocalStorage } from './useLocalStorage';
 
 describe('useLocalStorage', () => {
@@ -8,9 +8,7 @@ describe('useLocalStorage', () => {
 	});
 
 	it('должен инициализироваться начальным значением', () => {
-		const { result } = renderHook(() =>
-			useLocalStorage('test-key', 'initial')
-		);
+		const { result } = renderHook(() => useLocalStorage('test-key', 'initial'));
 
 		expect(result.current[0]).toBe('initial');
 	});
@@ -18,17 +16,13 @@ describe('useLocalStorage', () => {
 	it('должен загружать значение из localStorage при инициализации', () => {
 		localStorage.setItem('test-key', JSON.stringify('stored'));
 
-		const { result } = renderHook(() =>
-			useLocalStorage('test-key', 'initial')
-		);
+		const { result } = renderHook(() => useLocalStorage('test-key', 'initial'));
 
 		expect(result.current[0]).toBe('stored');
 	});
 
 	it('должен обновлять значение и сохранять в localStorage', () => {
-		const { result } = renderHook(() =>
-			useLocalStorage('test-key', 'initial')
-		);
+		const { result } = renderHook(() => useLocalStorage('test-key', 'initial'));
 
 		act(() => {
 			result.current[1]('updated');
@@ -51,9 +45,7 @@ describe('useLocalStorage', () => {
 
 	it('должен работать с объектами', () => {
 		const initialObj = { name: 'Test', count: 0 };
-		const { result } = renderHook(() =>
-			useLocalStorage('test-key', initialObj)
-		);
+		const { result } = renderHook(() => useLocalStorage('test-key', initialObj));
 
 		act(() => {
 			result.current[1]({ name: 'Updated', count: 5 });
@@ -78,9 +70,7 @@ describe('useLocalStorage', () => {
 	});
 
 	it('должен использовать начальное значение если localStorage пуст', () => {
-		const { result } = renderHook(() =>
-			useLocalStorage('non-existent', 'default')
-		);
+		const { result } = renderHook(() => useLocalStorage('non-existent', 'default'));
 
 		expect(result.current[0]).toBe('default');
 	});

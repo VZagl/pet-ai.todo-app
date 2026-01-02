@@ -1,6 +1,5 @@
-import React from 'react';
-import type { FilterType } from '../../types/todo';
 import { FILTERS, FILTER_LABELS } from '../../constants/todo';
+import type { FilterType } from '../../types/todo';
 import './TodoFilter.css';
 
 interface TodoFilterProps {
@@ -14,16 +13,13 @@ interface TodoFilterProps {
  * Компонент фильтрации задач
  * Отображает кнопки для переключения между фильтрами
  */
-export const TodoFilter = ({
-	currentFilter,
-	onFilterChange,
-}: TodoFilterProps) => {
+export const TodoFilter = ({ currentFilter, onFilterChange }: TodoFilterProps) => {
 	return (
-		<div className="todo-filter" role="group" aria-label="Фильтр задач">
+		<div className='todo-filter' role='group' aria-label='Фильтр задач'>
 			{FILTERS.map((filter) => (
 				<button
 					key={filter}
-					type="button"
+					type='button'
 					className={`todo-filter__button ${currentFilter === filter ? 'todo-filter__button--active' : ''}`}
 					onClick={() => onFilterChange(filter)}
 					aria-pressed={currentFilter === filter}

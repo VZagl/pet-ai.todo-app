@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { saveToStorage, loadFromStorage } from './storage';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { loadFromStorage, saveToStorage } from './storage';
 
 describe('storage utils', () => {
 	beforeEach(() => {
@@ -36,9 +36,7 @@ describe('storage utils', () => {
 				throw new Error('QuotaExceededError');
 			});
 
-			expect(() => saveToStorage('key', 'data')).toThrow(
-				'Не удалось сохранить данные'
-			);
+			expect(() => saveToStorage('key', 'data')).toThrow('Не удалось сохранить данные');
 
 			// Восстанавливаем оригинальную реализацию
 			spy.mockRestore();

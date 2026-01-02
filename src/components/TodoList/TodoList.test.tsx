@@ -1,7 +1,7 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { TodoList } from './TodoList';
+import { describe, expect, it, vi } from 'vitest';
 import type { Todo } from '../../types/todo';
+import { TodoList } from './TodoList';
 
 describe('TodoList', () => {
 	const mockTodos: Todo[] = [
@@ -29,9 +29,7 @@ describe('TodoList', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
 
 		expect(screen.getByText('Task 1')).toBeInTheDocument();
 		expect(screen.getByText('Task 2')).toBeInTheDocument();
@@ -44,18 +42,14 @@ describe('TodoList', () => {
 
 		render(<TodoList todos={[]} onToggle={onToggle} onDelete={onDelete} />);
 
-		expect(
-			screen.getByText(/нет задач для отображения/i)
-		).toBeInTheDocument();
+		expect(screen.getByText(/нет задач для отображения/i)).toBeInTheDocument();
 	});
 
 	it('должен отображать правильное количество элементов', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		const { container } = render(
-			<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />
-		);
+		const { container } = render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
 
 		const listItems = container.querySelectorAll('.todo-item');
 		expect(listItems).toHaveLength(3);
@@ -65,9 +59,7 @@ describe('TodoList', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		render(
-			<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />
-		);
+		render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
 
 		// Проверяем, что компоненты отрисовались (косвенная проверка передачи props)
 		expect(screen.getAllByRole('checkbox')).toHaveLength(3);
@@ -78,9 +70,7 @@ describe('TodoList', () => {
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		const { container } = render(
-			<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />
-		);
+		const { container } = render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
 
 		const listItems = container.querySelectorAll('.todo-item');
 		expect(listItems).toHaveLength(mockTodos.length);

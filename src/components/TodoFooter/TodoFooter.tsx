@@ -1,4 +1,3 @@
-import React from 'react';
 import type { FilterType } from '../../types/todo';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
 import './TodoFooter.css';

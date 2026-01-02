@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import type { Todo } from '../../types/todo';
 import './TodoItem.css';
 

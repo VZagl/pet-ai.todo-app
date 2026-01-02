@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { saveToStorage, loadFromStorage } from '../utils/storage';
+import { useEffect, useState } from 'react';
+import { loadFromStorage, saveToStorage } from '../utils/storage';
 
 /**
  * Кастомный хук для работы с localStorage с автоматической синхронизацией
@@ -7,10 +7,7 @@ import { saveToStorage, loadFromStorage } from '../utils/storage';
  * @param initialValue - Начальное значение
  * @returns Кортеж [значение, функция установки значения]
  */
-export function useLocalStorage<T>(
-	key: string,
-	initialValue: T
-): [T, (value: T | ((prev: T) => T)) => void] {
+export function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((prev: T) => T)) => void] {
 	// Инициализация состояния из localStorage или начальным значением
 	const [storedValue, setStoredValue] = useState<T>(() => {
 		return loadFromStorage(key, initialValue);

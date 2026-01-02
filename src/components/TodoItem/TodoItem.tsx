@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import type { Todo } from '../../types/todo';
 import './TodoItem.css';
 
@@ -26,22 +26,17 @@ export const TodoItem = memo(({ todo, onToggle, onDelete }: TodoItemProps) => {
 
 	return (
 		<li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
-			<div className="todo-item__content">
+			<div className='todo-item__content'>
 				<input
-					type="checkbox"
-					className="todo-item__checkbox"
+					type='checkbox'
+					className='todo-item__checkbox'
 					checked={todo.completed}
 					onChange={handleToggle}
 					aria-label={`Отметить задачу "${todo.text}" как ${todo.completed ? 'невыполненную' : 'выполненную'}`}
 				/>
-				<span className="todo-item__text">{todo.text}</span>
+				<span className='todo-item__text'>{todo.text}</span>
 			</div>
-			<button
-				className="todo-item__delete"
-				onClick={handleDelete}
-				aria-label={`Удалить задачу "${todo.text}"`}
-				type="button"
-			>
+			<button className='todo-item__delete' onClick={handleDelete} aria-label={`Удалить задачу "${todo.text}"`} type='button'>
 				×
 			</button>
 		</li>

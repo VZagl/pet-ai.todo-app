@@ -1,0 +1,41 @@
+.todo-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 1.5rem;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	border-radius: 0.5rem;
+	background-color: #ffffff;
+	padding: 1rem;
+}
+
+.todo-footer__counter {
+	display: flex;
+	align-items: baseline;
+	gap: 0.25rem;
+	color: #6c757d;
+	font-size: 0.875rem;
+}
+
+.todo-footer__count {
+	color: #0d6efd;
+	font-weight: 600;
+	font-size: 1.25rem;
+}
+
+.todo-footer__label {
+	font-size: 0.875rem;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 576px) {
+	.todo-footer {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 1rem;
+	}
+
+	.todo-footer__counter {
+		justify-content: center;
+	}
+}

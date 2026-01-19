@@ -1,6 +1,6 @@
 import { FILTERS, FILTER_LABELS } from '../../constants/todo';
 import type { FilterType } from '../../types/todo';
-import './TodoFilter.css';
+import './TodoFilter.scss';
 
 interface TodoFilterProps {
 	/** Текущий активный фильтр */

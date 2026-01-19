@@ -11,6 +11,38 @@
 
 ## Completed Tasks
 
+### ✅ Миграция CSS → SCSS (ARCHIVE) - COMPLETED (2026-01-19)
+
+**Архивный документ:** `memory-bank/archive/css-to-scss-migration-001_20260119.md`
+
+**Финальный статус:** ✅ COMPLETED & ARCHIVED
+
+**Общие метрики:**
+
+- Время выполнения: ~2.5 часа (точная оценка, 0% variance)
+- Файлов создано: 2 (`_variables.scss`, `_mixins.scss`)
+- Файлов преобразовано: 8 (CSS → SCSS)
+- Файлов обновлено: 7 (импорты в компонентах)
+- Тестов: 116 (100% success)
+- Регрессий: 0
+- Соответствие требованиям: 100%
+
+**Ключевые достижения:**
+
+- Установлен `sass-embedded@1.97.2` для быстрой компиляции SCSS
+- Создана модульная структура SCSS с переменными и миксинами
+- Преобразованы все CSS файлы в SCSS с использованием возможностей препроцессора
+- Применена глубокая вложенность для улучшения читаемости
+- Созданы переиспользуемые миксины для консистентности стилей
+- Сохранена обратная совместимость с CSS custom properties
+- Все тесты проходят успешно, визуальное отображение не изменилось
+
+**Memory Bank обновлён:**
+
+- `tasks.md` - отмечена как COMPLETED & ARCHIVED
+- `progress.md` - добавлена финальная запись
+- `activeContext.md` - очищен для следующей задачи
+
 - [x] Определение платформы (Windows, PowerShell)
 - [x] Создание структуры Memory Bank
 - [x] Инициализация базовых файлов контекста
@@ -49,7 +81,54 @@
 
 ## In Progress
 
-Нет (ожидает архивирования)
+### ✅ CSS to SCSS Migration (BUILD) - COMPLETED (2026-01-19)
+
+**Phase 1: Подготовка**
+
+- [x] Установлен `sass-embedded@1.97.2` как dev-зависимость
+- [x] Создан `src/styles/_variables.scss` с переменными (цвета, spacing, typography, breakpoints)
+- [x] Создан `src/styles/_mixins.scss` с миксинами (focus, transitions, card, button-hover, media queries)
+
+**Phase 2: Глобальные стили**
+
+- [x] `fonts.css` → `fonts.scss` (минимальные изменения)
+- [x] `index.css` → `index.scss` (импорт переменных, использование миксинов, вложенность)
+- [x] Обновлены импорты в `main.tsx`
+
+**Phase 3: Компоненты (6 файлов)**
+
+- [x] `TodoApp.css` → `TodoApp.scss` (вложенность BEM, переменные, media query миксины)
+- [x] `TodoInput.css` → `TodoInput.scss` (вложенность, transition/focus миксины)
+- [x] `TodoList.css` → `TodoList.scss` (card mixin, вложенность)
+- [x] `TodoItem.css` → `TodoItem.scss` (полная вложенность, transition/focus миксины)
+- [x] `TodoFilter.css` → `TodoFilter.scss` (вложенность модификаторов, миксины)
+- [x] `TodoFooter.css` → `TodoFooter.scss` (card mixin, mobile media query)
+
+**Phase 4: Тестирование**
+
+- [x] Dev server: ✅ Запускается без ошибок на `http://localhost:5173/`
+- [x] Тесты: ✅ 116/116 тестов проходят успешно (100% success rate)
+- [x] Production build: ✅ Успешен, CSS скомпилирован (7.15 kB)
+- [x] Hot Reload: ✅ Работает для SCSS файлов
+
+**Файлы изменены:**
+
+- Создано: 2 файла (`_variables.scss`, `_mixins.scss`)
+- Преобразовано: 8 CSS → SCSS файлов
+- Обновлено: 7 импортов в компонентах
+- Удалено: 8 CSS файлов
+- Обновлено: `package.json` (добавлен sass-embedded)
+
+**Ключевые достижения:**
+
+- ✅ Используются SCSS переменные для всех повторяющихся значений
+- ✅ Используется вложенность селекторов (BEM, модификаторы, pseudo-классы)
+- ✅ Созданы переиспользуемые миксины (focus, transition, card)
+- ✅ CSS custom properties сохранены для динамических значений
+- ✅ Визуальное отображение не изменилось
+- ✅ Все функциональные тесты проходят
+
+**Следующий шаг:** REFLECT mode
 
 ## Build Progress (2026-01-19)
 

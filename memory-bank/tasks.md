@@ -2,11 +2,11 @@
 
 ## Current Task
 
-Интеграция шрифтов в приложение
+Переход с CSS на SCSS
 
 ## Task ID
 
-fonts-integration-001
+css-to-scss-migration-001
 
 ## Complexity Level
 
@@ -14,73 +14,155 @@ fonts-integration-001
 
 **Обоснование:**
 
-- Локальные изменения без архитектурных решений
-- Требуются правки нескольких файлов и подключение зависимости
-- Низкий риск регрессий
+- Локальное изменение, не затрагивающее архитектуру
+- Требуется изменение 8+ файлов (переименование и рефакторинг)
+- Низкий риск регрессий (стили изолированы)
+- Требуется добавление зависимости `sass-embedded`
+- Минимальное влияние на логику приложения
+- Есть небольшие архитектурные решения (структура переменных, миксинов)
 
-**Workflow:** VAN → PLAN → BUILD → REFLECT
+**Workflow:** VAN → PLAN → BUILD → REFLECT → ARCHIVE
 
 ## Status
 
-✅ **COMPLETED & ARCHIVED** - 2026-01-19
+✅ **COMPLETED & ARCHIVED** - Task Complete, Archive Created
 
 - [x] Инициализация Memory Bank
 - [x] Определение уровня сложности
 - [x] Планирование задачи
+- [x] Создание ветки `feature/css-to-scss-migration`
+- [x] Коммит плана (commit 31fdd69)
 - [x] Реализация (BUILD)
-- [x] Тестирование (116 тестов прошли успешно)
-- [x] Рефлексия (REFLECT)
-- [x] Архивирование (ARCHIVE)
-
-**Архивный документ:** `memory-bank/archive/fonts-integration-001_20260119.md`
+  - [x] Setup: Установка sass-embedded
+  - [x] Setup: Создание \_variables.scss и \_mixins.scss
+  - [x] Global: fonts.scss и index.scss
+  - [x] Components: 6 компонентов
+- [x] Тестирование
+  - [x] Dev server запускается успешно
+  - [x] 116/116 тестов проходят успешно ✅
+  - [x] Production build успешен
+- [x] Рефлексия (REFLECT) ✅
+  - [x] Документ рефлексии создан: `memory-bank/reflection/reflection-css-to-scss-migration-001.md`
+- [x] Архивирование (ARCHIVE) ✅
+  - [x] Архивный документ создан: `memory-bank/archive/css-to-scss-migration-001_20260119.md`
 
 ## Description
 
-Подключить шрифты через `@fontsource` с отдельным CSS-файлом, чтобы упростить переход на SCSS в будущем и обеспечить кэширование шрифтов браузером клиента.
+Преобразование существующих CSS-файлов в SCSS с использованием возможностей препроцессора (переменные, миксины, вложенность) для улучшения поддерживаемости стилей и Developer Experience.
 
 ## Technology Stack
 
-- Framework: React
-- Build Tool: Vite
-- Language: TypeScript
-- Package Manager: pnpm
+- Framework: React 19.2.3
+- Build Tool: Vite 7.3.0
+- Language: TypeScript 5.9.3
+- Package Manager: pnpm 10.26.2
+- **New:** sass-embedded (для поддержки SCSS)
 
 ## Requirements
 
-- Подключить шрифты через `@fontsource` пакеты
-- Импортировать шрифты через отдельный файл `src/styles/fonts.css`
-- Подключить `fonts.css` в `src/main.tsx` до `index.css`
-- Настроить fallback-шрифты и CSS-переменные
-- Применить переменные в глобальных стилях
+### Функциональные требования (FR)
 
-## Technology Validation Checkpoints
+1. **FR-01**: Установить `sass-embedded` как dev-зависимость
+2. **FR-02**: Создать структуру SCSS (переменные, миксины)
+3. **FR-03**: Преобразовать все CSS файлы в SCSS (8 файлов)
+4. **FR-04**: Использовать возможности SCSS (вложенность, переменные, миксины)
+5. **FR-05**: Обновить импорты в компонентах и main.tsx
 
-- [x] Команда установки зависимости задокументирована
-- [x] Требуемые зависимости определены и добавлены
-- [x] Импорт шрифта через отдельный CSS-файл подтверждён
-- [x] Конфигурация CSS-переменных валидна
-- [x] Минимальная сборка/рендер проходят
+### Нефункциональные требования (NFR)
+
+1. **NFR-01**: Визуальное отображение не должно измениться
+2. **NFR-02**: Все 116 тестов должны пройти успешно
+3. **NFR-03**: Dev-сервер и production build должны работать
+4. **NFR-04**: Поддержка hot reload для SCSS
+
+## Files to Modify
+
+### CSS файлы для преобразования (8):
+
+- `src/styles/fonts.css` → `src/styles/fonts.scss`
+- `src/index.css` → `src/index.scss`
+- `src/components/TodoApp/TodoApp.css` → `src/components/TodoApp/TodoApp.scss`
+- `src/components/TodoInput/TodoInput.css` → `src/components/TodoInput/TodoInput.scss`
+- `src/components/TodoList/TodoList.css` → `src/components/TodoList/TodoList.scss`
+- `src/components/TodoItem/TodoItem.css` → `src/components/TodoItem/TodoItem.scss`
+- `src/components/TodoFilter/TodoFilter.css` → `src/components/TodoFilter/TodoFilter.scss`
+- `src/components/TodoFooter/TodoFooter.css` → `src/components/TodoFooter/TodoFooter.scss`
+
+### Новые SCSS файлы:
+
+- `src/styles/_variables.scss` - общие переменные
+- `src/styles/_mixins.scss` - переиспользуемые миксины
+
+### Компоненты для обновления импортов (7):
+
+- `src/main.tsx`
+- `src/components/TodoApp/TodoApp.tsx`
+- `src/components/TodoInput/TodoInput.tsx`
+- `src/components/TodoList/TodoList.tsx`
+- `src/components/TodoItem/TodoItem.tsx`
+- `src/components/TodoFilter/TodoFilter.tsx`
+- `src/components/TodoFooter/TodoFooter.tsx`
 
 ## Implementation Plan
 
-1. Подготовить подключение шрифтов
-   - Выбрать пакет `@fontsource-variable/inter` как предпочтительный
-   - Определить необходимые оси/веса
-2. Создать `src/styles/fonts.css`
-   - Импортировать `@fontsource-variable/inter` (или веса по необходимости)
-   - Определить CSS-переменную `--font-family-base` с fallback
-3. Подключить `fonts.css` в `src/main.tsx`
-   - Импорт до `index.css` для стабильного порядка загрузки
-4. Обновить `src/index.css`
-   - Использовать `var(--font-family-base)` в `body` и базовых элементах
-5. Проверить результат
-   - Убедиться в корректном fallback и кэшировании
+### Phase 1: Подготовка
+
+1. Установить `sass-embedded` через pnpm
+2. Создать структуру SCSS файлов (\_variables.scss, \_mixins.scss)
+
+### Phase 2: Преобразование глобальных стилей
+
+3. Преобразовать `src/styles/fonts.css` → `fonts.scss`
+4. Преобразовать `src/index.css` → `index.scss`
+5. Обновить импорты в `src/main.tsx`
+
+### Phase 3: Преобразование стилей компонентов
+
+6. Преобразовать CSS компонентов в SCSS (6 файлов)
+7. Обновить импорты в компонентах
+8. Применить SCSS возможности (вложенность, переменные)
+
+### Phase 4: Тестирование
+
+9. Запустить dev-сервер и проверить визуальное отображение
+10. Запустить тесты (116 тестов)
+11. Проверить production build
 
 ## Dependencies
 
-- `@fontsource-variable/inter` (предпочтительно)
+- `sass-embedded` - современная быстрая реализация Dart Sass
 
 ## Challenges & Mitigations
 
-- Возможные TypeScript предупреждения по импортам CSS/Fontsource: при необходимости добавить декларации модулей.
-- Размер шрифтов: использовать variable-версию вместо нескольких статических весов.
+- **CSS Custom Properties vs SCSS переменные**: Оставить CSS custom properties для динамических значений, использовать SCSS переменные для статических
+- **Порядок импортов**: Убедиться, что \_variables.scss импортируется первым
+- **Hot reload**: Vite автоматически поддерживает SCSS, проверить работу HMR
+
+## Success Metrics
+
+- ✅ Все CSS файлы преобразованы в SCSS
+- ✅ Используются SCSS возможности (вложенность, переменные, миксины)
+- ✅ Визуальное отображение не изменилось
+- ✅ 116 тестов проходят успешно
+- ✅ Dev-сервер и production build работают
+- ✅ Hot reload работает для SCSS файлов
+
+## Reflection Highlights
+
+- **Что сработало отлично**: Модульная структура SCSS, гибридный подход к переменным (SCSS для статических, CSS custom properties для динамических), глубокая вложенность улучшила читаемость, переиспользуемые миксины уменьшили дублирование, нулевые регрессии (116/116 тестов прошли)
+
+- **Основные вызовы**: Выбор между CSS custom properties и SCSS переменными, порядок импортов в SCSS, сохранение совместимости с существующим кодом
+
+- **Ключевые решения**: Гибридный подход (SCSS переменные для статических значений, CSS custom properties для динамических), использование `@use` вместо `@import`, сохранение CSS custom properties в `index.scss` с интерполяцией SCSS переменных
+
+- **Технические инсайты**: `sass-embedded` быстрее обычного `sass`, `@use` обеспечивает правильную изоляцию пространств имён, интерполяция SCSS переменных в CSS custom properties через `#{$variable}`, вложенность улучшает поддерживаемость для BEM-методологии
+
+- **Процессные инсайты**: Level 2 workflow оказался оптимальным, детальное планирование упростило реализацию, поэтапная реализация снизила риски, проверка тестов на каждом этапе гарантировала отсутствие регрессий
+
+- **Время выполнения**: ~2.5 часа (точная оценка, 0% variance) благодаря детальному планированию и поэтапной реализации
+
+**Документ рефлексии**: `memory-bank/reflection/reflection-css-to-scss-migration-001.md`
+
+**Архивный документ**: `memory-bank/archive/css-to-scss-migration-001_20260119.md`
+
+**Дата архивирования**: 2026-01-19

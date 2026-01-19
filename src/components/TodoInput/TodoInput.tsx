@@ -1,6 +1,6 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
-import './TodoInput.css';
+import './TodoInput.scss';
 
 interface TodoInputProps {
 	/** Обработчик добавления новой задачи */

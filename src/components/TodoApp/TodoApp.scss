@@ -1,0 +1,66 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-app {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	background: $gradient-purple;
+	padding: $space-4 $space-3; // Mobile: начинаем с малого padding
+	min-height: 100vh;
+
+	&__container {
+		width: 100%;
+		max-width: 600px;
+	}
+
+	&__header {
+		margin-bottom: $space-8;
+		text-align: center;
+	}
+
+	&__title {
+		margin: 0 0 $space-2 0;
+		color: $color-bg;
+		font-weight: $font-weight-bold;
+		font-size: $font-size-xl; // Mobile: начинаем с малого размера
+		letter-spacing: 0.1em;
+		text-shadow: $shadow-md;
+	}
+
+	&__subtitle {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.9);
+		font-weight: $font-weight-light;
+		font-size: $font-size-sm; // Mobile: начинаем с малого размера
+	}
+
+	&__main {
+		/* Основной контейнер для компонентов */
+	}
+}
+
+/* Mobile-first адаптивность: увеличиваем размеры на больших экранах */
+@include tablet-up {
+	.todo-app {
+		padding: $space-6 $space-4; // Tablet: увеличиваем padding
+
+		&__title {
+			font-size: $font-size-2xl; // Tablet: увеличиваем размер
+		}
+
+		&__subtitle {
+			font-size: $font-size-base; // Tablet: увеличиваем размер
+		}
+	}
+}
+
+@include desktop-up {
+	.todo-app {
+		padding: $space-8 $space-4; // Desktop: ещё больше padding
+
+		&__title {
+			font-size: $font-size-3xl; // Desktop: максимальный размер
+		}
+	}
+}

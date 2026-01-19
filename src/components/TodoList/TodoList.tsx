@@ -1,6 +1,6 @@
 import type { Todo } from '../../types/todo';
 import { TodoItem } from '../TodoItem/TodoItem';
-import './TodoList.css';
+import './TodoList.scss';
 
 interface TodoListProps {
 	/** Массив задач для отображения */

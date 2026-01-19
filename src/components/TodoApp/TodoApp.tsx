@@ -3,7 +3,7 @@ import { useTodos } from '../../hooks/useTodos';
 import { TodoFooter } from '../TodoFooter/TodoFooter';
 import { TodoInput } from '../TodoInput/TodoInput';
 import { TodoList } from '../TodoList/TodoList';
-import './TodoApp.css';
+import './TodoApp.scss';
 
 /**
  * Корневой компонент TODO приложения

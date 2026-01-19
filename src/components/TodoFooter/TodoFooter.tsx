@@ -1,6 +1,6 @@
 import type { FilterType } from '../../types/todo';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
-import './TodoFooter.css';
+import './TodoFooter.scss';
 
 interface TodoFooterProps {
 	/** Количество активных задач */

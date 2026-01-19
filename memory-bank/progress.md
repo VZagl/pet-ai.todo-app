@@ -49,7 +49,54 @@
 
 ## In Progress
 
-Нет (ожидает архивирования)
+### ✅ CSS to SCSS Migration (BUILD) - COMPLETED (2026-01-19)
+
+**Phase 1: Подготовка**
+
+- [x] Установлен `sass-embedded@1.97.2` как dev-зависимость
+- [x] Создан `src/styles/_variables.scss` с переменными (цвета, spacing, typography, breakpoints)
+- [x] Создан `src/styles/_mixins.scss` с миксинами (focus, transitions, card, button-hover, media queries)
+
+**Phase 2: Глобальные стили**
+
+- [x] `fonts.css` → `fonts.scss` (минимальные изменения)
+- [x] `index.css` → `index.scss` (импорт переменных, использование миксинов, вложенность)
+- [x] Обновлены импорты в `main.tsx`
+
+**Phase 3: Компоненты (6 файлов)**
+
+- [x] `TodoApp.css` → `TodoApp.scss` (вложенность BEM, переменные, media query миксины)
+- [x] `TodoInput.css` → `TodoInput.scss` (вложенность, transition/focus миксины)
+- [x] `TodoList.css` → `TodoList.scss` (card mixin, вложенность)
+- [x] `TodoItem.css` → `TodoItem.scss` (полная вложенность, transition/focus миксины)
+- [x] `TodoFilter.css` → `TodoFilter.scss` (вложенность модификаторов, миксины)
+- [x] `TodoFooter.css` → `TodoFooter.scss` (card mixin, mobile media query)
+
+**Phase 4: Тестирование**
+
+- [x] Dev server: ✅ Запускается без ошибок на `http://localhost:5173/`
+- [x] Тесты: ✅ 116/116 тестов проходят успешно (100% success rate)
+- [x] Production build: ✅ Успешен, CSS скомпилирован (7.15 kB)
+- [x] Hot Reload: ✅ Работает для SCSS файлов
+
+**Файлы изменены:**
+
+- Создано: 2 файла (`_variables.scss`, `_mixins.scss`)
+- Преобразовано: 8 CSS → SCSS файлов
+- Обновлено: 7 импортов в компонентах
+- Удалено: 8 CSS файлов
+- Обновлено: `package.json` (добавлен sass-embedded)
+
+**Ключевые достижения:**
+
+- ✅ Используются SCSS переменные для всех повторяющихся значений
+- ✅ Используется вложенность селекторов (BEM, модификаторы, pseudo-классы)
+- ✅ Созданы переиспользуемые миксины (focus, transition, card)
+- ✅ CSS custom properties сохранены для динамических значений
+- ✅ Визуальное отображение не изменилось
+- ✅ Все функциональные тесты проходят
+
+**Следующий шаг:** REFLECT mode
 
 ## Build Progress (2026-01-19)
 

@@ -148,7 +148,8 @@ describe('TodoInput', () => {
 		render(<TodoInput onAdd={onAdd} />);
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
-		await user.type(input, 'New task{Enter}');
+		await user.type(input, 'New task');
+		await user.keyboard('{Enter}');
 
 		expect(onAdd).toHaveBeenCalledWith('New task');
 	});

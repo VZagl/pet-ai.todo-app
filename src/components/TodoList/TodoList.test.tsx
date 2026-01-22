@@ -67,12 +67,24 @@ describe('TodoList', () => {
 	});
 
 	it('должен использовать id задачи как key', () => {
+		const consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
-		const { container } = render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
+		// Сценарий 1: Уникальные id - ошибок быть не должно
+		const { rerender } = render(<TodoList todos={mockTodos} onToggle={onToggle} onDelete={onDelete} />);
 
-		const listItems = container.querySelectorAll('.todo-item');
-		expect(listItems).toHaveLength(mockTodos.length);
+		expect(consoleErrorSpy).not.toHaveBeenCalled();
+		consoleErrorSpy.mockClear();
+
+		// Сценарий 2: Дубликаты id - должна появиться ошибка
+		const todosWithDuplicate = [mockTodos[0], ...mockTodos];
+		rerender(<TodoList todos={todosWithDuplicate} onToggle={onToggle} onDelete={onDelete} />);
+
+		expect(consoleErrorSpy).toHaveBeenCalled();
+		expect(consoleErrorSpy.mock.calls[0][0]).toContain('key');
+
+		// Восстановление
+		consoleErrorSpy.mockRestore();
 	});
 });

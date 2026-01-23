@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { TodoApp } from './TodoApp';
@@ -140,15 +140,16 @@ describe('TodoApp - Integration', () => {
 		await user.click(addButton);
 
 		// Проверяем счетчик
-		expect(screen.getByText('3')).toBeInTheDocument();
-		expect(screen.getByText(/осталось/i)).toBeInTheDocument();
+		const footer = screen.getByRole('contentinfo');
+		expect(within(footer).getByText('3')).toBeInTheDocument();
+		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
 
 		// Отмечаем одну задачу
 		const checkbox = screen.getAllByRole('checkbox')[0];
 		await user.click(checkbox);
 
 		// Счетчик должен обновиться
-		expect(screen.getByText('2')).toBeInTheDocument();
+		expect(within(footer).getByText('2')).toBeInTheDocument();
 	});
 
 	it('не должен показывать footer если нет задач', () => {

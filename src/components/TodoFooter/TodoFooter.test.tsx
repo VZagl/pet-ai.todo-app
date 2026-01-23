@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
 import type { FilterType } from '../../types/todo';
@@ -23,8 +23,10 @@ describe('TodoFooter', () => {
 		it('should render counter and filter components', () => {
 			render(<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
+			const footer = screen.getByRole('contentinfo');
+
 			// Counter
-			expect(screen.getByText('5')).toBeInTheDocument();
+			expect(within(footer).getByText('5')).toBeInTheDocument();
 
 			// Filter buttons
 			expect(screen.getByText('Все')).toBeInTheDocument();
@@ -37,78 +39,89 @@ describe('TodoFooter', () => {
 		it('should display 0 active tasks', () => {
 			render(<TodoFooter activeCount={0} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('0')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('0')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 
 		it('should display 1 active task with correct word form', () => {
 			render(<TodoFooter activeCount={1} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('1')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('1')).toBeInTheDocument();
+			expect(within(footer).getByText('задача осталось')).toBeInTheDocument();
 		});
 
 		it('should display 2 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={2} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('2')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('2')).toBeInTheDocument();
+			expect(within(footer).getByText('задачи осталось')).toBeInTheDocument();
 		});
 
 		it('should display 3 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={3} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('3')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('3')).toBeInTheDocument();
+			expect(within(footer).getByText('задачи осталось')).toBeInTheDocument();
 		});
 
 		it('should display 4 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={4} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('4')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('4')).toBeInTheDocument();
+			expect(within(footer).getByText('задачи осталось')).toBeInTheDocument();
 		});
 
 		it('should display 5 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('5')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('5')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 
 		it('should display 10 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={10} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('10')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('10')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 
 		it('should display 21 active task with correct word form', () => {
 			render(<TodoFooter activeCount={21} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('21')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('21')).toBeInTheDocument();
+			expect(within(footer).getByText('задача осталось')).toBeInTheDocument();
 		});
 
 		it('should display 22 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={22} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('22')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('22')).toBeInTheDocument();
+			expect(within(footer).getByText('задачи осталось')).toBeInTheDocument();
 		});
 
 		it('should display 25 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={25} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('25')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('25')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 
 		it('should display 100 active tasks with correct word form', () => {
 			render(<TodoFooter activeCount={100} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('100')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('100')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 	});
 
@@ -151,27 +164,32 @@ describe('TodoFooter', () => {
 		it('should update counter when activeCount changes', () => {
 			const { rerender } = render(<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('5')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			let footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('5')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 
 			rerender(<TodoFooter activeCount={1} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('1')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('1')).toBeInTheDocument();
+			expect(within(footer).getByText('задача осталось')).toBeInTheDocument();
 		});
 
 		it('should update word form when activeCount changes', () => {
 			const { rerender } = render(<TodoFooter activeCount={1} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			let footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('задача осталось')).toBeInTheDocument();
 
 			rerender(<TodoFooter activeCount={2} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+			footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('задачи осталось')).toBeInTheDocument();
 
 			rerender(<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 	});
 
@@ -179,14 +197,16 @@ describe('TodoFooter', () => {
 		it('should handle negative activeCount gracefully', () => {
 			render(<TodoFooter activeCount={-1} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('-1')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('-1')).toBeInTheDocument();
 		});
 
 		it('should handle very large activeCount', () => {
 			render(<TodoFooter activeCount={9999} currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			expect(screen.getByText('9999')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('9999')).toBeInTheDocument();
+			expect(within(footer).getByText('задач осталось')).toBeInTheDocument();
 		});
 
 		it('should work with all filter types', () => {
@@ -195,7 +215,8 @@ describe('TodoFooter', () => {
 			filters.forEach((filter) => {
 				const { unmount } = render(<TodoFooter activeCount={5} currentFilter={filter} onFilterChange={mockOnFilterChange} />);
 
-				expect(screen.getByText('5')).toBeInTheDocument();
+				const footer = screen.getByRole('contentinfo');
+				expect(within(footer).getByText('5')).toBeInTheDocument();
 
 				unmount();
 			});
@@ -216,6 +237,91 @@ describe('TodoFooter', () => {
 			expect(screen.getByLabelText('Показать все задачи')).toBeInTheDocument();
 			expect(screen.getByLabelText('Показать активные задачи')).toBeInTheDocument();
 			expect(screen.getByLabelText('Показать завершенные задачи')).toBeInTheDocument();
+		});
+	});
+
+	describe('Проверка отсутствия ложноположительных совпадений', () => {
+		it('счетчик отображается только в footer, а не в других местах', () => {
+			// Создаем конфликтную ситуацию: число "5" есть и в footer, и в другом div
+			render(
+				<div>
+					<div data-testid='other-content'>Задача номер 5</div>
+					<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: число "5" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('5')).toBeInTheDocument();
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что число "5" есть и в другом месте, и в счетчике
+			// Используем регулярное выражение для поиска числа внутри текста
+			const allFives = screen.queryAllByText(/^5$|5/);
+			// Должно быть минимум 2 вхождения: одно в другом div (в тексте "Задача номер 5"), одно в счетчике
+			expect(allFives.length).toBeGreaterThanOrEqual(2);
+
+			// Проверяем, что счетчик действительно в footer, а не в другом div
+			const otherContent = screen.getByTestId('other-content');
+			expect(within(otherContent).getByText(/5/)).toBeInTheDocument(); // В другом div
+			expect(within(footer).getByText('5')).toBeInTheDocument(); // В счетчике
+			// Оба элемента существуют, но within() позволяет различить их
+		});
+
+		it('текст "осталось" отображается только в footer, а не в других местах', () => {
+			// Создаем конфликтную ситуацию: слово "осталось" есть и в footer, и в другом div
+			render(
+				<div>
+					<div data-testid='other-content'>Задача, которая осталось невыполненной</div>
+					<TodoFooter activeCount={2} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: текст "осталось" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+			expect(within(footer).getByText('2')).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что слово "осталось" есть и в другом месте, и в счетчике
+			const allRemaining = screen.queryAllByText(/осталось/i);
+			// Должно быть ровно 2 вхождения: одно в другом div, одно в счетчике
+			expect(allRemaining).toHaveLength(2);
+
+			// Проверяем, что счетчик действительно в footer, а не в другом div
+			const otherContent = screen.getByTestId('other-content');
+			expect(within(otherContent).getByText(/осталось/i)).toBeInTheDocument(); // В другом div
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument(); // В счетчике
+			// Оба элемента существуют, но within() позволяет различить их
+		});
+
+		it('счетчик с числом 3 отображается только в footer при наличии конфликтного контента', () => {
+			// Создаем конфликтную ситуацию: число "3" есть и в footer, и в нескольких других местах
+			render(
+				<div>
+					<div data-testid='task-1'>Задача 3</div>
+					<div data-testid='task-2'>Task номер 3</div>
+					<TodoFooter activeCount={3} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: число "3" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('3')).toBeInTheDocument();
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что число "3" есть в нескольких местах
+			// Используем регулярное выражение для поиска числа внутри текста
+			const allThrees = screen.queryAllByText(/^3$|3/);
+			// Должно быть минимум 3 вхождения: два в других div, одно в счетчике
+			expect(allThrees.length).toBeGreaterThanOrEqual(3);
+
+			// Проверяем, что счетчик действительно в footer, а не в других div
+			const task1 = screen.getByTestId('task-1');
+			const task2 = screen.getByTestId('task-2');
+			expect(within(task1).getByText(/3/)).toBeInTheDocument(); // В первом div
+			expect(within(task2).getByText(/3/)).toBeInTheDocument(); // Во втором div
+			expect(within(footer).getByText('3')).toBeInTheDocument(); // В счетчике
+			// Все три элемента существуют, но within() позволяет различить их
 		});
 	});
 });

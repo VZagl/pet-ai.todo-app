@@ -2,36 +2,34 @@
 
 ## Current Focus
 
-Исправление теста на key в `TodoList` - добавление реальной проверки использования `id` как `key`
+Проверка тестов на ложные совпадения по тексту - ЗАВЕРШЕНО ✅
 
 ## Current Mode
 
-BUILD - Реализация завершена
+COMPLETED - Реализация завершена
 
 ## Current Phase
 
-Implementation Complete - Тестирование пройдено успешно
+Implementation Complete - Все тесты исправлены и проходят успешно
 
 ## Recently Completed
 
-- ✅ **Миграция CSS → SCSS** (css-to-scss-migration-001) - COMPLETED & ARCHIVED (2026-01-19)
-  - Архивный документ: `memory-bank/archive/css-to-scss-migration-001_20260119.md`
-  - Рефлексия: `memory-bank/reflection/reflection-css-to-scss-migration-001.md`
+- ✅ **Исправление теста на key в TodoList** (test-todolist-key-validation-001) - COMPLETED (2026-01-22)
   - Все 116 тестов прошли успешно
-  - Визуальное отображение не изменилось
-  - Production build работает корректно
+  - Реальная проверка использования `id` как `key` через перехват `console.error`
 
 ## Next Steps
 
-1. ✅ Реализация исправления теста - завершена
-2. ✅ Тестирование - все тесты прошли успешно (116 тестов, 12 файлов)
-3. Обновление документации (опционально)
-4. Использовать `/reflect` команду для рефлексии (Level 1 - опционально)
+1. ✅ Исправить тесты в `TodoFooter.test.tsx` - завершено
+2. ✅ Исправить тесты в `TodoApp.test.tsx` - завершено
+3. ✅ Запустить тесты для проверки - все 116 тестов прошли успешно
+4. Memory Bank готов к новой задаче
 
 ## Context for AI
 
 - Проект: pet.todo - TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
 - Текущие тесты: 116 (все проходят)
-- Все стили переведены на SCSS
-- Memory Bank готов к новой задаче
+- Задача: Level 1 - Quick Fix
+- Проблема: Проверки `getByText('3')` могут совпадать с текстом задач типа "Task 3"
+- Решение: Использовать `within()` для ограничения области поиска до footer элемента

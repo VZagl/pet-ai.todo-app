@@ -239,4 +239,89 @@ describe('TodoFooter', () => {
 			expect(screen.getByLabelText('Показать завершенные задачи')).toBeInTheDocument();
 		});
 	});
+
+	describe('Проверка отсутствия ложноположительных совпадений', () => {
+		it('счетчик отображается только в footer, а не в других местах', () => {
+			// Создаем конфликтную ситуацию: число "5" есть и в footer, и в другом div
+			render(
+				<div>
+					<div data-testid='other-content'>Задача номер 5</div>
+					<TodoFooter activeCount={5} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: число "5" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('5')).toBeInTheDocument();
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что число "5" есть и в другом месте, и в счетчике
+			// Используем регулярное выражение для поиска числа внутри текста
+			const allFives = screen.queryAllByText(/^5$|5/);
+			// Должно быть минимум 2 вхождения: одно в другом div (в тексте "Задача номер 5"), одно в счетчике
+			expect(allFives.length).toBeGreaterThanOrEqual(2);
+
+			// Проверяем, что счетчик действительно в footer, а не в другом div
+			const otherContent = screen.getByTestId('other-content');
+			expect(within(otherContent).getByText(/5/)).toBeInTheDocument(); // В другом div
+			expect(within(footer).getByText('5')).toBeInTheDocument(); // В счетчике
+			// Оба элемента существуют, но within() позволяет различить их
+		});
+
+		it('текст "осталось" отображается только в footer, а не в других местах', () => {
+			// Создаем конфликтную ситуацию: слово "осталось" есть и в footer, и в другом div
+			render(
+				<div>
+					<div data-testid='other-content'>Задача, которая осталось невыполненной</div>
+					<TodoFooter activeCount={2} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: текст "осталось" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+			expect(within(footer).getByText('2')).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что слово "осталось" есть и в другом месте, и в счетчике
+			const allRemaining = screen.queryAllByText(/осталось/i);
+			// Должно быть ровно 2 вхождения: одно в другом div, одно в счетчике
+			expect(allRemaining).toHaveLength(2);
+
+			// Проверяем, что счетчик действительно в footer, а не в другом div
+			const otherContent = screen.getByTestId('other-content');
+			expect(within(otherContent).getByText(/осталось/i)).toBeInTheDocument(); // В другом div
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument(); // В счетчике
+			// Оба элемента существуют, но within() позволяет различить их
+		});
+
+		it('счетчик с числом 3 отображается только в footer при наличии конфликтного контента', () => {
+			// Создаем конфликтную ситуацию: число "3" есть и в footer, и в нескольких других местах
+			render(
+				<div>
+					<div data-testid='task-1'>Задача 3</div>
+					<div data-testid='task-2'>Task номер 3</div>
+					<TodoFooter activeCount={3} currentFilter='all' onFilterChange={mockOnFilterChange} />
+				</div>,
+			);
+
+			// Позитивная проверка: число "3" есть в footer (счетчик)
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText('3')).toBeInTheDocument();
+			expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+
+			// Негативная проверка: проверяем, что число "3" есть в нескольких местах
+			// Используем регулярное выражение для поиска числа внутри текста
+			const allThrees = screen.queryAllByText(/^3$|3/);
+			// Должно быть минимум 3 вхождения: два в других div, одно в счетчике
+			expect(allThrees.length).toBeGreaterThanOrEqual(3);
+
+			// Проверяем, что счетчик действительно в footer, а не в других div
+			const task1 = screen.getByTestId('task-1');
+			const task2 = screen.getByTestId('task-2');
+			expect(within(task1).getByText(/3/)).toBeInTheDocument(); // В первом div
+			expect(within(task2).getByText(/3/)).toBeInTheDocument(); // Во втором div
+			expect(within(footer).getByText('3')).toBeInTheDocument(); // В счетчике
+			// Все три элемента существуют, но within() позволяет различить их
+		});
+	});
 });

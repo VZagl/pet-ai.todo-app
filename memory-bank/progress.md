@@ -11,6 +11,48 @@
 
 ## In Progress
 
+### ✅ Рефакторинг тестов: использование afterEach для очистки моков (BUILD) - COMPLETED (2026-01-26)
+
+**Task ID:** test-refactor-mocks-aftereach-001
+
+**Complexity Level:** Level 1 - Quick Fix
+
+**Phase 1: Рефакторинг `src/utils/storage.test.ts`** ✅
+
+- [x] Добавлен импорт `afterEach` в строку импортов
+- [x] Добавлен `afterEach(() => { vi.restoreAllMocks(); })` hook после `beforeEach`
+- [x] Удалён ручной вызов `spy.mockRestore()` (строка 42)
+
+**Phase 2: Рефакторинг `src/components/TodoList/TodoList.test.tsx`** ✅
+
+- [x] Добавлен импорт `afterEach` в строку импортов
+- [x] Добавлен `afterEach(() => { vi.restoreAllMocks(); })` hook в начало блока `describe`
+- [x] Удалён ручной вызов `consoleErrorSpy.mockRestore()` (строка 88)
+
+**Phase 3: Проверка и валидация** ✅
+
+- [x] Запущены все тесты: `pnpm test`
+- [x] `src/utils/storage.test.ts`: 7/7 тестов прошли успешно ✅
+- [x] `src/components/TodoList/TodoList.test.tsx`: 5/5 тестов прошли успешно ✅
+- [x] Все изменённые файлы работают корректно
+- [x] Моки автоматически очищаются после каждого теста
+- [x] Нет side effects между тестами
+
+**Файлы изменены:**
+
+- `src/utils/storage.test.ts` - добавлен `afterEach`, удалён `spy.mockRestore()`
+- `src/components/TodoList/TodoList.test.tsx` - добавлен `afterEach`, удалён `consoleErrorSpy.mockRestore()`
+
+**Ключевые достижения:**
+
+- ✅ Автоматическая очистка моков через `afterEach` hook
+- ✅ Повышение надёжности тестов (очистка даже при падении теста)
+- ✅ Все тесты в изменённых файлах проходят успешно (12/12)
+- ✅ Соответствие требованиям FR-01, FR-02, FR-03, FR-04
+- ✅ Соответствие требованиям NFR-01, NFR-02, NFR-03
+
+**Следующий шаг:** REFLECT mode для рефлексии и документации
+
 ### ✅ Исправление теста на key в TodoList (BUILD) - IN PROGRESS (2026-01-19)
 
 **Task ID:** test-todolist-key-validation-001

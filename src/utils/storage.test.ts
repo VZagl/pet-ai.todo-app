@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { loadFromStorage, saveToStorage } from './storage';
 
 describe('storage utils', () => {
@@ -7,6 +7,10 @@ describe('storage utils', () => {
 		localStorage.clear();
 		// Очистка моков
 		vi.clearAllMocks();
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
 	});
 
 	describe('saveToStorage', () => {
@@ -32,14 +36,11 @@ describe('storage utils', () => {
 
 		it('должен выбрасывать ошибку при неудачном сохранении', () => {
 			// Мокаем setItem для выброса ошибки
-			const spy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+			vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
 				throw new Error('QuotaExceededError');
 			});
 
 			expect(() => saveToStorage('key', 'data')).toThrow('Не удалось сохранить данные');
-
-			// Восстанавливаем оригинальную реализацию
-			spy.mockRestore();
 		});
 	});
 

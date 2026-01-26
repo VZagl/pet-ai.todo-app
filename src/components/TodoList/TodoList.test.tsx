@@ -1,9 +1,13 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import type { Todo } from '../../types/todo';
 import { TodoList } from './TodoList';
 
 describe('TodoList', () => {
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
 	const mockTodos: Todo[] = [
 		{
 			id: '1',
@@ -83,8 +87,5 @@ describe('TodoList', () => {
 
 		expect(consoleErrorSpy).toHaveBeenCalled();
 		expect(consoleErrorSpy.mock.calls[0][0]).toContain('key');
-
-		// Восстановление
-		consoleErrorSpy.mockRestore();
 	});
 });

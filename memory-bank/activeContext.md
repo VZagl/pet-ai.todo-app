@@ -2,34 +2,34 @@
 
 ## Current Focus
 
-Проверка тестов на ложные совпадения по тексту - ЗАВЕРШЕНО ✅
+Готов к следующей задаче
 
 ## Current Mode
 
-COMPLETED - Реализация завершена
+READY - Предыдущая задача завершена и заархивирована
 
 ## Current Phase
 
-Implementation Complete - Все тесты исправлены и проходят успешно
+ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно заархивирована
 
 ## Recently Completed
 
-- ✅ **Исправление теста на key в TodoList** (test-todolist-key-validation-001) - COMPLETED (2026-01-22)
+- ✅ **Рефакторинг тестов: использование afterEach для очистки моков** (test-refactor-mocks-aftereach-001) - COMPLETED & ARCHIVED (2026-01-26)
+  - Все 12 тестов в изменённых файлах прошли успешно
+  - Автоматическая очистка моков через `afterEach` hook
+  - Архивный документ: `memory-bank/archive/archive-test-refactor-mocks-aftereach-001.md`
+
+- ✅ **Проверка тестов на ложные совпадения по тексту** (test-false-positive-matches-001) - COMPLETED (2026-01-23)
   - Все 116 тестов прошли успешно
-  - Реальная проверка использования `id` как `key` через перехват `console.error`
+  - Использование `within()` для ограничения области поиска
 
 ## Next Steps
 
-1. ✅ Исправить тесты в `TodoFooter.test.tsx` - завершено
-2. ✅ Исправить тесты в `TodoApp.test.tsx` - завершено
-3. ✅ Запустить тесты для проверки - все 116 тестов прошли успешно
-4. Memory Bank готов к новой задаче
+Используйте команду `/van` для инициализации новой задачи
 
 ## Context for AI
 
 - Проект: pet.todo - TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
 - Текущие тесты: 116 (все проходят)
-- Задача: Level 1 - Quick Fix
-- Проблема: Проверки `getByText('3')` могут совпадать с текстом задач типа "Task 3"
-- Решение: Использовать `within()` для ограничения области поиска до footer элемента
+- Memory Bank готов к следующей задаче

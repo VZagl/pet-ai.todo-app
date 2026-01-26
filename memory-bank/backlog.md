@@ -8,19 +8,6 @@
 
 ### Testing Enhancements
 
-- [ ] Рефакторинг тестов: использование `afterEach` для очистки моков
-  - **Проблема**: В текущих тестах используется ручной вызов `spy.mockRestore()` после каждого теста с моками. Если тест упадёт до вызова `mockRestore()`, мок останется активным и может влиять на другие тесты
-  - **Решение**:
-    - Добавить глобальный `afterEach(() => { vi.restoreAllMocks(); })` в файлах с тестами
-    - Убрать все ручные вызовы `spy.mockRestore()` (они станут избыточными)
-    - Опционально: обернуть критичные участки в `try...finally`, если нужна дополнительная защита
-  - **Файлы для изменения**:
-    - `src/utils/storage.test.ts` - есть моки для Storage.prototype.setItem/getItem
-    - `src/utils/todoHelpers.test.ts` - проверить наличие моков
-    - Другие test-файлы с использованием `vi.spyOn()` и `.mockImplementation()`
-  - **Тип**: Code Quality + Test Reliability
-  - **Причина**: Повышение надёжности тестов, предотвращение side effects между тестами
-
 - [ ] Проверки boolean в тестах: кейсы `true` и `false`
   - **Проблема**: В некоторых тестах проверяется только значение `'true'`, без проверки `'false'`
   - **Решение**:
@@ -276,6 +263,21 @@
     - Тесты теперь более специфичные и надёжные, не дают ложноположительных результатов
   - **Тип**: Test Reliability
   - **Причина**: Исключение ложноположительных тестов
+
+- [x] ✅ **Рефакторинг тестов: использование `afterEach` для очистки моков** (test-refactor-mocks-aftereach-001)
+  - **Статус**: Завершено 2026-01-26
+  - **Реализация**: Автоматизация очистки моков через `afterEach` hook вместо ручных вызовов `mockRestore()`
+  - **Результат**:
+    - Добавлен `afterEach(() => { vi.restoreAllMocks(); })` в `src/utils/storage.test.ts` и `src/components/TodoList/TodoList.test.tsx`
+    - Удалены все ручные вызовы `spy.mockRestore()` и `consoleErrorSpy.mockRestore()`
+    - Все 12 тестов в изменённых файлах проходят успешно (7/7 + 5/5)
+    - Повышение надёжности тестов - автоматическая очистка моков даже при падении теста
+    - Предотвращение side effects между тестами
+    - Время: ~15 минут
+  - **Архив**: `memory-bank/archive/archive-test-refactor-mocks-aftereach-001.md`
+  - **Рефлексия**: `memory-bank/reflection/reflection-test-refactor-mocks-aftereach-001.md`
+  - **Тип**: Code Quality + Test Reliability
+  - **Причина**: Повышение надёжности тестов, предотвращение side effects между тестами
 
 ---
 

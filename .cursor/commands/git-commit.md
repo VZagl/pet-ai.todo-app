@@ -1,4 +1,4 @@
-# commit
+# git-commit
 
 ## Назначение
 

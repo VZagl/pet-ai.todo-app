@@ -2,15 +2,15 @@
 
 ## Current Focus
 
-Готов к следующей задаче
+Проверки boolean в тестах: кейсы `true` и `false`
 
 ## Current Mode
 
-READY - Предыдущая задача завершена и заархивирована
+VAN - Задача инициализирована, готова к реализации
 
 ## Current Phase
 
-ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно заархивирована
+INITIALIZED - Задача test-boolean-coverage-001 инициализирована в ветке `test/boolean-coverage`
 
 ## Recently Completed
 
@@ -25,7 +25,11 @@ ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно
 
 ## Next Steps
 
-Используйте команду `/van` для инициализации новой задачи
+Задача инициализирована в ветке `test/boolean-coverage`. Готова к реализации:
+
+1. Добавить проверки для `false` в тест сохранения примитивных типов
+2. Добавить проверки для `false` в тест загрузки примитивных типов
+3. Запустить тесты и убедиться, что все проходят успешно
 
 ## Context for AI
 

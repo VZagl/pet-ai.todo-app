@@ -28,10 +28,12 @@ describe('storage utils', () => {
 			saveToStorage('string', 'test');
 			saveToStorage('number', 123);
 			saveToStorage('boolean', true);
+			saveToStorage('boolean-false', false);
 
 			expect(localStorage.getItem('string')).toBe('"test"');
 			expect(localStorage.getItem('number')).toBe('123');
 			expect(localStorage.getItem('boolean')).toBe('true');
+			expect(localStorage.getItem('boolean-false')).toBe('false');
 		});
 
 		it('должен выбрасывать ошибку при неудачном сохранении', () => {
@@ -77,10 +79,12 @@ describe('storage utils', () => {
 			localStorage.setItem('string', '"test"');
 			localStorage.setItem('number', '123');
 			localStorage.setItem('boolean', 'true');
+			localStorage.setItem('boolean-false', 'false');
 
 			expect(loadFromStorage('string', '')).toBe('test');
 			expect(loadFromStorage('number', 0)).toBe(123);
 			expect(loadFromStorage('boolean', false)).toBe(true);
+			expect(loadFromStorage('boolean-false', true)).toBe(false);
 		});
 	});
 });

@@ -2,15 +2,15 @@
 
 ## Current Focus
 
-Готов к следующей задаче
+Проверки boolean в тестах: кейсы `true` и `false`
 
 ## Current Mode
 
-READY - Предыдущая задача завершена и заархивирована
+BUILD - Реализация завершена, готово к рефлексии
 
 ## Current Phase
 
-ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно заархивирована
+BUILD COMPLETED - Задача test-boolean-coverage-001 реализована, все тесты проходят успешно
 
 ## Recently Completed
 
@@ -25,7 +25,13 @@ ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно
 
 ## Next Steps
 
-Используйте команду `/van` для инициализации новой задачи
+Задача реализована в ветке `test/boolean-coverage`. BUILD фаза завершена:
+
+1. ✅ Добавлены проверки для `false` в тест сохранения примитивных типов
+2. ✅ Добавлены проверки для `false` в тест загрузки примитивных типов
+3. ✅ Все тесты проходят успешно (7/7 в `storage.test.ts`)
+
+**Следующий шаг:** Рефлексия (REFLECT mode) для анализа выполненной работы
 
 ## Context for AI
 

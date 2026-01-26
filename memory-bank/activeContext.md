@@ -2,21 +2,22 @@
 
 ## Current Focus
 
-Рефакторинг тестов: использование `afterEach` для очистки моков
+Готов к следующей задаче
 
 ## Current Mode
 
-BUILD → REFLECT - Реализация завершена, готов к рефлексии через `/reflect`
+READY - Предыдущая задача завершена и заархивирована
 
 ## Current Phase
 
-BUILD COMPLETE - Рефакторинг выполнен, все тесты проходят успешно
-
-## Task ID
-
-test-refactor-mocks-aftereach-001
+ARCHIVE COMPLETE - Задача test-refactor-mocks-aftereach-001 успешно заархивирована
 
 ## Recently Completed
+
+- ✅ **Рефакторинг тестов: использование afterEach для очистки моков** (test-refactor-mocks-aftereach-001) - COMPLETED & ARCHIVED (2026-01-26)
+  - Все 12 тестов в изменённых файлах прошли успешно
+  - Автоматическая очистка моков через `afterEach` hook
+  - Архивный документ: `memory-bank/archive/archive-test-refactor-mocks-aftereach-001.md`
 
 - ✅ **Проверка тестов на ложные совпадения по тексту** (test-false-positive-matches-001) - COMPLETED (2026-01-23)
   - Все 116 тестов прошли успешно
@@ -24,19 +25,11 @@ test-refactor-mocks-aftereach-001
 
 ## Next Steps
 
-1. ✅ Выполнить команду `/plan` для детального планирования - **ЗАВЕРШЕНО**
-2. ✅ Выполнить команду `/build` для реализации рефакторинга тестов - **ЗАВЕРШЕНО**
-3. ✅ Проверить, что все тесты проходят успешно - **ЗАВЕРШЕНО** (12/12 тестов в изменённых файлах)
-4. Выполнить команду `/reflect` для рефлексии и документации
+Используйте команду `/van` для инициализации новой задачи
 
 ## Context for AI
 
 - Проект: pet.todo - TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
 - Текущие тесты: 116 (все проходят)
-- Задача: Level 1 - Quick Fix
-- Проблема: Ручные вызовы `spy.mockRestore()` могут не выполниться при падении теста
-- Решение: Использовать `afterEach(() => { vi.restoreAllMocks(); })` для автоматической очистки моков
-- Файлы для изменения:
-  - `src/utils/storage.test.ts` - добавить `afterEach`, убрать `spy.mockRestore()` (строка 42)
-  - `src/components/TodoList/TodoList.test.tsx` - добавить `afterEach`, убрать `consoleErrorSpy.mockRestore()` (строка 88)
+- Memory Bank готов к следующей задаче

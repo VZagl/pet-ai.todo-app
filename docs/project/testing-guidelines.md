@@ -401,6 +401,97 @@ describe('useTodos', () => {
 - **Если константа используется в основном коде**, она должна использоваться и в тестах
 - **Не создавайте константы только для тестов** — если константа нужна только в тестах, возможно, стоит пересмотреть архитектуру
 
+## Правила выбора метода ввода текста
+
+### Правило для ИИ: user.type() vs user.paste()
+
+При написании тестов с вводом текста:
+
+1. **Используйте `user.type()` для строк меньше 50 символов**
+2. **Используйте `user.paste()` для строк от 50 символов и больше**
+3. **Всегда добавляйте `user.click(input)` перед `user.paste()`** для установки фокуса
+
+**Производительность:**
+
+- `user.type()`: ~10ms на символ (~500ms для 50 символов)
+- `user.paste()`: ~10ms всего (независимо от длины строки)
+
+**✅ Правильно:**
+
+```typescript
+// Короткие строки - user.type()
+await user.type(input, 'Купить молоко');
+
+// Длинные строки - user.paste()
+const longText = 'a'.repeat(501);
+await user.click(input);
+await user.paste(longText);
+```
+
+**❌ Неправильно:**
+
+```typescript
+// Timeout для длинных строк!
+const longText = 'a'.repeat(501);
+await user.type(input, longText); // ~5010ms → timeout 5000ms
+```
+
+## Правила изоляции тестов
+
+### Правило для ИИ: когда использовать beforeEach
+
+Добавляйте `beforeEach` hook, если:
+
+- Тесты используют localStorage/sessionStorage
+- Тесты используют моки через `vi.spyOn()`
+- Есть риск side effects между тестами
+
+**Что очищать в beforeEach:**
+
+- `localStorage.clear()` — очистка хранилища
+- `vi.clearAllMocks()` — очистка истории вызовов моков
+
+**Что НЕ очищать:**
+
+- `cleanup()` — Testing Library делает это автоматически
+
+**✅ Правильно:**
+
+```typescript
+import { beforeEach, describe, it, vi } from 'vitest';
+
+describe('Component', () => {
+	beforeEach(() => {
+		localStorage.clear();
+		vi.clearAllMocks();
+	});
+
+	it('тест 1', () => {
+		// Изолирован
+	});
+
+	it('тест 2', () => {
+		// Изолирован
+	});
+});
+```
+
+**❌ Неправильно:**
+
+```typescript
+describe('Component', () => {
+	// Нет beforeEach - side effects между тестами!
+
+	it('тест 1', async () => {
+		await user.type(input, 'Старое значение');
+	});
+
+	it('тест 2', async () => {
+		// Получит "Старое значение" из теста 1
+	});
+});
+```
+
 ## Примеры использования
 
 ### Базовый тест компонента

@@ -11,6 +11,57 @@
 
 ## In Progress
 
+### ✅ Замена жёстко прописанных ключей storage на константы - BUILD COMPLETE (2026-01-27)
+
+**Task ID:** storage-keys-refactor-001
+
+**Complexity Level:** Level 1 - Quick Fix
+
+**Ветка:** `refactor/replace-hardcoded-storage-keys`
+
+**Статус:** ✅ BUILD COMPLETE - Реализация завершена успешно
+
+**Описание:**
+Замена жёстко прописанных строковых ключей `'todos'` на константу `STORAGE_KEY` в тестах для единого источника истины.
+
+**Файлы изменены:**
+
+- `src/hooks/useTodos.test.ts` - добавлен импорт, заменены строки 156 и 174
+- `src/components/TodoApp/TodoApp.test.tsx` - добавлен импорт, заменена строка 235
+
+**Выполненные изменения:**
+
+- ✅ Добавлен импорт `STORAGE_KEY` из `'../constants/todo'` в `useTodos.test.ts`
+- ✅ Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 156
+- ✅ Заменено `localStorage.setItem('todos', ...)` на `localStorage.setItem(STORAGE_KEY, ...)` в строке 174
+- ✅ Добавлен импорт `STORAGE_KEY` из `'../../constants/todo'` в `TodoApp.test.tsx`
+- ✅ Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 235
+
+**Результаты тестирования:**
+
+- ✅ `src/hooks/useTodos.test.ts`: 11/11 тестов прошли успешно
+- ✅ `src/components/TodoApp/TodoApp.test.tsx`: 11/11 тестов прошли успешно
+- ✅ Всего тестов в изменённых файлах: 22/22 прошли успешно (100%)
+- ✅ Регрессий: 0
+
+**Требования:**
+
+- ✅ FR-01: Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в `useTodos.test.ts`
+- ✅ FR-02: Заменено `localStorage.setItem('todos', ...)` на `localStorage.setItem(STORAGE_KEY, ...)` в `useTodos.test.ts`
+- ✅ FR-03: Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в `TodoApp.test.tsx`
+- ✅ FR-04: Добавлены импорты `STORAGE_KEY` в оба тестовых файла
+- ✅ FR-05: Все тесты в изменённых файлах проходят успешно
+
+**Метрики:**
+
+- Файлов изменено: 2
+- Строк изменено: 5 (3 замены + 2 импорта)
+- Тестов в изменённых файлах: 22/22 прошли успешно (100%)
+- Регрессий: 0
+- Время выполнения: ~5 минут
+
+**Следующий шаг:** REFLECT mode - рефлексия по выполненной задаче
+
 ### ✅ Проверки boolean в тестах: кейсы `true` и `false` - COMPLETED (2026-01-26)
 
 **Task ID:** test-boolean-coverage-001

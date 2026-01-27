@@ -2,40 +2,44 @@
 
 ## Current Focus
 
-Проверки boolean в тестах: кейсы `true` и `false`
+Замена жёстко прописанных ключей storage на константы
 
 ## Current Mode
 
-BUILD - Реализация завершена, готово к рефлексии
+COMPLETE - Задача завершена
 
 ## Current Phase
 
-BUILD COMPLETED - Задача test-boolean-coverage-001 реализована, все тесты проходят успешно
+DOCUMENTATION COMPLETE - Документация обновлена, задача завершена
 
 ## Recently Completed
+
+- ✅ **Проверки boolean в тестах: кейсы `true` и `false`** (test-boolean-coverage-001) - COMPLETED (2026-01-26)
+  - Все тесты в `src/utils/storage.test.ts`: 7/7 прошли успешно
+  - Полное покрытие логики обработки boolean значений
 
 - ✅ **Рефакторинг тестов: использование afterEach для очистки моков** (test-refactor-mocks-aftereach-001) - COMPLETED & ARCHIVED (2026-01-26)
   - Все 12 тестов в изменённых файлах прошли успешно
   - Автоматическая очистка моков через `afterEach` hook
   - Архивный документ: `memory-bank/archive/archive-test-refactor-mocks-aftereach-001.md`
 
-- ✅ **Проверка тестов на ложные совпадения по тексту** (test-false-positive-matches-001) - COMPLETED (2026-01-23)
-  - Все 116 тестов прошли успешно
-  - Использование `within()` для ограничения области поиска
-
 ## Next Steps
 
-Задача реализована в ветке `test/boolean-coverage`. BUILD фаза завершена:
+Планирование завершено:
 
-1. ✅ Добавлены проверки для `false` в тест сохранения примитивных типов
-2. ✅ Добавлены проверки для `false` в тест загрузки примитивных типов
-3. ✅ Все тесты проходят успешно (7/7 в `storage.test.ts`)
+1. ✅ Определён уровень сложности: Level 1 - Quick Fix
+2. ✅ Проанализированы файлы с жёстко прописанными ключами
+3. ✅ План реализации создан и проверен
+4. ✅ Технологии валидированы
 
-**Следующий шаг:** Рефлексия (REFLECT mode) для анализа выполненной работы
+**Следующий шаг:** Задача завершена. Memory Bank готов к следующей задаче.
 
 ## Context for AI
 
 - Проект: pet.todo - TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
 - Текущие тесты: 116 (все проходят)
-- Memory Bank готов к следующей задаче
+- Текущая задача: storage-keys-refactor-001 - Замена жёстко прописанных ключей storage на константы
+- Complexity Level: Level 1 - Quick Fix
+- Файлы для изменения: 2 тестовых файла (`useTodos.test.ts`, `TodoApp.test.tsx`)
+- Константа `STORAGE_KEY` уже определена в `src/constants/todo.ts` и используется в основном коде

@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { STORAGE_KEY } from '../../constants/todo';
 import { TodoApp } from './TodoApp';
 
 describe('TodoApp - Integration', () => {
@@ -232,7 +233,7 @@ describe('TodoApp - Integration', () => {
 		await user.click(screen.getByRole('button', { name: /добавить/i }));
 
 		// Проверяем localStorage
-		const stored = localStorage.getItem('todos');
+		const stored = localStorage.getItem(STORAGE_KEY);
 		expect(stored).not.toBeNull();
 
 		const parsed = JSON.parse(stored!);

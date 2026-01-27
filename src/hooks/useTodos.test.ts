@@ -1,5 +1,6 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { STORAGE_KEY } from '../constants/todo';
 import { useTodos } from './useTodos';
 
 describe('useTodos', () => {
@@ -153,7 +154,7 @@ describe('useTodos', () => {
 		});
 
 		// Проверяем, что данные сохранены
-		const stored = localStorage.getItem('todos');
+		const stored = localStorage.getItem(STORAGE_KEY);
 		expect(stored).not.toBeNull();
 
 		const parsed = JSON.parse(stored!);
@@ -171,7 +172,7 @@ describe('useTodos', () => {
 				createdAt: Date.now(),
 			},
 		];
-		localStorage.setItem('todos', JSON.stringify(existingTodos));
+		localStorage.setItem(STORAGE_KEY, JSON.stringify(existingTodos));
 
 		// Инициализируем хук
 		const { result } = renderHook(() => useTodos());

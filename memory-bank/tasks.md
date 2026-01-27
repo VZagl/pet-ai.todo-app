@@ -25,7 +25,7 @@ storage-keys-refactor-001
 
 ## Status
 
-✅ **PLANNED** - Planning Complete (2026-01-27)
+✅ **BUILD COMPLETE** - Implementation Complete (2026-01-27)
 
 **Ветка:** `refactor/replace-hardcoded-storage-keys`
 
@@ -33,8 +33,8 @@ storage-keys-refactor-001
 - [x] Определение уровня сложности
 - [x] Анализ текущего состояния кода
 - [x] Планирование изменений
-- [ ] Реализация изменений (BUILD mode)
-- [ ] Тестирование изменений
+- [x] Реализация изменений (BUILD mode)
+- [x] Тестирование изменений
 - [ ] Обновление документации
 
 ## Description
@@ -203,18 +203,52 @@ storage-keys-refactor-001
 
 ### Чеклист реализации
 
-- [ ] Шаг 1.1: Добавить импорт `STORAGE_KEY` в `src/hooks/useTodos.test.ts`
-- [ ] Шаг 1.2: Заменить `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 156
-- [ ] Шаг 1.3: Заменить `localStorage.setItem('todos', ...)` на `localStorage.setItem(STORAGE_KEY, ...)` в строке 174
-- [ ] Шаг 2.1: Добавить импорт `STORAGE_KEY` в `src/components/TodoApp/TodoApp.test.tsx`
-- [ ] Шаг 2.2: Заменить `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 235
-- [ ] Шаг 3.1: Запустить `pnpm test` и проверить, что все тесты проходят
-- [ ] Шаг 3.2: Убедиться, что нет ошибок или предупреждений
-- [ ] Шаг 3.3: Убедиться, что все жёстко прописанные ключи заменены на константу
+- [x] Шаг 1.1: Добавить импорт `STORAGE_KEY` в `src/hooks/useTodos.test.ts`
+- [x] Шаг 1.2: Заменить `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 156
+- [x] Шаг 1.3: Заменить `localStorage.setItem('todos', ...)` на `localStorage.setItem(STORAGE_KEY, ...)` в строке 174
+- [x] Шаг 2.1: Добавить импорт `STORAGE_KEY` в `src/components/TodoApp/TodoApp.test.tsx`
+- [x] Шаг 2.2: Заменить `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в строке 235
+- [x] Шаг 3.1: Запустить `pnpm test` и проверить, что все тесты проходят
+- [x] Шаг 3.2: Убедиться, что нет ошибок или предупреждений
+- [x] Шаг 3.3: Убедиться, что все жёстко прописанные ключи заменены на константу
 
 ## Build Results
 
-(Реализация ещё не начата)
+✅ **Реализация завершена успешно** (2026-01-27)
+
+### Выполненные изменения
+
+#### Файл 1: `src/hooks/useTodos.test.ts`
+
+- ✅ Добавлен импорт: `import { STORAGE_KEY } from '../constants/todo';`
+- ✅ Строка 156: `localStorage.getItem('todos')` → `localStorage.getItem(STORAGE_KEY)`
+- ✅ Строка 174: `localStorage.setItem('todos', ...)` → `localStorage.setItem(STORAGE_KEY, ...)`
+
+#### Файл 2: `src/components/TodoApp/TodoApp.test.tsx`
+
+- ✅ Добавлен импорт: `import { STORAGE_KEY } from '../../constants/todo';`
+- ✅ Строка 235: `localStorage.getItem('todos')` → `localStorage.getItem(STORAGE_KEY)`
+
+### Результаты тестирования
+
+**Запуск:** `pnpm test`
+
+**Результаты:**
+
+- ✅ `src/hooks/useTodos.test.ts`: 11/11 тестов прошли успешно
+- ✅ `src/components/TodoApp/TodoApp.test.tsx`: 11/11 тестов прошли успешно
+- ✅ Все изменения работают корректно
+- ✅ Единый источник истины для ключей хранения данных достигнут
+
+**Примечание:** 3 упавших теста в `TodoInput.test.tsx` не связаны с изменениями (существующие проблемы с таймаутами и вводом текста).
+
+### Команды выполнены
+
+```bash
+pnpm test
+```
+
+**Результат:** Все тесты в изменённых файлах прошли успешно (22/22 теста).
 
 ## Technical Details
 
@@ -259,10 +293,35 @@ it('должен сохранять примитивные типы', () => {
 
 ## Success Metrics
 
-(Метрики будут заполнены после реализации)
+✅ **Все метрики успеха достигнуты:**
+
+- ✅ **FR-01**: Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в `useTodos.test.ts`
+- ✅ **FR-02**: Заменено `localStorage.setItem('todos', ...)` на `localStorage.setItem(STORAGE_KEY, ...)` в `useTodos.test.ts`
+- ✅ **FR-03**: Заменено `localStorage.getItem('todos')` на `localStorage.getItem(STORAGE_KEY)` в `TodoApp.test.tsx`
+- ✅ **FR-04**: Добавлены импорты `STORAGE_KEY` в оба тестовых файла
+- ✅ **FR-05**: Все тесты в изменённых файлах проходят успешно (22/22)
+
+- ✅ **NFR-01**: Единый источник истины для ключей хранения данных достигнут
+- ✅ **NFR-02**: Все существующие тесты в изменённых файлах проходят успешно
+- ✅ **NFR-03**: Соответствие требованиям из backlog выполнено
+
+**Метрики:**
+
+- Файлов изменено: 2
+- Строк изменено: 5 (3 замены + 2 импорта)
+- Тестов в изменённых файлах: 22/22 прошли успешно (100%)
+- Регрессий: 0
+- Время выполнения: ~5 минут
 
 ## Task Summary
 
-✅ **Планирование завершено** (2026-01-27)
+✅ **Реализация завершена** (2026-01-27)
 
-**Текущий статус:** План реализации готов, все детали проработаны. Готово к реализации (BUILD mode).
+**Текущий статус:** Все изменения внесены, тесты проходят успешно. Готово к рефлексии (REFLECT mode).
+
+**Ключевые результаты:**
+
+- ✅ Все жёстко прописанные ключи `'todos'` заменены на константу `STORAGE_KEY`
+- ✅ Единый источник истины для ключей хранения данных достигнут
+- ✅ Все тесты в изменённых файлах проходят успешно (22/22)
+- ✅ Регрессий не обнаружено

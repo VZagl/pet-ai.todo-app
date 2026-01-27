@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
 import { TodoInput } from './TodoInput';
 
 describe('TodoInput', () => {
+	beforeEach(() => {
+		// Очистка состояния между тестами для обеспечения изоляции
+		// cleanup выполняется автоматически через @testing-library/react
+	});
 	it('должен отображать поле ввода и кнопку', () => {
 		const onAdd = vi.fn();
 
@@ -113,7 +117,8 @@ describe('TodoInput', () => {
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const longText = 'a'.repeat(MAX_TODO_LENGTH + 1);
-		await user.type(input, longText);
+		await user.click(input);
+		await user.paste(longText);
 
 		expect(screen.getByText(/максимальная длина задачи/i)).toBeInTheDocument();
 	});
@@ -135,7 +140,8 @@ describe('TodoInput', () => {
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const longText = 'a'.repeat(MAX_TODO_LENGTH + 1);
-		await user.type(input, longText);
+		await user.click(input);
+		await user.paste(longText);
 
 		const button = screen.getByRole('button', { name: /добавить задачу/i });
 		expect(button).toBeDisabled();

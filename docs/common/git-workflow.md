@@ -1,333 +1,174 @@
+> **Правила для ИИ:** работа с Git (branching, merge, rebase)
+
 # Правила работы с Git
 
-Git — основа рабочего процесса разработки. Следование этим практикам обеспечивает чистую, читаемую историю, минимизирует конфликты и позволяет быстро и надёжно доставлять изменения.
+## Стратегия ветвления: Feature-Branch Workflow
 
-## 1. Стратегия ветвления: Feature-Branch Workflow
+Использовать **feature-branch workflow** с короткоживущими ветками. Вся разработка ведётся в отдельных ветках.
 
-Используется **feature-branch workflow** с короткоживущими ветками. Вся разработка ведётся в отдельных ветках, никогда напрямую в `main` или `develop`.
+**Структура веток:**
 
-- **`main` ветка**: Всегда готова к продакшену. Разрешены только мерджи из release-веток или сквошенных feature-веток. Защищена.
-- **`develop` ветка**: Интегрирует завершённые фичи. Защищена.
-- **Feature-ветки**: Создаются из `develop`, короткоживущие, для одной фичи или исправления бага. Мерджатся в `develop` через Pull Requests (PRs).
+- **`main`**: готова к продакшену, защищена
+- **`develop`**: интегрирует завершённые фичи, защищена (если отсутствует — использовать `main`)
+- **Feature-ветки**: создаются из `develop`, короткоживущие, для одной фичи/бага
 
-**Примечание**: Если в проекте нет ветки `develop`, используйте `main` как базовую ветку для feature-веток.
+### Именование веток
 
-### Правило: Именование веток
-
-Именуйте ветки понятно и последовательно, привязывая к тикету или фиче.
-
-❌ **ПЛОХО**:
+Именовать ветки понятно и последовательно:
 
 ```bash
-git checkout -b my-feature
-git checkout -b fix
-```
-
-✅ **ХОРОШО**:
-
-```bash
-# Для новой фичи (например, тикет FEAT-123)
+# Новая фича
 git checkout -b feat/FEAT-123-add-user-profile
 
-# Для исправления бага (например, тикет BUG-456)
+# Исправление бага
 git checkout -b fix/BUG-456-auth-redirect-loop
 
-# Для рефакторинга
+# Рефакторинг
 git checkout -b refactor/improve-logging-middleware
 ```
 
-## 2. Сообщения коммитов
+## Сообщения коммитов
 
-Правила оформления сообщений коммитов находятся в `docs/common/git-commit-description.md`. Использовать их при генерации описания коммита и формировать сообщение на основе реальных изменений в staged файлах.
+**Основное правило:** Каждый коммит представляет одно логическое изменение.
 
-### Правило: Атомарные коммиты
+**Формат:** Следовать Conventional Commits — `type(scope): описание`
 
-Каждый коммит должен представлять одно логическое изменение.
+Полные правила оформления сообщений коммитов в `docs/common/git-commit-description.md`.
 
-❌ **ПЛОХО**:
+**Пример атомарных коммитов:**
 
 ```bash
-git commit -m "Исправил баг и добавил новую фичу"
+# Первый коммит - исправление
+git commit -F .git-commit-msg.txt  # fix(auth): исправить обработку expired токена
+
+# Второй коммит - новая фича
+git commit -F .git-commit-msg.txt  # feat(profile): добавить просмотр профиля
 ```
 
-✅ **ХОРОШО**:
+## Rebase вместо Merge (на feature-ветках)
+
+Поддерживать линейную историю на feature-ветках перед мерджем в `develop`.
+
+### Очистка истории перед PR
+
+Перед пушем feature-ветки для PR:
 
 ```bash
-# Первый коммит для исправления
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-# fix(auth): исправить обработку expired токена
-#
-# - корректно обрабатывать истёкшие токены и перенаправлять на страницу входа
-# - добавить логирование для отладки
-git commit -F .git-commit-msg.txt
-# Удалить файл после успешного коммита:
-# rm .git-commit-msg.txt  # или del .git-commit-msg.txt в Windows
-
-# Второй коммит для фичи
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-# feat(profile): добавить просмотр профиля пользователя
-#
-# - добавить новую страницу для просмотра и редактирования профиля
-# - обновить роутинг для нового маршрута
-git commit -F .git-commit-msg.txt
-# Удалить файл после успешного коммита
-```
-
-## 3. Управление историей: Rebase вместо Merge (на feature-ветках)
-
-Поддерживайте линейную, чистую историю на feature-ветках перед мерджем в `develop`. Используйте `git rebase -i` для сквоша, переупорядочивания или редактирования коммитов.
-
-### Правило: Очистка локальной истории перед PR
-
-Перед пушем feature-ветки для Pull Request, сделайте rebase на последнюю `develop` и сквошьте связанные коммиты в логические единицы.
-
-❌ **ПЛОХО**:
-
-```bash
-# На ветке feature/my-feature
-git pull origin develop # Создаёт merge-коммит
-git push origin feature/my-feature # Пушит грязную историю
-```
-
-✅ **ХОРОШО**:
-
-```bash
-# На ветке feature/my-feature
 git fetch origin
-git rebase -i origin/develop # Интерактивная очистка коммитов
-# ... завершить rebase, сквошить WIP коммиты ...
-git push --force-with-lease origin feature/my-feature # Force push после rebase
+git rebase -i origin/develop  # Сквошить WIP коммиты
+git push --force-with-lease origin feature/my-feature
 ```
 
-**Важно**: Force push только в свои собственные feature-ветки, которые ещё не замерджены или не используются другими. Никогда не делайте force push в `main` или `develop`.
+**ВАЖНО:** Force push только в свои feature-ветки. Никогда не делать force push в `main` или `develop`.
 
-### Правило: Мердж feature-веток с `--no-ff` и Conventional Commits
+### Merge feature-веток с --no-ff и Conventional Commits
 
-При мердже feature-ветки в `develop` (через PR) всегда используйте `--no-ff` для сохранения полной истории разработки. **Важно**: сообщение merge-коммита должно быть в формате Conventional Commits (`type(scope): описание`), а не просто "Merge branch '...' into develop".
+При мердже feature-ветки в `develop` всегда использовать `--no-ff` для сохранения истории. Сообщение merge-коммита должно быть в формате Conventional Commits.
 
-Это создаёт впечатление единого изменения (как будто временная ветка была удалена), но сохраняет всю историю разработки внутри merge-коммита. После merge временная ветка может быть удалена, но вся история коммитов останется доступной в `develop`.
-
-❌ **ПЛОХО**:
+**Процесс:**
 
 ```bash
-# После одобрения PR, мердж напрямую на локальной машине
 git checkout develop
-git merge feature/my-feature # Может fast-forward, теряя контекст ветки
-# Или с автоматическим сообщением
-git merge --no-ff feature/my-feature # Создаст "Merge branch 'feature/my-feature' into develop"
-```
+git pull origin develop
 
-✅ **ХОРОШО**:
-
-```bash
-# После одобрения PR, на ветке develop
-git checkout develop
-git pull origin develop # Убедиться, что develop актуальна
-
-# Определить тип изменения на основе коммитов в feature-ветке
-# Если ветка fix/test-todolist-key-validation содержит исправление:
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
+# Создать .git-commit-msg.txt с типом на основе коммитов ветки:
 # fix(todolist): исправить валидацию key
 #
 # - исправить проверку key через console.error
-# - обновить задачи для планирования исправления теста TodoList
+# - обновить задачи для планирования исправления теста
+
 git merge --no-ff fix/test-todolist-key-validation -F .git-commit-msg.txt
-# Удалить файл после успешного merge:
-# rm .git-commit-msg.txt  # или del .git-commit-msg.txt в Windows
-
-# Если ветка feat/user-profile содержит новую фичу:
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-# feat(profile): добавить профиль пользователя
-#
-# - добавить новую страницу для просмотра и редактирования профиля
-# - обновить роутинг для нового маршрута
-git merge --no-ff feat/user-profile -F .git-commit-msg.txt
-# Удалить файл после успешного merge
-
-# Если ветка refactor/styles содержит рефакторинг:
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-# refactor(styles): мигрировать CSS на SCSS
-#
-# - мигрировать все CSS файлы на SCSS
-# - добавить поддержку переменных и миксинов
-git merge --no-ff refactor/styles -F .git-commit-msg.txt
-# Удалить файл после успешного merge
+rm .git-commit-msg.txt  # или del в Windows
 
 git push origin develop
-# После успешного push можно удалить временную ветку:
-# git branch -d fix/test-todolist-key-validation
+git branch -d fix/test-todolist-key-validation  # Удалить временную ветку
 ```
 
-**Как определить тип merge-коммита:**
+**Определение типа merge-коммита:**
 
-1. Посмотрите на коммиты в feature-ветке: `git log feature/my-feature --oneline`
-2. Определите основной тип изменения (fix, feat, refactor, chore и т.д.)
-3. Сформируйте сообщение merge-коммита по правилам из `docs/common/git-commit-description.md`
-4. В теле merge-коммита перечислите основные изменения из всех коммитов ветки
+1. Посмотреть коммиты ветки: `git log feature/my-feature --oneline`
+2. Определить основной тип (fix, feat, refactor)
+3. Сформировать сообщение по Conventional Commits
 
-**Результат:**
+## Git Hooks с pre-commit
 
-- В истории `develop` будет merge-коммит с правильным типом: `fix(todolist): исправить валидацию key`
-- Вся история разработки сохранится внутри merge-коммита (можно посмотреть через `git log --graph`)
-- После удаления временной ветки история останется читаемой с правильными типами коммитов
+Автоматизировать проверки качества кода до попадания в репозиторий.
 
-**Примечание**: Процесс PR на GitHub/GitLab должен автоматически обеспечивать это, но при ручном merge всегда указывайте сообщение в формате Conventional Commits.
+**Установка:**
 
-## 4. Качество кода и безопасность: Git Hooks с `pre-commit`
-
-Автоматизируйте проверки качества кода и сканирование безопасности _до_ того, как код попадёт в репозиторий. Используется фреймворк `pre-commit`.
-
-### Правило: Установка и использование `pre-commit`
-
-Каждый разработчик должен установить и поддерживать актуальными `pre-commit` hooks. Это предотвращает распространённые проблемы: ошибки линтинга, несогласованность форматирования и случайные коммиты секретов.
-
-1.  **Установить `pre-commit`**:
-    ```bash
-    pip install pre-commit # Если используется Python
-    # Или через brew, npm и т.д.
-    ```
-2.  **Установить hooks в репозитории**:
-    ```bash
-    pre-commit install
-    ```
-3.  **Регулярно обновлять hooks**:
-    ```bash
-    pre-commit autoupdate
-    ```
-
-### Пример `.pre-commit-config.yaml` (специфично для проекта)
-
-```yaml
-# .pre-commit-config.yaml
-repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
-    hooks:
-      - id: trailing-whitespace
-      - id: end-of-file-fixer
-      - id: check-yaml
-      - id: check-json
-      - id: detect-private-key
-      - id: no-commit-to-branch
-        args: [--branch, main, --branch, develop] # Предотвратить прямые коммиты в защищённые ветки
-
-  - repo: https://github.com/psf/black
-    rev: 23.12.1
-    hooks:
-      - id: black
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: 'v0.1.9'
-    hooks:
-      - id: ruff
-        args: [--fix, --exit-non-zero-on-fix]
-
-  - repo: https://github.com/Yelp/detect-secrets
-    rev: v1.4.0
-    hooks:
-      - id: detect-secrets
-        args: ['--baseline', '.secrets.baseline'] # Управление известными ложными срабатываниями
+```bash
+pip install pre-commit  # или через brew, npm
+pre-commit install
+pre-commit autoupdate
 ```
 
-Эта конфигурация запустит `black` (форматтер Python), `ruff` (линтер Python) и `detect-secrets` на staged файлах, среди прочих проверок, перед разрешением коммита.
+Hooks предотвращают: ошибки линтинга, несогласованность форматирования, случайные коммиты секретов.
 
-**Примечание**: Если в проекте не используется `pre-commit`, этот раздел можно пропустить, но рекомендуется настроить хотя бы базовые проверки.
+**Примечание:** Конфигурация в `.pre-commit-config.yaml` специфична для каждого проекта.
 
-## 5. Гигиена репозитория: `.gitignore` и большие файлы
+## Гигиена репозитория
 
-Держите репозиторий чистым и сфокусированным на исходном коде.
+### .gitignore
 
-### Правило: Использовать комплексный `.gitignore`
-
-Исключайте сгенерированные файлы, зависимости, артефакты сборки и чувствительную информацию.
-
-❌ **ПЛОХО**:
+Исключать сгенерированные файлы, зависимости, артефакты сборки и чувствительную информацию:
 
 ```
-# .gitignore
-*.log
-```
-
-✅ **ХОРОШО**:
-
-```
-# .gitignore
 # Операционная система
-.DS_Store
-Thumbs.db
+.DS_Store, Thumbs.db
 
 # Артефакты сборки
-/dist/
-/build/
+/dist/, /build/
 
 # Зависимости
-/node_modules/
-/venv/
-__pycache__/
+/node_modules/, /venv/, __pycache__/
 
 # Файлы IDE
-.idea/
-.vscode/
+.idea/, .vscode/
 
-# Переменные окружения и секреты
-.env
-*.env
-config.local.js
+# Секреты
+.env, *.env, config.local.js
 ```
 
-### Правило: Управление большими файлами с Git LFS
+### Git LFS для больших файлов
 
-Никогда не коммитьте большие бинарные файлы (изображения, видео, большие датасеты, скомпилированные исполняемые файлы) напрямую в Git. Используйте Git Large File Storage (LFS).
+Не коммитить большие бинарные файлы напрямую. Использовать Git LFS:
 
-1.  **Установить Git LFS**: `git lfs install`
-2.  **Отслеживать типы файлов**:
-    ```bash
-    git lfs track "*.psd"
-    git lfs track "assets/*.mp4"
-    ```
-3.  **Добавить в `.gitattributes`**: Эта команда обновит `.gitattributes`, который должен быть закоммичен.
-4.  **Добавлять и коммитить файлы как обычно**:
-    ```bash
-    git add .gitattributes
-    git add my_large_file.psd
-    # Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-    # chore(assets): добавить большой PSD файл через LFS
-    git commit -F .git-commit-msg.txt
-    # Удалить файл после успешного коммита
-    ```
+```bash
+git lfs install
+git lfs track "*.psd"
+git lfs track "assets/*.mp4"
+git add .gitattributes
+git add my_large_file.psd
+git commit -F .git-commit-msg.txt  # chore(assets): добавить файл через LFS
+```
 
-## 6. Разрешение конфликтов: Проактивно и аккуратно
+## Разрешение конфликтов
 
-Конфликты мерджа неизбежны. Разрешайте их аккуратно и проактивно.
+### Частое обновление
 
-### Правило: Часто делать Pull
-
-Часто подтягивайте изменения из `develop` (или вашей базовой ветки), чтобы минимизировать область потенциальных конфликтов.
+Часто подтягивать изменения из базовой ветки для минимизации конфликтов:
 
 ```bash
 git checkout feature/my-feature
-git pull origin develop --rebase # Rebase вашей ветки на develop, чтобы избежать merge-коммитов
+git pull origin develop --rebase
 ```
 
-### Правило: Разрешать конфликты вручную
+### Ручное разрешение конфликтов
 
-Используйте инструмент мерджа вашей IDE или `git mergetool` для разрешения конфликтов. Понимайте каждое изменение.
-
-❌ **ПЛОХО**:
+Использовать инструмент мерджа IDE или `git mergetool`. Понимать каждое изменение.
 
 ```bash
-git merge develop --no-edit -X theirs # Слепо брать "их" изменения
-```
-
-✅ **ХОРОШО**:
-
-```bash
-git merge develop # Git запросит разрешение конфликтов
-# Откройте конфликтующие файлы в IDE, разрешите вручную
-# Или используйте `git mergetool`
+git merge develop  # Git запросит разрешение конфликтов
+# Разрешить вручную в IDE или через git mergetool
 git add <разрешённые_файлы>
-# Создать файл .git-commit-msg.txt в корне проекта (UTF-8 без BOM):
-# chore: разрешить конфликты после мерджа develop в feat/my-feature
-git commit -F .git-commit-msg.txt
-# Удалить файл после успешного коммита
+git commit -F .git-commit-msg.txt  # chore: разрешить конфликты
 ```
+
+## Чеклист работы с Git
+
+- [ ] Создана feature-ветка из develop/main с правильным именем
+- [ ] Коммиты атомарные и следуют Conventional Commits
+- [ ] Выполнен rebase на develop перед PR
+- [ ] Merge с --no-ff и сообщением в формате Conventional Commits
+- [ ] Конфликты разрешены вручную
+- [ ] Временная ветка удалена после merge

@@ -36,7 +36,7 @@ docs-test-hook-destructuring-rule
 - [x] Добавить секцию в `testing-guidelines.md`
 - [x] Обновить чеклист тестирования
 - [x] Обновить backlog (перенести задачу в завершённые)
-- [ ] Создать коммит
+- [x] Создать коммит (ae864f4)
 
 ## Source
 
@@ -132,8 +132,8 @@ docs-test-hook-destructuring-rule
 - [x] Шаг 2: Добавить секцию в `testing-guidelines.md`
 - [x] Шаг 2.1: Обновить чеклист тестирования
 - [x] Шаг 3: Обновить backlog.md (перенести в завершённые)
-- [ ] Шаг 4: Создать коммит
-- [ ] Шаг 5: Обновить Memory Bank (tasks.md, progress.md)
+- [x] Шаг 4: Создать коммит (ae864f4)
+- [x] Шаг 5: Обновить Memory Bank (tasks.md, progress.md)
 
 **Текущие проблемы:**
 

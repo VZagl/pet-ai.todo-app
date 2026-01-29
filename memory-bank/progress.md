@@ -10,16 +10,38 @@
 
 ## Current Task
 
-**rules-naming-conflicts-002** — Разрешение конфликтов именования (Конфликт #2 и #3)
+**Нет активных задач** — Memory Bank готов к следующей задаче
 
-**BUILD прогресс (2026-01-29):**
+## Completed Tasks (Recent)
 
-- Фаза 1: интерфейсы переименованы в i*camelCase (`i_todo`, `i_todoState`, `i*\*Props`); все импорты и использования обновлены.
-- Фаза 2: файлы переименованы в kebab-case (`use-filter`, `use-todos`, `use-local-storage`, `todo-helpers`); импорты обновлены в `TodoApp.tsx` и во всех хуках/тестах.
-- Проверка типов: `tsc -b` успешен. Vitest/Vite в среде дают EPERM (esbuild) — тесты и сборку нужно прогнать локально.
-- Коммит выполнен: 1973034 — refactor(naming): привести имена к naming-conventions.
-- Локальный прогон `pnpm test` и `pnpm build` выполнен без ошибок. BUILD завершён.
-- REFLECT: минимальная рефлексия выполнена — `memory-bank/reflection/reflection-rules-naming-conflicts-002.md`. Готовность к ARCHIVE.
+### ✅ Разрешение конфликтов правил именования (Конфликт #2 и #3) - COMPLETED & ARCHIVED (2026-01-29)
+
+**Task ID:** rules-naming-conflicts-002
+
+**Complexity Level:** Level 2–3 - Enhancement / Consistency
+
+**Статус:** ✅ COMPLETED & ARCHIVED
+
+**Выполненные изменения:**
+
+- **Фаза 1:** Интерфейсы переименованы в i*camelCase (`i_todo`, `i_todoState`, `i\_*Props`); все импорты и использования обновлены.
+- **Фаза 2:** Файлы переименованы в kebab-case (`use-filter`, `use-todos`, `use-local-storage`, `todo-helpers`); импорты обновлены в `TodoApp.tsx` и во всех хуках/тестах.
+- **Проверка:** `tsc -b` успешен. Локальный прогон `pnpm test` и `pnpm build` выполнен без ошибок.
+- **Коммит:** 1973034 — refactor(naming): привести имена к naming-conventions
+
+**Результат:**
+
+- ✅ Файлов изменено: 19
+- ✅ Строк добавлено: 72, удалено: 62
+- ✅ Все тесты проходят: проверено локально
+- ✅ Регрессий: 0
+- ✅ Единая политика именования установлена по `docs/common/naming-conventions.md`
+
+**Архивный документ:** `memory-bank/archive/archive-rules-naming-conflicts-002.md`
+
+**Рефлексия:** `memory-bank/reflection/reflection-rules-naming-conflicts-002.md`
+
+**Следующий шаг:** Level 2–3 задача завершена. Memory Bank готов к следующей задаче.
 
 ## Completed Tasks (Recent)
 

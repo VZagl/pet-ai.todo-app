@@ -112,6 +112,38 @@ const stored = localStorage.getItem(STORAGE_KEY);
 
 **Правило:** Всегда проверять наличие констант в `src/constants/` перед использованием жёстко прописанных значений. Импортировать и использовать константы во всех местах теста.
 
+## Тестирование хуков: деструктуризация result.current
+
+**КРИТИЧНО:** При тестировании кастомных хуков предпочитать деструктуризацию `result.current` с осмысленными именами переменных вместо индексного доступа.
+
+**❌ Неправильно:**
+
+```typescript
+it('должен обновить значение', () => {
+	const { result } = renderHook(() => useLocalStorage('key', []));
+	act(() => {
+		result.current[1](['new value']); // Неясно, что это за функция
+	});
+	expect(result.current[0]).toEqual(['new value']);
+});
+```
+
+**✅ Правильно:**
+
+```typescript
+it('должен обновить значение', () => {
+	const { result } = renderHook(() => useLocalStorage('key', []));
+	const [storedValue, setStoredValue] = result.current; // Осмысленные имена
+	act(() => {
+		setStoredValue(['new value']);
+	});
+	const [updatedValue] = result.current;
+	expect(updatedValue).toEqual(['new value']);
+});
+```
+
+**Правило:** Всегда деструктурировать `result.current` в отдельную строку с осмысленными именами перед использованием в тесте.
+
 ## Ввод текста
 
 **Правило:** Использовать `user.type()` для строк < 50 символов, `user.paste()` для строк ≥ 50 символов.
@@ -155,3 +187,4 @@ describe('Component', () => {
 - [ ] Использованы семантические запросы (`getByRole`)
 - [ ] Использованы константы вместо жёстко прописанных значений
 - [ ] Для строк ≥50 символов использован `user.paste()` вместо `user.type()`
+- [ ] При тестировании хуков использована деструктуризация `result.current` с осмысленными именами

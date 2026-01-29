@@ -1,4 +1,4 @@
-import type { FilterType, Todo } from '../types/todo';
+import type { FilterType, i_todo } from '../types/todo';
 
 /**
  * Генерирует уникальный идентификатор для задачи
@@ -14,7 +14,7 @@ export function generateId(): string {
  * @param filter - Тип фильтра
  * @returns Отфильтрованный массив задач
  */
-export function filterTodos(todos: Todo[], filter: FilterType): Todo[] {
+export function filterTodos(todos: i_todo[], filter: FilterType): i_todo[] {
 	switch (filter) {
 		case 'active':
 			return todos.filter((todo) => !todo.completed);
@@ -31,6 +31,6 @@ export function filterTodos(todos: Todo[], filter: FilterType): Todo[] {
  * @param todos - Массив задач
  * @returns Количество активных задач
  */
-export function getActiveCount(todos: Todo[]): number {
+export function getActiveCount(todos: i_todo[]): number {
 	return todos.filter((todo) => !todo.completed).length;
 }

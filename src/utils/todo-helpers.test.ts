@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import type { Todo } from '../types/todo';
-import { filterTodos, generateId, getActiveCount } from './todoHelpers';
+import type { i_todo } from '../types/todo';
+import { filterTodos, generateId, getActiveCount } from './todo-helpers';
 
 describe('todoHelpers', () => {
 	describe('generateId', () => {
@@ -22,7 +22,7 @@ describe('todoHelpers', () => {
 	});
 
 	describe('filterTodos', () => {
-		const todos: Todo[] = [
+		const todos: i_todo[] = [
 			{
 				id: '1',
 				text: 'Active task 1',
@@ -73,7 +73,7 @@ describe('todoHelpers', () => {
 
 	describe('getActiveCount', () => {
 		it('должен подсчитывать количество активных задач', () => {
-			const todos: Todo[] = [
+			const todos: i_todo[] = [
 				{
 					id: '1',
 					text: 'Active 1',
@@ -106,7 +106,7 @@ describe('todoHelpers', () => {
 		});
 
 		it('должен возвращать 0 если все задачи завершены', () => {
-			const todos: Todo[] = [
+			const todos: i_todo[] = [
 				{
 					id: '1',
 					text: 'Completed 1',
@@ -127,7 +127,7 @@ describe('todoHelpers', () => {
 		});
 
 		it('должен возвращать общее количество если все задачи активны', () => {
-			const todos: Todo[] = [
+			const todos: i_todo[] = [
 				{
 					id: '1',
 					text: 'Active 1',

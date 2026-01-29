@@ -1,10 +1,10 @@
 import { act, renderHook } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import type { Todo } from '../types/todo';
-import { useFilter } from './useFilter';
+import type { i_todo } from '../types/todo';
+import { useFilter } from './use-filter';
 
 describe('useFilter', () => {
-	const mockTodos: Todo[] = [
+	const mockTodos: i_todo[] = [
 		{
 			id: '1',
 			text: 'Active task 1',
@@ -96,7 +96,7 @@ describe('useFilter', () => {
 		expect(result.current.filteredTodos).toHaveLength(2);
 
 		// Обновляем список задач (добавляем новую активную задачу)
-		const updatedTodos: Todo[] = [
+		const updatedTodos: i_todo[] = [
 			...mockTodos,
 			{
 				id: '4',

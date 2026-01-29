@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { STORAGE_KEY } from '../constants/todo';
-import { useTodos } from './useTodos';
+import { useTodos } from './use-todos';
 
 describe('useTodos', () => {
 	beforeEach(() => {

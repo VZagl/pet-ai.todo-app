@@ -2,7 +2,7 @@ import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
 import './TodoInput.scss';
 
-interface TodoInputProps {
+interface i_todoInputProps {
 	/** Обработчик добавления новой задачи */
 	onAdd: (text: string) => void;
 }
@@ -11,7 +11,7 @@ interface TodoInputProps {
  * Компонент ввода новой задачи
  * Управляет локальным состоянием input поля и валидацией
  */
-export const TodoInput = ({ onAdd }: TodoInputProps) => {
+export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 

@@ -17,7 +17,8 @@
 - Фаза 1: интерфейсы переименованы в i*camelCase (`i_todo`, `i_todoState`, `i*\*Props`); все импорты и использования обновлены.
 - Фаза 2: файлы переименованы в kebab-case (`use-filter`, `use-todos`, `use-local-storage`, `todo-helpers`); импорты обновлены в `TodoApp.tsx` и во всех хуках/тестах.
 - Проверка типов: `tsc -b` успешен. Vitest/Vite в среде дают EPERM (esbuild) — тесты и сборку нужно прогнать локально.
-- Осталось: локальный прогон `pnpm test` и `pnpm build`, два коммита (интерфейсы, файлы), при желании — `git mv` для сохранения истории.
+- Коммит выполнен: 1973034 — refactor(naming): привести имена к naming-conventions.
+- Локальный прогон `pnpm test` и `pnpm build` выполнен без ошибок. BUILD завершён — готово к REFLECT.
 
 ## Completed Tasks (Recent)
 

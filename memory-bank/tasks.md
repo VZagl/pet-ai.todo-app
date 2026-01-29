@@ -24,7 +24,7 @@ rules-naming-conflicts-002
 
 ## Status
 
-✅ **BUILD ЗАВЕРШЁН** — реализация и коммиты выполнены; локально `pnpm test` и `pnpm build` проходят без ошибок
+✅ **REFLECT ЗАВЕРШЁН** — минимальная рефлексия выполнена; готовность к ARCHIVE
 
 **Ветка:** `refactor/naming-conflicts-002` (текущая)
 **Коммит:** `1973034` — refactor(naming): привести имена к naming-conventions
@@ -39,6 +39,7 @@ rules-naming-conflicts-002
 - [x] BUILD: коммиты выполнены (коммит 1973034; в среде — один коммит)
 - [x] BUILD: запуск тестов и сборки **локально** — выполнено без ошибок
 - [x] Фаза 3: финальный прогон тестов и сборки локально выполнен; Memory Bank обновлён
+- [x] REFLECT: минимальная рефлексия — `memory-bank/reflection/reflection-rules-naming-conflicts-002.md`
 
 ## Source
 

@@ -18,7 +18,8 @@
 - Фаза 2: файлы переименованы в kebab-case (`use-filter`, `use-todos`, `use-local-storage`, `todo-helpers`); импорты обновлены в `TodoApp.tsx` и во всех хуках/тестах.
 - Проверка типов: `tsc -b` успешен. Vitest/Vite в среде дают EPERM (esbuild) — тесты и сборку нужно прогнать локально.
 - Коммит выполнен: 1973034 — refactor(naming): привести имена к naming-conventions.
-- Локальный прогон `pnpm test` и `pnpm build` выполнен без ошибок. BUILD завершён — готово к REFLECT.
+- Локальный прогон `pnpm test` и `pnpm build` выполнен без ошибок. BUILD завершён.
+- REFLECT: минимальная рефлексия выполнена — `memory-bank/reflection/reflection-rules-naming-conflicts-002.md`. Готовность к ARCHIVE.
 
 ## Completed Tasks (Recent)
 

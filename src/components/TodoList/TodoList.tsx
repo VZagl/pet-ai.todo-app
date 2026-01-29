@@ -1,10 +1,10 @@
-import type { Todo } from '../../types/todo';
+import type { i_todo } from '../../types/todo';
 import { TodoItem } from '../TodoItem/TodoItem';
 import './TodoList.scss';
 
-interface TodoListProps {
+interface i_todoListProps {
 	/** Массив задач для отображения */
-	todos: Todo[];
+	todos: i_todo[];
 	/** Обработчик переключения статуса задачи */
 	onToggle: (id: string) => void;
 	/** Обработчик удаления задачи */
@@ -15,7 +15,7 @@ interface TodoListProps {
  * Компонент списка задач
  * Отображает список TodoItem или сообщение о пустом списке
  */
-export const TodoList = ({ todos, onToggle, onDelete }: TodoListProps) => {
+export const TodoList = ({ todos, onToggle, onDelete }: i_todoListProps) => {
 	if (todos.length === 0) {
 		return (
 			<div className='todo-list-empty'>

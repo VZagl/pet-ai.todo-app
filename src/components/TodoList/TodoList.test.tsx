@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import type { Todo } from '../../types/todo';
+import type { i_todo } from '../../types/todo';
 import { TodoList } from './TodoList';
 
 describe('TodoList', () => {
@@ -8,7 +8,7 @@ describe('TodoList', () => {
 		vi.restoreAllMocks();
 	});
 
-	const mockTodos: Todo[] = [
+	const mockTodos: i_todo[] = [
 		{
 			id: '1',
 			text: 'Task 1',

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, expect, it, vi } from 'vitest';
-import type { Todo } from '../../types/todo';
+import type { i_todo } from '../../types/todo';
 import { TodoItem } from './TodoItem';
 
 describe('TodoItem', () => {
-	const mockTodo: Todo = {
+	const mockTodo: i_todo = {
 		id: '1',
 		text: 'Test task',
 		completed: false,
@@ -33,7 +33,7 @@ describe('TodoItem', () => {
 	});
 
 	it('должен отображать чекбокс как отмеченный для завершенной задачи', () => {
-		const completedTodo: Todo = { ...mockTodo, completed: true };
+		const completedTodo: i_todo = { ...mockTodo, completed: true };
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 
@@ -74,7 +74,7 @@ describe('TodoItem', () => {
 	});
 
 	it('должен применять класс completed для завершенной задачи', () => {
-		const completedTodo: Todo = { ...mockTodo, completed: true };
+		const completedTodo: i_todo = { ...mockTodo, completed: true };
 		const onToggle = vi.fn();
 		const onDelete = vi.fn();
 

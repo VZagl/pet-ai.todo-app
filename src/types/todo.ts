@@ -1,7 +1,7 @@
 /**
  * Интерфейс задачи (TODO item)
  */
-export interface Todo {
+export interface i_todo {
 	/** Уникальный идентификатор задачи */
 	id: string;
 	/** Текст задачи */
@@ -20,9 +20,9 @@ export type FilterType = 'all' | 'active' | 'completed';
 /**
  * Состояние приложения TODO
  */
-export interface TodoState {
+export interface i_todoState {
 	/** Массив всех задач */
-	todos: Todo[];
+	todos: i_todo[];
 	/** Текущий активный фильтр */
 	filter: FilterType;
 }

@@ -2,7 +2,7 @@ import { FILTERS, FILTER_LABELS } from '../../constants/todo';
 import type { FilterType } from '../../types/todo';
 import './TodoFilter.scss';
 
-interface TodoFilterProps {
+interface i_todoFilterProps {
 	/** Текущий активный фильтр */
 	currentFilter: FilterType;
 	/** Обработчик изменения фильтра */
@@ -13,7 +13,7 @@ interface TodoFilterProps {
  * Компонент фильтрации задач
  * Отображает кнопки для переключения между фильтрами
  */
-export const TodoFilter = ({ currentFilter, onFilterChange }: TodoFilterProps) => {
+export const TodoFilter = ({ currentFilter, onFilterChange }: i_todoFilterProps) => {
 	return (
 		<div className='todo-filter' role='group' aria-label='Фильтр задач'>
 			{FILTERS.map((filter) => (

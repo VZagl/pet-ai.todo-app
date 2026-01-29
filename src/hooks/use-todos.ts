@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
 import { STORAGE_KEY } from '../constants/todo';
-import type { Todo } from '../types/todo';
-import { generateId, getActiveCount } from '../utils/todoHelpers';
-import { useLocalStorage } from './useLocalStorage';
+import type { i_todo } from '../types/todo';
+import { generateId, getActiveCount } from '../utils/todo-helpers';
+import { useLocalStorage } from './use-local-storage';
 
 /**
  * Кастомный хук для управления состоянием задач с CRUD операциями
  * @returns Объект с задачами, счетчиком активных задач и функциями управления
  */
 export function useTodos() {
-	const [todos, setTodos] = useLocalStorage<Todo[]>(STORAGE_KEY, []);
+	const [todos, setTodos] = useLocalStorage<i_todo[]>(STORAGE_KEY, []);
 
 	/**
 	 * Добавляет новую задачу
@@ -17,7 +17,7 @@ export function useTodos() {
 	 */
 	const addTodo = useCallback(
 		(text: string) => {
-			const newTodo: Todo = {
+			const newTodo: i_todo = {
 				id: generateId(),
 				text: text.trim(),
 				completed: false,

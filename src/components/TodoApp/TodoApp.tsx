@@ -1,5 +1,5 @@
-import { useFilter } from '../../hooks/useFilter';
-import { useTodos } from '../../hooks/useTodos';
+import { useFilter } from '../../hooks/use-filter';
+import { useTodos } from '../../hooks/use-todos';
 import { TodoFooter } from '../TodoFooter/TodoFooter';
 import { TodoInput } from '../TodoInput/TodoInput';
 import { TodoList } from '../TodoList/TodoList';

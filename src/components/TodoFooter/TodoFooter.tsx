@@ -2,7 +2,7 @@ import type { FilterType } from '../../types/todo';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
 import './TodoFooter.scss';
 
-interface TodoFooterProps {
+interface i_todoFooterProps {
 	/** Количество активных задач */
 	activeCount: number;
 	/** Текущий активный фильтр */
@@ -15,7 +15,7 @@ interface TodoFooterProps {
  * Компонент подвала приложения
  * Отображает счетчик активных задач и фильтры
  */
-export const TodoFooter = ({ activeCount, currentFilter, onFilterChange }: TodoFooterProps) => {
+export const TodoFooter = ({ activeCount, currentFilter, onFilterChange }: i_todoFooterProps) => {
 	// Правильное склонение для русского языка
 	const getTaskWord = (count: number): string => {
 		const lastDigit = count % 10;

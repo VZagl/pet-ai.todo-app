@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import type { Todo } from '../../types/todo';
+import type { i_todo } from '../../types/todo';
 import './TodoItem.scss';
 
-interface TodoItemProps {
+interface i_todoItemProps {
 	/** Объект задачи */
-	todo: Todo;
+	todo: i_todo;
 	/** Обработчик переключения статуса */
 	onToggle: (id: string) => void;
 	/** Обработчик удаления */
@@ -15,7 +15,7 @@ interface TodoItemProps {
  * Компонент элемента задачи
  * Отображает чекбокс, текст задачи и кнопку удаления
  */
-export const TodoItem = memo(({ todo, onToggle, onDelete }: TodoItemProps) => {
+export const TodoItem = memo(({ todo, onToggle, onDelete }: i_todoItemProps) => {
 	const handleToggle = () => {
 		onToggle(todo.id);
 	};

@@ -2,9 +2,11 @@
 
 ## Current Task
 
+**Task ID:** perf-todo-helpers-active-count  
 **Источник:** backlog (оптимизация подсчёта элементов)  
 **Название:** Оптимизация подсчёта элементов: заменить `filter().length` на `reduce()`  
-**Сложность:** Level 1 (локальное изменение, один файл)
+**Сложность:** Level 1 (локальное изменение, один файл)  
+**Status:** BUILD complete. REFLECT complete.
 
 ### Цель
 
@@ -18,6 +20,9 @@
 - [x] Заменить реализацию `getActiveCount` на `reduce()`
 - [x] Убедиться, что тесты `todo-helpers.test.ts` проходят
 - [x] Обновить `memory-bank/backlog.md`
+- [x] Рефлексия (REFLECT)
+
+**Reflection:** [memory-bank/reflection/reflection-perf-todo-helpers-active-count.md](reflection/reflection-perf-todo-helpers-active-count.md)
 
 ---
 

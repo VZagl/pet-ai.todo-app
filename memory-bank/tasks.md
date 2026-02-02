@@ -15,9 +15,9 @@
 
 ### Чеклист
 
-- [ ] Заменить реализацию `getActiveCount` на `reduce()`
-- [ ] Убедиться, что тесты `todo-helpers.test.ts` проходят
-- [ ] Обновить `memory-bank/backlog.md`
+- [x] Заменить реализацию `getActiveCount` на `reduce()`
+- [x] Убедиться, что тесты `todo-helpers.test.ts` проходят
+- [x] Обновить `memory-bank/backlog.md`
 
 ---
 

@@ -10,9 +10,23 @@
 
 ## Current Task
 
-Нет активной задачи. Memory Bank готов к следующей задаче. Используйте `/van` для инициализации.
+Оптимизация подсчёта элементов (Level 1) — BUILD выполнен. Готов к REFLECT.
 
 ## Completed Tasks (Recent)
+
+### ✅ Оптимизация подсчёта элементов: getActiveCount → reduce() (2026-02-02)
+
+**Сложность:** Level 1 — Quick Fix
+
+**Выполнено:**
+
+- В `src/utils/todo-helpers.ts` функция `getActiveCount` переписана с `filter().length` на `reduce()`.
+- Тесты `todo-helpers.test.ts`: 10/10 пройдены.
+- Обновлены `memory-bank/tasks.md`, `memory-bank/backlog.md`.
+
+**Следующий шаг:** `/reflect` для рефлексии задачи.
+
+---
 
 ### ✅ Context API вместо props drilling - COMPLETED & ARCHIVED (2026-02-02)
 

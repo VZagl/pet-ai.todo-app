@@ -93,10 +93,9 @@
     3. Добавить соответствующие стили для disabled-состояния
   - **Тип**: Performance + UX
 
-- [ ] Оптимизация подсчёта элементов: заменить `filter().length` на `reduce()`
-  - **Файл**: `src/utils/todoHelpers.ts:35`
-  - **Текущая реализация**: `todos.filter((todo) => !todo.completed).length`
-  - **Предлагаемое изменение**: `todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0)`
+- [x] Оптимизация подсчёта элементов: заменить `filter().length` на `reduce()` (выполнено: 2026-02-02)
+  - **Файл**: `src/utils/todo-helpers.ts`
+  - **Реализация**: `todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0)`
   - **Причина**: `filter` создаёт промежуточный массив, что неэффективно для простого подсчёта. `reduce` более рационально использовать для подсчёта элементов
 
 ### Developer Experience

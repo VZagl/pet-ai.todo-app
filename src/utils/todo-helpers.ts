@@ -32,5 +32,5 @@ export function filterTodos(todos: i_todo[], filter: FilterType): i_todo[] {
  * @returns Количество активных задач
  */
 export function getActiveCount(todos: i_todo[]): number {
-	return todos.filter((todo) => !todo.completed).length;
+	return todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0);
 }

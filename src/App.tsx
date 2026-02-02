@@ -1,7 +1,12 @@
 import { TodoApp } from './components/TodoApp/TodoApp';
+import { TodoProvider } from './contexts/TodoProvider';
 
 function App() {
-	return <TodoApp />;
+	return (
+		<TodoProvider>
+			<TodoApp />
+		</TodoProvider>
+	);
 }
 
 export default App;

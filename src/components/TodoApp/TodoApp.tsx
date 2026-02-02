@@ -1,5 +1,5 @@
 import { useFilter } from '../../hooks/use-filter';
-import { useTodos } from '../../hooks/use-todos';
+import { useTodoContext } from '../../hooks/use-todo-context';
 import { TodoFooter } from '../TodoFooter/TodoFooter';
 import { TodoInput } from '../TodoInput/TodoInput';
 import { TodoList } from '../TodoList/TodoList';
@@ -10,10 +10,7 @@ import './TodoApp.scss';
  * Управляет состоянием и координирует взаимодействие между компонентами
  */
 export const TodoApp = () => {
-	// Управление задачами
-	const { todos, activeCount, addTodo, toggleTodo, deleteTodo } = useTodos();
-
-	// Управление фильтрацией
+	const { todos, activeCount, addTodo } = useTodoContext();
 	const { filter, setFilter, filteredTodos } = useFilter(todos);
 
 	return (
@@ -26,7 +23,7 @@ export const TodoApp = () => {
 
 				<main className='todo-app__main'>
 					<TodoInput onAdd={addTodo} />
-					<TodoList todos={filteredTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
+					<TodoList todos={filteredTodos} />
 					{todos.length > 0 && <TodoFooter activeCount={activeCount} currentFilter={filter} onFilterChange={setFilter} />}
 				</main>
 			</div>

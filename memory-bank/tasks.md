@@ -2,62 +2,23 @@
 
 ## Current Task
 
-Нет активной задачи — используйте команду `/van` для инициализации новой задачи из `memory-bank/backlog.md`
-
-## Task ID
-
-Нет активной задачи
-
-## Complexity Level
-
-Будет определён при инициализации задачи
-
-## Status
-
-Ожидание инициализации новой задачи
-
-## Source
-
-Задачи берутся из `memory-bank/backlog.md`
-
-## Description
-
-Описание задачи будет добавлено при инициализации
-
-## Technology Stack
-
-Будет определён при планировании задачи
-
-## Requirements
-
-Требования будут добавлены при планировании задачи
+Нет активной задачи. Используйте команду `/van` для инициализации следующей задачи.
 
 ---
 
-## Implementation Plan (PLAN)
+## Last Completed Task
 
-План реализации будет составлен в режиме PLAN
+**Task ID:** context-api-todo-001  
+**Название:** Context API вместо props drilling (Architecture Improvements)
 
----
+**Status:** COMPLETED & ARCHIVED
 
-## Technology Validation
+- [x] Инициализация
+- [x] Планирование
+- [x] Реализация (BUILD)
+- [x] Рефлексия (REFLECT)
+- [x] Архивирование
 
-Валидация технологий будет выполнена при планировании
-
----
-
-## Challenges & Mitigations
-
-Вызовы и решения будут документированы при планировании
-
----
-
-## Checklist реализации (BUILD)
-
-Чеклист будет создан при планировании задачи
-
----
-
-## Creative Phases Required
-
-Будет определён при планировании задачи
+**Archive:** [memory-bank/archive/archive-context-api-todo-001.md](archive/archive-context-api-todo-001.md)  
+**Date Archived:** 2026-02-02  
+**Branch:** refactor/todo-context-api

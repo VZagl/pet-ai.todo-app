@@ -5,17 +5,13 @@ import './TodoList.scss';
 interface i_todoListProps {
 	/** Массив задач для отображения */
 	todos: i_todo[];
-	/** Обработчик переключения статуса задачи */
-	onToggle: (id: string) => void;
-	/** Обработчик удаления задачи */
-	onDelete: (id: string) => void;
 }
 
 /**
  * Компонент списка задач
  * Отображает список TodoItem или сообщение о пустом списке
  */
-export const TodoList = ({ todos, onToggle, onDelete }: i_todoListProps) => {
+export const TodoList = ({ todos }: i_todoListProps) => {
 	if (todos.length === 0) {
 		return (
 			<div className='todo-list-empty'>
@@ -27,7 +23,7 @@ export const TodoList = ({ todos, onToggle, onDelete }: i_todoListProps) => {
 	return (
 		<ul className='todo-list'>
 			{todos.map((todo) => (
-				<TodoItem key={todo.id} todo={todo} onToggle={onToggle} onDelete={onDelete} />
+				<TodoItem key={todo.id} todo={todo} />
 			))}
 		</ul>
 	);

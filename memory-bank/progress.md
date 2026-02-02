@@ -10,9 +10,32 @@
 
 ## Current Task
 
-**Нет активных задач** — Memory Bank готов к следующей задаче
+Нет активной задачи. Memory Bank готов к следующей задаче. Используйте `/van` для инициализации.
 
 ## Completed Tasks (Recent)
+
+### ✅ Context API вместо props drilling - COMPLETED & ARCHIVED (2026-02-02)
+
+**Task ID:** context-api-todo-001
+
+**Complexity Level:** Level 3 — Intermediate Feature
+
+**Статус:** ✅ COMPLETED & ARCHIVED
+
+**Выполненные изменения:**
+
+- **Фаза 1:** Созданы `src/contexts/todo-context.ts`, `src/contexts/TodoProvider.tsx`, `src/hooks/use-todo-context.ts`.
+- **Фаза 2:** В `App.tsx` TodoApp обёрнут в `<TodoProvider>`.
+- **Фаза 3:** TodoApp, TodoList, TodoItem отрефакторены под useTodoContext(); пропсы упрощены.
+- **Фаза 4:** Тесты обновлены (TodoProvider, мок useTodoContext в TodoItem для toggle/delete). pnpm test 121/121, pnpm run build — успешен.
+
+**Архивный документ:** `memory-bank/archive/archive-context-api-todo-001.md`
+
+**Рефлексия:** `memory-bank/reflection/reflection-context-api-todo-001.md`
+
+**Следующий шаг:** Memory Bank готов к следующей задаче. Используйте `/van` для инициализации.
+
+---
 
 ### ✅ Разрешение конфликтов правил именования (Конфликт #2 и #3) - COMPLETED & ARCHIVED (2026-01-29)
 

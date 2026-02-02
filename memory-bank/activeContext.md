@@ -2,25 +2,23 @@
 
 ## Current Focus
 
-Замена props drilling на Context API (context-api-todo-001). Ветка: `refactor/todo-context-api`
+Нет активной задачи. Используйте команду `/van` для инициализации следующей задачи.
 
 ## Current Mode
 
-BUILD выполнен. Реализация по плану из `memory-bank/tasks.md` завершена.
+—
 
 ## Current Phase
 
-Реализация завершена. Все чеклисты в tasks.md отмечены. Тесты 121/121, сборка успешна.
+—
 
 ## Next Steps
 
-1. Выполнить команду `/reflect` для рефлексии по задаче context-api-todo-001
-2. При необходимости — архивирование и обновление backlog
+1. Выполнить команду `/van` для выбора и инициализации следующей задачи из backlog или новой задачи.
 
 ## Context for AI
 
-- Проект: pet.todo - TO-DO Application
+- Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
-- Активная задача: context-api-todo-001 (Level 3)
-- Ветка: refactor/todo-context-api
-- Последняя завершённая задача: rules-naming-conflicts-002 (2026-01-29)
+- Активная задача: нет
+- Последняя завершённая задача: context-api-todo-001 (Context API вместо props drilling), архивирована 2026-02-02

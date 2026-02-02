@@ -82,16 +82,16 @@
 - [ ] Заменить props drilling на Context API
   - Создать `TodoContext` для управления действиями с задачами
   - Реализовать `TodoProvider` с функциями управления (toggleTodo, deleteTodo, updateTodo и т.д.)
-  - Создать хук `useTodoActions()` для доступа к действиям из контекста
+  - Создать хук `useTodoContext()` для доступа к значению контекста (состояние и действия)
   - Рефакторинг компонентов:
     - `TodoApp` - обернуть в TodoProvider
     - `TodoList` - убрать пропсы onToggle, onDelete
     - `TodoItem` - убрать пропсы обработчиков
-    - Глубоко вложенные компоненты будут использовать useTodoActions() напрямую
+    - Глубоко вложенные компоненты будут использовать useTodoContext() и деструктурировать нужное
   - Подготовка к будущему усложнению структуры компонентов
   - **Файлы для создания**:
-    - `src/contexts/TodoContext.tsx` - контекст и провайдер
-    - `src/hooks/useTodoActions.ts` - хук для доступа к действиям
+    - `src/contexts/todo-context.ts`, `src/contexts/TodoProvider.tsx` — контекст и провайдер
+    - `src/hooks/use-todo-context.ts` — хук для доступа к значению контекста
   - **Файлы для рефакторинга**:
     - `src/components/TodoApp/TodoApp.tsx`
     - `src/components/TodoList/TodoList.tsx`

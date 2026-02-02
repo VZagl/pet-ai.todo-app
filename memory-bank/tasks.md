@@ -14,7 +14,7 @@ Level 3 — Intermediate Feature
 
 ## Status
 
-Планирование завершено (PLAN). Ветка `refactor/todo-context-api`. Ожидает BUILD (или CREATIVE при необходимости).
+BUILD завершён. Ветка `refactor/todo-context-api`. Все чеклисты реализации выполнены. Готово к REFLECT.
 
 ## Source
 
@@ -23,11 +23,11 @@ Level 3 — Intermediate Feature
 ## Description
 
 - Создать `TodoContext` и `TodoProvider` для управления действиями с задачами (toggleTodo, deleteTodo, updateTodo и т.д.)
-- Создать хук `useTodoActions()` для доступа к действиям из контекста
+- Создать хук `useTodoContext()` для доступа к значению контекста (состояние и действия)
 - Рефакторинг компонентов:
   - `TodoApp` — обернуть в TodoProvider
   - `TodoList` — убрать пропсы onToggle, onDelete
-  - `TodoItem` — убрать пропсы обработчиков; использовать useTodoActions() напрямую
+  - `TodoItem` — убрать пропсы обработчиков; использовать useTodoContext() и деструктурировать нужные действия
 - Цель: устранение props drilling, упрощение добавления новых вложенных компонентов
 
 ## Technology Stack
@@ -39,7 +39,7 @@ Level 3 — Intermediate Feature
 
 ## Requirements
 
-- Файлы для создания: `src/contexts/TodoContext.tsx`, `src/hooks/use-todo-actions.ts` (конвенция: обычные файлы — kebab-case; React-компоненты — PascalCase)
+- Файлы для создания: `src/contexts/todo-context.ts`, `src/contexts/TodoProvider.tsx`, `src/hooks/use-todo-context.ts` (конвенция: обычные файлы — kebab-case; React-компоненты — PascalCase)
 - Файлы для рефакторинга: `TodoApp.tsx`, `TodoList.tsx`, `TodoItem.tsx`, `App.tsx`
 - Связано с: todo-app-001
 
@@ -53,38 +53,38 @@ Level 3 — Intermediate Feature
 
 - [ ] TodoContext предоставляет состояние задач и действия (addTodo, toggleTodo, deleteTodo, updateTodo, activeCount).
 - [ ] TodoProvider инкапсулирует логику useTodos() и передаёт значение в контекст.
-- [ ] useTodoActions() возвращает только действия { addTodo, toggleTodo, deleteTodo, updateTodo } для компонентов, которым не нужны todos/activeCount.
+- [ ] useTodoContext() возвращает полное значение контекста (todos, activeCount, addTodo, toggleTodo, deleteTodo, updateTodo); компоненты деструктурируют нужное.
 - [ ] TodoApp получает данные из контекста (todos, activeCount, addTodo и т.д.), фильтрация остаётся в TodoApp через useFilter(todos).
 - [ ] TodoList принимает только `todos` (без onToggle, onDelete).
-- [ ] TodoItem получает только проп `todo`, вызывает toggleTodo/deleteTodo через useTodoActions().
+- [ ] TodoItem получает только проп `todo`, вызывает toggleTodo/deleteTodo через useTodoContext() (деструктурирует { toggleTodo, deleteTodo }).
 
 **Технические ограничения:**
 
-- [ ] **Один источник истины:** useTodos вызывается только внутри TodoProvider (в `TodoContext.tsx`) как реализация состояния. Все компоненты приложения получают данные и действия только через контекст (useTodo / useTodoActions). Никакой мешанины: не оставлять useTodos как альтернативный публичный API «для тестов или вне контекста».
+- [ ] **Один источник истины:** useTodos вызывается только внутри TodoProvider (в `TodoProvider.tsx`) как реализация состояния. Все компоненты приложения получают данные и действия только через useTodoContext(). Никакой мешанины: не оставлять useTodos как альтернативный публичный API «для тестов или вне контекста».
 - [ ] Сохранить типы `i_todo`, импорты из существующих модулей (constants, utils, types).
 
 ### Component Analysis
 
-| Компонент               | Тип         | Изменения                                                                                                                      | Зависимости                |
-| ----------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | -------------------------- |
-| **TodoContext.tsx**     | Новый       | createContext, TodoProvider использует useTodos(), value = { todos, activeCount, addTodo, toggleTodo, deleteTodo, updateTodo } | useTodos, types, constants |
-| **use-todo-actions.ts** | Новый       | useContext(TodoContext), возврат только действий; бросает, если вне Provider                                                   | TodoContext                |
-| **App.tsx**             | Рефакторинг | Обернуть \<TodoApp /> в \<TodoProvider>                                                                                        | TodoContext                |
-| **TodoApp.tsx**         | Рефакторинг | Использовать useTodo() из контекста вместо useTodos(); убрать передачу onToggle, onDelete в TodoList                           | TodoContext, useFilter     |
-| **TodoList.tsx**        | Рефакторинг | Убрать пропсы onToggle, onDelete; интерфейс только { todos }                                                                   | TodoItem                   |
-| **TodoItem.tsx**        | Рефакторинг | Убрать onToggle, onDelete из пропсов; использовать useTodoActions() внутри                                                     | use-todo-actions, types    |
+| Компонент               | Тип         | Изменения                                                                                                          | Зависимости                 |
+| ----------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| **todo-context.ts**     | Новый       | createContext, тип i_todoContextValue                                                                              | types                       |
+| **TodoProvider.tsx**    | Новый       | TodoProvider использует useTodos(), value в Context.Provider                                                       | todo-context, useTodos      |
+| **use-todo-context.ts** | Новый       | useTodoContext() — useContext(todo-context), ошибка вне Provider; возврат полного value                            | todo-context                |
+| **App.tsx**             | Рефакторинг | Обернуть \<TodoApp /> в \<TodoProvider>                                                                            | TodoProvider                |
+| **TodoApp.tsx**         | Рефакторинг | Использовать useTodoContext() вместо useTodos(); убрать передачу onToggle, onDelete в TodoList                     | use-todo-context, useFilter |
+| **TodoList.tsx**        | Рефакторинг | Убрать пропсы onToggle, onDelete; интерфейс только { todos }                                                       | TodoItem                    |
+| **TodoItem.tsx**        | Рефакторинг | Убрать onToggle, onDelete из пропсов; использовать useTodoContext() и деструктурировать { toggleTodo, deleteTodo } | use-todo-context, types     |
 
 ### Design Decisions
 
 **Архитектура контекста:**
 
-- В контексте хранятся и состояние (todos, activeCount), и действия. TodoProvider внутри вызывает useTodos() и передаёт весь результат в value. Это позволяет TodoApp брать todos/activeCount и addTodo, а TodoItem — только действия через useTodoActions().
-- useTodo() — хук для доступа к полному значению контекста (todos, activeCount, addTodo, toggleTodo, deleteTodo, updateTodo). Используется в TodoApp.
-- useTodoActions() — хук, возвращающий только { addTodo, toggleTodo, deleteTodo, updateTodo }. Используется в TodoItem (и при необходимости в TodoInput, если решим убрать проп onAdd).
+- В контексте хранятся и состояние (todos, activeCount), и действия. TodoProvider внутри вызывает useTodos() и передаёт весь результат в value.
+- useTodoContext() — единственный хук доступа к значению контекста (todos, activeCount, addTodo, toggleTodo, deleteTodo, updateTodo). Компоненты деструктурируют нужное: TodoApp — { todos, activeCount, addTodo }; TodoItem — { toggleTodo, deleteTodo }.
 
 **Граница Provider:** TodoProvider оборачивает TodoApp в App.tsx (не внутри TodoApp), чтобы корень дерева TODO был внутри контекста.
 
-**Один источник истины:** В приложении единственная точка доступа к состоянию и действиям задач — контекст (useTodo / useTodoActions). useTodos — внутренняя реализация TodoProvider, компоненты его не импортируют. Тесты компонентов оборачивают дерево в TodoProvider (или мокают контекст), а не вызывают useTodos напрямую.
+**Один источник истины:** В приложении единственная точка доступа к состоянию и действиям задач — useTodoContext(). useTodos — внутренняя реализация TodoProvider, компоненты его не импортируют. Тесты компонентов оборачивают дерево в TodoProvider (или мокают useTodoContext), а не вызывают useTodos напрямую.
 
 **Фильтрация:** Остаётся в TodoApp: useFilter(todos) по-прежнему вызывается в TodoApp, filteredTodos передаётся в TodoList. Контекст не дублирует фильтр.
 
@@ -93,12 +93,11 @@ Level 3 — Intermediate Feature
 **Фаза 1: Контекст и провайдер**
 
 1. Создать директорию `src/contexts/`.
-2. Создать `src/contexts/TodoContext.tsx`:
+2. Создать `src/contexts/todo-context.ts` и `src/contexts/TodoProvider.tsx`:
    - Определить тип значения контекста (todos, activeCount, addTodo, toggleTodo, deleteTodo, updateTodo).
    - createContext с дефолтом null или заглушкой (с проверкой в хуках).
    - Компонент TodoProvider: внутри useTodos(), передать value в Context.Provider.
-   - Экспорт useTodo(): useContext; если null — выбросить ошибку «useTodo must be used within TodoProvider».
-3. Создать `src/hooks/use-todo-actions.ts`: useContext(TodoContext), вернуть только действия; если вне Provider — выбросить.
+   - Создать `src/hooks/use-todo-context.ts`: useTodoContext() — useContext(TodoContext); если null — выбросить ошибку; вернуть полное value.
 
 **Фаза 2: Точка оборачивания**
 
@@ -106,13 +105,13 @@ Level 3 — Intermediate Feature
 
 **Фаза 3: Рефакторинг компонентов**
 
-5. **TodoApp.tsx**: заменить useTodos() на useTodo() из контекста. Убрать передачу onToggle, onDelete в TodoList (оставить todos={filteredTodos}).
+5. **TodoApp.tsx**: заменить useTodos() на useTodoContext(). Убрать передачу onToggle, onDelete в TodoList (оставить todos={filteredTodos}).
 6. **TodoList.tsx**: убрать из интерфейса onToggle, onDelete; оставить только todos. Убрать передачу onToggle, onDelete в TodoItem.
-7. **TodoItem.tsx**: убрать onToggle, onDelete из пропсов; внутри вызвать useTodoActions(), использовать toggleTodo, deleteTodo по todo.id.
+7. **TodoItem.tsx**: убрать onToggle, onDelete из пропсов; внутри вызвать useTodoContext(), деструктурировать { toggleTodo, deleteTodo }, использовать по todo.id.
 
 **Фаза 4: Тесты и проверки**
 
-8. Обновить тесты: TodoApp.test.tsx, TodoList.test.tsx, TodoItem.test.tsx — обернуть в TodoProvider там, где нужен контекст; убрать передачу onToggle/onDelete в моках для TodoList/TodoItem; при необходимости мокать useTodoActions или контекст.
+8. Обновить тесты: TodoApp.test.tsx, TodoList.test.tsx, TodoItem.test.tsx — обернуть в TodoProvider там, где нужен контекст; убрать передачу onToggle/onDelete в моках для TodoList/TodoItem; при необходимости мокать useTodoContext.
 9. Запустить линтер и тесты (pnpm test, pnpm run build).
 
 ### Technology Validation
@@ -127,33 +126,32 @@ Level 3 — Intermediate Feature
 ### Dependencies
 
 - Существующие: useTodos, useFilter, useLocalStorage, types (i_todo), constants (STORAGE_KEY), utils (generateId, getActiveCount).
-- Внутри контекста: TodoContext зависит от useTodos; useTodoActions зависит от TodoContext. Циклов нет.
+- Внутри контекста: todo-context.ts экспортирует TodoContext; TodoProvider использует useTodos; useTodoContext зависит от todo-context. Циклов нет.
 
 ---
 
 ## Challenges & Mitigations
 
-| Вызов                                                  | Митигация                                                                                                                 |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
-| Тесты падают из-за отсутствия Provider                 | Во всех тестах компонентов, использующих useTodo()/useTodoActions(), оборачивать дерево в \<TodoProvider>.                |
-| Типизация контекста (null по умолчанию)                | Тип value: \| null; в useTodo/useTodoActions проверять значение и бросать понятную ошибку при использовании вне Provider. |
-| Регрессия поведения (toggle/delete перестают работать) | Сохранить ту же логику в useTodos(); провайдер только передаёт её в контекст; E2E проверка после рефакторинга.            |
+| Вызов                                                  | Митигация                                                                                                         |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| Тесты падают из-за отсутствия Provider                 | Во всех тестах компонентов, использующих useTodoContext(), оборачивать дерево в \<TodoProvider>.                  |
+| Типизация контекста (null по умолчанию)                | Тип value: \| null; в useTodoContext проверять значение и бросать понятную ошибку при использовании вне Provider. |
+| Регрессия поведения (toggle/delete перестают работать) | Сохранить ту же логику в useTodos(); провайдер только передаёт её в контекст; E2E проверка после рефакторинга.    |
 
 ---
 
 ## Checklist реализации (BUILD)
 
-- [ ] **Контекст:** Создан `src/contexts/TodoContext.tsx` (тип value, createContext, TodoProvider, useTodo).
-- [ ] **Хук действий:** Создан `src/hooks/use-todo-actions.ts`, возвращает только действия, ошибка вне Provider.
-- [ ] **App:** В App.tsx TodoApp обёрнут в TodoProvider.
-- [ ] **TodoApp:** Использует useTodo(), в TodoList передаёт только todos={filteredTodos}.
-- [ ] **TodoList:** Пропсы только todos; не передаёт onToggle, onDelete в TodoItem.
-- [ ] **TodoItem:** Проп только todo; useTodoActions() для toggleTodo, deleteTodo.
-- [ ] **Тесты:** TodoApp, TodoList, TodoItem обновлены (Provider, без лишних пропсов), все проходят.
-- [ ] **Линт и сборка:** pnpm run build и pnpm test без ошибок.
+- [x] **Контекст:** Созданы `src/contexts/todo-context.ts` (тип value, createContext), `src/contexts/TodoProvider.tsx` (TodoProvider), `src/hooks/use-todo-context.ts` (useTodoContext).
+- [x] **App:** В App.tsx TodoApp обёрнут в TodoProvider.
+- [x] **TodoApp:** Использует useTodoContext(), в TodoList передаёт только todos={filteredTodos}.
+- [x] **TodoList:** Пропсы только todos; не передаёт onToggle, onDelete в TodoItem.
+- [x] **TodoItem:** Проп только todo; useTodoContext() с деструктуризацией { toggleTodo, deleteTodo }.
+- [x] **Тесты:** TodoApp, TodoList, TodoItem обновлены (Provider, без лишних пропсов), все проходят.
+- [x] **Линт и сборка:** pnpm run build и pnpm test без ошибок.
 
 ---
 
 ## Creative Phases Required
 
-**Не требуются.** Дизайн контекста (одно хранилище состояния + действий, два хука useTodo / useTodoActions) соответствует типовому паттерну React Context и задаче из backlog; отдельная креативная фаза не нужна.
+**Не требуются.** Дизайн контекста (одно хранилище состояния + действий, один хук useTodoContext) соответствует типовому паттерну React Context и задаче из backlog; отдельная креативная фаза не нужна.

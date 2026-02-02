@@ -10,7 +10,17 @@
 
 ## Current Task
 
-**Нет активных задач** — Memory Bank готов к следующей задаче
+**context-api-todo-001** (Context API вместо props drilling) — BUILD завершён. Готово к REFLECT.
+
+### Build Progress: context-api-todo-001 (2026-01-30)
+
+- **Фаза 1:** Созданы `src/contexts/todo-context.ts` (тип value, createContext), `src/contexts/TodoProvider.tsx` (TodoProvider), `src/hooks/use-todo-context.ts` (useTodoContext — полное значение контекста).
+- **Фаза 2:** В `App.tsx` TodoApp обёрнут в `<TodoProvider>`.
+- **Фаза 3:** TodoApp использует useTodoContext(), передаёт в TodoList только `todos={filteredTodos}`. TodoList — пропсы только `todos`. TodoItem — проп только `todo`, внутри useTodoContext() с деструктуризацией { toggleTodo, deleteTodo }.
+- **Фаза 4:** TodoApp.test.tsx — обёртка renderTodoApp() с TodoProvider. TodoList.test.tsx — renderTodoList(todos) с TodoProvider, убраны onToggle/onDelete. TodoItem.test.tsx — vi.mock use-todo-context, renderTodoItem с TodoProvider; в двух тестах (toggle/delete) mockReturnValue и рендер без Provider.
+- **Проверка:** pnpm test — 121/121, pnpm run build — успешен.
+
+**Продолжение в новом чате:** прочитать `memory-bank/tasks.md` (чеклисты и статус) и `memory-bank/activeContext.md`. Следующий шаг — команда `/reflect` для рефлексии по задаче.
 
 ## Completed Tasks (Recent)
 

@@ -2,7 +2,16 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { STORAGE_KEY } from '../../constants/todo';
+import { TodoProvider } from '../../contexts/TodoProvider';
 import { TodoApp } from './TodoApp';
+
+function renderTodoApp() {
+	return render(
+		<TodoProvider>
+			<TodoApp />
+		</TodoProvider>,
+	);
+}
 
 describe('TodoApp - Integration', () => {
 	beforeEach(() => {
@@ -10,7 +19,7 @@ describe('TodoApp - Integration', () => {
 	});
 
 	it('должен отображать заголовок приложения', () => {
-		render(<TodoApp />);
+		renderTodoApp();
 
 		expect(screen.getByText('TODO')).toBeInTheDocument();
 		expect(screen.getByText(/управление задачами/i)).toBeInTheDocument();
@@ -19,7 +28,7 @@ describe('TodoApp - Integration', () => {
 	it('должен добавлять новую задачу', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const button = screen.getByRole('button', { name: /добавить задачу/i });
@@ -33,7 +42,7 @@ describe('TodoApp - Integration', () => {
 	it('должен отмечать задачу как выполненную', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Добавляем задачу
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -50,7 +59,7 @@ describe('TodoApp - Integration', () => {
 	it('должен удалять задачу', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Добавляем задачу
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -69,7 +78,7 @@ describe('TodoApp - Integration', () => {
 	it('должен фильтровать активные задачи', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Добавляем несколько задач
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -96,7 +105,7 @@ describe('TodoApp - Integration', () => {
 	it('должен фильтровать завершенные задачи', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Добавляем задачи
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -125,7 +134,7 @@ describe('TodoApp - Integration', () => {
 	it('должен показывать правильный счетчик активных задач', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Добавляем задачи
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -155,7 +164,7 @@ describe('TodoApp - Integration', () => {
 
 	it('счетчик отображается только в footer, а не в названиях задач', async () => {
 		const user = userEvent.setup();
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Создаем ситуацию, когда число "5" может быть в разных местах
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -189,7 +198,7 @@ describe('TodoApp - Integration', () => {
 
 	it('текст "осталось" отображается только в footer, а не в названиях задач', async () => {
 		const user = userEvent.setup();
-		render(<TodoApp />);
+		renderTodoApp();
 
 		// Создаем ситуацию, когда слово "осталось" может быть в разных местах
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
@@ -218,7 +227,7 @@ describe('TodoApp - Integration', () => {
 	});
 
 	it('не должен показывать footer если нет задач', () => {
-		render(<TodoApp />);
+		renderTodoApp();
 
 		expect(screen.queryByText(/осталось/i)).not.toBeInTheDocument();
 	});
@@ -226,7 +235,7 @@ describe('TodoApp - Integration', () => {
 	it('должен сохранять задачи в localStorage', async () => {
 		const user = userEvent.setup();
 
-		render(<TodoApp />);
+		renderTodoApp();
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		await user.type(input, 'Persistent task');

@@ -2,31 +2,27 @@
 
 ## Current Task
 
-**Task ID:** perf-todo-helpers-active-count  
-**Источник:** backlog (оптимизация подсчёта элементов)  
-**Название:** Оптимизация подсчёта элементов: заменить `filter().length` на `reduce()`  
-**Сложность:** Level 1 (локальное изменение, один файл)  
-**Status:** BUILD complete. REFLECT complete.
-
-### Цель
-
-- Файл: `src/utils/todo-helpers.ts`, функция `getActiveCount` (стр. 35)
-- Текущая реализация: `todos.filter((todo) => !todo.completed).length`
-- Целевая реализация: `todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0)`
-- Причина: избежать создания промежуточного массива при подсчёте
-
-### Чеклист
-
-- [x] Заменить реализацию `getActiveCount` на `reduce()`
-- [x] Убедиться, что тесты `todo-helpers.test.ts` проходят
-- [x] Обновить `memory-bank/backlog.md`
-- [x] Рефлексия (REFLECT)
-
-**Reflection:** [memory-bank/reflection/reflection-perf-todo-helpers-active-count.md](reflection/reflection-perf-todo-helpers-active-count.md)
+Нет активной задачи. Готов к инициализации через `/van` (выбор задачи из backlog или новая задача).
 
 ---
 
 ## Last Completed Task
+
+**Task ID:** perf-todo-helpers-active-count  
+**Название:** Оптимизация подсчёта элементов: getActiveCount → reduce()
+
+**Status:** COMPLETED (без архива)
+
+- [x] Реализация (BUILD)
+- [x] Рефлексия (REFLECT)
+- [x] Задача перенесена в backlog → Завершено
+
+**Reflection:** [memory-bank/reflection/reflection-perf-todo-helpers-active-count.md](reflection/reflection-perf-todo-helpers-active-count.md)  
+**Date:** 2026-02-02
+
+---
+
+## Previous Completed Task
 
 **Task ID:** context-api-todo-001  
 **Название:** Context API вместо props drilling (Architecture Improvements)

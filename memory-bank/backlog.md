@@ -93,11 +93,6 @@
     3. Добавить соответствующие стили для disabled-состояния
   - **Тип**: Performance + UX
 
-- [x] Оптимизация подсчёта элементов: заменить `filter().length` на `reduce()` (выполнено: 2026-02-02)
-  - **Файл**: `src/utils/todo-helpers.ts`
-  - **Реализация**: `todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0)`
-  - **Причина**: `filter` создаёт промежуточный массив, что неэффективно для простого подсчёта. `reduce` более рационально использовать для подсчёта элементов
-
 ### Developer Experience
 
 - [ ] Добавить Storybook для компонентов
@@ -361,6 +356,17 @@
   - **Рефлексия**: `memory-bank/reflection/reflection-context-api-todo-001.md`
   - **Тип**: Architecture Improvements
   - **Причина**: Устранение props drilling, упрощение добавления новых вложенных компонентов
+
+- [x] ✅ **Оптимизация подсчёта элементов: getActiveCount → reduce()** (perf-todo-helpers-active-count)
+  - **Статус**: Завершено 2026-02-02
+  - **Complexity Level**: Level 1 — Quick Fix
+  - **Реализация**: Замена `todos.filter((todo) => !todo.completed).length` на `todos.reduce((count, todo) => count + (!todo.completed ? 1 : 0), 0)` в `src/utils/todo-helpers.ts`
+  - **Результат**:
+    - Один файл изменён, тесты `todo-helpers.test.ts` 10/10 без изменений
+    - Устранено создание промежуточного массива при подсчёте активных задач
+  - **Рефлексия**: `memory-bank/reflection/reflection-perf-todo-helpers-active-count.md`
+  - **Тип**: Code Quality & Performance
+  - **Причина**: Эффективность — один проход по массиву без аллокации
 
 ---
 

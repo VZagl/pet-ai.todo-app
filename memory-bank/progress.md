@@ -10,21 +10,22 @@
 
 ## Current Task
 
-Оптимизация подсчёта элементов (Level 1) — BUILD выполнен. Готов к REFLECT.
+Нет активной задачи. Memory Bank готов к новой задаче. Используйте `/van` для инициализации.
 
 ## Completed Tasks (Recent)
 
 ### ✅ Оптимизация подсчёта элементов: getActiveCount → reduce() (2026-02-02)
 
-**Сложность:** Level 1 — Quick Fix
+**Task ID:** perf-todo-helpers-active-count | **Сложность:** Level 1 — Quick Fix
 
 **Выполнено:**
 
 - В `src/utils/todo-helpers.ts` функция `getActiveCount` переписана с `filter().length` на `reduce()`.
 - Тесты `todo-helpers.test.ts`: 10/10 пройдены.
-- Обновлены `memory-bank/tasks.md`, `memory-bank/backlog.md`.
+- Рефлексия: `memory-bank/reflection/reflection-perf-todo-helpers-active-count.md`.
+- Задача перенесена в `backlog.md` → раздел «Завершено».
 
-**Следующий шаг:** `/reflect` для рефлексии задачи.
+**Статус:** COMPLETED (без архива). Memory Bank подготовлен к новой задаче.
 
 ---
 

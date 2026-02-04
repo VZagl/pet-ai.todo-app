@@ -22,12 +22,15 @@
 - [x] `src/hooks/use-filter.ts` (guard в setFilter)
 - [x] `src/components/TodoFilter/TodoFilter.test.tsx`
 
+**Reflection:** [memory-bank/reflection/reflection-perf-todo-filter-redundant.md](reflection/reflection-perf-todo-filter-redundant.md)  
+**Date:** 2026-02-04
+
 **Чеклист:**
 
 - [x] INIT: Задача определена, окружение готово
 - [x] BUILD: Реализация и проверка
-- [ ] REFLECT: Обновить tasks.md, при необходимости reflection
-- [ ] REFLECT: Обновить backlog.md (если задача из backlog): отметить [x], перенести в раздел «✅ Завершено», добавить дату и ссылки (рефлексия/архив)
+- [x] REFLECT: Обновить tasks.md, при необходимости reflection
+- [x] REFLECT: Обновить backlog.md (если задача из backlog): отметить [x], перенести в раздел «✅ Завершено», добавить дату и ссылки (рефлексия/архив)
 
 ---
 

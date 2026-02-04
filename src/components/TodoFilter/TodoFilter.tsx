@@ -16,18 +16,24 @@ interface i_todoFilterProps {
 export const TodoFilter = ({ currentFilter, onFilterChange }: i_todoFilterProps) => {
 	return (
 		<div className='todo-filter' role='group' aria-label='Фильтр задач'>
-			{FILTERS.map((filter) => (
-				<button
-					key={filter}
-					type='button'
-					className={`todo-filter__button ${currentFilter === filter ? 'todo-filter__button--active' : ''}`}
-					onClick={() => onFilterChange(filter)}
-					aria-pressed={currentFilter === filter}
-					aria-label={`Показать ${FILTER_LABELS[filter].toLowerCase()} задачи`}
-				>
-					{FILTER_LABELS[filter]}
-				</button>
-			))}
+			{FILTERS.map((filter) => {
+				const isActive = currentFilter === filter;
+				return (
+					<button
+						key={filter}
+						type='button'
+						className={`todo-filter__button ${isActive ? 'todo-filter__button--active' : ''}`}
+						disabled={isActive}
+						onClick={() => {
+							if (!isActive) onFilterChange(filter);
+						}}
+						aria-pressed={isActive}
+						aria-label={`Показать ${FILTER_LABELS[filter].toLowerCase()} задачи`}
+					>
+						{FILTER_LABELS[filter]}
+					</button>
+				);
+			})}
 		</div>
 	);
 };

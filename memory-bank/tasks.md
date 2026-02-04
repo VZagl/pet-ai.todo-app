@@ -17,14 +17,15 @@
 
 **Файлы для изменения:**
 
-- [ ] `src/components/TodoFilter/TodoFilter.tsx`
-- [ ] `src/components/TodoFilter/TodoFilter.scss`
-- [ ] при необходимости: `src/hooks/use-filter.ts` (guard в setFilter)
+- [x] `src/components/TodoFilter/TodoFilter.tsx`
+- [x] `src/components/TodoFilter/TodoFilter.scss`
+- [x] `src/hooks/use-filter.ts` (guard в setFilter)
+- [x] `src/components/TodoFilter/TodoFilter.test.tsx`
 
 **Чеклист:**
 
-- [ ] INIT: Задача определена, окружение готово
-- [ ] BUILD: Реализация и проверка
+- [x] INIT: Задача определена, окружение готово
+- [x] BUILD: Реализация и проверка
 - [ ] REFLECT: Обновить tasks.md, при необходимости reflection
 - [ ] REFLECT: Обновить backlog.md (если задача из backlog): отметить [x], перенести в раздел «✅ Завершено», добавить дату и ссылки (рефлексия/архив)
 

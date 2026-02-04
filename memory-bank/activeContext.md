@@ -2,20 +2,20 @@
 
 ## Current Focus
 
-**Задача:** TodoFilter — оптимизация повторной фильтрации (perf-todo-filter-redundant).  
-**Режим:** VAN инициализация завершена → переход к BUILD.
+**Задача:** (не выбрана)  
+**Режим:** Ожидает VAN — инициализация новой задачи.
 
 ## Current Mode
 
-VAN (Level 1). Готов к реализации (`/build`).
+Ожидает `/van`.
 
 ## Next Steps
 
-1. Выполнить реализацию по чеклисту в `memory-bank/tasks.md`.
-2. После реализации — обновить tasks.md и при необходимости добавить reflection.
+1. Выбрать следующую задачу (из `memory-bank/backlog.md` или новую).
+2. Запустить `/van` для инициализации (определить `task_id`, уровень сложности, план).
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
-- Последняя завершённая задача: perf-todo-helpers-active-count (оптимизация getActiveCount).
+- Последняя завершённая задача: perf-todo-filter-redundant (оптимизация TodoFilter: устранение повторных действий).

@@ -10,7 +10,7 @@
 
 ## Current Task
 
-**perf-todo-filter-redundant** — BUILD завершён. Ожидает REFLECT и обновление backlog.
+Новых активных задач нет. Memory Bank готов к следующей задаче.
 
 ## Build: TodoFilter — устранение повторной фильтрации (2026-02-04)
 
@@ -24,6 +24,11 @@
 - **TodoFilter.test.tsx:** тест по клику на активный фильтр заменён на проверку disabled и отсутствия вызова; тест клавиатурной доступности обновлён с учётом пропуска disabled-кнопки по Tab; добавлен тест «активная кнопка имеет атрибут disabled».
 
 **Тесты:** TodoFilter.test.tsx 17/17, use-filter.test.ts 7/7. Регрессий нет.
+
+## Reflect: TodoFilter — устранение повторной фильтрации (2026-02-04)
+
+- Рефлексия зафиксирована: `memory-bank/reflection/reflection-perf-todo-filter-redundant.md`
+- `tasks.md` и `backlog.md` обновлены, задача перенесена в «✅ Завершено»
 
 ## Completed Tasks (Recent)
 

@@ -2,11 +2,47 @@
 
 ## Current Task
 
-Нет активной задачи. Готов к инициализации через `/van` (выбор задачи из backlog или новая задача).
+**Task ID:** (не задан)  
+**Источник:** (не задан)  
+**Уровень сложности:** (не задан)
+
+**Проблема:** (кратко сформулировать)
+
+**План решения:**
+
+1. (шаг 1)
+2. (шаг 2)
+
+**Файлы для изменения:**
+
+- [ ] (файл 1)
+
+**Чеклист:**
+
+- [ ] INIT: Задача определена, окружение готово
+- [ ] BUILD: Реализация и проверка
+- [ ] REFLECT: Обновить tasks.md, при необходимости reflection
+- [ ] REFLECT: Обновить backlog.md (если задача из backlog): отметить [x], перенести в раздел «✅ Завершено», добавить дату и ссылки (рефлексия/архив)
 
 ---
 
 ## Last Completed Task
+
+**Task ID:** perf-todo-filter-redundant  
+**Название:** TodoFilter — устранение повторной фильтрации
+
+**Status:** COMPLETED (без архива)
+
+- [x] Реализация (BUILD)
+- [x] Рефлексия (REFLECT)
+- [x] Задача перенесена в backlog → Завершено
+
+**Reflection:** [memory-bank/reflection/reflection-perf-todo-filter-redundant.md](reflection/reflection-perf-todo-filter-redundant.md)  
+**Date:** 2026-02-04
+
+---
+
+## Previous Completed Task
 
 **Task ID:** perf-todo-helpers-active-count  
 **Название:** Оптимизация подсчёта элементов: getActiveCount → reduce()
@@ -19,22 +55,3 @@
 
 **Reflection:** [memory-bank/reflection/reflection-perf-todo-helpers-active-count.md](reflection/reflection-perf-todo-helpers-active-count.md)  
 **Date:** 2026-02-02
-
----
-
-## Previous Completed Task
-
-**Task ID:** context-api-todo-001  
-**Название:** Context API вместо props drilling (Architecture Improvements)
-
-**Status:** COMPLETED & ARCHIVED
-
-- [x] Инициализация
-- [x] Планирование
-- [x] Реализация (BUILD)
-- [x] Рефлексия (REFLECT)
-- [x] Архивирование
-
-**Archive:** [memory-bank/archive/archive-context-api-todo-001.md](archive/archive-context-api-todo-001.md)  
-**Date Archived:** 2026-02-02  
-**Branch:** refactor/todo-context-api

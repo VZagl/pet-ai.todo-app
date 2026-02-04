@@ -8,7 +8,12 @@ import { filterTodos } from '../utils/todo-helpers';
  * @returns Объект с отфильтрованными задачами, текущим фильтром и функцией изменения фильтра
  */
 export function useFilter(todos: i_todo[]) {
-	const [filter, setFilter] = useState<FilterType>('all');
+	const [filter, setFilterState] = useState<FilterType>('all');
+
+	const setFilter = (nextFilter: FilterType) => {
+		if (filter === nextFilter) return;
+		setFilterState(nextFilter);
+	};
 
 	// Мемоизация отфильтрованных задач для оптимизации
 	const filteredTodos = useMemo(() => {

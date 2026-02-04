@@ -2,19 +2,20 @@
 
 ## Current Focus
 
-Нет активной задачи. Memory Bank готов к новой задаче.
+**Задача:** (не выбрана)  
+**Режим:** Ожидает VAN — инициализация новой задачи.
 
 ## Current Mode
 
-Готов к инициализации (`/van`).
+Ожидает `/van`.
 
 ## Next Steps
 
-1. Выбрать задачу из `memory-bank/backlog.md` или определить новую.
-2. Запустить `/van` для инициализации задачи.
+1. Выбрать следующую задачу (из `memory-bank/backlog.md` или новую).
+2. Запустить `/van` для инициализации (определить `task_id`, уровень сложности, план).
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
-- Последняя завершённая задача: perf-todo-helpers-active-count (оптимизация getActiveCount).
+- Последняя завершённая задача: perf-todo-filter-redundant (оптимизация TodoFilter: устранение повторных действий).

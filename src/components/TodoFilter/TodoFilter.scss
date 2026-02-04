@@ -36,5 +36,14 @@
 		&:focus {
 			@include focus-outline($color-primary);
 		}
+
+		&:disabled {
+			cursor: default;
+			pointer-events: none;
+		}
+
+		&--active:disabled {
+			opacity: 1;
+		}
 	}
 }

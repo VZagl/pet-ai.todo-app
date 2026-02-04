@@ -10,7 +10,25 @@
 
 ## Current Task
 
-Нет активной задачи. Memory Bank готов к новой задаче. Используйте `/van` для инициализации.
+Новых активных задач нет. Memory Bank готов к следующей задаче.
+
+## Build: TodoFilter — устранение повторной фильтрации (2026-02-04)
+
+**Task ID:** perf-todo-filter-redundant | **Уровень:** Level 1 — Quick Fix
+
+**Изменения:**
+
+- **TodoFilter.tsx:** активная кнопка `disabled={isActive}`, в `onClick` вызов `onFilterChange` только если `!isActive`.
+- **TodoFilter.scss:** стили `&:disabled` (cursor, pointer-events), `&--active:disabled` (opacity).
+- **use-filter.ts:** guard в `setFilter` — обновление состояния только при `nextFilter !== prev`.
+- **TodoFilter.test.tsx:** тест по клику на активный фильтр заменён на проверку disabled и отсутствия вызова; тест клавиатурной доступности обновлён с учётом пропуска disabled-кнопки по Tab; добавлен тест «активная кнопка имеет атрибут disabled».
+
+**Тесты:** TodoFilter.test.tsx 17/17, use-filter.test.ts 7/7. Регрессий нет.
+
+## Reflect: TodoFilter — устранение повторной фильтрации (2026-02-04)
+
+- Рефлексия зафиксирована: `memory-bank/reflection/reflection-perf-todo-filter-redundant.md`
+- `tasks.md` и `backlog.md` обновлены, задача перенесена в «✅ Завершено»
 
 ## Completed Tasks (Recent)
 

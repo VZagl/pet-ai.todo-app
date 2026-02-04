@@ -2,16 +2,17 @@
 
 ## Current Focus
 
-Нет активной задачи. Memory Bank готов к новой задаче.
+**Задача:** TodoFilter — оптимизация повторной фильтрации (perf-todo-filter-redundant).  
+**Режим:** VAN инициализация завершена → переход к BUILD.
 
 ## Current Mode
 
-Готов к инициализации (`/van`).
+VAN (Level 1). Готов к реализации (`/build`).
 
 ## Next Steps
 
-1. Выбрать задачу из `memory-bank/backlog.md` или определить новую.
-2. Запустить `/van` для инициализации задачи.
+1. Выполнить реализацию по чеклисту в `memory-bank/tasks.md`.
+2. После реализации — обновить tasks.md и при необходимости добавить reflection.
 
 ## Context for AI
 

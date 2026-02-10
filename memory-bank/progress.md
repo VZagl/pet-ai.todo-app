@@ -4,6 +4,15 @@
 
 Нет активной задачи. Memory Bank готов к следующей задаче.
 
+## 2026-02-10: completed-tasks-journal-001 — ЗАВЕРШЕНО
+
+**Название:** Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
+**Уровень:** Level 2 — Simple Enhancement  
+**Итог:** Создано ~22 файла (каталог, шаблон, 17 записей, команда /close-task, обновления docs). Все фазы пройдены.  
+**Запись:** [`memory-bank/completed-tasks/2026/02/completed-tasks-journal-001_2026-02-10.md`](completed-tasks/2026/02/completed-tasks-journal-001_2026-02-10.md)
+
+---
+
 ## Completed: completed-tasks-journal-001 (2026-02-10)
 
 **Task ID:** completed-tasks-journal-001  

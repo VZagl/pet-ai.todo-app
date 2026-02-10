@@ -2,15 +2,34 @@
 
 ## Overall Progress
 
-🟢 Инициализация: 100%
-🟢 Планирование: 100%
-🟢 Реализация: 100%
-🟢 Тестирование: 100%
-🟢 Завершено: ✅
+Нет активной задачи. Memory Bank готов к следующей задаче.
 
-## Current Task
+## 2026-02-10: completed-tasks-journal-001 — ЗАВЕРШЕНО
 
-Новых активных задач нет. Memory Bank готов к следующей задаче.
+**Название:** Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
+**Уровень:** Level 2 — Simple Enhancement  
+**Итог:** Создано ~22 файла (каталог, шаблон, 17 записей, команда /close-task, обновления docs). Все фазы пройдены.  
+**Запись:** [`memory-bank/completed-tasks/2026/02/completed-tasks-journal-001_2026-02-10.md`](completed-tasks/2026/02/completed-tasks-journal-001_2026-02-10.md)
+
+---
+
+## Completed: completed-tasks-journal-001 (2026-02-10)
+
+**Task ID:** completed-tasks-journal-001  
+**Название:** Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
+**Уровень:** Level 2 — Simple Enhancement  
+**Ветка:** `docs/completed-tasks-journal`  
+**Статус:** ✅ COMPLETED & ARCHIVED
+
+🟢 Инициализация (VAN): 100%  
+🟢 Планирование (PLAN): 100%  
+🟢 Проектирование (CREATIVE): 100%  
+🟢 Реализация (BUILD): 100%  
+🟢 Рефлексия (REFLECT): 100%  
+🟢 Архивирование (ARCHIVE): 100%
+
+**Архивный документ:** [`memory-bank/archive/archive-completed-tasks-journal-001.md`](archive/archive-completed-tasks-journal-001.md)  
+**Рефлексия:** [`memory-bank/reflection/reflection-completed-tasks-journal-001.md`](reflection/reflection-completed-tasks-journal-001.md)
 
 ## Build: TodoFilter — устранение повторной фильтрации (2026-02-04)
 

@@ -73,11 +73,13 @@
   - Archive/reflection: остаются в текущих каталогах (пути зашиты в .cursor/)
   - Ретроспектива: полное заполнение всех 17 задач (16 из backlog + todo-app-001)
   - Документ: `memory-bank/creative/creative-completed-tasks-journal.md`
-- [ ] BUILD: Создать каталог и шаблон
-- [ ] BUILD: Обновить `docs/common/memory-bank-usage.md`
-- [ ] BUILD: Обновить `memory-bank/backlog.md`
-- [ ] REFLECT: Обновить tasks.md, при необходимости reflection
-- [ ] REFLECT: Закрыть задачу в backlog.md по правилам docs/common/memory-bank-usage.md
+- [x] BUILD: Создать каталог `completed-tasks/`, шаблон `_template.md` и 17 ретроспективных записей
+- [x] BUILD: Создать команду `/close-task` (`.cursor/commands/close-task.md`)
+- [x] BUILD: Обновить `docs/common/memory-bank-usage.md` (completed-tasks, /close-task, роль backlog)
+- [x] BUILD: Обновить `memory-bank/backlog.md` (удалить секцию "Завершено", обновить примечание)
+- [x] BUILD: Обновить `memory-bank/tasks.md` (отметить BUILD-шаги)
+- [ ] REFLECT: Обзор реализации, при необходимости reflection
+- [ ] CLOSE: Финализировать задачу командой /close-task
 
 ---
 

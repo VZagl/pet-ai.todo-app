@@ -3,30 +3,32 @@
 ## Current Focus
 
 **Задача:** completed-tasks-journal-001 — Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
-**Режим:** CREATIVE завершён → ожидает BUILD.  
+**Режим:** BUILD завершён → ожидает REFLECT.  
 **Ветка:** `docs/completed-tasks-journal`
 
 ## Current Mode
 
-CREATIVE завершён. Ожидает `/build` в новом чате.
+BUILD завершён. Ожидает `/reflect` в новом чате.
 
-## CREATIVE Decisions Summary
+## BUILD Results Summary
 
-1. **Организация:** YYYY/MM по дате создания задачи, дата завершения в имени файла (`[task_id]_YYYY-MM-DD.md`)
-2. **Шаблон:** Полный перенос задачи из backlog + метаданные (дата создания, завершения) + ссылки на archive/reflection
-3. **Связи:** Односторонние (completed → archive/reflection), поиск по task_id
-4. **Archive/reflection:** Остаются в текущих каталогах (пути зашиты в `.cursor/`)
-5. **Ретроспектива:** Полное заполнение всех 17 задач (16 из backlog + todo-app-001)
-6. **Документ:** `memory-bank/creative/creative-completed-tasks-journal.md`
+1. **Создан каталог `memory-bank/completed-tasks/`:**
+   - `_template.md` — шаблон карточки задачи
+   - `2025/12/` — 1 запись (todo-app-001)
+   - `2026/01/` — 16 записей (fonts-integration-001 … perf-todo-filter-redundant)
+2. **Создана команда `/close-task`** (`.cursor/commands/close-task.md`) — финализация задачи
+3. **Обновлён `docs/common/memory-bank-usage.md`:**
+   - Добавлен раздел "Журнал завершённых задач"
+   - Добавлен раздел "Финализация задачи (/close-task)"
+   - Роль backlog: только планировщик, без истории
+4. **Обновлён `memory-bank/backlog.md`:**
+   - Удалена секция "Завершено" (16 записей → перенесены в completed-tasks/)
+   - Обновлено примечание (ссылка на completed-tasks/, инструкция про /close-task)
 
 ## Next Steps
 
-1. Запустить BUILD-фазу:
-   - Создать `memory-bank/completed-tasks/` + `_template.md`
-   - Создать 17 completed-записей (данные из backlog + archive + reflection + git-история)
-   - Обновить `docs/common/memory-bank-usage.md` (описание каталога + процесс)
-   - Обновить `memory-bank/backlog.md` (роль как планировщик, упрощение секции "Завершено")
-2. Перейти к REFLECT.
+1. Запустить `/reflect` для обзора реализации
+2. После REFLECT: `/close-task` для финализации
 
 ## Context for AI
 
@@ -34,8 +36,6 @@ CREATIVE завершён. Ожидает `/build` в новом чате.
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
 - Task ID: completed-tasks-journal-001
 - Уровень: Level 2 — Simple Enhancement
-- Источник задачи: `memory-bank/backlog.md`, строки 11–28 (раздел «Memory Bank / Process»)
-- PLAN + CREATIVE завершены
-- Файлы для изменения: `completed-tasks/` (создать, 17 записей), `memory-bank-usage.md`, `backlog.md`
-- Текущее состояние: archive/ (6 файлов), reflection/ (10 файлов), backlog "Завершено" (16 записей + todo-app-001 без записи)
-- Даты создания задач восстановлены из git-истории (коммиты backlog.md в develop)
+- BUILD завершён, все файлы созданы и верифицированы
+- Новая команда /close-task создана для финализации задач
+- Процесс memory-bank-usage.md обновлён под новый workflow

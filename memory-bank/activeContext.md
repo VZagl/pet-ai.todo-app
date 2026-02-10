@@ -3,18 +3,21 @@
 ## Current Focus
 
 **Задача:** completed-tasks-journal-001 — Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
-**Режим:** VAN завершён → ожидает PLAN (в новом чате).  
+**Режим:** PLAN завершён → ожидает CREATIVE.  
 **Ветка:** `docs/completed-tasks-journal`
 
 ## Current Mode
 
-Ожидает `/plan` в новом чате.
+PLAN завершён. Ожидает `/creative` в новом чате.
 
 ## Next Steps
 
-1. Запустить `/plan` для проектирования структуры `completed-tasks/`.
-2. Принять решения: шаблон файла, дерево каталогов, связи completed ↔ archive ↔ reflection.
-3. Перейти к CREATIVE → BUILD → REFLECT.
+1. Запустить CREATIVE-фазу для принятия дизайн-решений:
+   - Организация каталога (плоский / по годам / по доменам)
+   - Шаблон файла (обязательные/опциональные поля)
+   - Связи completed ↔ archive ↔ reflection
+   - Ретроспективное заполнение (13 существующих задач)
+2. Перейти к BUILD → REFLECT.
 
 ## Context for AI
 
@@ -23,10 +26,6 @@
 - Task ID: completed-tasks-journal-001
 - Уровень: Level 2 — Simple Enhancement
 - Источник задачи: `memory-bank/backlog.md`, строки 11–28 (раздел «Memory Bank / Process»)
-- Подзадачи из бэклога:
-  - Создать каталог `memory-bank/completed-tasks/`
-  - Зафиксировать формат имён: `[task_id]_YYYYMMDD.md`
-  - Определить структуру файла (Task ID, дата, описание, ссылки archive/reflection)
-  - Провести PLAN/CREATIVE-фазу по дизайну
-  - Обновить `docs/common/memory-bank-usage.md`
-  - Обновить `memory-bank/backlog.md` (только планировщик, без истории)
+- PLAN завершён: требования определены (FR-01..06, NFR-01..03), вызовы задокументированы
+- Файлы для изменения: `completed-tasks/` (создать), `memory-bank-usage.md`, `backlog.md`
+- Текущее состояние: archive/ (6 файлов), reflection/ (10 файлов), backlog "Завершено" (13 записей)

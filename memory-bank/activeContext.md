@@ -3,21 +3,30 @@
 ## Current Focus
 
 **Задача:** completed-tasks-journal-001 — Ввести журнал завершённых задач в `memory-bank/completed-tasks/`  
-**Режим:** PLAN завершён → ожидает CREATIVE.  
+**Режим:** CREATIVE завершён → ожидает BUILD.  
 **Ветка:** `docs/completed-tasks-journal`
 
 ## Current Mode
 
-PLAN завершён. Ожидает `/creative` в новом чате.
+CREATIVE завершён. Ожидает `/build` в новом чате.
+
+## CREATIVE Decisions Summary
+
+1. **Организация:** YYYY/MM по дате создания задачи, дата завершения в имени файла (`[task_id]_YYYY-MM-DD.md`)
+2. **Шаблон:** Полный перенос задачи из backlog + метаданные (дата создания, завершения) + ссылки на archive/reflection
+3. **Связи:** Односторонние (completed → archive/reflection), поиск по task_id
+4. **Archive/reflection:** Остаются в текущих каталогах (пути зашиты в `.cursor/`)
+5. **Ретроспектива:** Полное заполнение всех 17 задач (16 из backlog + todo-app-001)
+6. **Документ:** `memory-bank/creative/creative-completed-tasks-journal.md`
 
 ## Next Steps
 
-1. Запустить CREATIVE-фазу для принятия дизайн-решений:
-   - Организация каталога (плоский / по годам / по доменам)
-   - Шаблон файла (обязательные/опциональные поля)
-   - Связи completed ↔ archive ↔ reflection
-   - Ретроспективное заполнение (13 существующих задач)
-2. Перейти к BUILD → REFLECT.
+1. Запустить BUILD-фазу:
+   - Создать `memory-bank/completed-tasks/` + `_template.md`
+   - Создать 17 completed-записей (данные из backlog + archive + reflection + git-история)
+   - Обновить `docs/common/memory-bank-usage.md` (описание каталога + процесс)
+   - Обновить `memory-bank/backlog.md` (роль как планировщик, упрощение секции "Завершено")
+2. Перейти к REFLECT.
 
 ## Context for AI
 
@@ -26,6 +35,7 @@ PLAN завершён. Ожидает `/creative` в новом чате.
 - Task ID: completed-tasks-journal-001
 - Уровень: Level 2 — Simple Enhancement
 - Источник задачи: `memory-bank/backlog.md`, строки 11–28 (раздел «Memory Bank / Process»)
-- PLAN завершён: требования определены (FR-01..06, NFR-01..03), вызовы задокументированы
-- Файлы для изменения: `completed-tasks/` (создать), `memory-bank-usage.md`, `backlog.md`
-- Текущее состояние: archive/ (6 файлов), reflection/ (10 файлов), backlog "Завершено" (13 записей)
+- PLAN + CREATIVE завершены
+- Файлы для изменения: `completed-tasks/` (создать, 17 записей), `memory-bank-usage.md`, `backlog.md`
+- Текущее состояние: archive/ (6 файлов), reflection/ (10 файлов), backlog "Завершено" (16 записей + todo-app-001 без записи)
+- Даты создания задач восстановлены из git-истории (коммиты backlog.md в develop)

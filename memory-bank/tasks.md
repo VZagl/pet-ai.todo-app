@@ -15,7 +15,7 @@
 
 - FR-01: Создать каталог `memory-bank/completed-tasks/`
 - FR-02: Спроектировать шаблон файла (обязательные/опциональные поля)
-- FR-03: Формат имён: `[task_id]_YYYYMMDD.md`
+- FR-03: Формат имён: `[task_id]_YYYY-MM-DD.md`
 - FR-04: Определить связи completed ↔ archive ↔ reflection
 - FR-05: Обновить `docs/common/memory-bank-usage.md` (описание каталога + процесс)
 - FR-06: Обновить `memory-bank/backlog.md` (роль как планировщик без истории)
@@ -66,7 +66,13 @@
 - [x] PLAN: Выбрать дерево каталогов — вынесено в CREATIVE (3 варианта)
 - [x] PLAN: Определить связи completed ↔ archive ↔ reflection — вынесено в CREATIVE
 - [x] PLAN: Зафиксировать вызовы и митигации (5 пунктов)
-- [ ] CREATIVE: Принять решения по дизайну структуры
+- [x] CREATIVE: Принять решения по дизайну структуры
+  - Организация: YYYY/MM по дате создания, дата завершения в имени файла
+  - Шаблон: полный перенос задачи из backlog + метаданные + дата создания + ссылки
+  - Связи: односторонние (completed → archive/reflection)
+  - Archive/reflection: остаются в текущих каталогах (пути зашиты в .cursor/)
+  - Ретроспектива: полное заполнение всех 17 задач (16 из backlog + todo-app-001)
+  - Документ: `memory-bank/creative/creative-completed-tasks-journal.md`
 - [ ] BUILD: Создать каталог и шаблон
 - [ ] BUILD: Обновить `docs/common/memory-bank-usage.md`
 - [ ] BUILD: Обновить `memory-bank/backlog.md`

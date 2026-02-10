@@ -2,27 +2,38 @@
 
 ## Current Task
 
-**Task ID:** (не задан)  
-**Источник:** (не задан)  
-**Уровень сложности:** (не задан)
+**Task ID:** completed-tasks-journal-001  
+**Источник:** `memory-bank/backlog.md` → Memory Bank / Process  
+**Уровень сложности:** Level 2 — Simple Enhancement  
+**Ветка:** `docs/completed-tasks-journal`
 
-**Проблема:** (кратко сформулировать)
+**Проблема:** В проекте нет единого журнала завершённых задач. История разбросана по `progress.md`, `backlog.md` и `tasks.md`. Нужно создать каталог `memory-bank/completed-tasks/` с чёткой структурой, шаблонами и связями с archive/reflection.
 
 **План решения:**
 
-1. (шаг 1)
-2. (шаг 2)
+1. PLAN: спроектировать структуру `completed-tasks/` (шаблон файла, дерево каталогов, связи)
+2. CREATIVE: выбрать оптимальный вариант организации (плоский vs по годам/месяцам vs по доменам)
+3. BUILD: создать каталог, шаблон, обновить `docs/common/memory-bank-usage.md` и `backlog.md`
+4. REFLECT: зафиксировать результаты
 
 **Файлы для изменения:**
 
-- [ ] (файл 1)
+- [ ] `memory-bank/completed-tasks/` — создать каталог
+- [ ] `docs/common/memory-bank-usage.md` — добавить описание каталога и процесс
+- [ ] `memory-bank/backlog.md` — зафиксировать роль как планировщик без истории
 
 **Чеклист:**
 
-- [ ] INIT: Задача определена, окружение готово
-- [ ] BUILD: Реализация и проверка
+- [x] INIT (VAN): Задача определена, ветка создана, окружение готово
+- [ ] PLAN: Спроектировать шаблон файла (обязательные/опциональные поля)
+- [ ] PLAN: Выбрать дерево каталогов (плоский, по годам, по доменам)
+- [ ] PLAN: Определить связи completed ↔ archive ↔ reflection
+- [ ] CREATIVE: Принять решения по дизайну структуры
+- [ ] BUILD: Создать каталог и шаблон
+- [ ] BUILD: Обновить `docs/common/memory-bank-usage.md`
+- [ ] BUILD: Обновить `memory-bank/backlog.md`
 - [ ] REFLECT: Обновить tasks.md, при необходимости reflection
-- [ ] REFLECT: Обновить backlog.md (если задача из backlog): отметить [x], перенести в раздел «✅ Завершено», добавить дату и ссылки (рефлексия/архив)
+- [ ] REFLECT: Закрыть задачу в backlog.md по правилам docs/common/memory-bank-usage.md
 
 ---
 
@@ -39,19 +50,3 @@
 
 **Reflection:** [memory-bank/reflection/reflection-perf-todo-filter-redundant.md](reflection/reflection-perf-todo-filter-redundant.md)  
 **Date:** 2026-02-04
-
----
-
-## Previous Completed Task
-
-**Task ID:** perf-todo-helpers-active-count  
-**Название:** Оптимизация подсчёта элементов: getActiveCount → reduce()
-
-**Status:** COMPLETED (без архива)
-
-- [x] Реализация (BUILD)
-- [x] Рефлексия (REFLECT)
-- [x] Задача перенесена в backlog → Завершено
-
-**Reflection:** [memory-bank/reflection/reflection-perf-todo-helpers-active-count.md](reflection/reflection-perf-todo-helpers-active-count.md)  
-**Date:** 2026-02-02

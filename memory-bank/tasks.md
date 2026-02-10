@@ -78,7 +78,7 @@
 - [x] BUILD: Обновить `docs/common/memory-bank-usage.md` (completed-tasks, /close-task, роль backlog)
 - [x] BUILD: Обновить `memory-bank/backlog.md` (удалить секцию "Завершено", обновить примечание)
 - [x] BUILD: Обновить `memory-bank/tasks.md` (отметить BUILD-шаги)
-- [ ] REFLECT: Обзор реализации, при необходимости reflection
+- [x] REFLECT: Обзор реализации, reflection создан (`memory-bank/reflection/reflection-completed-tasks-journal-001.md`)
 - [ ] CLOSE: Финализировать задачу командой /close-task
 
 ---

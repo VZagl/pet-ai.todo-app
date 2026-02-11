@@ -2,7 +2,56 @@
 
 ## Overall Progress
 
-Нет активной задачи. Memory Bank готов к следующей задаче.
+**Активная задача:** нет  
+**Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+
+## 2026-02-11: e2e-tests-001 — ЗАВЕРШЕНО
+
+**Запись:** [`memory-bank/completed-tasks/2025/12/e2e-tests-001_2026-02-11.md`](completed-tasks/2025/12/e2e-tests-001_2026-02-11.md)
+
+**Результат:** Задача полностью финализирована. Удалена из backlog. Memory Bank готов к следующей задаче.
+
+**Следующий шаг:** `/van` для инициализации новой задачи
+
+---
+
+## 2026-02-11: e2e-tests-001 — BUILD COMPLETE
+
+**Название:** Добавить E2E тесты (Playwright)  
+**Уровень:** Level 3 — Intermediate Feature  
+**Ветка:** `feat/e2e-tests-001`  
+**Статус:** BUILD завершён, 16/16 тестов passed (Chromium)
+
+**Созданные файлы:**
+
+- `e2e/fixtures.ts` — fixture с изоляцией localStorage
+- `e2e/todo-add.spec.ts` — добавление (валидная, пустая, длинная)
+- `e2e/todo-crud.spec.ts` — add → toggle → delete flow
+- `e2e/todo-filter.spec.ts` — фильтры Все/Активные/Завершенные
+- `e2e/todo-persistence.spec.ts` — localStorage, перезагрузка
+
+**Обновления:**
+
+- `docs/project/testing-guidelines.md` — раздел E2E (Playwright)
+- `memory-bank/tasks.md` — checklist выполнен
+
+**Команда запуска:** `pnpm test:e2e --project=chromium --workers=1` (Firefox/WebKit требуют `pnpm exec playwright install`)
+
+---
+
+## 2026-02-11: e2e-tests-001 — REFLECT COMPLETE
+
+**Рефлексия:** [`memory-bank/reflection/reflection-e2e-tests-001.md`](reflection/reflection-e2e-tests-001.md)
+
+**Ключевые выводы:**
+
+- Creative phase и выбор Playwright подтвердились на практике
+- Fixture с localStorage — простой и надёжный подход
+- Рекомендации: уточнять `playwright install` в документации, рассмотреть CI pipeline
+
+**Следующий шаг:** `/archive` для завершения задачи
+
+---
 
 ## 2026-02-10: completed-tasks-journal-001 — ЗАВЕРШЕНО
 

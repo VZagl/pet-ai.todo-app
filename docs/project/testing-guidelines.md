@@ -178,6 +178,40 @@ describe('Component', () => {
 
 **НЕ очищать** `cleanup()` — Testing Library делает это автоматически.
 
+## E2E тестирование (Playwright)
+
+- **Инструмент:** Playwright (`@playwright/test`)
+- **Сервер:** Vite dev (`pnpm dev`) — запускается автоматически через `webServer` в `playwright.config.ts`
+- **Браузеры:** Chromium, Firefox, WebKit (через `projects` в конфиге)
+
+### Скрипты E2E
+
+- `pnpm test:e2e` — headless-режим
+- `pnpm test:e2e:ui` — UI mode для отладки
+
+### Структура E2E тестов
+
+- Директория: `e2e/`
+- Файлы: `*.spec.ts`
+- Fixtures: `e2e/fixtures.ts` — изоляция localStorage между тестами
+
+### Правила E2E
+
+- **Русский язык** в `describe`, `it`, `test` — как в unit-тестах
+- **Селекторы:** предпочитать `getByRole` с `aria-label` (например, `getByRole('button', { name: 'Добавить задачу' })`)
+- **Константы:** использовать `STORAGE_KEY`, `MAX_TODO_LENGTH` из `src/constants/todo.ts`
+- **Изоляция:** каждый тест получает очищенный localStorage через fixture
+
+### Установка браузеров
+
+При первом запуске или после обновления Playwright:
+
+```bash
+pnpm exec playwright install
+```
+
+---
+
 ## Чеклист тестирования
 
 - [ ] Использован `within()` для ограничения области поиска

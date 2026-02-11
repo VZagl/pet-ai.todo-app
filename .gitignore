@@ -17,6 +17,10 @@ dist-ssr
 # Покрытие тестов
 coverage
 
+# Playwright E2E
+playwright-report/
+test-results/
+
 # Каталоги и файлы редакторов
 # .vscode/*
 !.vscode/extensions.json

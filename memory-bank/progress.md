@@ -4,7 +4,7 @@
 
 **Активная задача:** e2e-tests-001 — E2E тесты (Playwright)  
 **Ветка:** `feat/e2e-tests-001`  
-**Фаза:** BUILD → REFLECT
+**Фаза:** REFLECT COMPLETE → ARCHIVE
 
 ## 2026-02-11: e2e-tests-001 — BUILD COMPLETE
 
@@ -27,6 +27,20 @@
 - `memory-bank/tasks.md` — checklist выполнен
 
 **Команда запуска:** `pnpm test:e2e --project=chromium --workers=1` (Firefox/WebKit требуют `pnpm exec playwright install`)
+
+---
+
+## 2026-02-11: e2e-tests-001 — REFLECT COMPLETE
+
+**Рефлексия:** [`memory-bank/reflection/reflection-e2e-tests-001.md`](reflection/reflection-e2e-tests-001.md)
+
+**Ключевые выводы:**
+
+- Creative phase и выбор Playwright подтвердились на практике
+- Fixture с localStorage — простой и надёжный подход
+- Рекомендации: уточнять `playwright install` в документации, рассмотреть CI pipeline
+
+**Следующий шаг:** `/archive` для завершения задачи
 
 ---
 

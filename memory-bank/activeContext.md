@@ -2,20 +2,20 @@
 
 ## Current Focus
 
-e2e-tests-001 — Добавить E2E тесты (Playwright/Cypress)
+Memory Bank готов к следующей задаче.
 
 ## Current Mode
 
-VAN QA COMPLETE → BUILD
+ARCHIVE COMPLETE
 
 ## Next Steps
 
-1. **BUILD mode:** реализация E2E тестов по плану в tasks.md — todo-add, todo-crud, todo-filter, todo-persistence
+1. Использовать команду `/van` для инициализации новой задачи
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
-- User flows: добавление, toggle, удаление, фильтрация, персистентность (localStorage)
+- Последняя завершённая задача: e2e-tests-001 (E2E тесты Playwright) — 2026-02-11
 - Журнал завершённых задач: `memory-bank/completed-tasks/`
 - Команда `/close-task` для финализации задач

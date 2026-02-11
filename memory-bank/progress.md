@@ -2,9 +2,18 @@
 
 ## Overall Progress
 
-**Активная задача:** e2e-tests-001 — E2E тесты (Playwright)  
-**Ветка:** `feat/e2e-tests-001`  
-**Фаза:** REFLECT COMPLETE → ARCHIVE
+**Активная задача:** нет  
+**Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+
+## 2026-02-11: e2e-tests-001 — ARCHIVE COMPLETE
+
+**Архив:** [`memory-bank/archive/archive-e2e-tests-001.md`](archive/archive-e2e-tests-001.md)
+
+**Результат:** Задача полностью задокументирована и закрыта. Memory Bank сброшен для следующей задачи.
+
+**Следующий шаг:** `/van` для инициализации новой задачи
+
+---
 
 ## 2026-02-11: e2e-tests-001 — BUILD COMPLETE
 

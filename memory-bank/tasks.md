@@ -8,6 +8,7 @@
 
 ## Последняя завершённая задача (e2e-tests-001)
 
+**Запись:** [`memory-bank/completed-tasks/2025/12/e2e-tests-001_2026-02-11.md`](completed-tasks/2025/12/e2e-tests-001_2026-02-11.md)  
 **Архив:** [`memory-bank/archive/archive-e2e-tests-001.md`](archive/archive-e2e-tests-001.md)  
 **Рефлексия:** [`memory-bank/reflection/reflection-e2e-tests-001.md`](reflection/reflection-e2e-tests-001.md)
 
@@ -19,4 +20,4 @@
 **Название:** Добавить E2E тесты (Playwright)  
 **Дата:** 2026-02-11  
 **Статус:** ✅ COMPLETED & ARCHIVED  
-**Запись:** [`memory-bank/archive/archive-e2e-tests-001.md`](archive/archive-e2e-tests-001.md)
+**Запись:** [`memory-bank/completed-tasks/2025/12/e2e-tests-001_2026-02-11.md`](completed-tasks/2025/12/e2e-tests-001_2026-02-11.md)

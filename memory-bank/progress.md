@@ -5,11 +5,11 @@
 **Активная задача:** нет  
 **Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
 
-## 2026-02-11: e2e-tests-001 — ARCHIVE COMPLETE
+## 2026-02-11: e2e-tests-001 — ЗАВЕРШЕНО
 
-**Архив:** [`memory-bank/archive/archive-e2e-tests-001.md`](archive/archive-e2e-tests-001.md)
+**Запись:** [`memory-bank/completed-tasks/2025/12/e2e-tests-001_2026-02-11.md`](completed-tasks/2025/12/e2e-tests-001_2026-02-11.md)
 
-**Результат:** Задача полностью задокументирована и закрыта. Memory Bank сброшен для следующей задачи.
+**Результат:** Задача полностью финализирована. Удалена из backlog. Memory Bank готов к следующей задаче.
 
 **Следующий шаг:** `/van` для инициализации новой задачи
 

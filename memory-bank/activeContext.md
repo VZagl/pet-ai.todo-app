@@ -6,13 +6,12 @@ e2e-tests-001 — Добавить E2E тесты (Playwright/Cypress)
 
 ## Current Mode
 
-PLAN COMPLETE → CREATIVE
+CREATIVE COMPLETE → BUILD
 
 ## Next Steps
 
-1. **CREATIVE mode:** выбрать инструмент E2E (Playwright vs Cypress) — создать `memory-bank/creative/creative-e2e-tool-selection.md`
-2. **Technology validation:** установить выбранный инструмент, проверить Hello World
-3. **BUILD mode:** реализация E2E тестов по плану в tasks.md
+1. **Technology validation:** установить Playwright (`pnpm add -D @playwright/test`), проверить Hello World
+2. **BUILD mode:** реализация E2E тестов по плану в tasks.md (todo-add, todo-crud, todo-filter, todo-persistence)
 
 ## Context for AI
 

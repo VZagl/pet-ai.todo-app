@@ -6,7 +6,7 @@
 **Название:** Добавить E2E тесты (Playwright/Cypress)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/e2e-tests-001`  
-**Статус:** PLAN COMPLETE → CREATIVE
+**Статус:** CREATIVE COMPLETE → BUILD
 
 **Требования (из backlog):**
 
@@ -56,25 +56,26 @@
 5. **Валидация** — пустая строка, превышение 500 символов
 6. **Персистентность** — перезагрузка страницы, проверка сохранённых данных
 
-### 3. Creative Phase Required
+### 3. Creative Phase — ✅ COMPLETE
 
 **Выбор инструмента E2E: Playwright vs Cypress**
 
-Требуется CREATIVE mode для принятия решения по следующим критериям:
+**Решение:** Playwright  
+**Документ:** [`memory-bank/creative/creative-e2e-tool-selection.md`](creative/creative-e2e-tool-selection.md)
 
-- Совместимость с Vite + React
-- Поддержка multi-browser (Chrome, Firefox, WebKit)
-- DX (скорость, отладка, отчёты)
+Критерии учтены:
+
+- Совместимость с Vite + React (webServer)
+- Multi-browser (Chrome, Firefox, WebKit) — нативно
+- DX (trace, скриншоты, UI mode)
 - Интеграция в CI/CD
 - Соответствие `testing-guidelines.md` (русский язык в тестах)
-
-**Файл для Creative:** `memory-bank/creative/creative-e2e-tool-selection.md`
 
 ### 4. Технологическая валидация (Technology Validation)
 
 **Checkpoints:**
 
-- [ ] Выбран инструмент (Playwright или Cypress)
+- [x] Выбран инструмент: **Playwright**
 - [ ] Установка: `pnpm add -D @playwright/test` или `pnpm add -D cypress`
 - [ ] Конфигурация (playwright.config.ts / cypress.config.ts)
 - [ ] Hello World тест проходит
@@ -116,7 +117,7 @@
 
 ### 6. Зависимости
 
-- **E2E-инструмент:** Playwright или Cypress (решение в CREATIVE)
+- **E2E-инструмент:** Playwright (`@playwright/test`)
 - **Сервер:** Vite dev или preview (рекомендуется dev для скорости)
 - **Константы:** `STORAGE_KEY`, `MAX_TODO_LENGTH` из `src/constants/todo.ts`
 
@@ -135,7 +136,7 @@
 
 - [x] Initialization complete (VAN)
 - [x] Planning complete (PLAN)
-- [ ] Creative phase (выбор инструмента)
+- [x] Creative phase (выбор инструмента — Playwright)
 - [ ] Technology validation
 - [ ] Implementation (BUILD)
 

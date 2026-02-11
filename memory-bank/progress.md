@@ -2,16 +2,31 @@
 
 ## Overall Progress
 
-**Активная задача:** e2e-tests-001 — E2E тесты (Playwright/Cypress)  
+**Активная задача:** e2e-tests-001 — E2E тесты (Playwright)  
 **Ветка:** `feat/e2e-tests-001`  
-**Фаза:** VAN → PLAN
+**Фаза:** BUILD → REFLECT
 
-## 2026-02-11: e2e-tests-001 — В РАБОТЕ
+## 2026-02-11: e2e-tests-001 — BUILD COMPLETE
 
-**Название:** Добавить E2E тесты (Playwright/Cypress)  
+**Название:** Добавить E2E тесты (Playwright)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/e2e-tests-001`  
-**Статус:** VAN завершён, ожидает PLAN → CREATIVE → BUILD
+**Статус:** BUILD завершён, 16/16 тестов passed (Chromium)
+
+**Созданные файлы:**
+
+- `e2e/fixtures.ts` — fixture с изоляцией localStorage
+- `e2e/todo-add.spec.ts` — добавление (валидная, пустая, длинная)
+- `e2e/todo-crud.spec.ts` — add → toggle → delete flow
+- `e2e/todo-filter.spec.ts` — фильтры Все/Активные/Завершенные
+- `e2e/todo-persistence.spec.ts` — localStorage, перезагрузка
+
+**Обновления:**
+
+- `docs/project/testing-guidelines.md` — раздел E2E (Playwright)
+- `memory-bank/tasks.md` — checklist выполнен
+
+**Команда запуска:** `pnpm test:e2e --project=chromium --workers=1` (Firefox/WebKit требуют `pnpm exec playwright install`)
 
 ---
 

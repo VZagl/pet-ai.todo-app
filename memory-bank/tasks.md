@@ -138,18 +138,18 @@
 - [x] Planning complete (PLAN)
 - [x] Creative phase (выбор инструмента — Playwright)
 - [x] Technology validation (VAN QA)
-- [ ] Implementation (BUILD)
+- [x] Implementation (BUILD)
 
 **Implementation Checklist:**
 
 - [x] E2E-инструмент установлен и настроен
 - [x] Hello World тест проходит
-- [ ] todo-add.spec реализован
-- [ ] todo-crud.spec реализован
-- [ ] todo-filter.spec реализован
-- [ ] todo-persistence.spec реализован
-- [ ] Multi-browser конфигурация
-- [ ] testing-guidelines.md обновлён
+- [x] todo-add.spec реализован
+- [x] todo-crud.spec реализован
+- [x] todo-filter.spec реализован
+- [x] todo-persistence.spec реализован
+- [x] Multi-browser конфигурация (playwright.config.ts: chromium, firefox, webkit)
+- [x] testing-guidelines.md обновлён
 
 ---
 

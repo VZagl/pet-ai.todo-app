@@ -2,15 +2,17 @@
 
 ## Current Focus
 
-Нет активной задачи. Запустить `/van` для инициализации.
+e2e-tests-001 — Добавить E2E тесты (Playwright/Cypress)
 
 ## Current Mode
 
-IDLE — ожидание новой задачи
+VAN INITIALIZING → переход в PLAN
 
 ## Next Steps
 
-Запустить `/van [описание задачи]` для начала новой задачи.
+1. Перейти в PLAN mode: создать план задачи
+2. CREATIVE: выбрать инструмент (Playwright vs Cypress)
+3. BUILD: реализация E2E тестов
 
 ## Context for AI
 

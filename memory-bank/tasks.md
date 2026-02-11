@@ -2,7 +2,19 @@
 
 ## Current Task
 
-Нет активной задачи. Запустить `/van` для инициализации.
+**Task ID:** e2e-tests-001  
+**Название:** Добавить E2E тесты (Playwright/Cypress)  
+**Уровень:** Level 3 — Intermediate Feature  
+**Ветка:** `feat/e2e-tests-001`  
+**Статус:** VAN INITIALIZING → PLAN
+
+**Требования (из backlog):**
+
+- Полный user flow тестирование
+- Тестирование на разных браузерах
+- Автоматизация критических сценариев
+
+**Workflow:** VAN → PLAN → CREATIVE → BUILD → REFLECT
 
 ---
 

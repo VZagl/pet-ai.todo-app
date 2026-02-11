@@ -2,7 +2,18 @@
 
 ## Overall Progress
 
-Нет активной задачи. Memory Bank готов к следующей задаче.
+**Активная задача:** e2e-tests-001 — E2E тесты (Playwright/Cypress)  
+**Ветка:** `feat/e2e-tests-001`  
+**Фаза:** VAN → PLAN
+
+## 2026-02-11: e2e-tests-001 — В РАБОТЕ
+
+**Название:** Добавить E2E тесты (Playwright/Cypress)  
+**Уровень:** Level 3 — Intermediate Feature  
+**Ветка:** `feat/e2e-tests-001`  
+**Статус:** VAN завершён, ожидает PLAN → CREATIVE → BUILD
+
+---
 
 ## 2026-02-10: completed-tasks-journal-001 — ЗАВЕРШЕНО
 

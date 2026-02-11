@@ -6,7 +6,7 @@
 **Название:** Добавить E2E тесты (Playwright/Cypress)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/e2e-tests-001`  
-**Статус:** CREATIVE COMPLETE → BUILD
+**Статус:** VAN QA COMPLETE → BUILD
 
 **Требования (из backlog):**
 
@@ -76,11 +76,11 @@
 **Checkpoints:**
 
 - [x] Выбран инструмент: **Playwright**
-- [ ] Установка: `pnpm add -D @playwright/test` или `pnpm add -D cypress`
-- [ ] Конфигурация (playwright.config.ts / cypress.config.ts)
-- [ ] Hello World тест проходит
-- [ ] Запуск против `pnpm dev` или `pnpm build && pnpm preview`
-- [ ] Все зависимости совместимы с package.json
+- [x] Установка: `pnpm add -D @playwright/test`
+- [x] Конфигурация (`playwright.config.ts` с webServer)
+- [x] Hello World тест проходит (`e2e/hello.spec.ts`)
+- [x] Запуск против `pnpm dev` (webServer в конфиге)
+- [x] Все зависимости совместимы с package.json
 
 ### 5. План реализации
 
@@ -137,13 +137,13 @@
 - [x] Initialization complete (VAN)
 - [x] Planning complete (PLAN)
 - [x] Creative phase (выбор инструмента — Playwright)
-- [ ] Technology validation
+- [x] Technology validation (VAN QA)
 - [ ] Implementation (BUILD)
 
 **Implementation Checklist:**
 
-- [ ] E2E-инструмент установлен и настроен
-- [ ] Hello World тест проходит
+- [x] E2E-инструмент установлен и настроен
+- [x] Hello World тест проходит
 - [ ] todo-add.spec реализован
 - [ ] todo-crud.spec реализован
 - [ ] todo-filter.spec реализован

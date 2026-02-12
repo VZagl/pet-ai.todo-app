@@ -2,8 +2,18 @@
 
 ## Overall Progress
 
-**Активная задача:** app-redesign-001  
-**Фаза:** REFLECT COMPLETE — готов к ARCHIVE
+**Активная задача:** _(нет)_  
+**Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+
+## 2026-02-12: app-redesign-001 — ARCHIVE COMPLETE
+
+**Архив:** [`memory-bank/archive/archive-app-redesign-001.md`](archive/archive-app-redesign-001.md)
+
+**Итог:** Задача полностью задокументирована и архивирована. Редизайн pet.todo завершён: тёмная палитра Option B, фиксированный layout, динамический счётчик по фильтру. Unit и E2E тесты обновлены.
+
+**Следующий шаг:** `/van` для инициализации новой задачи или `/close-task` для финализации (completed-tasks, backlog)
+
+---
 
 ## 2026-02-12: app-redesign-001 — REFLECT COMPLETE
 
@@ -15,8 +25,6 @@
 - Flex layout (list-area overflow-y) — надёжный паттерн для sticky footer
 - E2E layout stability защищает от регрессии
 - Рекомендации: обновить style-guide при смене палитры, рассмотреть axe-core для accessibility
-
-**Следующий шаг:** `/archive` для завершения задачи
 
 ---
 

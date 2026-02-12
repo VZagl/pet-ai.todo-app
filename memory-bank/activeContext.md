@@ -6,14 +6,13 @@
 
 ## Current Mode
 
-PLAN — планирование задачи (Level 3–4)
+PLAN COMPLETE — переход в CREATIVE mode
 
 ## Next Steps
 
-1. **PLAN** — детальный план работ (компоненты, этапы, критерии)
-2. **CREATIVE** — дизайн-решения: mockup, визуальный язык, какие компоненты затронуть
-3. **VAN QA** — техническая валидация перед BUILD
-4. **BUILD** — реализация редизайна
+1. **CREATIVE** — создать `memory-bank/creative/creative-app-redesign.md`: mockup, визуальный язык, какие компоненты затронуть, формат счётчика
+2. **VAN QA** — техническая валидация перед BUILD
+3. **BUILD** — реализация редизайна по плану из tasks.md
 
 ## Context for AI
 

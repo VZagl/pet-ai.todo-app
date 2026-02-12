@@ -10,7 +10,7 @@ import './TodoApp.scss';
  * Управляет состоянием и координирует взаимодействие между компонентами
  */
 export const TodoApp = () => {
-	const { todos, activeCount, addTodo } = useTodoContext();
+	const { todos, activeCount, completedCount, addTodo } = useTodoContext();
 	const { filter, setFilter, filteredTodos } = useFilter(todos);
 
 	return (
@@ -23,8 +23,12 @@ export const TodoApp = () => {
 
 				<main className='todo-app__main'>
 					<TodoInput onAdd={addTodo} />
-					<TodoList todos={filteredTodos} />
-					{todos.length > 0 && <TodoFooter activeCount={activeCount} currentFilter={filter} onFilterChange={setFilter} />}
+					<div className='todo-app__list-area'>
+						<TodoList todos={filteredTodos} />
+					</div>
+					{todos.length > 0 && (
+						<TodoFooter activeCount={activeCount} completedCount={completedCount} currentFilter={filter} onFilterChange={setFilter} />
+					)}
 				</main>
 			</div>
 		</div>

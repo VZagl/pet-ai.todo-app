@@ -1,27 +1,31 @@
 // === Цвета ===
+// Option B — тёмный вариант (creative-app-redesign)
 
 // Primary
-$color-primary: #0d6efd;
-$color-primary-hover: #0b5ed7;
+$color-primary: #3b82f6;
+$color-primary-hover: #2563eb;
+/** Цвет текста на primary-фоне (кнопки, акценты) */
+$color-on-primary: #fff;
 
 // Semantic
 $color-danger: #dc3545;
 $color-success: #28a745; // для будущего использования
 
 // Text
-$color-text: #212529;
-$color-text-muted: #6c757d;
+$color-text: #f1f5f9;
+$color-text-muted: #94a3b8;
 
 // Borders
-$color-border: #dee2e6;
-$color-border-light: #e9ecef;
+$color-border: #334155;
+$color-border-light: #475569;
 
 // Backgrounds
-$color-bg: #ffffff;
-$color-bg-hover: #f8f9fa;
+$color-bg: #1e293b;
+$color-bg-hover: #334155;
+$color-surface: #0f172a;
 
 // Gradients
-$gradient-purple: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$gradient-bg: linear-gradient(180deg, #1e293b 0%, #17202e 100%);
 
 // === Spacing ===
 // Оставляем CSS custom properties для динамического использования
@@ -37,7 +41,7 @@ $space-10: 2.5rem;
 
 // === Border Radius ===
 $radius-sm: 0.25rem;
-$radius-md: 0.375rem;
+$radius-md: 0.5rem;
 $radius-lg: 0.5rem;
 
 // === Transitions ===

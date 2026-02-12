@@ -20,15 +20,20 @@
 	--space-8: 2rem;
 	--space-10: 2.5rem;
 
-	/* Цветовая палитра (оставляем для динамического использования) */
+	/* Цветовая палитра — Option B тёмный (creative-app-redesign) */
 	--color-primary: #{$color-primary};
 	--color-primary-hover: #{$color-primary-hover};
+	--color-on-primary: #{$color-on-primary};
 	--color-danger: #{$color-danger};
+	--color-success: #{$color-success};
 	--color-text: #{$color-text};
 	--color-text-muted: #{$color-text-muted};
 	--color-border: #{$color-border};
+	--color-border-light: #{$color-border-light};
 	--color-bg: #{$color-bg};
 	--color-bg-hover: #{$color-bg-hover};
+	--color-surface: #{$color-surface};
+	--color-accent: #{$color-primary};
 }
 
 body {

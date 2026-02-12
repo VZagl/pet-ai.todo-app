@@ -149,17 +149,16 @@ describe('TodoApp - Integration', () => {
 		await user.type(input, 'Task 3');
 		await user.click(addButton);
 
-		// Проверяем счетчик
+		// Проверяем счётчик (формат «X задач осталось из Y»)
 		const footer = screen.getByRole('contentinfo');
-		expect(within(footer).getByText('3')).toBeInTheDocument();
-		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+		expect(within(footer).getByText(/3 задачи осталось из 3/)).toBeInTheDocument();
 
 		// Отмечаем одну задачу
 		const checkbox = screen.getAllByRole('checkbox')[0];
 		await user.click(checkbox);
 
-		// Счетчик должен обновиться
-		expect(within(footer).getByText('2')).toBeInTheDocument();
+		// Счётчик должен обновиться: 2 активных из 3
+		expect(within(footer).getByText(/2 задачи осталось из 3/)).toBeInTheDocument();
 	});
 
 	it('счетчик отображается только в footer, а не в названиях задач', async () => {
@@ -178,21 +177,14 @@ describe('TodoApp - Integration', () => {
 			await user.click(screen.getByRole('button', { name: /добавить/i }));
 		}
 
-		// Позитивная проверка: число "5" есть в footer (счетчик)
+		// Позитивная проверка: счётчик «5 задач осталось из 5» в footer
 		const footer = screen.getByRole('contentinfo');
-		expect(within(footer).getByText('5')).toBeInTheDocument();
-		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
+		expect(within(footer).getByText(/5 задач осталось из 5/)).toBeInTheDocument();
 
-		// Негативная проверка: проверяем, что число "5" есть и в названии задачи, и в счетчике
-		// Используем регулярное выражение для поиска числа внутри текста
-		const allFives = screen.queryAllByText(/^5$|5/);
-		// Должно быть минимум 2 вхождения: одно в названии задачи, одно в счетчике
-		expect(allFives.length).toBeGreaterThanOrEqual(2);
-
-		// Проверяем, что счетчик действительно в footer, а не в списке задач
+		// Проверяем, что число "5" есть и в названии задачи, и в счётчике
 		const taskList = screen.getByRole('list');
 		expect(within(taskList).getByText(/5/)).toBeInTheDocument(); // В названии задачи
-		expect(within(footer).getByText('5')).toBeInTheDocument(); // В счетчике
+		expect(within(footer).getByText(/5 задач осталось/)).toBeInTheDocument(); // В счётчике
 		// Оба элемента существуют, но within() позволяет различить их
 	}, 10000);
 
@@ -209,20 +201,14 @@ describe('TodoApp - Integration', () => {
 		await user.type(input, 'Еще одна задача');
 		await user.click(screen.getByRole('button', { name: /добавить/i }));
 
-		// Позитивная проверка: текст "осталось" есть в footer (счетчик)
+		// Позитивная проверка: счётчик «2 задачи осталось из 2» в footer
 		const footer = screen.getByRole('contentinfo');
-		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument();
-		expect(within(footer).getByText('2')).toBeInTheDocument();
+		expect(within(footer).getByText(/2 задачи осталось из 2/)).toBeInTheDocument();
 
-		// Негативная проверка: проверяем, что слово "осталось" есть и в названии задачи, и в счетчике
-		const allRemaining = screen.queryAllByText(/осталось/i);
-		// Должно быть ровно 2 вхождения: одно в названии задачи, одно в счетчике
-		expect(allRemaining).toHaveLength(2);
-
-		// Проверяем, что счетчик действительно в footer, а не в списке задач
+		// «осталось» есть и в названии задачи, и в счётчике
 		const taskList = screen.getByRole('list');
 		expect(within(taskList).getByText(/осталось/i)).toBeInTheDocument(); // В названии задачи
-		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument(); // В счетчике
+		expect(within(footer).getByText(/осталось/i)).toBeInTheDocument(); // В счётчике
 		// Оба элемента существуют, но within() позволяет различить их
 	});
 
@@ -240,6 +226,9 @@ describe('TodoApp - Integration', () => {
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		await user.type(input, 'Persistent task');
 		await user.click(screen.getByRole('button', { name: /добавить/i }));
+
+		// Ждём появления задачи (гарантирует применение state и effect)
+		expect(await screen.findByText('Persistent task')).toBeInTheDocument();
 
 		// Проверяем localStorage
 		const stored = localStorage.getItem(STORAGE_KEY);

@@ -5,6 +5,7 @@ import type { i_todo } from '../types/todo';
 export interface i_todoContextValue {
 	todos: i_todo[];
 	activeCount: number;
+	completedCount: number;
 	addTodo: (text: string) => void;
 	toggleTodo: (id: string) => void;
 	deleteTodo: (id: string) => void;

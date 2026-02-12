@@ -22,7 +22,7 @@
 @mixin card($padding: $space-4, $radius: $radius-lg) {
 	box-shadow: $shadow-sm;
 	border-radius: $radius;
-	background-color: $color-bg;
+	background-color: $color-surface;
 	padding: $padding;
 }
 

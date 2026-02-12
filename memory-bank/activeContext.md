@@ -6,13 +6,12 @@
 
 ## Current Mode
 
-PLAN COMPLETE — переход в CREATIVE mode
+CREATIVE COMPLETE — переход в VAN QA / BUILD
 
 ## Next Steps
 
-1. **CREATIVE** — создать `memory-bank/creative/creative-app-redesign.md`: mockup, визуальный язык, какие компоненты затронуть, формат счётчика
-2. **VAN QA** — техническая валидация перед BUILD
-3. **BUILD** — реализация редизайна по плану из tasks.md
+1. **VAN QA** (опционально) — техническая валидация перед BUILD
+2. **BUILD** — реализация редизайна по плану из tasks.md и решениям из `memory-bank/creative/creative-app-redesign.md`
 
 ## Context for AI
 

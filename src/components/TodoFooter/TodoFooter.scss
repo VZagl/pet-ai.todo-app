@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .todo-footer {
+	flex-shrink: 0;
 	display: flex;
 	flex-direction: column; // Mobile: начинаем с вертикального layout
 	align-items: stretch;
@@ -12,16 +13,10 @@
 	&__counter {
 		display: flex;
 		align-items: baseline;
-		justify-content: center; // Mobile: центрируем счетчик
+		justify-content: center; // Mobile: центрируем счётчик
 		gap: $space-1;
 		color: $color-text-muted;
 		font-size: $font-size-sm;
-	}
-
-	&__count {
-		color: $color-primary;
-		font-weight: $font-weight-semibold;
-		font-size: $font-size-lg;
 	}
 
 	&__label {

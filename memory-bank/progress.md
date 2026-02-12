@@ -2,8 +2,79 @@
 
 ## Overall Progress
 
-**Активная задача:** нет  
+**Активная задача:** _(нет)_  
 **Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+
+## 2026-02-12: app-redesign-001 — ЗАВЕРШЕНО
+
+**Запись:** [`memory-bank/completed-tasks/2026/02/app-redesign-001_2026-02-12.md`](completed-tasks/2026/02/app-redesign-001_2026-02-12.md)  
+**Архив:** [`memory-bank/archive/archive-app-redesign-001.md`](archive/archive-app-redesign-001.md)
+
+**Итог:** Задача полностью финализирована. Удалена из backlog. Memory Bank готов к следующей задаче.
+
+**Следующий шаг:** `/van` для инициализации новой задачи
+
+---
+
+## 2026-02-12: app-redesign-001 — REFLECT COMPLETE
+
+**Рефлексия:** [`memory-bank/reflection/reflection-app-redesign-001.md`](reflection/reflection-app-redesign-001.md)
+
+**Ключевые выводы:**
+
+- Creative phase и Option B подтвердились на практике
+- Flex layout (list-area overflow-y) — надёжный паттерн для sticky footer
+- E2E layout stability защищает от регрессии
+- Рекомендации: обновить style-guide при смене палитры, рассмотреть axe-core для accessibility
+
+---
+
+## 2026-02-12: app-redesign-001 — BUILD COMPLETE
+
+**Название:** Редизайн оформления приложения  
+**Уровень:** Level 3–4 — Intermediate Feature / Complex System  
+**Ветка:** `feat/app-redesign-001`  
+**Статус:** Реализация завершена
+
+**Выполнено:**
+
+- **Phase 1:** Обновлены `_variables.scss` (палитра Option B тёмный), `index.scss` (:root переменные)
+- **Phase 2:** Layout — App 100vh, TodoApp flex column, TodoList scroll-only
+- **Phase 3:** TodoApp — фон градиент, заголовок, subtitle
+- **Phase 4:** TodoInput, TodoList, TodoItem — стили под тёмную тему
+- **Phase 5:** TodoFooter — новая логика счётчика по фильтру (completedCount), TodoFilter — стили
+- **Phase 6:** Unit TodoFooter обновлены, E2E `todo-layout.spec.ts` добавлен
+- **Phase 7:** vitest.config — exclude node_modules, include src
+
+**Ключевые файлы:**
+
+- `src/styles/_variables.scss` — тёмная палитра
+- `src/app.scss` — корневой layout 100vh
+- `src/components/TodoApp/TodoApp.tsx` — completedCount, list-area wrapper
+- `src/components/TodoFooter/TodoFooter.tsx` — getCounterText по фильтру
+- `src/contexts/todo-context.ts`, `src/hooks/use-todos.ts` — completedCount
+- `e2e/todo-layout.spec.ts` — E2E layout stability
+
+**Следующий шаг:** `/reflect` для рефлексии по BUILD
+
+---
+
+## 2026-02-12: app-redesign-001 — VAN INIT
+
+**Название:** Редизайн оформления приложения  
+**Уровень:** Level 3–4 — Intermediate Feature / Complex System  
+**Ветка:** `feat/app-redesign-001`  
+**Статус:** Инициализация завершена
+
+**Выполнено:**
+
+- Определена сложность (Level 3–4)
+- Создана ветка feat/app-redesign-001
+- Обновлены tasks.md, activeContext.md, progress.md
+
+**Следующий шаг:** PLAN mode — детальное планирование задачи
+
+---
 
 ## 2026-02-11: e2e-tests-001 — ЗАВЕРШЕНО
 

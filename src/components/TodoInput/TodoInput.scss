@@ -11,10 +11,11 @@
 
 	&__field {
 		flex: 1;
+		height: 48px;
 		@include transition(border-color, box-shadow);
 		border: 2px solid $color-border;
-		border-radius: $radius-lg;
-		background-color: $color-bg;
+		border-radius: $radius-md;
+		background-color: $color-surface;
 		padding: $space-3 $space-4;
 		color: $color-text;
 		font-size: $font-size-base;
@@ -38,13 +39,14 @@
 	}
 
 	&__button {
+		height: 48px;
 		@include transition(background-color, transform);
 		@include button-hover($color-primary, $color-primary-hover);
 		cursor: pointer;
 		border: none;
-		border-radius: $radius-lg;
+		border-radius: $radius-md;
 		padding: $space-3 $space-6;
-		color: $color-bg;
+		color: $color-on-primary;
 		font-weight: $font-weight-medium;
 		font-size: $font-size-base;
 		white-space: nowrap;
@@ -56,7 +58,7 @@
 		&:disabled {
 			opacity: 0.65;
 			cursor: not-allowed;
-			background-color: $color-text-muted;
+			background-color: $color-border;
 		}
 
 		&:focus {

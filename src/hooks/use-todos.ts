@@ -62,12 +62,14 @@ export function useTodos() {
 		[setTodos],
 	);
 
-	// Подсчет активных задач
+	// Подсчет активных и завершённых задач
 	const activeCount = getActiveCount(todos);
+	const completedCount = todos.length - activeCount;
 
 	return {
 		todos,
 		activeCount,
+		completedCount,
 		addTodo,
 		toggleTodo,
 		deleteTodo,

@@ -2,8 +2,25 @@
 
 ## Overall Progress
 
-**Активная задача:** нет  
-**Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+**Активная задача:** app-redesign-001  
+**Фаза:** VAN INIT COMPLETE — переход в PLAN mode
+
+## 2026-02-12: app-redesign-001 — VAN INIT
+
+**Название:** Редизайн оформления приложения  
+**Уровень:** Level 3–4 — Intermediate Feature / Complex System  
+**Ветка:** `feat/app-redesign-001`  
+**Статус:** Инициализация завершена
+
+**Выполнено:**
+
+- Определена сложность (Level 3–4)
+- Создана ветка feat/app-redesign-001
+- Обновлены tasks.md, activeContext.md, progress.md
+
+**Следующий шаг:** PLAN mode — детальное планирование задачи
+
+---
 
 ## 2026-02-11: e2e-tests-001 — ЗАВЕРШЕНО
 

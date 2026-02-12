@@ -5,13 +5,14 @@
 **Активная задача:** _(нет)_  
 **Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
 
-## 2026-02-12: app-redesign-001 — ARCHIVE COMPLETE
+## 2026-02-12: app-redesign-001 — ЗАВЕРШЕНО
 
+**Запись:** [`memory-bank/completed-tasks/2026/02/app-redesign-001_2026-02-12.md`](completed-tasks/2026/02/app-redesign-001_2026-02-12.md)  
 **Архив:** [`memory-bank/archive/archive-app-redesign-001.md`](archive/archive-app-redesign-001.md)
 
-**Итог:** Задача полностью задокументирована и архивирована. Редизайн pet.todo завершён: тёмная палитра Option B, фиксированный layout, динамический счётчик по фильтру. Unit и E2E тесты обновлены.
+**Итог:** Задача полностью финализирована. Удалена из backlog. Memory Bank готов к следующей задаче.
 
-**Следующий шаг:** `/van` для инициализации новой задачи или `/close-task` для финализации (completed-tasks, backlog)
+**Следующий шаг:** `/van` для инициализации новой задачи
 
 ---
 

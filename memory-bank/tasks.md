@@ -12,10 +12,11 @@ _(Нет активной задачи — используйте `/van` для 
 **Название:** Редизайн оформления приложения  
 **Дата:** 2026-02-12  
 **Статус:** ✅ COMPLETED & ARCHIVED  
+**Запись:** [`memory-bank/completed-tasks/2026/02/app-redesign-001_2026-02-12.md`](completed-tasks/2026/02/app-redesign-001_2026-02-12.md)  
 **Архив:** [`memory-bank/archive/archive-app-redesign-001.md`](archive/archive-app-redesign-001.md)  
 **Рефлексия:** [`memory-bank/reflection/reflection-app-redesign-001.md`](reflection/reflection-app-redesign-001.md)
 
-**Следующий шаг:** `/van` для инициализации новой задачи или `/close-task` для финализации (создание записи в completed-tasks, удаление из backlog).
+**Следующий шаг:** `/van` для инициализации новой задачи.
 
 ---
 

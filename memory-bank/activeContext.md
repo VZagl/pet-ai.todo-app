@@ -6,12 +6,11 @@
 
 ## Current Mode
 
-CREATIVE COMPLETE — переход в VAN QA / BUILD
+VAN QA COMPLETE — готов к BUILD
 
 ## Next Steps
 
-1. **VAN QA** (опционально) — техническая валидация перед BUILD
-2. **BUILD** — реализация редизайна по плану из tasks.md и решениям из `memory-bank/creative/creative-app-redesign.md`
+1. **BUILD** — реализация редизайна по плану из tasks.md и решениям из `memory-bank/creative/creative-app-redesign.md`
 
 ## Context for AI
 

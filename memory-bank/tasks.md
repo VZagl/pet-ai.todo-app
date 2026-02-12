@@ -6,7 +6,7 @@
 **Название:** Редизайн оформления приложения  
 **Уровень:** Level 3–4 — Intermediate Feature / Complex System  
 **Ветка:** `feat/app-redesign-001`  
-**Статус:** 🟡 BUILD COMPLETE — готов к REFLECT
+**Статус:** 🟢 REFLECT COMPLETE — готов к ARCHIVE
 
 ### Чеклист
 
@@ -16,6 +16,7 @@
 - [x] CREATIVE: дизайн-решения (creative-app-redesign)
 - [x] VAN QA: техническая валидация
 - [x] BUILD: реализация
+- [x] REFLECT: рефлексия (reflection-app-redesign-001)
 
 ### Области для рассмотрения
 
@@ -26,7 +27,7 @@
 ### Ссылки
 
 - **Backlog:** [`memory-bank/backlog.md`](../backlog.md) — App Redesign
-- **CREATIVE (ожидается):** `memory-bank/creative/creative-app-redesign.md`
+- **CREATIVE:** `memory-bank/creative/creative-app-redesign.md` ✅
 
 ---
 
@@ -158,9 +159,11 @@
 
 ---
 
-## NEXT RECOMMENDED MODE: BUILD MODE
+## NEXT RECOMMENDED MODE: ARCHIVE MODE
 
-**Следующий шаг:** VAN QA (опционально) → выполнить команду `/build` для реализации редизайна по плану и решениям из `memory-bank/creative/creative-app-redesign.md`.
+**Следующий шаг:** Выполнить команду `/archive` для завершения задачи.
+
+**Рефлексия:** [`memory-bank/reflection/reflection-app-redesign-001.md`](reflection/reflection-app-redesign-001.md)
 
 ---
 

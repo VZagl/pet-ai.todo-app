@@ -1,47 +1,41 @@
-import React, { memo } from 'react';
-import type { Todo } from '../../types/todo';
-import './TodoItem.css';
+import { memo } from 'react';
+import { useTodoContext } from '../../hooks/use-todo-context';
+import type { i_todo } from '../../types/todo';
+import './TodoItem.scss';
 
-interface TodoItemProps {
+interface i_todoItemProps {
 	/** Объект задачи */
-	todo: Todo;
-	/** Обработчик переключения статуса */
-	onToggle: (id: string) => void;
-	/** Обработчик удаления */
-	onDelete: (id: string) => void;
+	todo: i_todo;
 }
 
 /**
  * Компонент элемента задачи
  * Отображает чекбокс, текст задачи и кнопку удаления
  */
-export const TodoItem = memo(({ todo, onToggle, onDelete }: TodoItemProps) => {
+export const TodoItem = memo(({ todo }: i_todoItemProps) => {
+	const { toggleTodo, deleteTodo } = useTodoContext();
+
 	const handleToggle = () => {
-		onToggle(todo.id);
+		toggleTodo(todo.id);
 	};
 
 	const handleDelete = () => {
-		onDelete(todo.id);
+		deleteTodo(todo.id);
 	};
 
 	return (
 		<li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
-			<div className="todo-item__content">
+			<div className='todo-item__content'>
 				<input
-					type="checkbox"
-					className="todo-item__checkbox"
+					type='checkbox'
+					className='todo-item__checkbox'
 					checked={todo.completed}
 					onChange={handleToggle}
 					aria-label={`Отметить задачу "${todo.text}" как ${todo.completed ? 'невыполненную' : 'выполненную'}`}
 				/>
-				<span className="todo-item__text">{todo.text}</span>
+				<span className='todo-item__text'>{todo.text}</span>
 			</div>
-			<button
-				className="todo-item__delete"
-				onClick={handleDelete}
-				aria-label={`Удалить задачу "${todo.text}"`}
-				type="button"
-			>
+			<button className='todo-item__delete' onClick={handleDelete} aria-label={`Удалить задачу "${todo.text}"`} type='button'>
 				×
 			</button>
 		</li>

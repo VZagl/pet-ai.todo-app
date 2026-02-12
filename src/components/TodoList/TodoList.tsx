@@ -1,39 +1,29 @@
-import React from 'react';
-import type { Todo } from '../../types/todo';
+import type { i_todo } from '../../types/todo';
 import { TodoItem } from '../TodoItem/TodoItem';
-import './TodoList.css';
+import './TodoList.scss';
 
-interface TodoListProps {
+interface i_todoListProps {
 	/** Массив задач для отображения */
-	todos: Todo[];
-	/** Обработчик переключения статуса задачи */
-	onToggle: (id: string) => void;
-	/** Обработчик удаления задачи */
-	onDelete: (id: string) => void;
+	todos: i_todo[];
 }
 
 /**
  * Компонент списка задач
  * Отображает список TodoItem или сообщение о пустом списке
  */
-export const TodoList = ({ todos, onToggle, onDelete }: TodoListProps) => {
+export const TodoList = ({ todos }: i_todoListProps) => {
 	if (todos.length === 0) {
 		return (
-			<div className="todo-list-empty">
-				<p className="todo-list-empty__message">Нет задач для отображения</p>
+			<div className='todo-list-empty'>
+				<p className='todo-list-empty__message'>Нет задач для отображения</p>
 			</div>
 		);
 	}
 
 	return (
-		<ul className="todo-list">
+		<ul className='todo-list'>
 			{todos.map((todo) => (
-				<TodoItem
-					key={todo.id}
-					todo={todo}
-					onToggle={onToggle}
-					onDelete={onDelete}
-				/>
+				<TodoItem key={todo.id} todo={todo} />
 			))}
 		</ul>
 	);

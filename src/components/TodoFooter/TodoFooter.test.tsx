@@ -1,383 +1,200 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
-import { TodoFooter } from './TodoFooter';
+import { describe, expect, it, vi } from 'vitest';
 import type { FilterType } from '../../types/todo';
+import { TodoFooter } from './TodoFooter';
 
 describe('TodoFooter', () => {
 	const mockOnFilterChange = vi.fn();
+
+	/** Props по умолчанию для TodoFooter (формат по фильтру) */
+	const getProps = (overrides?: { activeCount?: number; completedCount?: number; currentFilter?: FilterType }) => ({
+		activeCount: 5,
+		completedCount: 7,
+		currentFilter: 'all' as FilterType,
+		onFilterChange: mockOnFilterChange,
+		...overrides,
+	});
 
 	beforeEach(() => {
 		mockOnFilterChange.mockClear();
 	});
 
 	describe('Rendering', () => {
-		it('should render footer element', () => {
-			render(
-				<TodoFooter
-					activeCount={0}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('должен отрендерить элемент footer', () => {
+			render(<TodoFooter {...getProps({ activeCount: 0, completedCount: 0 })} />);
 
 			const footer = screen.getByRole('contentinfo');
 			expect(footer).toBeInTheDocument();
 			expect(footer).toHaveClass('todo-footer');
 		});
 
-		it('should render counter and filter components', () => {
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('должен отрендерить счётчик и кнопки фильтров', () => {
+			render(<TodoFooter {...getProps()} />);
 
-			// Counter
-			expect(screen.getByText('5')).toBeInTheDocument();
-
-			// Filter buttons
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/5 задач осталось из 12/)).toBeInTheDocument();
 			expect(screen.getByText('Все')).toBeInTheDocument();
 			expect(screen.getByText('Активные')).toBeInTheDocument();
 			expect(screen.getByText('Завершенные')).toBeInTheDocument();
 		});
 	});
 
-	describe('Counter display', () => {
-		it('should display 0 active tasks', () => {
-			render(
-				<TodoFooter
-					activeCount={0}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('0')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+	describe('Отображение счётчика', () => {
+		it('фильтр all: формат «X задач осталось из Y»', () => {
+			render(<TodoFooter {...getProps({ activeCount: 5, completedCount: 7 })} />);
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/5 задач осталось из 12/)).toBeInTheDocument();
 		});
 
-		it('should display 1 active task with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={1}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('фильтр all: склонение задача/задачи/задач', () => {
+			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
+			expect(screen.getByText(/1 задача осталось из 1/)).toBeInTheDocument();
 
-			expect(screen.getByText('1')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			rerender(<TodoFooter {...getProps({ activeCount: 2, completedCount: 1 })} />);
+			expect(screen.getByText(/2 задачи осталось из 3/)).toBeInTheDocument();
+
+			rerender(<TodoFooter {...getProps({ activeCount: 5, completedCount: 3 })} />);
+			expect(screen.getByText(/5 задач осталось из 8/)).toBeInTheDocument();
 		});
 
-		it('should display 2 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={2}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('2')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+		it('фильтр active: формат «X задач осталось»', () => {
+			render(<TodoFooter {...getProps({ activeCount: 5, completedCount: 7, currentFilter: 'active' })} />);
+			expect(screen.getByText(/5 задач осталось/)).toBeInTheDocument();
+			expect(screen.queryByText(/из 12/)).not.toBeInTheDocument();
 		});
 
-		it('should display 3 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={3}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('3')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
+		it('фильтр completed: формат «X задач завершено»', () => {
+			render(<TodoFooter {...getProps({ activeCount: 5, completedCount: 7, currentFilter: 'completed' })} />);
+			expect(screen.getByText(/7 задач завершено/)).toBeInTheDocument();
 		});
 
-		it('should display 4 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={4}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('фильтр completed: склонение завершено', () => {
+			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />);
+			expect(screen.getByText(/1 задача завершено/)).toBeInTheDocument();
 
-			expect(screen.getByText('4')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
-		});
-
-		it('should display 5 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('5')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
-		});
-
-		it('should display 10 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={10}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('10')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
-		});
-
-		it('should display 21 active task with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={21}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('21')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
-		});
-
-		it('should display 22 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={22}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('22')).toBeInTheDocument();
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
-		});
-
-		it('should display 25 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={25}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('25')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
-		});
-
-		it('should display 100 active tasks with correct word form', () => {
-			render(
-				<TodoFooter
-					activeCount={100}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('100')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			rerender(<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />);
+			expect(screen.getByText(/2 задачи завершено/)).toBeInTheDocument();
 		});
 	});
 
-	describe('Filter integration', () => {
-		it('should pass currentFilter to TodoFilter', () => {
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="active"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
+	describe('Интеграция фильтра', () => {
+		it('передаёт currentFilter в TodoFilter', () => {
+			render(<TodoFooter {...getProps({ currentFilter: 'active' })} />);
 			const activeButton = screen.getByText('Активные');
 			expect(activeButton).toHaveClass('todo-filter__button--active');
 		});
 
-		it('should pass onFilterChange to TodoFilter', async () => {
+		it('вызывает onFilterChange при клике', async () => {
 			const user = userEvent.setup();
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
+			render(<TodoFooter {...getProps()} />);
 			const activeButton = screen.getByText('Активные');
 			await user.click(activeButton);
-
 			expect(mockOnFilterChange).toHaveBeenCalledTimes(1);
 			expect(mockOnFilterChange).toHaveBeenCalledWith('active');
 		});
 
-		it('should update when filter changes', () => {
-			const { rerender } = render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('обновляет активную кнопку при смене фильтра', () => {
+			const { rerender } = render(<TodoFooter {...getProps()} />);
+			expect(screen.getByText('Все')).toHaveClass('todo-filter__button--active');
 
-			let allButton = screen.getByText('Все');
-			expect(allButton).toHaveClass('todo-filter__button--active');
-
-			rerender(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="completed"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			allButton = screen.getByText('Все');
-			const completedButton = screen.getByText('Завершенные');
-
-			expect(allButton).not.toHaveClass('todo-filter__button--active');
-			expect(completedButton).toHaveClass('todo-filter__button--active');
+			rerender(<TodoFooter {...getProps({ currentFilter: 'completed' })} />);
+			expect(screen.getByText('Все')).not.toHaveClass('todo-filter__button--active');
+			expect(screen.getByText('Завершенные')).toHaveClass('todo-filter__button--active');
 		});
 	});
 
-	describe('Counter updates', () => {
-		it('should update counter when activeCount changes', () => {
-			const { rerender } = render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+	describe('Обновление счётчика', () => {
+		it('обновляет текст при изменении activeCount/completedCount', () => {
+			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 5, completedCount: 7 })} />);
+			expect(screen.getByText(/5 задач осталось из 12/)).toBeInTheDocument();
 
-			expect(screen.getByText('5')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
-
-			rerender(
-				<TodoFooter
-					activeCount={1}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('1')).toBeInTheDocument();
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			rerender(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
+			expect(screen.getByText(/1 задача осталось из 1/)).toBeInTheDocument();
 		});
 
-		it('should update word form when activeCount changes', () => {
-			const { rerender } = render(
-				<TodoFooter
-					activeCount={1}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
+		it('обновляет склонение при изменении count', () => {
+			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
+			expect(screen.getByText(/задача осталось/)).toBeInTheDocument();
 
-			expect(screen.getByText('задача осталось')).toBeInTheDocument();
+			rerender(<TodoFooter {...getProps({ activeCount: 2, completedCount: 1 })} />);
+			expect(screen.getByText(/задачи осталось/)).toBeInTheDocument();
 
-			rerender(
-				<TodoFooter
-					activeCount={2}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('задачи осталось')).toBeInTheDocument();
-
-			rerender(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+			rerender(<TodoFooter {...getProps({ activeCount: 5, completedCount: 0 })} />);
+			expect(screen.getByText(/задач осталось/)).toBeInTheDocument();
 		});
 	});
 
-	describe('Edge cases', () => {
-		it('should handle negative activeCount gracefully', () => {
-			render(
-				<TodoFooter
-					activeCount={-1}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('-1')).toBeInTheDocument();
+	describe('Граничные случаи', () => {
+		it('обрабатывает отрицательный activeCount', () => {
+			render(<TodoFooter {...getProps({ activeCount: -1, completedCount: 0 })} />);
+			expect(screen.getByText(/-1 задач осталось из -1/)).toBeInTheDocument();
 		});
 
-		it('should handle very large activeCount', () => {
-			render(
-				<TodoFooter
-					activeCount={9999}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
-			expect(screen.getByText('9999')).toBeInTheDocument();
-			expect(screen.getByText('задач осталось')).toBeInTheDocument();
+		it('обрабатывает большое число', () => {
+			render(<TodoFooter {...getProps({ activeCount: 9999, completedCount: 0 })} />);
+			expect(screen.getByText(/9999 задач осталось из 9999/)).toBeInTheDocument();
 		});
 
-		it('should work with all filter types', () => {
+		it('работает для всех типов фильтров', () => {
 			const filters: FilterType[] = ['all', 'active', 'completed'];
-
 			filters.forEach((filter) => {
-				const { unmount } = render(
-					<TodoFooter
-						activeCount={5}
-						currentFilter={filter}
-						onFilterChange={mockOnFilterChange}
-					/>
-				);
-
-				expect(screen.getByText('5')).toBeInTheDocument();
-
+				const { unmount } = render(<TodoFooter {...getProps({ currentFilter: filter })} />);
+				const footer = screen.getByRole('contentinfo');
+				expect(within(footer).getByText(/осталось|завершено/)).toBeInTheDocument();
 				unmount();
 			});
 		});
 	});
 
 	describe('Accessibility', () => {
-		it('should have semantic footer element', () => {
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
+		it('использует семантический элемент footer', () => {
+			render(<TodoFooter {...getProps()} />);
 			const footer = screen.getByRole('contentinfo');
 			expect(footer.tagName).toBe('FOOTER');
 		});
 
-		it('should have accessible filter buttons', () => {
-			render(
-				<TodoFooter
-					activeCount={5}
-					currentFilter="all"
-					onFilterChange={mockOnFilterChange}
-				/>
-			);
-
+		it('имеет доступные кнопки фильтров', () => {
+			render(<TodoFooter {...getProps()} />);
 			expect(screen.getByLabelText('Показать все задачи')).toBeInTheDocument();
 			expect(screen.getByLabelText('Показать активные задачи')).toBeInTheDocument();
 			expect(screen.getByLabelText('Показать завершенные задачи')).toBeInTheDocument();
+		});
+	});
+
+	describe('Проверка отсутствия ложноположительных совпадений', () => {
+		it('счётчик отображается в footer при конфликтном контенте', () => {
+			render(
+				<div>
+					<div data-testid='other-content'>Задача номер 5</div>
+					<TodoFooter {...getProps({ activeCount: 5, completedCount: 7 })} />
+				</div>,
+			);
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/5 задач осталось из 12/)).toBeInTheDocument();
+		});
+
+		it('текст "осталось" отображается в footer при конфликтном контенте', () => {
+			render(
+				<div>
+					<div data-testid='other-content'>Задача, которая осталось невыполненной</div>
+					<TodoFooter {...getProps({ activeCount: 2, completedCount: 1 })} />
+				</div>,
+			);
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/2 задачи осталось из 3/)).toBeInTheDocument();
+		});
+
+		it('счётчик с числом 3 отображается в footer при конфликтном контенте', () => {
+			render(
+				<div>
+					<div data-testid='task-1'>Задача 3</div>
+					<div data-testid='task-2'>Task номер 3</div>
+					<TodoFooter {...getProps({ activeCount: 3, completedCount: 0 })} />
+				</div>,
+			);
+			const footer = screen.getByRole('contentinfo');
+			expect(within(footer).getByText(/3 задачи осталось из 3/)).toBeInTheDocument();
 		});
 	});
 });

@@ -1,0 +1,63 @@
+@use './variables' as *;
+
+// === Focus Mixin ===
+@mixin focus-outline($color: $color-primary) {
+	outline: 2px solid $color;
+	outline-offset: 2px;
+}
+
+// === Focus Shadow Mixin ===
+@mixin focus-shadow($color: $color-primary, $opacity: 0.25) {
+	outline: none;
+	box-shadow: 0 0 0 0.2rem rgba($color, $opacity);
+	border-color: $color;
+}
+
+// === Transition Mixin ===
+@mixin transition($properties...) {
+	transition: #{$properties} $transition-fast;
+}
+
+// === Card Mixin ===
+@mixin card($padding: $space-4, $radius: $radius-lg) {
+	box-shadow: $shadow-sm;
+	border-radius: $radius;
+	background-color: $color-surface;
+	padding: $padding;
+}
+
+// === Hover Button Mixin ===
+@mixin button-hover($bg-color, $hover-color) {
+	background-color: $bg-color;
+
+	&:hover:not(:disabled) {
+		background-color: $hover-color;
+	}
+}
+
+// === Media Query Mixins ===
+// Mobile-first подход: стили применяются ОТ указанной ширины и выше
+@mixin tablet-up {
+	@media (min-width: $breakpoint-sm) {
+		@content;
+	}
+}
+
+@mixin desktop-up {
+	@media (min-width: $breakpoint-md) {
+		@content;
+	}
+}
+
+// Desktop-first подход: стили применяются ДО указанной ширины (для случаев, когда нужно)
+@mixin tablet-down {
+	@media (max-width: $breakpoint-md - 1px) {
+		@content;
+	}
+}
+
+@mixin mobile-down {
+	@media (max-width: $breakpoint-sm - 1px) {
+		@content;
+	}
+}

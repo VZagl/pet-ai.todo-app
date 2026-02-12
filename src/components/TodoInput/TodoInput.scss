@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-input {
+	margin-bottom: $space-6;
+
+	&__wrapper {
+		display: flex;
+		gap: $space-2;
+	}
+
+	&__field {
+		flex: 1;
+		height: 48px;
+		@include transition(border-color, box-shadow);
+		border: 2px solid $color-border;
+		border-radius: $radius-md;
+		background-color: $color-surface;
+		padding: $space-3 $space-4;
+		color: $color-text;
+		font-size: $font-size-base;
+		line-height: 1.5;
+
+		&::placeholder {
+			color: $color-text-muted;
+		}
+
+		&:focus {
+			@include focus-shadow($color-primary, 0.25);
+		}
+
+		&--error {
+			border-color: $color-danger;
+
+			&:focus {
+				@include focus-shadow($color-danger, 0.25);
+			}
+		}
+	}
+
+	&__button {
+		height: 48px;
+		@include transition(background-color, transform);
+		@include button-hover($color-primary, $color-primary-hover);
+		cursor: pointer;
+		border: none;
+		border-radius: $radius-md;
+		padding: $space-3 $space-6;
+		color: $color-on-primary;
+		font-weight: $font-weight-medium;
+		font-size: $font-size-base;
+		white-space: nowrap;
+
+		&:active:not(:disabled) {
+			transform: scale(0.98);
+		}
+
+		&:disabled {
+			opacity: 0.65;
+			cursor: not-allowed;
+			background-color: $color-border;
+		}
+
+		&:focus {
+			@include focus-outline($color-primary);
+		}
+	}
+
+	&__error {
+		margin: $space-2 0 0 0;
+		color: $color-danger;
+		font-size: $font-size-sm;
+	}
+}

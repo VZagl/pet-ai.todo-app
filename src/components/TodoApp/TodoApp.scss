@@ -1,0 +1,97 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-app {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background: $gradient-bg;
+	padding: $space-4 $space-3; // Mobile: начинаем с малого padding
+	min-height: 0;
+	overflow: hidden;
+
+	&__container {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		width: 100%;
+		max-width: 600px;
+		min-height: 0;
+	}
+
+	&__header {
+		flex-shrink: 0;
+		margin-bottom: $space-8;
+		text-align: center;
+	}
+
+	&__title {
+		margin: 0 0 $space-2 0;
+		color: $color-text;
+		font-weight: $font-weight-semibold;
+		font-size: $font-size-2xl;
+		letter-spacing: 0.05em;
+	}
+
+	&__subtitle {
+		margin: 0;
+		color: $color-text-muted;
+		font-weight: $font-weight-light;
+		font-size: $font-size-sm; // Mobile: начинаем с малого размера
+	}
+
+	&__main {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		min-height: 0;
+	}
+
+	&__list-area {
+		flex: 1;
+		min-height: 0;
+		overflow-y: scroll; /* всегда виден, даже при пустом списке */
+		scrollbar-color: $color-border $color-surface;
+
+		/* Firefox */
+		scrollbar-width: thin;
+
+		/* WebKit (Chrome, Edge, Safari) */
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+		&::-webkit-scrollbar-track {
+			background: $color-surface;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 9999px;
+			background: $color-border;
+		}
+		&::-webkit-scrollbar-thumb:hover {
+			background: $color-border-light;
+		}
+	}
+}
+
+/* Mobile-first адаптивность: увеличиваем размеры на больших экранах */
+@include tablet-up {
+	.todo-app {
+		padding: $space-6 $space-4; // Tablet: увеличиваем padding
+
+		&__subtitle {
+			font-size: $font-size-base; // Tablet: увеличиваем размер
+		}
+	}
+}
+
+@include desktop-up {
+	.todo-app {
+		padding: $space-8 $space-4; // Desktop: ещё больше padding
+
+		&__title {
+			font-size: $font-size-3xl; // Desktop: максимальный размер
+		}
+	}
+}

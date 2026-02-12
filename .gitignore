@@ -17,6 +17,10 @@ dist-ssr
 # Покрытие тестов
 coverage
 
+# Playwright E2E
+playwright-report/
+test-results/
+
 # Каталоги и файлы редакторов
 # .vscode/*
 !.vscode/extensions.json
@@ -30,6 +34,7 @@ coverage
 
 # Временные файлы
 *.~
+.git-commit-msg.txt
 
 # Конфиденциальные файлы и переменные окружения
 /.env

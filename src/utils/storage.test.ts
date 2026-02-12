@@ -1,5 +1,5 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { saveToStorage, loadFromStorage } from './storage';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { loadFromStorage, saveToStorage } from './storage';
 
 describe('storage utils', () => {
 	beforeEach(() => {
@@ -7,6 +7,10 @@ describe('storage utils', () => {
 		localStorage.clear();
 		// Очистка моков
 		vi.clearAllMocks();
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
 	});
 
 	describe('saveToStorage', () => {
@@ -24,24 +28,21 @@ describe('storage utils', () => {
 			saveToStorage('string', 'test');
 			saveToStorage('number', 123);
 			saveToStorage('boolean', true);
+			saveToStorage('boolean-false', false);
 
 			expect(localStorage.getItem('string')).toBe('"test"');
 			expect(localStorage.getItem('number')).toBe('123');
 			expect(localStorage.getItem('boolean')).toBe('true');
+			expect(localStorage.getItem('boolean-false')).toBe('false');
 		});
 
 		it('должен выбрасывать ошибку при неудачном сохранении', () => {
 			// Мокаем setItem для выброса ошибки
-			const spy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+			vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
 				throw new Error('QuotaExceededError');
 			});
 
-			expect(() => saveToStorage('key', 'data')).toThrow(
-				'Не удалось сохранить данные'
-			);
-
-			// Восстанавливаем оригинальную реализацию
-			spy.mockRestore();
+			expect(() => saveToStorage('key', 'data')).toThrow('Не удалось сохранить данные');
 		});
 	});
 
@@ -78,10 +79,12 @@ describe('storage utils', () => {
 			localStorage.setItem('string', '"test"');
 			localStorage.setItem('number', '123');
 			localStorage.setItem('boolean', 'true');
+			localStorage.setItem('boolean-false', 'false');
 
 			expect(loadFromStorage('string', '')).toBe('test');
 			expect(loadFromStorage('number', 0)).toBe(123);
 			expect(loadFromStorage('boolean', false)).toBe(true);
+			expect(loadFromStorage('boolean-false', true)).toBe(false);
 		});
 	});
 });

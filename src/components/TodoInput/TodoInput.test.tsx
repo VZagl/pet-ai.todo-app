@@ -1,21 +1,21 @@
-import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { TodoInput } from './TodoInput';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
+import { TodoInput } from './TodoInput';
 
 describe('TodoInput', () => {
+	beforeEach(() => {
+		// Очистка состояния между тестами для обеспечения изоляции
+		// cleanup выполняется автоматически через @testing-library/react
+	});
 	it('должен отображать поле ввода и кнопку', () => {
 		const onAdd = vi.fn();
 
 		render(<TodoInput onAdd={onAdd} />);
 
-		expect(
-			screen.getByPlaceholderText(/что нужно сделать/i)
-		).toBeInTheDocument();
-		expect(
-			screen.getByRole('button', { name: /добавить задачу/i })
-		).toBeInTheDocument();
+		expect(screen.getByPlaceholderText(/что нужно сделать/i)).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: /добавить задачу/i })).toBeInTheDocument();
 	});
 
 	it('должен обновлять значение поля при вводе', async () => {
@@ -98,12 +98,12 @@ describe('TodoInput', () => {
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const button = screen.getByRole('button', { name: /добавить задачу/i });
-		
+
 		await user.type(input, '   ');
 
 		// Кнопка должна быть отключена
 		expect(button).toBeDisabled();
-		
+
 		await user.click(button);
 
 		expect(onAdd).not.toHaveBeenCalled();
@@ -117,11 +117,10 @@ describe('TodoInput', () => {
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const longText = 'a'.repeat(MAX_TODO_LENGTH + 1);
-		await user.type(input, longText);
+		await user.click(input);
+		await user.paste(longText);
 
-		expect(
-			screen.getByText(/максимальная длина задачи/i)
-		).toBeInTheDocument();
+		expect(screen.getByText(/максимальная длина задачи/i)).toBeInTheDocument();
 	});
 
 	it('должен отключать кнопку при пустом вводе', () => {
@@ -141,7 +140,8 @@ describe('TodoInput', () => {
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
 		const longText = 'a'.repeat(MAX_TODO_LENGTH + 1);
-		await user.type(input, longText);
+		await user.click(input);
+		await user.paste(longText);
 
 		const button = screen.getByRole('button', { name: /добавить задачу/i });
 		expect(button).toBeDisabled();
@@ -154,7 +154,8 @@ describe('TodoInput', () => {
 		render(<TodoInput onAdd={onAdd} />);
 
 		const input = screen.getByPlaceholderText(/что нужно сделать/i);
-		await user.type(input, 'New task{Enter}');
+		await user.type(input, 'New task');
+		await user.keyboard('{Enter}');
 
 		expect(onAdd).toHaveBeenCalledWith('New task');
 	});

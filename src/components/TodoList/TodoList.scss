@@ -1,0 +1,22 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-list {
+	@include card(0, $radius-lg);
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	list-style: none;
+}
+
+.todo-list-empty {
+	@include card($space-8 $space-4, $radius-lg);
+	text-align: center;
+
+	&__message {
+		margin: 0;
+		color: $color-text-muted;
+		font-style: italic;
+		font-size: $font-size-base;
+	}
+}

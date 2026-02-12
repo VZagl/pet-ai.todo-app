@@ -1,0 +1,49 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-filter {
+	display: flex;
+	gap: $space-2;
+
+	&__button {
+		@include transition(all);
+		cursor: pointer;
+		border: 1px solid $color-border;
+		border-radius: $radius-md;
+		background-color: transparent;
+		padding: $space-2 $space-4;
+		color: $color-text-muted;
+		font-weight: $font-weight-medium;
+		font-size: $font-size-sm;
+
+		&:hover {
+			border-color: $color-primary;
+			background-color: rgba($color-primary, 0.15);
+			color: $color-primary;
+		}
+
+		&--active {
+			border-color: $color-primary;
+			background-color: $color-primary;
+			color: $color-on-primary;
+
+			&:hover {
+				border-color: $color-primary-hover;
+				background-color: $color-primary-hover;
+			}
+		}
+
+		&:focus {
+			@include focus-outline($color-primary);
+		}
+
+		&:disabled {
+			cursor: default;
+			pointer-events: none;
+		}
+
+		&--active:disabled {
+			opacity: 1;
+		}
+	}
+}

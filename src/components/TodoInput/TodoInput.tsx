@@ -1,8 +1,8 @@
-import React, { useState, FormEvent, ChangeEvent } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
-import './TodoInput.css';
+import './TodoInput.scss';
 
-interface TodoInputProps {
+interface i_todoInputProps {
 	/** Обработчик добавления новой задачи */
 	onAdd: (text: string) => void;
 }
@@ -11,7 +11,7 @@ interface TodoInputProps {
  * Компонент ввода новой задачи
  * Управляет локальным состоянием input поля и валидацией
  */
-export const TodoInput = ({ onAdd }: TodoInputProps) => {
+export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 
@@ -53,29 +53,29 @@ export const TodoInput = ({ onAdd }: TodoInputProps) => {
 	};
 
 	return (
-		<form className="todo-input" onSubmit={handleSubmit}>
-			<div className="todo-input__wrapper">
+		<form className='todo-input' onSubmit={handleSubmit}>
+			<div className='todo-input__wrapper'>
 				<input
-					type="text"
+					type='text'
 					className={`todo-input__field ${error ? 'todo-input__field--error' : ''}`}
-					placeholder="Что нужно сделать?"
+					placeholder='Что нужно сделать?'
 					value={inputValue}
 					onChange={handleChange}
-					aria-label="Новая задача"
+					aria-label='Новая задача'
 					aria-invalid={!!error}
 					aria-describedby={error ? 'todo-input-error' : undefined}
 				/>
 				<button
-					type="submit"
-					className="todo-input__button"
+					type='submit'
+					className='todo-input__button'
 					disabled={!inputValue.trim() || inputValue.length > MAX_TODO_LENGTH}
-					aria-label="Добавить задачу"
+					aria-label='Добавить задачу'
 				>
 					Добавить
 				</button>
 			</div>
 			{error && (
-				<p id="todo-input-error" className="todo-input__error" role="alert">
+				<p id='todo-input-error' className='todo-input__error' role='alert'>
 					{error}
 				</p>
 			)}

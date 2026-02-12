@@ -1,0 +1,71 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@include transition(background-color);
+	border-bottom: 1px solid $color-border-light;
+	background-color: $color-surface;
+	padding: $space-4;
+
+	&:hover {
+		background-color: $color-bg-hover;
+	}
+
+	&__content {
+		display: flex;
+		flex: 1;
+		align-items: center;
+		gap: $space-3;
+		min-width: 0; /* Для корректного text-overflow */
+	}
+
+	&__checkbox {
+		flex-shrink: 0;
+		cursor: pointer;
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	&__text {
+		flex: 1;
+		@include transition(color, text-decoration);
+		color: $color-text;
+		font-size: $font-size-base;
+		line-height: 1.5;
+		word-break: break-word;
+	}
+
+	&.completed &__text {
+		color: $color-text-muted;
+		text-decoration: line-through;
+	}
+
+	&__delete {
+		display: flex;
+		flex-shrink: 0;
+		justify-content: center;
+		align-items: center;
+		@include transition(background-color, color);
+		cursor: pointer;
+		border: none;
+		border-radius: $radius-sm;
+		background-color: transparent;
+		width: $space-8;
+		height: $space-8;
+		color: $color-text-muted;
+		font-size: 1.75rem;
+		line-height: 1;
+
+		&:hover {
+			background-color: $color-danger;
+			color: $color-on-primary;
+		}
+
+		&:focus {
+			@include focus-outline($color-primary);
+		}
+	}
+}

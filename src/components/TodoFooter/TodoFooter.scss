@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.todo-footer {
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: column; // Mobile: начинаем с вертикального layout
+	align-items: stretch;
+	gap: $space-4;
+	margin-top: $space-6;
+	@include card($space-4, $radius-lg);
+
+	&__counter {
+		display: flex;
+		align-items: baseline;
+		justify-content: center; // Mobile: центрируем счётчик
+		gap: $space-1;
+		color: $color-text-muted;
+		font-size: $font-size-sm;
+	}
+
+	&__label {
+		font-size: $font-size-sm;
+	}
+}
+
+/* Mobile-first адаптивность: горизонтальный layout на больших экранах */
+@include tablet-up {
+	.todo-footer {
+		flex-direction: row; // Tablet+: переключаемся на горизонтальный layout
+		justify-content: space-between;
+		align-items: center;
+		gap: 0;
+
+		&__counter {
+			justify-content: flex-start; // Tablet+: выравниваем счетчик влево
+		}
+	}
+}

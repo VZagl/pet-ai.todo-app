@@ -70,6 +70,18 @@ describe('TodoFilter', () => {
 
 			expect(activeButtons).toHaveLength(1);
 		});
+
+		it('активная кнопка имеет атрибут disabled', () => {
+			render(<TodoFilter currentFilter='completed' onFilterChange={mockOnFilterChange} />);
+
+			const completedButton = screen.getByText('Завершенные');
+			expect(completedButton).toBeDisabled();
+
+			const allButton = screen.getByText('Все');
+			const activeButton = screen.getByText('Активные');
+			expect(allButton).not.toBeDisabled();
+			expect(activeButton).not.toBeDisabled();
+		});
 	});
 
 	describe('User interactions', () => {
@@ -106,15 +118,13 @@ describe('TodoFilter', () => {
 			expect(mockOnFilterChange).toHaveBeenCalledWith('completed');
 		});
 
-		it('should call onFilterChange when clicking on already active filter', async () => {
-			const user = userEvent.setup();
+		it('не вызывает onFilterChange при активном фильтре (активная кнопка disabled)', () => {
 			render(<TodoFilter currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
 			const allButton = screen.getByText('Все');
-			await user.click(allButton);
-
-			expect(mockOnFilterChange).toHaveBeenCalledTimes(1);
-			expect(mockOnFilterChange).toHaveBeenCalledWith('all');
+			expect(allButton).toBeDisabled();
+			// Клик по disabled-кнопке не доходит до обработчика (pointer-events: none)
+			expect(mockOnFilterChange).not.toHaveBeenCalled();
 		});
 	});
 
@@ -143,20 +153,21 @@ describe('TodoFilter', () => {
 			const user = userEvent.setup();
 			render(<TodoFilter currentFilter='all' onFilterChange={mockOnFilterChange} />);
 
-			const allButton = screen.getByText('Все');
 			const activeButton = screen.getByText('Активные');
+			const completedButton = screen.getByText('Завершенные');
 
-			// Tab to first button
-			await user.tab();
-			expect(allButton).toHaveFocus();
-
-			// Tab to second button
+			// Tab: первая кнопка «Все» disabled — фокус переходит на «Активные»
 			await user.tab();
 			expect(activeButton).toHaveFocus();
 
-			// Press Enter
 			await user.keyboard('{Enter}');
 			expect(mockOnFilterChange).toHaveBeenCalledWith('active');
+
+			// Tab на «Завершенные», Enter
+			await user.tab();
+			expect(completedButton).toHaveFocus();
+			await user.keyboard('{Enter}');
+			expect(mockOnFilterChange).toHaveBeenCalledWith('completed');
 		});
 	});
 

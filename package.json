@@ -1,7 +1,7 @@
 {
 	"name": "pet.todo",
 	"private": true,
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"type": "module",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
@@ -11,14 +11,21 @@
 		"preview": "vite preview",
 		"test": "vitest",
 		"test:ui": "vitest --ui",
-		"test:coverage": "vitest --coverage"
+		"test:coverage": "vitest --coverage",
+		"test:e2e": "playwright test",
+		"test:e2e:ui": "playwright test --ui",
+		"format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
+		"format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,css,json}\"",
+		"prepare": "husky"
 	},
 	"dependencies": {
+		"@fontsource-variable/inter": "^5.2.8",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.2",
+		"@playwright/test": "^1.58.2",
 		"@testing-library/jest-dom": "^6.9.1",
 		"@testing-library/react": "^16.3.1",
 		"@testing-library/user-event": "^14.6.1",
@@ -32,15 +39,23 @@
 		"eslint-plugin-react-hooks": "^7.0.1",
 		"eslint-plugin-react-refresh": "^0.4.26",
 		"globals": "^16.5.0",
+		"husky": "^9.1.7",
 		"jsdom": "^27.3.0",
+		"lint-staged": "^16.2.7",
 		"prettier": "^3.7.4",
 		"prettier-plugin-css-order": "^2.1.2",
 		"prettier-plugin-organize-attributes": "^1.0.0",
 		"prettier-plugin-organize-imports": "^4.3.0",
+		"sass-embedded": "^1.97.2",
 		"typescript": "~5.9.3",
 		"typescript-eslint": "^8.50.1",
 		"vite": "^7.3.0",
 		"vitest": "^4.0.16"
 	},
-	"packageManager": "pnpm@10.26.2+sha512.0e308ff2005fc7410366f154f625f6631ab2b16b1d2e70238444dd6ae9d630a8482d92a451144debc492416896ed16f7b114a86ec68b8404b2443869e68ffda6"
+	"packageManager": "pnpm@10.26.2+sha512.0e308ff2005fc7410366f154f625f6631ab2b16b1d2e70238444dd6ae9d630a8482d92a451144debc492416896ed16f7b114a86ec68b8404b2443869e68ffda6",
+	"lint-staged": {
+		"*.{ts,tsx,js,jsx,json,css,md}": [
+			"prettier --write"
+		]
+	}
 }

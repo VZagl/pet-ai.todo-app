@@ -29,7 +29,9 @@
 
 **Тесты:** 119 unit (116 + 3 LanguageSwitcher), 18 E2E — все пройдены
 
-**Следующий шаг:** `/reflect` для рефлексии по BUILD
+**Рефлексия:** [`memory-bank/reflection/reflection-i18n-001.md`](reflection/reflection-i18n-001.md)
+
+**Следующий шаг:** `/archive` для завершения задачи
 
 ---
 

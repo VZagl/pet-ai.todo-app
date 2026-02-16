@@ -177,6 +177,17 @@
 - [x] Technology validation complete
 - [x] Creative phases complete
 - [x] Implementation complete
+- [x] Reflection complete
+- [ ] Archiving
+
+---
+
+## Reflection Highlights
+
+- **What Went Well:** Creative phase и evaluation matrix подтвердились; пятифазный план; inline SVG (offline); события i18n для document.documentElement.lang; i18n-guidelines.md.
+- **Challenges:** Сортировка языков (localeCompare с 'en'); Escape для закрытия dropdown не реализован (незначительный gap).
+- **Lessons Learned:** i18next + LanguageDetector — зрелое решение; creative phase снижает итерации; документирование правил до реализации упрощает поддержку.
+- **Next Steps:** `/archive` для завершения задачи; при необходимости — добавить Escape для dropdown, тесты click outside и focus trap.
 
 ---
 

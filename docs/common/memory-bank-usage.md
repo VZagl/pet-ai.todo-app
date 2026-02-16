@@ -125,9 +125,11 @@ memory-bank/completed-tasks/
 1. Создаёт запись в `memory-bank/completed-tasks/YYYY/MM/[task_id]_YYYY-MM-DD.md`
 2. Удаляет задачу из `memory-bank/backlog.md` (из активных)
 3. Подготавливает Memory Bank к следующей задаче:
-   - `tasks.md` — очищает Current Task, переносит в Last Completed
+   - `tasks.md` — очищает Current Task, переносит в Last Completed (только одна запись; история — в `completed-tasks/`)
    - `activeContext.md` — сбрасывает в IDLE
-   - `progress.md` — добавляет запись о завершении
+   - `progress.md` — оставляет только последнюю выполненную задачу (очищает старые записи; история — в `completed-tasks/`)
+
+**Важно:** В `tasks.md` и `progress.md` хранится только последняя завершённая задача. Полная история — в `memory-bank/completed-tasks/`.
 
 Полное описание: `.cursor/commands/close-task.md`.
 

@@ -48,6 +48,15 @@
 - [x] Planning complete
 - [x] Technology validation complete (проверка при BUILD)
 - [x] Implementation
+- [x] Reflection complete
+- [ ] Archiving
+
+### Reflection Highlights
+
+- **What Went Well:** Динамический LanguageSwitcher из supportedLngs + language.name; плюрализация uk без доп. настройки; план из 5 шагов выполнен без итераций.
+- **Challenges:** Фильтрация cimode в supportedLngs; сортировка кириллицы; украинские формы плюрализации.
+- **Lessons Learned:** Паттерн «config + language.name» масштабируется; design decision на инициализации достаточен для Level 2.
+- **Next Steps:** /archive для финализации.
 
 ### Implementation Plan
 

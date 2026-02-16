@@ -15,7 +15,9 @@
 
 **Итог:** Украинская локаль добавлена. LanguageSwitcher переведён на динамический список из supportedLngs. Тесты и билд проходят.
 
-**Следующий шаг:** `/reflect` для рефлексии
+**Рефлексия:** [`memory-bank/reflection/reflection-i18n-002.md`](reflection/reflection-i18n-002.md)
+
+**Следующий шаг:** `/archive` для финализации
 
 ---
 

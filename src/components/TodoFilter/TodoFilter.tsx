@@ -1,4 +1,5 @@
-import { FILTERS, FILTER_LABELS } from '../../constants/todo';
+import { useTranslation } from 'react-i18next';
+import { FILTERS } from '../../constants/todo';
 import type { FilterType } from '../../types/todo';
 import './TodoFilter.scss';
 
@@ -14,10 +15,13 @@ interface i_todoFilterProps {
  * Отображает кнопки для переключения между фильтрами
  */
 export const TodoFilter = ({ currentFilter, onFilterChange }: i_todoFilterProps) => {
+	const { t } = useTranslation();
+
 	return (
-		<div className='todo-filter' role='group' aria-label='Фильтр задач'>
+		<div className='todo-filter' role='group' aria-label={t('todoFilter.ariaGroup')}>
 			{FILTERS.map((filter) => {
 				const isActive = currentFilter === filter;
+				const filterLabel = t(`todoFilter.${filter}`);
 				return (
 					<button
 						key={filter}
@@ -28,9 +32,10 @@ export const TodoFilter = ({ currentFilter, onFilterChange }: i_todoFilterProps)
 							if (!isActive) onFilterChange(filter);
 						}}
 						aria-pressed={isActive}
-						aria-label={`Показать ${FILTER_LABELS[filter].toLowerCase()} задачи`}
+						aria-label={t('todoFilter.ariaShow', { filter: filterLabel.toLowerCase() })}
+						data-testid={`todo-filter-${filter}`}
 					>
-						{FILTER_LABELS[filter]}
+						{filterLabel}
 					</button>
 				);
 			})}

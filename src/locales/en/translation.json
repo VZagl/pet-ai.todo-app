@@ -1,0 +1,44 @@
+{
+	"app": {
+		"title": "TODO",
+		"subtitle": "Task management"
+	},
+	"todoInput": {
+		"placeholder": "What needs to be done?",
+		"addButton": "Add",
+		"ariaNewTask": "New task",
+		"ariaAddTask": "Add task",
+		"errorEmpty": "Enter task text",
+		"errorMaxLength": "Maximum task length: {{max}} characters"
+	},
+	"todoItem": {
+		"ariaToggle": "Mark task \"{{text}}\" as {{status}}",
+		"statusCompleted": "incomplete",
+		"statusActive": "completed",
+		"ariaDelete": "Delete task \"{{text}}\""
+	},
+	"todoList": {
+		"empty": "No tasks to display"
+	},
+	"todoFooter": {
+		"counterAll": "{{active}} {{task}} left of {{total}}",
+		"counterActive": "{{count}} {{task}} left",
+		"counterCompleted": "{{count}} {{task}} completed",
+		"task_one": "task",
+		"task_other": "tasks",
+		"left_one": "left",
+		"left_other": "left",
+		"completed_one": "completed",
+		"completed_other": "completed"
+	},
+	"todoFilter": {
+		"ariaGroup": "Task filter",
+		"ariaShow": "Show {{filter}} tasks",
+		"all": "All",
+		"active": "Active",
+		"completed": "Completed"
+	},
+	"language": {
+		"switcherLabel": "Language"
+	}
+}

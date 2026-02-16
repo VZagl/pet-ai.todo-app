@@ -8,7 +8,10 @@ import { test as base } from '@playwright/test';
 export const test = base.extend({
 	page: async ({ page }, run) => {
 		await page.goto('/');
-		await page.evaluate(() => localStorage.clear());
+		await page.evaluate(() => {
+			localStorage.clear();
+			localStorage.setItem('i18nextLng', 'ru');
+		});
 		await page.reload();
 		await run(page);
 	},

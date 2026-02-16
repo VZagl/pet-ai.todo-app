@@ -11,15 +11,6 @@ export const STORAGE_KEY = 'todos';
 export const MAX_TODO_LENGTH = 500;
 
 /**
- * Названия фильтров для отображения
- */
-export const FILTER_LABELS: Record<FilterType, string> = {
-	all: 'Все',
-	active: 'Активные',
-	completed: 'Завершенные',
-};
-
-/**
  * Значения фильтров (для программного использования)
  */
 export const FILTERS: FilterType[] = ['all', 'active', 'completed'];

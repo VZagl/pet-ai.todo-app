@@ -2,8 +2,36 @@
 
 ## Overall Progress
 
-**Активная задача:** _(нет)_  
-**Фаза:** ARCHIVE COMPLETE — Memory Bank готов к следующей задаче
+**Активная задача:** i18n-001 — Мультиязычность (RU/EN)  
+**Фаза:** BUILD COMPLETE — реализация завершена
+
+## 2026-02-16: i18n-001 — BUILD COMPLETE
+
+**Название:** Мультиязычность (RU/EN)  
+**Уровень:** Level 3 — Feature  
+**Ветка:** `feat/i18n-001-language-settings`  
+**Статус:** Реализация завершена
+
+**Выполнено:**
+
+- **Phase 1:** Установлены i18next, react-i18next, i18next-browser-languagedetector; создан `src/i18n/config.ts`, `src/locales/{ru,en}/translation.json`
+- **Phase 2:** Переводы ru/en, плюрализация (task_one/few/many), замена хардкода на `t()` во всех компонентах
+- **Phase 3:** LanguageSwitcher — кнопка с иконкой глобуса (inline SVG), dropdown «Русский»/«English» в правом верхнем углу
+- **Phase 4:** localStorage + language detector, обновление `document.documentElement.lang`
+- **Phase 5:** `docs/project/i18n-guidelines.md`, обновлён style-guide, тесты (119 unit + 18 E2E)
+
+**Ключевые файлы:**
+
+- `src/i18n/config.ts` — инициализация i18n
+- `src/locales/{ru,en}/translation.json` — переводы
+- `src/components/LanguageSwitcher/` — переключатель языка
+- `docs/project/i18n-guidelines.md` — правила i18n
+
+**Тесты:** 119 unit (116 + 3 LanguageSwitcher), 18 E2E — все пройдены
+
+**Следующий шаг:** `/reflect` для рефлексии по BUILD
+
+---
 
 ## 2026-02-12: app-redesign-001 — ЗАВЕРШЕНО
 

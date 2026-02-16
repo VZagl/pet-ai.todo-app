@@ -53,10 +53,10 @@
 
 ## Technology Validation Checkpoints
 
-- [ ] Пакеты i18next, react-i18next, i18next-browser-languagedetector установлены
-- [ ] Конфигурация i18n работает с React 19 и Vite 7
-- [ ] Hello world: перевод отображается в компоненте
-- [ ] `pnpm build` проходит успешно
+- [x] Пакеты i18next, react-i18next, i18next-browser-languagedetector установлены
+- [x] Конфигурация i18n работает с React 19 и Vite 7
+- [x] Hello world: перевод отображается в компоненте
+- [x] `pnpm build` проходит успешно
 
 ---
 
@@ -174,9 +174,9 @@
 ## Status
 
 - [x] Planning complete
-- [ ] Technology validation complete
+- [x] Technology validation complete
 - [x] Creative phases complete
-- [ ] Implementation complete
+- [x] Implementation complete
 
 ---
 

@@ -1,4 +1,5 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
 import './TodoInput.scss';
 
@@ -12,6 +13,7 @@ interface i_todoInputProps {
  * Управляет локальным состоянием input поля и валидацией
  */
 export const TodoInput = ({ onAdd }: i_todoInputProps) => {
+	const { t } = useTranslation();
 	const [inputValue, setInputValue] = useState('');
 	const [error, setError] = useState('');
 
@@ -21,7 +23,7 @@ export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 
 		// Валидация длины
 		if (value.length > MAX_TODO_LENGTH) {
-			setError(`Максимальная длина задачи: ${MAX_TODO_LENGTH} символов`);
+			setError(t('todoInput.errorMaxLength', { max: MAX_TODO_LENGTH }));
 		} else {
 			setError('');
 		}
@@ -34,13 +36,13 @@ export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 
 		// Валидация: пустая строка
 		if (!trimmedValue) {
-			setError('Введите текст задачи');
+			setError(t('todoInput.errorEmpty'));
 			return;
 		}
 
 		// Валидация: превышение длины
 		if (trimmedValue.length > MAX_TODO_LENGTH) {
-			setError(`Максимальная длина задачи: ${MAX_TODO_LENGTH} символов`);
+			setError(t('todoInput.errorMaxLength', { max: MAX_TODO_LENGTH }));
 			return;
 		}
 
@@ -58,10 +60,10 @@ export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 				<input
 					type='text'
 					className={`todo-input__field ${error ? 'todo-input__field--error' : ''}`}
-					placeholder='Что нужно сделать?'
+					placeholder={t('todoInput.placeholder')}
 					value={inputValue}
 					onChange={handleChange}
-					aria-label='Новая задача'
+					aria-label={t('todoInput.ariaNewTask')}
 					aria-invalid={!!error}
 					aria-describedby={error ? 'todo-input-error' : undefined}
 				/>
@@ -69,9 +71,10 @@ export const TodoInput = ({ onAdd }: i_todoInputProps) => {
 					type='submit'
 					className='todo-input__button'
 					disabled={!inputValue.trim() || inputValue.length > MAX_TODO_LENGTH}
-					aria-label='Добавить задачу'
+					aria-label={t('todoInput.ariaAddTask')}
+					data-testid='todo-input-add'
 				>
-					Добавить
+					{t('todoInput.addButton')}
 				</button>
 			</div>
 			{error && (

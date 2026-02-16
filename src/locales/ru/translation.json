@@ -1,0 +1,47 @@
+{
+	"app": {
+		"title": "TODO",
+		"subtitle": "Управление задачами"
+	},
+	"todoInput": {
+		"placeholder": "Что нужно сделать?",
+		"addButton": "Добавить",
+		"ariaNewTask": "Новая задача",
+		"ariaAddTask": "Добавить задачу",
+		"errorEmpty": "Введите текст задачи",
+		"errorMaxLength": "Максимальная длина задачи: {{max}} символов"
+	},
+	"todoItem": {
+		"ariaToggle": "Отметить задачу \"{{text}}\" как {{status}}",
+		"statusCompleted": "невыполненную",
+		"statusActive": "выполненную",
+		"ariaDelete": "Удалить задачу \"{{text}}\""
+	},
+	"todoList": {
+		"empty": "Нет задач для отображения"
+	},
+	"todoFooter": {
+		"counterAll": "{{active}} {{task}} {{left}} из {{total}}",
+		"counterActive": "{{count}} {{task}} {{left}}",
+		"counterCompleted": "{{count}} {{task}} {{completed}}",
+		"task_one": "задача",
+		"task_few": "задачи",
+		"task_many": "задач",
+		"left_one": "осталась",
+		"left_few": "осталось",
+		"left_many": "осталось",
+		"completed_one": "завершена",
+		"completed_few": "завершено",
+		"completed_many": "завершено"
+	},
+	"todoFilter": {
+		"ariaGroup": "Фильтр задач",
+		"ariaShow": "Показать {{filter}} задачи",
+		"all": "Все",
+		"active": "Активные",
+		"completed": "Завершенные"
+	},
+	"language": {
+		"switcherLabel": "Выбор языка"
+	}
+}

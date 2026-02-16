@@ -1,0 +1,82 @@
+@use '../../styles/variables' as *;
+
+.language-switcher {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 10;
+
+	&__button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		transition:
+			color $transition-fast,
+			background $transition-fast;
+		cursor: pointer;
+		border: none;
+		border-radius: $radius-md;
+		background: transparent;
+		padding: 0;
+		width: 40px;
+		height: 40px;
+		color: $color-text-muted;
+
+		&:hover {
+			background: $color-bg-hover;
+			color: $color-text;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $color-primary;
+			outline-offset: 2px;
+		}
+	}
+
+	&__dropdown {
+		position: absolute;
+		top: calc(100% + $space-2);
+		right: 0;
+		margin: 0;
+		box-shadow: $shadow-md;
+		border: 1px solid $color-border;
+		border-radius: $radius-md;
+		background: $color-surface;
+		padding: $space-2;
+		min-width: 140px;
+		list-style: none;
+	}
+
+	&__option {
+		display: block;
+		transition: background $transition-fast;
+		cursor: pointer;
+		border: none;
+		border-radius: $radius-sm;
+		background: transparent;
+		padding: $space-2 $space-3;
+		width: 100%;
+		color: $color-text;
+		font-size: $font-size-sm;
+		text-align: left;
+
+		&:hover {
+			background: $color-bg-hover;
+		}
+
+		&--active {
+			background: $color-primary;
+			color: $color-on-primary;
+			font-weight: $font-weight-medium;
+
+			&:hover {
+				background: $color-primary-hover;
+			}
+		}
+
+		&:focus-visible {
+			outline: 2px solid $color-primary;
+			outline-offset: -2px;
+		}
+	}
+}

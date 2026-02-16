@@ -12,6 +12,7 @@ _Нет активной задачи. Memory Bank готов к инициал�
 **Название:** Мультиязычность (i18n) — Русский и Английский  
 **Дата:** 2026-02-16  
 **Статус:** ✅ COMPLETED & ARCHIVED  
+**Запись:** [`memory-bank/completed-tasks/2026/01/i18n-001_2026-02-16.md`](completed-tasks/2026/01/i18n-001_2026-02-16.md)  
 **Архив:** [`memory-bank/archive/archive-i18n-001.md`](archive/archive-i18n-001.md)  
 **Рефлексия:** [`memory-bank/reflection/reflection-i18n-001.md`](reflection/reflection-i18n-001.md)
 

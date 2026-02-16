@@ -42,6 +42,7 @@
 		"completed": "Завершенные"
 	},
 	"language": {
+		"name": "Русский",
 		"switcherLabel": "Выбор языка"
 	}
 }

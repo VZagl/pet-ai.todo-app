@@ -1,0 +1,48 @@
+{
+	"app": {
+		"title": "TODO",
+		"subtitle": "Управління завданнями"
+	},
+	"todoInput": {
+		"placeholder": "Що потрібно зробити?",
+		"addButton": "Додати",
+		"ariaNewTask": "Нове завдання",
+		"ariaAddTask": "Додати завдання",
+		"errorEmpty": "Введіть текст завдання",
+		"errorMaxLength": "Максимальна довжина завдання: {{max}} символів"
+	},
+	"todoItem": {
+		"ariaToggle": "Позначити завдання \"{{text}}\" як {{status}}",
+		"statusCompleted": "невиконане",
+		"statusActive": "виконане",
+		"ariaDelete": "Видалити завдання \"{{text}}\""
+	},
+	"todoList": {
+		"empty": "Немає завдань для відображення"
+	},
+	"todoFooter": {
+		"counterAll": "{{active}} {{task}} {{left}} з {{total}}",
+		"counterActive": "{{count}} {{task}} {{left}}",
+		"counterCompleted": "{{count}} {{task}} {{completed}}",
+		"task_one": "задача",
+		"task_few": "задачі",
+		"task_many": "задач",
+		"left_one": "залишилась",
+		"left_few": "залишилось",
+		"left_many": "залишилось",
+		"completed_one": "завершена",
+		"completed_few": "завершено",
+		"completed_many": "завершено"
+	},
+	"todoFilter": {
+		"ariaGroup": "Фільтр завдань",
+		"ariaShow": "Показати {{filter}} завдання",
+		"all": "Всі",
+		"active": "Активні",
+		"completed": "Завершені"
+	},
+	"language": {
+		"name": "Українська",
+		"switcherLabel": "Вибір мови"
+	}
+}

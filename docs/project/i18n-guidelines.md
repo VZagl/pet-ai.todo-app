@@ -12,14 +12,17 @@
 src/locales/
 ├── ru/
 │   └── translation.json
-└── en/
+├── en/
+│   └── translation.json
+└── uk/
     └── translation.json
 ```
 
 ## Ключи переводов
 
 - Использовать вложенную структуру: `app.title`, `todoInput.placeholder`, `todoFooter.task`.
-- Плюрализация: `task_one`, `task_few`, `task_many` (RU), `task_one`, `task_other` (EN).
+- Каждая локаль должна содержать `language.name` — название языка на родном языке (для LanguageSwitcher).
+- Плюрализация: `task_one`, `task_few`, `task_many` (RU, UK); `task_one`, `task_other` (EN). Украинский использует one/few/many как русский.
 - Интерполяция: `{{max}}`, `{{count}}`, `{{text}}`.
 
 ## Тестирование

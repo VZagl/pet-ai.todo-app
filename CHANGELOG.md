@@ -7,6 +7,23 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-02-16
+
+### Added
+
+- Мультиязычность (i18n): русский, английский и украинский языки
+- i18next + react-i18next + i18next-browser-languagedetector
+- Переключатель языка (LanguageSwitcher): кнопка с иконкой глобуса, dropdown в правом верхнем углу
+- Локали ru/en/uk: переводы всех текстов, плюрализация для счётчика задач
+- Сохранение выбранного языка в localStorage
+- Документация i18n-guidelines.md
+
+### Changed
+
+- Все компоненты переведены на t() для мультиязычности
+- LanguageSwitcher: динамический список из supportedLngs с ключом language.name
+- document.documentElement.lang обновляется при смене языка
+
 ## [1.1.0] - 2026-02-12
 
 ### Added
@@ -56,6 +73,7 @@
 - Vitest для unit-тестов (77 тестов, >80% покрытие)
 - ESLint + Prettier
 
-[Unreleased]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.2.0...HEAD
+[1.2.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/VZagl/pet-ai.todo-app/releases/tag/v1.0.0

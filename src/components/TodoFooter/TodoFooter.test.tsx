@@ -49,7 +49,7 @@ describe('TodoFooter', () => {
 
 		it('фильтр all: склонение задача/задачи/задач', () => {
 			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
-			expect(screen.getByText(/1 задача осталось из 1/)).toBeInTheDocument();
+			expect(screen.getByText(/1 задача осталась из 1/)).toBeInTheDocument();
 
 			rerender(<TodoFooter {...getProps({ activeCount: 2, completedCount: 1 })} />);
 			expect(screen.getByText(/2 задачи осталось из 3/)).toBeInTheDocument();
@@ -71,7 +71,7 @@ describe('TodoFooter', () => {
 
 		it('фильтр completed: склонение завершено', () => {
 			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />);
-			expect(screen.getByText(/1 задача завершено/)).toBeInTheDocument();
+			expect(screen.getByText(/1 задача завершена/)).toBeInTheDocument();
 
 			rerender(<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />);
 			expect(screen.getByText(/2 задачи завершено/)).toBeInTheDocument();
@@ -110,12 +110,12 @@ describe('TodoFooter', () => {
 			expect(screen.getByText(/5 задач осталось из 12/)).toBeInTheDocument();
 
 			rerender(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
-			expect(screen.getByText(/1 задача осталось из 1/)).toBeInTheDocument();
+			expect(screen.getByText(/1 задача осталась из 1/)).toBeInTheDocument();
 		});
 
 		it('обновляет склонение при изменении count', () => {
 			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 1, completedCount: 0 })} />);
-			expect(screen.getByText(/задача осталось/)).toBeInTheDocument();
+			expect(screen.getByText(/задача осталась/)).toBeInTheDocument();
 
 			rerender(<TodoFooter {...getProps({ activeCount: 2, completedCount: 1 })} />);
 			expect(screen.getByText(/задачи осталось/)).toBeInTheDocument();
@@ -128,7 +128,8 @@ describe('TodoFooter', () => {
 	describe('Граничные случаи', () => {
 		it('обрабатывает отрицательный activeCount', () => {
 			render(<TodoFooter {...getProps({ activeCount: -1, completedCount: 0 })} />);
-			expect(screen.getByText(/-1 задач осталось из -1/)).toBeInTheDocument();
+			// i18n plural: -1 → one (задача), компонент не падает
+			expect(screen.getByText(/-1 .+ (осталась|осталось) из -1/)).toBeInTheDocument();
 		});
 
 		it('обрабатывает большое число', () => {
@@ -141,7 +142,7 @@ describe('TodoFooter', () => {
 			filters.forEach((filter) => {
 				const { unmount } = render(<TodoFooter {...getProps({ currentFilter: filter })} />);
 				const footer = screen.getByRole('contentinfo');
-				expect(within(footer).getByText(/осталось|завершено/)).toBeInTheDocument();
+				expect(within(footer).getByText(/осталась|осталось|завершена|завершено/)).toBeInTheDocument();
 				unmount();
 			});
 		});

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { i_todo } from '../../types/todo';
 import { TodoItem } from '../TodoItem/TodoItem';
 import './TodoList.scss';
@@ -12,10 +13,12 @@ interface i_todoListProps {
  * Отображает список TodoItem или сообщение о пустом списке
  */
 export const TodoList = ({ todos }: i_todoListProps) => {
+	const { t } = useTranslation();
+
 	if (todos.length === 0) {
 		return (
-			<div className='todo-list-empty'>
-				<p className='todo-list-empty__message'>Нет задач для отображения</p>
+			<div className='todo-list-empty' data-testid='todo-list-empty'>
+				<p className='todo-list-empty__message'>{t('todoList.empty')}</p>
 			</div>
 		);
 	}

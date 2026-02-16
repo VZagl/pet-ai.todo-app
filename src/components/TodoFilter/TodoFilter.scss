@@ -3,6 +3,7 @@
 
 .todo-filter {
 	display: flex;
+	justify-content: space-between;
 	gap: $space-2;
 
 	&__button {

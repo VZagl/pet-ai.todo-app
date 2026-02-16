@@ -10,6 +10,7 @@ vi.mock('../../hooks/use-todo-context', () => ({
 	useTodoContext: vi.fn(() => ({
 		todos: [],
 		activeCount: 0,
+		completedCount: 0,
 		addTodo: vi.fn(),
 		toggleTodo: vi.fn(),
 		deleteTodo: vi.fn(),
@@ -62,6 +63,7 @@ describe('TodoItem', () => {
 		vi.mocked(useTodoContext).mockReturnValue({
 			todos: [],
 			activeCount: 0,
+			completedCount: 0,
 			addTodo: vi.fn(),
 			toggleTodo,
 			deleteTodo: vi.fn(),
@@ -83,6 +85,7 @@ describe('TodoItem', () => {
 		vi.mocked(useTodoContext).mockReturnValue({
 			todos: [],
 			activeCount: 0,
+			completedCount: 0,
 			addTodo: vi.fn(),
 			toggleTodo: vi.fn(),
 			deleteTodo,

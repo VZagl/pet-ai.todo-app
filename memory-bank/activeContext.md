@@ -2,20 +2,21 @@
 
 ## Current Focus
 
-_(Нет активной задачи)_
+**Режим:** ARCHIVE завершён  
+**Активная задача:** Нет
 
 ## Current Mode
 
-IDLE — готов к `/van` для инициализации новой задачи
+Задача i18n-002 архивирована. Memory Bank сброшен для следующей задачи.
 
 ## Next Steps
 
-1. **`/van`** — инициализация новой задачи из backlog
+1. Запустить `/van` для инициализации новой задачи из backlog
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
-- Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded)
-- Последняя завершённая задача: app-redesign-001 (Редизайн оформления) — 2026-02-12
-- Журнал завершённых задач: `memory-bank/completed-tasks/`
+- Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded), i18next
+- Последняя задача: i18n-002 (украинская локализация) — завершена и архивирована
+- Локали: ru, en, uk
 - Style Guide: `memory-bank/style-guide.md`

@@ -39,6 +39,9 @@
 	}
 
 	&__button {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
 		height: 48px;
 		@include transition(background-color, transform);
 		@include button-hover($color-primary, $color-primary-hover);

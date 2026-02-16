@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { FilterType } from '../../types/todo';
 import { TodoFilter } from '../TodoFilter/TodoFilter';
 import './TodoFooter.scss';
@@ -14,48 +15,41 @@ interface i_todoFooterProps {
 }
 
 /**
- * Правильное склонение для русского языка (задача/задачи/задач)
- */
-function getTaskWord(count: number): string {
-	const lastDigit = count % 10;
-	const lastTwoDigits = count % 100;
-
-	if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-		return 'задач';
-	}
-	if (lastDigit === 1) {
-		return 'задача';
-	}
-	if (lastDigit >= 2 && lastDigit <= 4) {
-		return 'задачи';
-	}
-	return 'задач';
-}
-
-/**
- * Формирует текст счётчика по фильтру (creative-app-redesign)
- */
-function getCounterText(activeCount: number, completedCount: number, currentFilter: FilterType): string {
-	const totalCount = activeCount + completedCount;
-
-	switch (currentFilter) {
-		case 'all':
-			return `${activeCount} ${getTaskWord(activeCount)} осталось из ${totalCount}`;
-		case 'active':
-			return `${activeCount} ${getTaskWord(activeCount)} осталось`;
-		case 'completed':
-			return `${completedCount} ${getTaskWord(completedCount)} завершено`;
-		default:
-			return `${activeCount} ${getTaskWord(activeCount)} осталось из ${totalCount}`;
-	}
-}
-
-/**
  * Компонент подвала приложения
  * Отображает счётчик по фильтру и кнопки фильтров
  */
 export const TodoFooter = ({ activeCount, completedCount, currentFilter, onFilterChange }: i_todoFooterProps) => {
-	const counterText = getCounterText(activeCount, completedCount, currentFilter);
+	const { t } = useTranslation();
+	const totalCount = activeCount + completedCount;
+	const taskWordActive = t('todoFooter.task', { count: activeCount });
+	const taskWordCompleted = t('todoFooter.task', { count: completedCount });
+	const leftWord = t('todoFooter.left', { count: activeCount });
+	const completedWord = t('todoFooter.completed', { count: completedCount });
+
+	let counterText: string;
+	switch (currentFilter) {
+		case 'all':
+			counterText = t('todoFooter.counterAll', {
+				active: activeCount,
+				task: taskWordActive,
+				left: leftWord,
+				total: totalCount,
+			});
+			break;
+		case 'active':
+			counterText = t('todoFooter.counterActive', { count: activeCount, task: taskWordActive, left: leftWord });
+			break;
+		case 'completed':
+			counterText = t('todoFooter.counterCompleted', { count: completedCount, task: taskWordCompleted, completed: completedWord });
+			break;
+		default:
+			counterText = t('todoFooter.counterAll', {
+				active: activeCount,
+				task: taskWordActive,
+				left: leftWord,
+				total: totalCount,
+			});
+	}
 
 	return (
 		<footer className='todo-footer'>

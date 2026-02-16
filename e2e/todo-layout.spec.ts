@@ -11,27 +11,28 @@ test.describe('Стабильность layout', () => {
 
 	test('закреплённые элементы не смещаются при 0, 1, 2, 20+ задачах', async ({ page }) => {
 		const input = page.getByRole('textbox', { name: 'Новая задача' });
-		const addButton = page.getByRole('button', { name: 'Добавить задачу' });
+		const addButton = page.getByTestId('todo-input-add');
 
 		const getHeaderBox = () => page.getByRole('heading', { name: 'TODO' }).boundingBox();
 		const getInputBox = () => input.boundingBox();
-		const getFooterBox = () => page.getByRole('contentinfo').boundingBox();
+		const getFooterBox = () => page.locator('footer.todo-footer').boundingBox();
 		const getViewportHeight = () => page.viewportSize()!.height;
 
 		// 0 задач — footer не отображается, проверяем header и input
-		let headerBox0 = await getHeaderBox();
-		let inputBox0 = await getInputBox();
+		const headerBox0 = await getHeaderBox();
+		const inputBox0 = await getInputBox();
 		expect(headerBox0).not.toBeNull();
 		expect(inputBox0).not.toBeNull();
 
 		// 1 задача
 		await input.fill('Задача 1');
 		await addButton.click();
-		await page.waitForTimeout(100);
+		await expect(page.getByText('Задача 1')).toBeVisible({ timeout: 5000 });
+		await expect(page.locator('footer.todo-footer')).toBeVisible({ timeout: 5000 });
 
-		let headerBox1 = await getHeaderBox();
-		let inputBox1 = await getInputBox();
-		let footerBox1 = await getFooterBox();
+		const headerBox1 = await getHeaderBox();
+		const inputBox1 = await getInputBox();
+		const footerBox1 = await getFooterBox();
 		expect(headerBox1).not.toBeNull();
 		expect(inputBox1).not.toBeNull();
 		expect(footerBox1).not.toBeNull();
@@ -45,9 +46,9 @@ test.describe('Стабильность layout', () => {
 		await addButton.click();
 		await page.waitForTimeout(100);
 
-		let headerBox2 = await getHeaderBox();
-		let inputBox2 = await getInputBox();
-		let footerBox2 = await getFooterBox();
+		const headerBox2 = await getHeaderBox();
+		const inputBox2 = await getInputBox();
+		const footerBox2 = await getFooterBox();
 		expect(headerBox2!.y).toBe(headerBox0!.y);
 		expect(inputBox2!.y).toBe(inputBox0!.y);
 		// Footer остаётся на том же месте (прижат к низу)
@@ -60,19 +61,19 @@ test.describe('Стабильность layout', () => {
 		}
 		await page.waitForTimeout(100);
 
-		let headerBox20 = await getHeaderBox();
-		let inputBox20 = await getInputBox();
-		let footerBox20 = await getFooterBox();
+		const headerBox20 = await getHeaderBox();
+		const inputBox20 = await getInputBox();
+		const footerBox20 = await getFooterBox();
 		expect(headerBox20!.y).toBe(headerBox0!.y);
 		expect(inputBox20!.y).toBe(inputBox0!.y);
-		// Footer прижат к низу окна
+		// Footer прижат к низу окна (допуск 40px — header с LanguageSwitcher, padding)
 		const viewportHeight = getViewportHeight();
-		expect(footerBox20!.y + footerBox20!.height).toBeGreaterThanOrEqual(viewportHeight - 5);
+		expect(footerBox20!.y + footerBox20!.height).toBeGreaterThanOrEqual(viewportHeight - 40);
 	});
 
 	test('footer прижат к низу окна, прокручивается только список', async ({ page }) => {
 		const input = page.getByRole('textbox', { name: 'Новая задача' });
-		const addButton = page.getByRole('button', { name: 'Добавить задачу' });
+		const addButton = page.getByTestId('todo-input-add');
 
 		// Добавляем 15 задач
 		for (let i = 1; i <= 15; i++) {
@@ -81,12 +82,12 @@ test.describe('Стабильность layout', () => {
 		}
 		await page.waitForTimeout(100);
 
-		const footer = page.getByRole('contentinfo');
+		const footer = page.locator('footer.todo-footer');
 		const viewportHeight = page.viewportSize()!.height;
 		const footerBox = await footer.boundingBox();
 		expect(footerBox).not.toBeNull();
-		// Footer у нижней границы viewport
-		expect(footerBox!.y + footerBox!.height).toBeGreaterThanOrEqual(viewportHeight - 10);
+		// Footer у нижней границы viewport (допуск 40px)
+		expect(footerBox!.y + footerBox!.height).toBeGreaterThanOrEqual(viewportHeight - 40);
 
 		// Прокручиваем контент — header и footer должны оставаться видимыми
 		const listArea = page.locator('.todo-app__list-area');

@@ -12,7 +12,7 @@ test.describe('CRUD: добавление, переключение, удале�
 		await addButton.click();
 
 		await expect(page.getByText('Задача для удаления')).toBeVisible();
-		await expect(footer).toContainText('1 задача осталось');
+		await expect(footer).toContainText('1 задача осталась');
 
 		// Переключение (отметить как выполненную)
 		const checkbox = page.getByRole('checkbox', { name: /Отметить задачу "Задача для удаления"/ });
@@ -48,6 +48,6 @@ test.describe('CRUD: добавление, переключение, удале�
 		const checkbox1 = page.getByRole('checkbox', { name: /Отметить задачу "Первая задача"/ });
 		await checkbox1.click();
 
-		await expect(footer).toContainText('1 задача осталось');
+		await expect(footer).toContainText('1 задача осталась');
 	});
 });

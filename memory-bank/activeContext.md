@@ -4,18 +4,20 @@
 
 **Задача:** i18n-001 — Мультиязычность (RU/EN)  
 **Ветка:** `feat/i18n-001-language-settings`  
-**Фаза:** CREATIVE — обсуждение UI переключения языка, модальный блок настроек
+**Фаза:** BUILD — реализация i18n по плану
 
 ## Current Mode
 
-PLAN ✅ завершён — следующий шаг: CREATIVE для UI-решений
+CREATIVE ✅ завершён — решения в `memory-bank/creative/creative-i18n-001.md`
 
 ## Next Steps
 
-1. **CREATIVE фаза** — обсуждение UI-решений в `memory-bank/creative/creative-i18n-001.md`:
-   - Переключатель языка (расположение, вид)
-   - Модальный блок настроек (содержимое, триггер)
-2. **BUILD** — реализация по плану из `memory-bank/tasks.md`
+1. **BUILD** — реализация по плану из `memory-bank/tasks.md`:
+   - Phase 1: Setup (i18next, локали)
+   - Phase 2: Core Translations
+   - Phase 3: UI — LanguageSwitcher (dropdown ru/en, иконка глобуса — локальный SVG, offline)
+   - Phase 4: Persistence (localStorage)
+   - Phase 5: Documentation & Testing
 
 ## Context for AI
 

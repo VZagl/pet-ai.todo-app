@@ -22,14 +22,9 @@ const GlobeIcon = () => (
 	</svg>
 );
 
-/** Языки с названиями на родном языке (не переводятся) */
-const LANGUAGES = [
-	{ code: 'en', label: 'English' },
-	{ code: 'ru', label: 'Русский' },
-] as const;
-
 /**
- * Переключатель языка — кнопка с иконкой глобуса, dropdown со списком языков
+ * Переключатель языка — кнопка с иконкой глобуса, dropdown со списком языков.
+ * Список строится динамически из supportedLngs, названия берутся из language.name.
  */
 export const LanguageSwitcher = () => {
 	const { t, i18n } = useTranslation();
@@ -37,8 +32,10 @@ export const LanguageSwitcher = () => {
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	const currentLng = i18n.language?.split('-')[0] ?? 'ru';
-	// Локаль 'en' для стабильного порядка: English → Русский (независимо от системной локали)
-	const sortedLanguages = [...LANGUAGES].sort((a, b) => a.label.localeCompare(b.label, 'en'));
+	const supportedLngs = (Array.isArray(i18n.options.supportedLngs) ? i18n.options.supportedLngs : []).filter(
+		(l: unknown): l is string => l !== 'cimode' && typeof l === 'string',
+	);
+	const sortedLanguages = [...supportedLngs].sort((a, b) => t('language.name', { lng: a }).localeCompare(t('language.name', { lng: b })));
 
 	const handleLanguageChange = useCallback(
 		(lng: string) => {
@@ -86,7 +83,7 @@ export const LanguageSwitcher = () => {
 			</button>
 			{isOpen && (
 				<ul className='language-switcher__dropdown' role='listbox' aria-label={t('language.switcherLabel')}>
-					{sortedLanguages.map(({ code, label }) => (
+					{sortedLanguages.map((code) => (
 						<li key={code} role='option' aria-selected={currentLng === code}>
 							<button
 								type='button'
@@ -95,7 +92,7 @@ export const LanguageSwitcher = () => {
 								onKeyDown={(e) => handleKeyDown(e, code)}
 								data-testid={`language-option-${code}`}
 							>
-								{label}
+								{t('language.name', { lng: code })}
 							</button>
 						</li>
 					))}

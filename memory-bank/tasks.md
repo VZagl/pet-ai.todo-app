@@ -40,14 +40,14 @@
 - [x] i18next и react-i18next уже установлены и работают
 - [x] Плюрализация uk: Intl.PluralRules поддерживает украинский (one, few, many)
 - [x] Новые зависимости не требуются
-- [ ] Тестовый билд после изменений
+- [x] Тестовый билд после изменений
 
 ### Status
 
 - [x] Initialization complete
 - [x] Planning complete
-- [ ] Technology validation complete (проверка при BUILD)
-- [ ] Implementation
+- [x] Technology validation complete (проверка при BUILD)
+- [x] Implementation
 
 ### Implementation Plan
 
@@ -122,13 +122,13 @@
 
 ### Чеклист (для BUILD)
 
-- [ ] Добавить `language.name` в ru и en (`"Русский"`, `"English"`)
-- [ ] Создать `src/locales/uk/translation.json` — украинские переводы + `language.name: "Українська"`
-- [ ] Обновить конфиг i18n: resources, `supportedLngs: ['ru', 'en', 'uk']`
-- [ ] Настроить плюрализацию для uk (task_one, task_few, task_many)
-- [ ] Рефакторинг LanguageSwitcher: динамический список из `supportedLngs`, `t('language.name', { lng })`, сортировка UTF-8
-- [ ] Обновить i18n-guidelines.md
-- [ ] Адаптировать тесты LanguageSwitcher
+- [x] Добавить `language.name` в ru и en (`"Русский"`, `"English"`)
+- [x] Создать `src/locales/uk/translation.json` — украинские переводы + `language.name: "Українська"`
+- [x] Обновить конфиг i18n: resources, `supportedLngs: ['ru', 'en', 'uk']`
+- [x] Настроить плюрализацию для uk (task_one, task_few, task_many)
+- [x] Рефакторинг LanguageSwitcher: динамический список из `supportedLngs`, `t('language.name', { lng })`, сортировка UTF-8
+- [x] Обновить i18n-guidelines.md
+- [x] Адаптировать тесты LanguageSwitcher
 
 ---
 

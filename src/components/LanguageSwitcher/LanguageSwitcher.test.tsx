@@ -17,6 +17,7 @@ describe('LanguageSwitcher', () => {
 
 		expect(screen.getByTestId('language-option-ru')).toBeInTheDocument();
 		expect(screen.getByTestId('language-option-en')).toBeInTheDocument();
+		expect(screen.getByTestId('language-option-uk')).toBeInTheDocument();
 	});
 
 	it('должен переключать язык при выборе', async () => {

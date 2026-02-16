@@ -19,8 +19,8 @@ test.describe('Стабильность layout', () => {
 		const getViewportHeight = () => page.viewportSize()!.height;
 
 		// 0 задач — footer не отображается, проверяем header и input
-		let headerBox0 = await getHeaderBox();
-		let inputBox0 = await getInputBox();
+		const headerBox0 = await getHeaderBox();
+		const inputBox0 = await getInputBox();
 		expect(headerBox0).not.toBeNull();
 		expect(inputBox0).not.toBeNull();
 
@@ -29,9 +29,9 @@ test.describe('Стабильность layout', () => {
 		await addButton.click();
 		await page.waitForTimeout(100);
 
-		let headerBox1 = await getHeaderBox();
-		let inputBox1 = await getInputBox();
-		let footerBox1 = await getFooterBox();
+		const headerBox1 = await getHeaderBox();
+		const inputBox1 = await getInputBox();
+		const footerBox1 = await getFooterBox();
 		expect(headerBox1).not.toBeNull();
 		expect(inputBox1).not.toBeNull();
 		expect(footerBox1).not.toBeNull();
@@ -45,9 +45,9 @@ test.describe('Стабильность layout', () => {
 		await addButton.click();
 		await page.waitForTimeout(100);
 
-		let headerBox2 = await getHeaderBox();
-		let inputBox2 = await getInputBox();
-		let footerBox2 = await getFooterBox();
+		const headerBox2 = await getHeaderBox();
+		const inputBox2 = await getInputBox();
+		const footerBox2 = await getFooterBox();
 		expect(headerBox2!.y).toBe(headerBox0!.y);
 		expect(inputBox2!.y).toBe(inputBox0!.y);
 		// Footer остаётся на том же месте (прижат к низу)
@@ -60,9 +60,9 @@ test.describe('Стабильность layout', () => {
 		}
 		await page.waitForTimeout(100);
 
-		let headerBox20 = await getHeaderBox();
-		let inputBox20 = await getInputBox();
-		let footerBox20 = await getFooterBox();
+		const headerBox20 = await getHeaderBox();
+		const inputBox20 = await getInputBox();
+		const footerBox20 = await getFooterBox();
 		expect(headerBox20!.y).toBe(headerBox0!.y);
 		expect(inputBox20!.y).toBe(inputBox0!.y);
 		// Footer прижат к низу окна

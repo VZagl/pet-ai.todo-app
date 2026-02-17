@@ -2,37 +2,20 @@
 
 ## Overall Progress
 
-**Активная задача:** Нет — ожидает `/van`  
-**Статус:** Memory Bank готов к следующей задаче
+**Активная задача:** Нет  
+**Статус:** Ожидает `/van` для инициализации новой задачи
 
-## 2026-02-16: i18n-002 — ЗАВЕРШЕНО
+## 2026-02-17: edit-task-001 — ЗАВЕРШЕНО
 
-**Название:** Украинская локализация (uk)  
+**Название:** Редактирование текста задачи  
 **Уровень:** Level 2 — Simple Enhancement  
-**Ветка:** `feat/i18n-002-ukrainian-localization`  
+**Ветка:** `feat/inline-edit-todo-item`  
 **Статус:** ✅ COMPLETED & ARCHIVED
 
-**Итог:** Украинская локаль добавлена. LanguageSwitcher переведён на динамический список из supportedLngs. Тесты и билд проходят.
+**Итог:** Inline-редактирование реализовано в TodoItem. Кнопка редактирования (карандаш) — единственный способ входа. Валидация (пустая строка, MAX_TODO_LENGTH). Enter — сохранить, Escape — отменить. Кнопки Save/Cancel с иконками. Задержка 400 ms для action buttons после выхода. 15 тестов TodoItem проходят. Сборка успешна.
 
-**Запись:** [`memory-bank/completed-tasks/2026/02/i18n-002_2026-02-16.md`](completed-tasks/2026/02/i18n-002_2026-02-16.md)  
-**Архив:** [`memory-bank/archive/archive-i18n-002.md`](archive/archive-i18n-002.md)  
-**Рефлексия:** [`memory-bank/reflection/reflection-i18n-002.md`](reflection/reflection-i18n-002.md)
-
-**Следующий шаг:** `/van` для инициализации новой задачи
-
----
-
-## 2026-02-16: i18n-001 — ЗАВЕРШЕНО
-
-**Название:** Мультиязычность (RU/EN)  
-**Уровень:** Level 3 — Feature  
-**Ветка:** `feat/i18n-001-language-settings`  
-**Статус:** ✅ COMPLETED & ARCHIVED
-
-**Итог:** Задача полностью финализирована. Удалена из backlog. Memory Bank готов к следующей задаче.
-
-**Запись:** [`memory-bank/completed-tasks/2026/01/i18n-001_2026-02-16.md`](completed-tasks/2026/01/i18n-001_2026-02-16.md)  
-**Архив:** [`memory-bank/archive/archive-i18n-001.md`](archive/archive-i18n-001.md)  
-**Рефлексия:** [`memory-bank/reflection/reflection-i18n-001.md`](reflection/reflection-i18n-001.md)
+**Запись:** [`memory-bank/completed-tasks/2025/12/edit-task-001_2026-02-17.md`](completed-tasks/2025/12/edit-task-001_2026-02-17.md)  
+**Архив:** [`memory-bank/archive/archive-edit-task-001.md`](archive/archive-edit-task-001.md)  
+**Рефлексия:** [`memory-bank/reflection/reflection-edit-task-001.md`](reflection/reflection-edit-task-001.md)
 
 **Следующий шаг:** `/van` для инициализации новой задачи

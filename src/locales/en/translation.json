@@ -15,7 +15,13 @@
 		"ariaToggle": "Mark task \"{{text}}\" as {{status}}",
 		"statusCompleted": "incomplete",
 		"statusActive": "completed",
-		"ariaDelete": "Delete task \"{{text}}\""
+		"ariaDelete": "Delete task \"{{text}}\"",
+		"ariaEdit": "Edit task \"{{text}}\"",
+		"ariaSave": "Save changes",
+		"ariaCancel": "Cancel editing",
+		"ariaEditInput": "Edit task text",
+		"errorEmpty": "Enter task text",
+		"errorMaxLength": "Maximum task length: {{max}} characters"
 	},
 	"todoList": {
 		"empty": "No tasks to display"

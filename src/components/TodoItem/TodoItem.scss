@@ -37,6 +37,7 @@
 		margin: calc(-1 * #{$space-2});
 		border-radius: $radius-sm;
 		padding: $space-2;
+		touch-action: none; /* предотвращает скролл при касании grip на сенсорных экранах */
 		color: $color-text-muted;
 
 		&:active {

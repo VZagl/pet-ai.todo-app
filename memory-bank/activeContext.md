@@ -6,13 +6,13 @@
 
 ## Current Mode
 
-VAN → PLAN — ветка `feat/drag-drop-sort-tasks` создана, ожидается план реализации
+PLAN → BUILD — план реализации готов, библиотека @dnd-kit выбрана
 
 ## Next Steps
 
-1. Выполнить PLAN — составить план реализации
-2. Выбрать библиотеку DnD
-3. Реализовать reorderTodos и интеграцию DnD
+1. Установить @dnd-kit (core, sortable, utilities)
+2. Реализовать mergeReorderedFilteredItems и reorderTodos
+3. Интегрировать DnD в TodoList и TodoItem
 
 ## Context for AI
 

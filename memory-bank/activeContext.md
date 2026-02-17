@@ -2,21 +2,23 @@
 
 ## Current Focus
 
-**Режим:** ARCHIVE завершён  
-**Активная задача:** Нет
+**Режим:** VAN → PLAN  
+**Активная задача:** edit-task-001 — Редактирование текста задачи
 
 ## Current Mode
 
-Задача i18n-002 архивирована. Memory Bank сброшен для следующей задачи.
+Ветка `feat/inline-edit-todo-item` создана. Задача инициализирована. Ожидает режим PLAN для детального планирования.
 
 ## Next Steps
 
-1. Запустить `/van` для инициализации новой задачи из backlog
+1. Запустить `/plan` для планирования реализации
+2. Реализовать inline-редактирование в TodoItem (двойной клик, валидация, Escape)
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded), i18next
-- Последняя задача: i18n-002 (украинская локализация) — завершена и архивирована
-- Локали: ru, en, uk
+- Текущая задача: edit-task-001 (inline edit текста задачи)
+- `updateTodo(id, text)` уже существует в useTodos/Context — использовать в TodoItem
+- Компонент: `src/components/TodoItem/TodoItem.tsx`
 - Style Guide: `memory-bank/style-guide.md`

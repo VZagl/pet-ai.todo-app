@@ -127,7 +127,17 @@
 - [x] Визуальный feedback при перетаскивании
 - [x] Сохранение порядка (автоматически через useLocalStorage)
 - [x] Тесты
+- [x] REFLECT: Рефлексия завершена
 - [ ] CLOSE: Финализировать задачу командой /close-task
+
+---
+
+## Reflection Highlights
+
+- **What Went Well:** Challenges & Mitigations в плане; разделение SortableTodoItem/TodoItem; mergeReorderedItems по id; grip как единственный drag-handle
+- **Challenges:** Выбор библиотеки; настройка sensors; структура DOM (as='div')
+- **Lessons Learned:** setActivatorNodeRef для drag-handle; arrayMove + mergeReorderedItems при фильтрации; обёртка для sortable
+- **Next Steps:** Команда `/archive` для финализации архива
 
 ---
 

@@ -2,22 +2,22 @@
 
 ## Overall Progress
 
-**Активная задача:** edit-task-001 — Редактирование текста задачи  
-**Ветка:** `feat/inline-edit-todo-item`  
-**Статус:** VAN завершён → ожидает PLAN
+**Активная задача:** Нет  
+**Статус:** Ожидает `/van` для инициализации новой задачи
 
-## 2026-02-17: edit-task-001 — РЕАЛИЗАЦИЯ ЗАВЕРШЕНА
+## 2026-02-17: edit-task-001 — ЗАВЕРШЕНО
 
 **Название:** Редактирование текста задачи  
 **Уровень:** Level 2 — Simple Enhancement  
 **Ветка:** `feat/inline-edit-todo-item`  
-**Статус:** ✅ BUILD завершён
+**Статус:** ✅ COMPLETED & ARCHIVED
 
 **Итог:** Inline-редактирование реализовано в TodoItem. Кнопка редактирования (карандаш) — единственный способ входа. Валидация (пустая строка, MAX_TODO_LENGTH). Enter — сохранить, Escape — отменить. Кнопки Save/Cancel с иконками. Задержка 400 ms для action buttons после выхода. 15 тестов TodoItem проходят. Сборка успешна.
 
-**Доработки после BUILD:** Layout input (edit-wrapper с flex: 1 0 auto, edit-actions снаружи). Рефакторинг кнопок: `todo-item__btn` с модификаторами. Подсветка режима редактирования: `todo-item__content--editing` с `$color-bg-hover`. BEM: модификатор на том элементе, который стилизуется.
+**Архив:** [`memory-bank/archive/archive-edit-task-001.md`](archive/archive-edit-task-001.md)  
+**Рефлексия:** [`memory-bank/reflection/reflection-edit-task-001.md`](reflection/reflection-edit-task-001.md)
 
-**Следующий шаг:** `/reflect` для рефлексии
+**Следующий шаг:** `/van` для инициализации новой задачи
 
 ---
 

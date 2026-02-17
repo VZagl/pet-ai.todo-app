@@ -118,15 +118,15 @@
 **Чеклист:**
 
 - [x] PLAN: Составить план реализации
-- [ ] Выбрать библиотеку DnD — **@dnd-kit** (выбрано)
-- [ ] Установить зависимости @dnd-kit
-- [ ] Добавить `mergeReorderedItems` в todo-helpers
-- [ ] Добавить `reorderTodos` в use-todos и контекст
-- [ ] Интегрировать DnD в TodoList (DndContext, SortableContext)
-- [ ] Создать SortableTodoItem с grip (⋮⋮) слева от чекбокса
-- [ ] Визуальный feedback при перетаскивании
-- [ ] Сохранение порядка (автоматически через useLocalStorage)
-- [ ] Тесты
+- [x] Выбрать библиотеку DnD — **@dnd-kit** (выбрано)
+- [x] Установить зависимости @dnd-kit
+- [x] Добавить `mergeReorderedItems` в todo-helpers
+- [x] Добавить `reorderTodos` в use-todos и контекст
+- [x] Интегрировать DnD в TodoList (DndContext, SortableContext)
+- [x] Создать SortableTodoItem с grip (⋮⋮) слева от чекбокса
+- [x] Визуальный feedback при перетаскивании
+- [x] Сохранение порядка (автоматически через useLocalStorage)
+- [x] Тесты
 - [ ] CLOSE: Финализировать задачу командой /close-task
 
 ---

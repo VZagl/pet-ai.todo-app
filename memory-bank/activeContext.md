@@ -10,9 +10,11 @@ PLAN → BUILD — план реализации готов, библиотек�
 
 ## Next Steps
 
-1. Установить @dnd-kit (core, sortable, utilities)
-2. Реализовать mergeReorderedFilteredItems и reorderTodos
-3. Интегрировать DnD в TodoList и TodoItem
+1. ~~Установить @dnd-kit~~ ✅
+2. ~~Реализовать mergeReorderedItems и reorderTodos~~ ✅
+3. ~~Интегрировать DnD в TodoList и TodoItem~~ ✅
+4. REFLECT: выполнить /reflect для ревью
+5. CLOSE: выполнить /close-task для финализации
 
 ## Context for AI
 

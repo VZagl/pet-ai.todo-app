@@ -28,6 +28,42 @@
 		}
 	}
 
+	&__grip {
+		display: flex;
+		flex-shrink: 0;
+		justify-content: center;
+		align-items: center;
+		cursor: grab;
+		margin: calc(-1 * #{$space-2});
+		border-radius: $radius-sm;
+		padding: $space-2;
+		color: $color-text-muted;
+
+		&:active {
+			cursor: grabbing;
+		}
+
+		&:hover {
+			background-color: $color-bg-hover;
+			color: $color-text;
+		}
+
+		img {
+			width: 1rem;
+			height: 1rem;
+			pointer-events: none;
+		}
+	}
+
+	&--dragging {
+		opacity: 0.5;
+		cursor: grabbing;
+
+		.todo-item__grip {
+			cursor: grabbing;
+		}
+	}
+
 	&__checkbox {
 		flex-shrink: 0;
 		cursor: pointer;

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { i_todo } from '../types/todo';
-import { filterTodos, generateId, getActiveCount } from './todo-helpers';
+import { filterTodos, generateId, getActiveCount, mergeReorderedItems } from './todo-helpers';
 
 describe('todoHelpers', () => {
 	describe('generateId', () => {
@@ -145,6 +145,42 @@ describe('todoHelpers', () => {
 			const count = getActiveCount(todos);
 
 			expect(count).toBe(2);
+		});
+	});
+
+	describe('mergeReorderedItems', () => {
+		const todos: i_todo[] = [
+			{ id: '1', text: 'First', completed: false, createdAt: 1 },
+			{ id: '2', text: 'Second', completed: false, createdAt: 2 },
+			{ id: '3', text: 'Third', completed: false, createdAt: 3 },
+		];
+
+		it('должен менять порядок элементов согласно reorderedItems', () => {
+			const reordered = [todos[2], todos[0], todos[1]];
+
+			const result = mergeReorderedItems(todos, reordered);
+
+			expect(result[0]).toEqual(todos[2]);
+			expect(result[1]).toEqual(todos[0]);
+			expect(result[2]).toEqual(todos[1]);
+		});
+
+		it('должен сохранять порядок элементов, не входящих в reorderedItems', () => {
+			const todosWithExtra: i_todo[] = [...todos, { id: '4', text: 'Fourth', completed: false, createdAt: 4 }];
+			const reordered = [todos[1], todos[0]];
+
+			const result = mergeReorderedItems(todosWithExtra, reordered);
+
+			expect(result[0]).toEqual(todos[1]);
+			expect(result[1]).toEqual(todos[0]);
+			expect(result[2]).toEqual(todos[2]);
+			expect(result[3].id).toBe('4');
+		});
+
+		it('должен возвращать пустой массив для пустого todos', () => {
+			const result = mergeReorderedItems([], []);
+
+			expect(result).toEqual([]);
 		});
 	});
 });

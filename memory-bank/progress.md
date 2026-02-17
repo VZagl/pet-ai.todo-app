@@ -12,7 +12,19 @@
 **Ветка:** `feat/drag-drop-sort-tasks`  
 **Статус:** 🟡 В работе
 
-**Текущий этап:** Инициализация, ветка создана. Ожидается план (PLAN mode).
+**Текущий этап:** BUILD завершён.
+
+**Реализовано:**
+
+- Установлены @dnd-kit/core, @dnd-kit/sortable, @dnd-kit/utilities
+- `mergeReorderedItems` в todo-helpers + тесты
+- `reorderTodos` в use-todos и контекст + тесты
+- DndContext, SortableContext в TodoList
+- SortableTodoItem с grip (⋮⋮) слева от чекбокса
+- Визуальный feedback (.todo-item--dragging)
+- Порядок сохраняется через useLocalStorage
+
+**Тесты:** TodoList, todo-helpers, use-todos — 30 тестов проходят. Сборка успешна.
 
 ---
 

@@ -48,5 +48,16 @@
 	"language": {
 		"name": "English",
 		"switcherLabel": "Language"
+	},
+	"theme": {
+		"toggleLight": "Light theme",
+		"toggleDark": "Dark theme",
+		"settingsLabel": "Settings",
+		"settingsTabTheme": "Theme selection",
+		"accept": "Accept",
+		"reject": "Reject",
+		"unsavedTitle": "Settings were not confirmed",
+		"unsavedSave": "Exit and save changes",
+		"unsavedDiscard": "Exit without saving"
 	}
 }

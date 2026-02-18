@@ -7,12 +7,12 @@
 	justify-content: space-between;
 	align-items: center;
 	@include transition(background-color);
-	border-bottom: 1px solid $color-border-light;
-	background-color: $color-surface;
+	border-bottom: 1px solid var(--color-border-light);
+	background-color: var(--color-surface);
 	padding: $space-4;
 
 	&:hover {
-		background-color: $color-bg-hover;
+		background-color: var(--color-bg-hover);
 	}
 
 	&__content {
@@ -24,7 +24,7 @@
 
 		&--editing {
 			border-radius: $radius-sm;
-			background-color: $color-bg-hover;
+			background-color: var(--color-bg-hover);
 		}
 	}
 
@@ -38,15 +38,15 @@
 		border-radius: $radius-sm;
 		padding: $space-2;
 		touch-action: none; /* предотвращает скролл при касании grip на сенсорных экранах */
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 
 		&:active {
 			cursor: grabbing;
 		}
 
 		&:hover {
-			background-color: $color-bg-hover;
-			color: $color-text;
+			background-color: var(--color-bg-hover);
+			color: var(--color-text);
 		}
 
 		img {
@@ -75,14 +75,14 @@
 	&__text {
 		flex: 1;
 		@include transition(color, text-decoration);
-		color: $color-text;
+		color: var(--color-text);
 		font-size: $font-size-base;
 		line-height: 1.5;
 		word-break: break-word;
 	}
 
 	&.completed &__text {
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 		text-decoration: line-through;
 	}
 
@@ -98,18 +98,18 @@
 		border-radius: $radius-sm;
 		background-color: transparent;
 		padding: 0;
-		color: $color-text;
+		color: var(--color-text);
 		font-size: $font-size-base;
 		line-height: 1.5;
 		font-family: inherit;
 
 		&:focus {
 			outline: none;
-			border-color: $color-primary;
+			border-color: var(--color-primary);
 		}
 
 		&--error {
-			border-color: $color-danger;
+			border-color: var(--color-danger);
 		}
 	}
 
@@ -133,7 +133,7 @@
 		}
 
 		&--save {
-			background-color: $color-success;
+			background-color: var(--color-success);
 
 			img {
 				filter: brightness(0) invert(1);
@@ -146,12 +146,12 @@
 			}
 
 			&:focus {
-				@include focus-outline($color-success);
+				@include focus-outline(var(--color-success));
 			}
 		}
 
 		&--cancel {
-			background-color: $color-primary;
+			background-color: var(--color-primary);
 
 			img {
 				filter: brightness(0) invert(1);
@@ -164,12 +164,12 @@
 			}
 
 			&:focus {
-				@include focus-outline($color-primary);
+				@include focus-outline(var(--color-primary));
 			}
 		}
 
 		&--edit {
-			color: $color-text-muted;
+			color: var(--color-text-muted);
 
 			img {
 				width: 1rem;
@@ -177,27 +177,27 @@
 			}
 
 			&:hover:not(:disabled) {
-				background-color: $color-bg-hover;
-				color: $color-text;
+				background-color: var(--color-bg-hover);
+				color: var(--color-text);
 			}
 
 			&:focus {
-				@include focus-outline($color-primary);
+				@include focus-outline(var(--color-primary));
 			}
 		}
 
 		&--delete {
-			color: $color-text-muted;
+			color: var(--color-text-muted);
 			font-size: 1.75rem;
 			line-height: 1;
 
 			&:hover:not(:disabled) {
-				background-color: $color-danger;
-				color: $color-on-primary;
+				background-color: var(--color-danger);
+				color: var(--color-on-primary);
 			}
 
 			&:focus {
-				@include focus-outline($color-primary);
+				@include focus-outline(var(--color-primary));
 			}
 		}
 	}
@@ -207,11 +207,11 @@
 		padding: 0;
 		padding-left: calc(1.25rem + #{$space-3}); /* checkbox width + gap */
 		width: 100%;
-		color: $color-danger;
+		color: var(--color-danger);
 		font-size: $font-size-sm;
 	}
 
 	&--error &__edit {
-		border-color: $color-danger;
+		border-color: var(--color-danger);
 	}
 }

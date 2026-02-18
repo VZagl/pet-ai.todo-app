@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useFilter } from '../../hooks/use-filter';
 import { useTodoContext } from '../../hooks/use-todo-context';
-import { LanguageSwitcher } from '../LanguageSwitcher/LanguageSwitcher';
+import { HeaderControls } from '../HeaderControls/HeaderControls';
+import { SettingsModal } from '../SettingsModal/SettingsModal';
 import { TodoFooter } from '../TodoFooter/TodoFooter';
 import { TodoInput } from '../TodoInput/TodoInput';
 import { TodoList } from '../TodoList/TodoList';
@@ -15,12 +17,13 @@ export const TodoApp = () => {
 	const { t } = useTranslation();
 	const { todos, activeCount, completedCount, addTodo } = useTodoContext();
 	const { filter, setFilter, filteredTodos } = useFilter(todos);
+	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
 	return (
 		<div className='todo-app'>
 			<div className='todo-app__container'>
 				<header className='todo-app__header'>
-					<LanguageSwitcher />
+					<HeaderControls onSettingsClick={() => setIsSettingsOpen(true)} />
 					<h1 className='todo-app__title'>{t('app.title')}</h1>
 					<p className='todo-app__subtitle'>{t('app.subtitle')}</p>
 				</header>
@@ -31,10 +34,16 @@ export const TodoApp = () => {
 						<TodoList todos={filteredTodos} />
 					</div>
 					{todos.length > 0 && (
-						<TodoFooter activeCount={activeCount} completedCount={completedCount} currentFilter={filter} onFilterChange={setFilter} />
+						<TodoFooter
+							activeCount={activeCount}
+							completedCount={completedCount}
+							currentFilter={filter}
+							onFilterChange={setFilter}
+						/>
 					)}
 				</main>
 			</div>
+			<SettingsModal isOpen={isSettingsOpen} onClose={() => setIsSettingsOpen(false)} />
 		</div>
 	);
 };

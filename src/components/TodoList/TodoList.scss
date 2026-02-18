@@ -19,7 +19,7 @@
 
 	&__message {
 		margin: 0;
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 		font-style: italic;
 		font-size: $font-size-base;
 	}

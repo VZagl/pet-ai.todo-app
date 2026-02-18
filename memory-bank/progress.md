@@ -5,16 +5,31 @@
 **Активная задача:** theming-001  
 **Статус:** Инициализация → PLAN mode
 
-## 2026-02-18: theming-001 — В РАБОТЕ
+## 2026-02-18: theming-001 — BUILD ЗАВЕРШЁН
 
 **Название:** Двухслойная система тематизации (Color Scheme + Theme Variants)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/theming-001-two-layer-theming`  
-**Статус:** 🟡 В процессе
+**Статус:** ✅ BUILD complete → REFLECT
 
-**Creative phase UI/UX:** ✅ завершён (2026-02-18) — [`creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
-**Creative phase Цветовые палитры:** ✅ завершён (2026-02-18) — [`creative-theming-palettes.md`](creative/creative-theming-palettes.md)  
-**Следующий шаг:** `/build` для реализации (Phase 1–5)
+**Creative phase UI/UX:** ✅ завершён — [`creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
+**Creative phase Цветовые палитры:** ✅ завершён — [`creative-theming-palettes.md`](creative/creative-theming-palettes.md)
+
+**Реализовано:**
+
+- Phase 1: `src/styles/tokens/`, `src/styles/themes/` (theme-types, theme-definitions)
+- Phase 2: ThemeProvider, useTheme, персистентность, синхронизация вкладок
+- Phase 3: Рефакторинг \_variables, \_mixins, index.scss, компонентных SCSS
+- Phase 4: ThemeToggle, SettingsButton, SettingsModal, ThemeSelectionTab, HeaderControls
+- Phase 5: use-theme.test.ts, ThemeToggle.test.tsx, matchMedia mock в vitest.setup
+
+**Файлы:** ThemeProvider, use-theme, ThemeToggle, SettingsButton, SettingsModal, ThemeSelectionTab, HeaderControls; sun.svg, moon.svg, settings.svg; переводы theme.\*
+
+**Сборка:** ✅ pnpm build  
+**Линт:** ✅ pnpm lint  
+**Тесты:** useTheme (3), ThemeToggle (2) — проходят
+
+**Следующий шаг:** `/reflect` для ревью задачи
 
 ---
 

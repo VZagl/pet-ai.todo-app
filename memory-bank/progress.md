@@ -2,36 +2,22 @@
 
 ## Overall Progress
 
-**Активная задача:** theming-001  
-**Статус:** Инициализация → PLAN mode
+**Активная задача:** —  
+**Статус:** Ожидание `/van` для следующей задачи
 
-## 2026-02-18: theming-001 — BUILD ЗАВЕРШЁН
+## 2026-02-18: theming-001 — ЗАВЕРШЕНО И АРХИВИРОВАНО
 
 **Название:** Двухслойная система тематизации (Color Scheme + Theme Variants)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/theming-001-two-layer-theming`  
-**Статус:** ✅ BUILD complete → ✅ REFLECT complete → ARCHIVE
+**Статус:** ✅ COMPLETED & ARCHIVED
 
-**Creative phase UI/UX:** ✅ завершён — [`creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
-**Creative phase Цветовые палитры:** ✅ завершён — [`creative-theming-palettes.md`](creative/creative-theming-palettes.md)
+**Архив:** [`memory-bank/archive/archive-theming-001.md`](archive/archive-theming-001.md)  
+**Рефлексия:** [`memory-bank/reflection/reflection-theming-001.md`](reflection/reflection-theming-001.md)
 
-**Реализовано:**
+**Итог:** Двухслойная тематизация (Color Scheme + Theme Variants). ThemeProvider, useTheme, 5 тем × 2 схемы. ThemeToggle, SettingsModal, ThemeSelectionTab, HeaderControls. Рефакторинг SCSS на var(--color-\*). Сборка, линт, тесты — успешно.
 
-- Phase 1: `src/styles/tokens/`, `src/styles/themes/` (theme-types, theme-definitions)
-- Phase 2: ThemeProvider, useTheme, персистентность, синхронизация вкладок
-- Phase 3: Рефакторинг \_variables, \_mixins, index.scss, компонентных SCSS
-- Phase 4: ThemeToggle, SettingsButton, SettingsModal, ThemeSelectionTab, HeaderControls
-- Phase 5: use-theme.test.ts, ThemeToggle.test.tsx, matchMedia mock в vitest.setup
-
-**Файлы:** ThemeProvider, use-theme, ThemeToggle, SettingsButton, SettingsModal, ThemeSelectionTab, HeaderControls; sun.svg, moon.svg, settings.svg; переводы theme.\*
-
-**Сборка:** ✅ pnpm build  
-**Линт:** ✅ pnpm lint  
-**Тесты:** useTheme (3), ThemeToggle (2) — проходят
-
-**Рефлексия:** ✅ [`reflection-theming-001.md`](reflection/reflection-theming-001.md)
-
-**Следующий шаг:** `/archive` для финализации документации задачи
+**Следующий шаг:** `/van` для инициализации новой задачи
 
 ---
 

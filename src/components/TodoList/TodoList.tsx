@@ -8,7 +8,12 @@ import {
 	useSensors,
 	type DragEndEvent,
 } from '@dnd-kit/core';
-import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from '@dnd-kit/sortable';
+import {
+	arrayMove,
+	SortableContext,
+	sortableKeyboardCoordinates,
+	verticalListSortingStrategy,
+} from '@dnd-kit/sortable';
 import { useTranslation } from 'react-i18next';
 import { useTodoContext } from '../../hooks/use-todo-context';
 import type { i_todo } from '../../types/todo';

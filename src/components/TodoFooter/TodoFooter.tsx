@@ -18,7 +18,12 @@ interface i_todoFooterProps {
  * Компонент подвала приложения
  * Отображает счётчик по фильтру и кнопки фильтров
  */
-export const TodoFooter = ({ activeCount, completedCount, currentFilter, onFilterChange }: i_todoFooterProps) => {
+export const TodoFooter = ({
+	activeCount,
+	completedCount,
+	currentFilter,
+	onFilterChange,
+}: i_todoFooterProps) => {
 	const { t } = useTranslation();
 	const totalCount = activeCount + completedCount;
 	const taskWordActive = t('todoFooter.task', { count: activeCount });
@@ -37,10 +42,18 @@ export const TodoFooter = ({ activeCount, completedCount, currentFilter, onFilte
 			});
 			break;
 		case 'active':
-			counterText = t('todoFooter.counterActive', { count: activeCount, task: taskWordActive, left: leftWord });
+			counterText = t('todoFooter.counterActive', {
+				count: activeCount,
+				task: taskWordActive,
+				left: leftWord,
+			});
 			break;
 		case 'completed':
-			counterText = t('todoFooter.counterCompleted', { count: completedCount, task: taskWordCompleted, completed: completedWord });
+			counterText = t('todoFooter.counterCompleted', {
+				count: completedCount,
+				task: taskWordCompleted,
+				completed: completedWord,
+			});
 			break;
 		default:
 			counterText = t('todoFooter.counterAll', {

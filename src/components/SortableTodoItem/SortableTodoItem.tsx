@@ -19,10 +19,11 @@ export function SortableTodoItem({ todo }: i_sortableTodoItemProps) {
 	const { t } = useTranslation();
 	const [isEditing, setIsEditing] = useState(false);
 
-	const { attributes, listeners, setNodeRef, setActivatorNodeRef, transform, transition, isDragging } = useSortable({
-		id: todo.id,
-		disabled: isEditing,
-	});
+	const { attributes, listeners, setNodeRef, setActivatorNodeRef, transform, transition, isDragging } =
+		useSortable({
+			id: todo.id,
+			disabled: isEditing,
+		});
 
 	const style = {
 		transform: CSS.Transform.toString(transform),
@@ -48,7 +49,13 @@ export function SortableTodoItem({ todo }: i_sortableTodoItemProps) {
 
 	return (
 		<li ref={setNodeRef} style={style} className='todo-list__sortable-item'>
-			<TodoItem todo={todo} onEditModeChange={onEditModeChange} isDragging={isDragging} grip={grip} as='div' />
+			<TodoItem
+				todo={todo}
+				onEditModeChange={onEditModeChange}
+				isDragging={isDragging}
+				grip={grip}
+				as='div'
+			/>
 		</li>
 	);
 }

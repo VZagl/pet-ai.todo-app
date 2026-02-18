@@ -8,7 +8,11 @@ describe('TodoFooter', () => {
 	const mockOnFilterChange = vi.fn();
 
 	/** Props по умолчанию для TodoFooter (формат по фильтру) */
-	const getProps = (overrides?: { activeCount?: number; completedCount?: number; currentFilter?: FilterType }) => ({
+	const getProps = (overrides?: {
+		activeCount?: number;
+		completedCount?: number;
+		currentFilter?: FilterType;
+	}) => ({
 		activeCount: 5,
 		completedCount: 7,
 		currentFilter: 'all' as FilterType,
@@ -70,10 +74,14 @@ describe('TodoFooter', () => {
 		});
 
 		it('фильтр completed: склонение завершено', () => {
-			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />);
+			const { rerender } = render(
+				<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />,
+			);
 			expect(screen.getByText(/1 задача завершена/)).toBeInTheDocument();
 
-			rerender(<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />);
+			rerender(
+				<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />,
+			);
 			expect(screen.getByText(/2 задачи завершено/)).toBeInTheDocument();
 		});
 	});

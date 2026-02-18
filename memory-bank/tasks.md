@@ -14,11 +14,11 @@
 
 ### Чеклист
 
-- [ ] Добавить `await i18n.changeLanguage('ru')` в `TodoInput.test.tsx`
-- [ ] Добавить `await i18n.changeLanguage('ru')` в `TodoFooter.test.tsx`
-- [ ] Добавить `await i18n.changeLanguage('ru')` в `TodoFilter.test.tsx`
-- [ ] Добавить `await i18n.changeLanguage('ru')` в `TodoApp.test.tsx`
-- [ ] Запустить `pnpm test --run` и убедиться, что все тесты проходят
+- [x] Добавить `await i18n.changeLanguage('ru')` в `TodoInput.test.tsx`
+- [x] Добавить `await i18n.changeLanguage('ru')` в `TodoFooter.test.tsx`
+- [x] Добавить `await i18n.changeLanguage('ru')` в `TodoFilter.test.tsx`
+- [x] Добавить `await i18n.changeLanguage('ru')` в `TodoApp.test.tsx`
+- [x] Запустить `pnpm test --run` и убедиться, что все тесты проходят
 
 ### Затронутые файлы
 

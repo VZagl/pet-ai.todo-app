@@ -2,12 +2,12 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { MAX_TODO_LENGTH } from '../../constants/todo';
+import i18n from '../../i18n/config';
 import { TodoInput } from './TodoInput';
 
 describe('TodoInput', () => {
-	beforeEach(() => {
-		// Очистка состояния между тестами для обеспечения изоляции
-		// cleanup выполняется автоматически через @testing-library/react
+	beforeEach(async () => {
+		await i18n.changeLanguage('ru');
 	});
 	it('должен отображать поле ввода и кнопку', () => {
 		const onAdd = vi.fn();

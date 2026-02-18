@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import i18n from '../../i18n/config';
 import type { FilterType } from '../../types/todo';
 import { TodoFooter } from './TodoFooter';
 
@@ -20,7 +21,8 @@ describe('TodoFooter', () => {
 		...overrides,
 	});
 
-	beforeEach(() => {
+	beforeEach(async () => {
+		await i18n.changeLanguage('ru');
 		mockOnFilterChange.mockClear();
 	});
 

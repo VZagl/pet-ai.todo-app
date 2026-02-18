@@ -7,6 +7,20 @@
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-02-18
+
+### Added
+
+- Двухслойная система тематизации (базовая палитра + CSS-переменные для тем)
+
+### Fixed
+
+- Падающие тесты i18n в компонентах
+
+### Changed
+
+- Обновлены настройки Prettier и форматирования
+
 ## [1.3.0] - 2026-02-18
 
 ### Added
@@ -80,7 +94,8 @@
 - Vitest для unit-тестов (77 тестов, >80% покрытие)
 - ESLint + Prettier
 
-[Unreleased]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/VZagl/pet-ai.todo-app/compare/v1.0.0...v1.1.0

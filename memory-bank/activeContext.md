@@ -16,6 +16,4 @@ IDLE — ожидание новой задачи
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded), i18next
-- Активная задача: нет (ожидание /van)
-- Последняя завершённая задача: theming-001 (Двухслойная система тематизации)
-- Completed: [`memory-bank/completed-tasks/2026/01/theming-001_2026-02-18.md`](completed-tasks/2026/01/theming-001_2026-02-18.md)
+- Последняя завершённая задача: testing-fixes-001 (Исправить падающие тесты)

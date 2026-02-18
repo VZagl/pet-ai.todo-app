@@ -2,19 +2,15 @@
 
 ## Current Task
 
-_Ожидание инициализации. Используйте `/van` для загрузки следующей задачи из backlog._
+Нет активной задачи. Запустить `/van [описание задачи]` для начала новой задачи.
 
 ---
 
 ## Last Completed Task
 
-**Task ID:** theming-001  
-**Название:** Двухслойная система тематизации (Color Scheme + Theme Variants)  
+**Task ID:** testing-fixes-001  
+**Название:** Исправить падающие тесты  
 **Дата:** 2026-02-18  
-**Статус:** ✅ COMPLETED & ARCHIVED  
-**Архив:** [`memory-bank/archive/archive-theming-001.md`](archive/archive-theming-001.md)  
-**Рефлексия:** [`memory-bank/reflection/reflection-theming-001.md`](reflection/reflection-theming-001.md)
+**Статус:** ✅ COMPLETED
 
-**Completed:** [`memory-bank/completed-tasks/2026/01/theming-001_2026-02-18.md`](completed-tasks/2026/01/theming-001_2026-02-18.md)
-
-**Следующий шаг:** `/van` для инициализации новой задачи.
+**Completed:** [`memory-bank/completed-tasks/2026/02/testing-fixes-001_2026-02-18.md`](completed-tasks/2026/02/testing-fixes-001_2026-02-18.md)

@@ -2,15 +2,15 @@
 
 ## Current Focus
 
-_Ожидание инициализации следующей задачи._
+Нет активной задачи. Запустить `/van` для инициализации.
 
 ## Current Mode
 
-ARCHIVE complete. Готово к `/van` для загрузки новой задачи.
+IDLE — ожидание новой задачи
 
 ## Next Steps
 
-1. Выполнить `/van` для инициализации следующей задачи из backlog
+Запустить `/van [описание задачи]` для начала новой задачи
 
 ## Context for AI
 
@@ -18,4 +18,4 @@ ARCHIVE complete. Готово к `/van` для загрузки новой за
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded), i18next
 - Активная задача: нет (ожидание /van)
 - Последняя завершённая задача: theming-001 (Двухслойная система тематизации)
-- Архив: [`memory-bank/archive/archive-theming-001.md`](archive/archive-theming-001.md)
+- Completed: [`memory-bank/completed-tasks/2026/01/theming-001_2026-02-18.md`](completed-tasks/2026/01/theming-001_2026-02-18.md)

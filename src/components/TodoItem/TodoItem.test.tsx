@@ -16,6 +16,7 @@ vi.mock('../../hooks/use-todo-context', () => ({
 		toggleTodo: vi.fn(),
 		deleteTodo: vi.fn(),
 		updateTodo: vi.fn(),
+		reorderTodos: vi.fn(),
 	})),
 }));
 
@@ -73,6 +74,7 @@ describe('TodoItem', () => {
 			toggleTodo,
 			deleteTodo: vi.fn(),
 			updateTodo: vi.fn(),
+			reorderTodos: vi.fn(),
 		});
 
 		render(<TodoItem todo={mockTodo} />);
@@ -95,6 +97,7 @@ describe('TodoItem', () => {
 			toggleTodo: vi.fn(),
 			deleteTodo,
 			updateTodo: vi.fn(),
+			reorderTodos: vi.fn(),
 		});
 
 		render(<TodoItem todo={mockTodo} />);
@@ -156,6 +159,7 @@ describe('TodoItem', () => {
 				toggleTodo: vi.fn(),
 				deleteTodo: vi.fn(),
 				updateTodo,
+				reorderTodos: vi.fn(),
 			});
 			render(<TodoItem todo={mockTodo} />);
 
@@ -180,6 +184,7 @@ describe('TodoItem', () => {
 				toggleTodo: vi.fn(),
 				deleteTodo: vi.fn(),
 				updateTodo,
+				reorderTodos: vi.fn(),
 			});
 			render(<TodoItem todo={mockTodo} />);
 
@@ -204,6 +209,7 @@ describe('TodoItem', () => {
 				toggleTodo: vi.fn(),
 				deleteTodo: vi.fn(),
 				updateTodo,
+				reorderTodos: vi.fn(),
 			});
 			render(<TodoItem todo={mockTodo} />);
 
@@ -228,6 +234,7 @@ describe('TodoItem', () => {
 				toggleTodo: vi.fn(),
 				deleteTodo: vi.fn(),
 				updateTodo,
+				reorderTodos: vi.fn(),
 			});
 			render(<TodoItem todo={mockTodo} />);
 
@@ -252,6 +259,7 @@ describe('TodoItem', () => {
 				toggleTodo: vi.fn(),
 				deleteTodo: vi.fn(),
 				updateTodo,
+				reorderTodos: vi.fn(),
 			});
 			render(<TodoItem todo={mockTodo} />);
 

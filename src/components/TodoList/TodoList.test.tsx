@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TodoProvider } from '../../contexts/TodoProvider';
+import i18n from '../../i18n/config';
 import type { i_todo } from '../../types/todo';
 import { TodoList } from './TodoList';
 
@@ -13,6 +14,10 @@ function renderTodoList(todos: i_todo[]) {
 }
 
 describe('TodoList', () => {
+	beforeEach(async () => {
+		await i18n.changeLanguage('ru');
+	});
+
 	afterEach(() => {
 		vi.restoreAllMocks();
 	});
@@ -63,8 +68,11 @@ describe('TodoList', () => {
 		renderTodoList(mockTodos);
 
 		// Проверяем, что компоненты отрисовались (косвенная проверка передачи props)
+		// 3 чекбокса + 3 grip + 3 edit + 3 delete = 12 интерактивных элементов
 		expect(screen.getAllByRole('checkbox')).toHaveLength(3);
-		expect(screen.getAllByRole('button')).toHaveLength(3);
+		expect(screen.getAllByTestId('todo-item-grip')).toHaveLength(3);
+		expect(screen.getAllByTestId('todo-item-edit')).toHaveLength(3);
+		expect(screen.getAllByTestId('todo-item-delete')).toHaveLength(3);
 	});
 
 	it('должен использовать id задачи как key', () => {

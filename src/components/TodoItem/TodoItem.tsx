@@ -13,6 +13,14 @@ const ACTION_BUTTONS_DELAY_MS = 400;
 interface i_todoItemProps {
 	/** Объект задачи */
 	todo: i_todo;
+	/** Вызывается при входе/выходе из режима редактирования (для отключения DnD) */
+	onEditModeChange?: (editing: boolean) => void;
+	/** Класс для состояния перетаскивания */
+	isDragging?: boolean;
+	/** Элемент grip для перетаскивания (рендерится слева от чекбокса) */
+	grip?: React.ReactNode;
+	/** Корневой элемент: 'li' по умолчанию, 'div' при использовании внутри SortableTodoItem */
+	as?: 'li' | 'div';
 }
 
 /**
@@ -20,7 +28,7 @@ interface i_todoItemProps {
  * Отображает чекбокс, текст задачи, кнопки редактирования и удаления.
  * Inline-редактирование доступно только через кнопку редактирования.
  */
-export const TodoItem = memo(({ todo }: i_todoItemProps) => {
+export const TodoItem = memo(({ todo, onEditModeChange, isDragging, grip, as: Component = 'li' }: i_todoItemProps) => {
 	const { t } = useTranslation();
 	const { toggleTodo, deleteTodo, updateTodo } = useTodoContext();
 
@@ -38,12 +46,14 @@ export const TodoItem = memo(({ todo }: i_todoItemProps) => {
 		setEditValue(todo.text);
 		setError('');
 		setActionButtonsEnabled(false);
-	}, [todo.text]);
+		onEditModeChange?.(true);
+	}, [todo.text, onEditModeChange]);
 
 	const exitEditMode = useCallback(() => {
 		setIsEditing(false);
 		setError('');
 		setActionButtonsEnabled(false);
+		onEditModeChange?.(false);
 		if (delayTimeoutRef.current) {
 			clearTimeout(delayTimeoutRef.current);
 			delayTimeoutRef.current = null;
@@ -52,7 +62,7 @@ export const TodoItem = memo(({ todo }: i_todoItemProps) => {
 			setActionButtonsEnabled(true);
 			delayTimeoutRef.current = null;
 		}, ACTION_BUTTONS_DELAY_MS);
-	}, []);
+	}, [onEditModeChange]);
 
 	useEffect(() => {
 		if (isEditing) {
@@ -114,8 +124,11 @@ export const TodoItem = memo(({ todo }: i_todoItemProps) => {
 	};
 
 	return (
-		<li className={`todo-item ${todo.completed ? 'completed' : ''} ${error ? 'todo-item--error' : ''}`}>
+		<Component
+			className={`todo-item ${todo.completed ? 'completed' : ''} ${error ? 'todo-item--error' : ''} ${isDragging ? 'todo-item--dragging' : ''}`}
+		>
 			<div className={`todo-item__content ${isEditing ? 'todo-item__content--editing' : ''}`}>
+				{grip}
 				<input
 					type='checkbox'
 					className='todo-item__checkbox'
@@ -197,7 +210,7 @@ export const TodoItem = memo(({ todo }: i_todoItemProps) => {
 					{error}
 				</p>
 			)}
-		</li>
+		</Component>
 	);
 });
 

@@ -195,4 +195,24 @@ describe('useTodos', () => {
 
 		expect(uniqueIds.size).toBe(3);
 	});
+
+	it('должен переупорядочивать задачи через reorderTodos', () => {
+		const { result } = renderHook(() => useTodos());
+
+		act(() => {
+			result.current.addTodo('First');
+			result.current.addTodo('Second');
+			result.current.addTodo('Third');
+		});
+
+		const [first, second, third] = result.current.todos;
+
+		act(() => {
+			result.current.reorderTodos([third, first, second]);
+		});
+
+		expect(result.current.todos[0].text).toBe('Third');
+		expect(result.current.todos[1].text).toBe('First');
+		expect(result.current.todos[2].text).toBe('Second');
+	});
 });

@@ -10,6 +10,7 @@ export interface i_todoContextValue {
 	toggleTodo: (id: string) => void;
 	deleteTodo: (id: string) => void;
 	updateTodo: (id: string, text: string) => void;
+	reorderTodos: (reorderedItems: i_todo[]) => void;
 }
 
 export const TodoContext = createContext<i_todoContextValue | null>(null);

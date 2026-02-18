@@ -17,6 +17,7 @@
 		"statusActive": "completed",
 		"ariaDelete": "Delete task \"{{text}}\"",
 		"ariaEdit": "Edit task \"{{text}}\"",
+		"ariaGrip": "Drag task \"{{text}}\"",
 		"ariaSave": "Save changes",
 		"ariaCancel": "Cancel editing",
 		"ariaEditInput": "Edit task text",

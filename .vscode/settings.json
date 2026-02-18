@@ -1,7 +1,7 @@
 {
 	"editor.wordWrap": "on",
-	"editor.fontFamily": "'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace",
-	// "editor.fontLigatures": true,
+	"editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, 'Courier New', monospace",
+	"editor.fontLigatures": true,
 	"editor.fontWeight": "normal",
 	"i18n-ally.localesPaths": ["src/locales"],
 	"i18n-ally.pathMatcher": "{locale}/{namespace}.json"

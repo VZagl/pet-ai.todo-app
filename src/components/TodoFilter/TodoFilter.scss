@@ -9,33 +9,33 @@
 	&__button {
 		@include transition(all);
 		cursor: pointer;
-		border: 1px solid $color-border;
+		border: 1px solid var(--color-border);
 		border-radius: $radius-md;
 		background-color: transparent;
 		padding: $space-2 $space-4;
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 		font-weight: $font-weight-medium;
 		font-size: $font-size-sm;
 
 		&:hover {
-			border-color: $color-primary;
-			background-color: rgba($color-primary, 0.15);
-			color: $color-primary;
+			border-color: var(--color-primary);
+			background-color: color-mix(in srgb, var(--color-primary) 15%, transparent);
+			color: var(--color-primary);
 		}
 
 		&--active {
-			border-color: $color-primary;
-			background-color: $color-primary;
-			color: $color-on-primary;
+			border-color: var(--color-primary);
+			background-color: var(--color-primary);
+			color: var(--color-on-primary);
 
 			&:hover {
-				border-color: $color-primary-hover;
-				background-color: $color-primary-hover;
+				border-color: var(--color-primary-hover);
+				background-color: var(--color-primary-hover);
 			}
 		}
 
 		&:focus {
-			@include focus-outline($color-primary);
+			@include focus-outline(var(--color-primary));
 		}
 
 		&:disabled {

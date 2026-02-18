@@ -10,7 +10,7 @@
 }
 
 :root {
-	/* CSS переменные для spacing (оставляем для динамического использования) */
+	/* Spacing */
 	--space-1: 0.25rem;
 	--space-2: 0.5rem;
 	--space-3: 0.75rem;
@@ -20,20 +20,22 @@
 	--space-8: 2rem;
 	--space-10: 2.5rem;
 
-	/* Цветовая палитра — Option B тёмный (creative-app-redesign) */
-	--color-primary: #{$color-primary};
-	--color-primary-hover: #{$color-primary-hover};
-	--color-on-primary: #{$color-on-primary};
-	--color-danger: #{$color-danger};
-	--color-success: #{$color-success};
-	--color-text: #{$color-text};
-	--color-text-muted: #{$color-text-muted};
-	--color-border: #{$color-border};
-	--color-border-light: #{$color-border-light};
-	--color-bg: #{$color-bg};
-	--color-bg-hover: #{$color-bg-hover};
-	--color-surface: #{$color-surface};
-	--color-accent: #{$color-primary};
+	/* Fallback: Default dark (применяется до монтирования ThemeProvider) */
+	--color-primary: #3b82f6;
+	--color-primary-hover: #2563eb;
+	--color-on-primary: #ffffff;
+	--color-danger: #dc3545;
+	--color-success: #16a34a;
+	--color-text: #f1f5f9;
+	--color-text-muted: #94a3b8;
+	--color-border: #334155;
+	--color-border-light: #475569;
+	--color-bg: #1e293b;
+	--color-bg-hover: #475569;
+	--color-surface: #0f172a;
+	--gradient-bg: linear-gradient(180deg, #1e293b 0%, #17202e 100%);
+	--color-focus-ring: rgba(59, 130, 246, 0.25);
+	--color-danger-focus: rgba(220, 53, 69, 0.25);
 }
 
 body {
@@ -41,16 +43,14 @@ body {
 	font-family: var(--font-family-base);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: $color-text;
+	color: var(--color-text);
 	line-height: 1.5;
 }
 
-/* Убираем стили по умолчанию для кнопок */
 button {
 	font-family: inherit;
 }
 
-/* Accessibility: улучшение focus видимости */
 *:focus-visible {
-	@include focus-outline($color-primary);
+	@include focus-outline(var(--color-primary));
 }

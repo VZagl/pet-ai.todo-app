@@ -1,15 +1,15 @@
 @use './variables' as *;
 
 // === Focus Mixin ===
-@mixin focus-outline($color: $color-primary) {
+@mixin focus-outline($color: var(--color-primary)) {
 	outline: 2px solid $color;
 	outline-offset: 2px;
 }
 
 // === Focus Shadow Mixin ===
-@mixin focus-shadow($color: $color-primary, $opacity: 0.25) {
+@mixin focus-shadow($color: var(--color-primary), $ring: var(--color-focus-ring)) {
 	outline: none;
-	box-shadow: 0 0 0 0.2rem rgba($color, $opacity);
+	box-shadow: 0 0 0 0.2rem $ring;
 	border-color: $color;
 }
 
@@ -22,7 +22,7 @@
 @mixin card($padding: $space-4, $radius: $radius-lg) {
 	box-shadow: $shadow-sm;
 	border-radius: $radius;
-	background-color: $color-surface;
+	background-color: var(--color-surface);
 	padding: $padding;
 }
 
@@ -36,7 +36,6 @@
 }
 
 // === Media Query Mixins ===
-// Mobile-first подход: стили применяются ОТ указанной ширины и выше
 @mixin tablet-up {
 	@media (min-width: $breakpoint-sm) {
 		@content;
@@ -49,7 +48,6 @@
 	}
 }
 
-// Desktop-first подход: стили применяются ДО указанной ширины (для случаев, когда нужно)
 @mixin tablet-down {
 	@media (max-width: $breakpoint-md - 1px) {
 		@content;

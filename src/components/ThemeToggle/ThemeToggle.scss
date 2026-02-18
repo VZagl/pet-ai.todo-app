@@ -1,0 +1,33 @@
+@use '../../styles/variables' as *;
+
+.theme-toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition:
+		color $transition-fast,
+		background $transition-fast;
+	cursor: pointer;
+	border: none;
+	border-radius: $radius-md;
+	background: transparent;
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	color: var(--color-text-muted);
+
+	&:hover {
+		background: var(--color-bg-hover);
+		color: var(--color-text);
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+}

@@ -51,5 +51,16 @@
 	"language": {
 		"name": "Русский",
 		"switcherLabel": "Выбор языка"
+	},
+	"theme": {
+		"toggleLight": "Светлая тема",
+		"toggleDark": "Тёмная тема",
+		"settingsLabel": "Настройки",
+		"settingsTabTheme": "Выбор темы",
+		"accept": "Принять",
+		"reject": "Отказаться",
+		"unsavedTitle": "Настройки не были подтверждены",
+		"unsavedSave": "Выйти с сохранением изменений",
+		"unsavedDiscard": "Выйти без сохранения"
 	}
 }

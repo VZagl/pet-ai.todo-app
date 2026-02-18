@@ -12,7 +12,9 @@
 **Ветка:** `feat/theming-001-two-layer-theming`  
 **Статус:** 🟡 В процессе
 
-**Следующий шаг:** `/plan` для детального планирования
+**Creative phase UI/UX:** ✅ завершён (2026-02-18) — [`creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
+**Creative phase Цветовые палитры:** ✅ завершён (2026-02-18) — [`creative-theming-palettes.md`](creative/creative-theming-palettes.md)  
+**Следующий шаг:** `/build` для реализации (Phase 1–5)
 
 ---
 

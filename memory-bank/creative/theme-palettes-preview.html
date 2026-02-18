@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Палитры тем — theming-001</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				background: #f1f5f9;
+				padding: 24px;
+				font-family: system-ui, sans-serif;
+			}
+			h1 {
+				margin: 0 0 24px;
+				font-size: 1.5rem;
+			}
+			.themes {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 24px;
+			}
+			.theme {
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+				border-radius: 12px;
+				background: #fff;
+				overflow: hidden;
+			}
+			.theme__name {
+				border-bottom: 1px solid #e2e8f0;
+				padding: 12px 16px;
+				font-weight: 600;
+				font-size: 1rem;
+			}
+			.theme__variants {
+				display: flex;
+				gap: 0;
+			}
+			.variant {
+				flex: 1;
+				padding: 12px;
+				min-width: 140px;
+			}
+			.variant__label {
+				opacity: 0.8;
+				margin-bottom: 8px;
+				font-weight: 600;
+				font-size: 0.75rem;
+				text-transform: uppercase;
+			}
+			.swatches {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.swatch {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				border-radius: 6px;
+				padding: 6px 8px;
+				font-size: 0.75rem;
+			}
+			.swatch__box {
+				flex-shrink: 0;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				border-radius: 4px;
+				width: 24px;
+				height: 24px;
+			}
+			.swatch__hex {
+				font-family: monospace;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Предложенные палитры тем — theming-001</h1>
+		<p style="margin: 0 0 24px; color: #64748b">Откройте этот файл в браузере для просмотра цветов.</p>
+
+		<div class="themes">
+			<!-- Default (Option B) -->
+			<div class="theme">
+				<div class="theme__name">Default</div>
+				<div class="theme__variants">
+					<div class="variant" style="background: #f8fafc">
+						<div class="variant__label" style="color: #475569">Light</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #f8fafc">
+								<span class="swatch__box" style="background: #f8fafc"></span><span class="swatch__hex">#f8fafc bg</span>
+							</div>
+							<div class="swatch" style="background: #ffffff">
+								<span class="swatch__box" style="background: #ffffff"></span><span class="swatch__hex">#ffffff surface</span>
+							</div>
+							<div class="swatch" style="background: #1e293b; color: #f1f5f9">
+								<span class="swatch__box" style="background: #1e293b"></span><span class="swatch__hex">#1e293b text</span>
+							</div>
+							<div class="swatch" style="background: #64748b; color: #fff">
+								<span class="swatch__box" style="background: #64748b"></span><span class="swatch__hex">#64748b muted</span>
+							</div>
+							<div class="swatch" style="background: #cbd5e1">
+								<span class="swatch__box" style="background: #cbd5e1"></span><span class="swatch__hex">#cbd5e1 border</span>
+							</div>
+							<div class="swatch" style="background: #3b82f6; color: #fff">
+								<span class="swatch__box" style="background: #3b82f6"></span><span class="swatch__hex">#3b82f6 primary</span>
+							</div>
+						</div>
+					</div>
+					<div class="variant" style="background: #1e293b">
+						<div class="variant__label" style="color: #94a3b8">Dark (текущая)</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #1e293b; color: #f1f5f9">
+								<span class="swatch__box" style="background: #1e293b"></span><span class="swatch__hex">#1e293b bg</span>
+							</div>
+							<div class="swatch" style="background: #0f172a; color: #f1f5f9">
+								<span class="swatch__box" style="background: #0f172a"></span><span class="swatch__hex">#0f172a surface</span>
+							</div>
+							<div class="swatch" style="background: #f1f5f9; color: #1e293b">
+								<span class="swatch__box" style="background: #f1f5f9"></span><span class="swatch__hex">#f1f5f9 text</span>
+							</div>
+							<div class="swatch" style="background: #94a3b8; color: #1e293b">
+								<span class="swatch__box" style="background: #94a3b8"></span><span class="swatch__hex">#94a3b8 muted</span>
+							</div>
+							<div class="swatch" style="background: #334155; color: #f1f5f9">
+								<span class="swatch__box" style="background: #334155"></span><span class="swatch__hex">#334155 border</span>
+							</div>
+							<div class="swatch" style="background: #3b82f6; color: #fff">
+								<span class="swatch__box" style="background: #3b82f6"></span><span class="swatch__hex">#3b82f6 primary</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Ocean -->
+			<div class="theme">
+				<div class="theme__name">Ocean</div>
+				<div class="theme__variants">
+					<div class="variant" style="background: #f0f9ff">
+						<div class="variant__label" style="color: #0369a1">Light</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #f0f9ff">
+								<span class="swatch__box" style="background: #f0f9ff"></span><span class="swatch__hex">#f0f9ff bg</span>
+							</div>
+							<div class="swatch" style="background: #ffffff">
+								<span class="swatch__box" style="background: #ffffff"></span><span class="swatch__hex">#ffffff surface</span>
+							</div>
+							<div class="swatch" style="background: #0c4a6e; color: #f0f9ff">
+								<span class="swatch__box" style="background: #0c4a6e"></span><span class="swatch__hex">#0c4a6e text</span>
+							</div>
+							<div class="swatch" style="background: #0369a1; color: #fff">
+								<span class="swatch__box" style="background: #0369a1"></span><span class="swatch__hex">#0369a1 muted</span>
+							</div>
+							<div class="swatch" style="background: #7dd3fc">
+								<span class="swatch__box" style="background: #7dd3fc"></span><span class="swatch__hex">#7dd3fc border</span>
+							</div>
+							<div class="swatch" style="background: #0ea5e9; color: #fff">
+								<span class="swatch__box" style="background: #0ea5e9"></span><span class="swatch__hex">#0ea5e9 primary</span>
+							</div>
+						</div>
+					</div>
+					<div class="variant" style="background: #0c4a6e">
+						<div class="variant__label" style="color: #7dd3fc">Dark</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #0c4a6e; color: #f0f9ff">
+								<span class="swatch__box" style="background: #0c4a6e"></span><span class="swatch__hex">#0c4a6e bg</span>
+							</div>
+							<div class="swatch" style="background: #075985; color: #f0f9ff">
+								<span class="swatch__box" style="background: #075985"></span><span class="swatch__hex">#075985 surface</span>
+							</div>
+							<div class="swatch" style="background: #f0f9ff; color: #0c4a6e">
+								<span class="swatch__box" style="background: #f0f9ff"></span><span class="swatch__hex">#f0f9ff text</span>
+							</div>
+							<div class="swatch" style="background: #7dd3fc; color: #0c4a6e">
+								<span class="swatch__box" style="background: #7dd3fc"></span><span class="swatch__hex">#7dd3fc muted</span>
+							</div>
+							<div class="swatch" style="background: #0e7490; color: #f0f9ff">
+								<span class="swatch__box" style="background: #0e7490"></span><span class="swatch__hex">#0e7490 border</span>
+							</div>
+							<div class="swatch" style="background: #38bdf8; color: #0c4a6e">
+								<span class="swatch__box" style="background: #38bdf8"></span><span class="swatch__hex">#38bdf8 primary</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Forest -->
+			<div class="theme">
+				<div class="theme__name">Forest</div>
+				<div class="theme__variants">
+					<div class="variant" style="background: #f0fdf4">
+						<div class="variant__label" style="color: #15803d">Light</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #f0fdf4">
+								<span class="swatch__box" style="background: #f0fdf4"></span><span class="swatch__hex">#f0fdf4 bg</span>
+							</div>
+							<div class="swatch" style="background: #ffffff">
+								<span class="swatch__box" style="background: #ffffff"></span><span class="swatch__hex">#ffffff surface</span>
+							</div>
+							<div class="swatch" style="background: #052e16; color: #f0fdf4">
+								<span class="swatch__box" style="background: #052e16"></span><span class="swatch__hex">#052e16 text</span>
+							</div>
+							<div class="swatch" style="background: #15803d; color: #fff">
+								<span class="swatch__box" style="background: #15803d"></span><span class="swatch__hex">#15803d muted</span>
+							</div>
+							<div class="swatch" style="background: #86efac">
+								<span class="swatch__box" style="background: #86efac"></span><span class="swatch__hex">#86efac border</span>
+							</div>
+							<div class="swatch" style="background: #22c55e; color: #fff">
+								<span class="swatch__box" style="background: #22c55e"></span><span class="swatch__hex">#22c55e primary</span>
+							</div>
+						</div>
+					</div>
+					<div class="variant" style="background: #052e16">
+						<div class="variant__label" style="color: #86efac">Dark</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #052e16; color: #f0fdf4">
+								<span class="swatch__box" style="background: #052e16"></span><span class="swatch__hex">#052e16 bg</span>
+							</div>
+							<div class="swatch" style="background: #14532d; color: #f0fdf4">
+								<span class="swatch__box" style="background: #14532d"></span><span class="swatch__hex">#14532d surface</span>
+							</div>
+							<div class="swatch" style="background: #f0fdf4; color: #052e16">
+								<span class="swatch__box" style="background: #f0fdf4"></span><span class="swatch__hex">#f0fdf4 text</span>
+							</div>
+							<div class="swatch" style="background: #86efac; color: #052e16">
+								<span class="swatch__box" style="background: #86efac"></span><span class="swatch__hex">#86efac muted</span>
+							</div>
+							<div class="swatch" style="background: #166534; color: #f0fdf4">
+								<span class="swatch__box" style="background: #166534"></span><span class="swatch__hex">#166534 border</span>
+							</div>
+							<div class="swatch" style="background: #4ade80; color: #052e16">
+								<span class="swatch__box" style="background: #4ade80"></span><span class="swatch__hex">#4ade80 primary</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sunset -->
+			<div class="theme">
+				<div class="theme__name">Sunset</div>
+				<div class="theme__variants">
+					<div class="variant" style="background: #fffbeb">
+						<div class="variant__label" style="color: #b45309">Light</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #fffbeb">
+								<span class="swatch__box" style="background: #fffbeb"></span><span class="swatch__hex">#fffbeb bg</span>
+							</div>
+							<div class="swatch" style="background: #ffffff">
+								<span class="swatch__box" style="background: #ffffff"></span><span class="swatch__hex">#ffffff surface</span>
+							</div>
+							<div class="swatch" style="background: #451a03; color: #fffbeb">
+								<span class="swatch__box" style="background: #451a03"></span><span class="swatch__hex">#451a03 text</span>
+							</div>
+							<div class="swatch" style="background: #b45309; color: #fff">
+								<span class="swatch__box" style="background: #b45309"></span><span class="swatch__hex">#b45309 muted</span>
+							</div>
+							<div class="swatch" style="background: #fcd34d">
+								<span class="swatch__box" style="background: #fcd34d"></span><span class="swatch__hex">#fcd34d border</span>
+							</div>
+							<div class="swatch" style="background: #f59e0b; color: #fff">
+								<span class="swatch__box" style="background: #f59e0b"></span><span class="swatch__hex">#f59e0b primary</span>
+							</div>
+						</div>
+					</div>
+					<div class="variant" style="background: #451a03">
+						<div class="variant__label" style="color: #fcd34d">Dark</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #451a03; color: #fffbeb">
+								<span class="swatch__box" style="background: #451a03"></span><span class="swatch__hex">#451a03 bg</span>
+							</div>
+							<div class="swatch" style="background: #78350f; color: #fffbeb">
+								<span class="swatch__box" style="background: #78350f"></span><span class="swatch__hex">#78350f surface</span>
+							</div>
+							<div class="swatch" style="background: #fffbeb; color: #451a03">
+								<span class="swatch__box" style="background: #fffbeb"></span><span class="swatch__hex">#fffbeb text</span>
+							</div>
+							<div class="swatch" style="background: #fcd34d; color: #451a03">
+								<span class="swatch__box" style="background: #fcd34d"></span><span class="swatch__hex">#fcd34d muted</span>
+							</div>
+							<div class="swatch" style="background: #92400e; color: #fffbeb">
+								<span class="swatch__box" style="background: #92400e"></span><span class="swatch__hex">#92400e border</span>
+							</div>
+							<div class="swatch" style="background: #fbbf24; color: #451a03">
+								<span class="swatch__box" style="background: #fbbf24"></span><span class="swatch__hex">#fbbf24 primary</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Lavender -->
+			<div class="theme">
+				<div class="theme__name">Lavender</div>
+				<div class="theme__variants">
+					<div class="variant" style="background: #f5f3ff">
+						<div class="variant__label" style="color: #6d28d9">Light</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #f5f3ff">
+								<span class="swatch__box" style="background: #f5f3ff"></span><span class="swatch__hex">#f5f3ff bg</span>
+							</div>
+							<div class="swatch" style="background: #ffffff">
+								<span class="swatch__box" style="background: #ffffff"></span><span class="swatch__hex">#ffffff surface</span>
+							</div>
+							<div class="swatch" style="background: #3b0764; color: #f5f3ff">
+								<span class="swatch__box" style="background: #3b0764"></span><span class="swatch__hex">#3b0764 text</span>
+							</div>
+							<div class="swatch" style="background: #6d28d9; color: #fff">
+								<span class="swatch__box" style="background: #6d28d9"></span><span class="swatch__hex">#6d28d9 muted</span>
+							</div>
+							<div class="swatch" style="background: #c4b5fd">
+								<span class="swatch__box" style="background: #c4b5fd"></span><span class="swatch__hex">#c4b5fd border</span>
+							</div>
+							<div class="swatch" style="background: #8b5cf6; color: #fff">
+								<span class="swatch__box" style="background: #8b5cf6"></span><span class="swatch__hex">#8b5cf6 primary</span>
+							</div>
+						</div>
+					</div>
+					<div class="variant" style="background: #3b0764">
+						<div class="variant__label" style="color: #c4b5fd">Dark</div>
+						<div class="swatches">
+							<div class="swatch" style="background: #3b0764; color: #f5f3ff">
+								<span class="swatch__box" style="background: #3b0764"></span><span class="swatch__hex">#3b0764 bg</span>
+							</div>
+							<div class="swatch" style="background: #581c87; color: #f5f3ff">
+								<span class="swatch__box" style="background: #581c87"></span><span class="swatch__hex">#581c87 surface</span>
+							</div>
+							<div class="swatch" style="background: #f5f3ff; color: #3b0764">
+								<span class="swatch__box" style="background: #f5f3ff"></span><span class="swatch__hex">#f5f3ff text</span>
+							</div>
+							<div class="swatch" style="background: #c4b5fd; color: #3b0764">
+								<span class="swatch__box" style="background: #c4b5fd"></span><span class="swatch__hex">#c4b5fd muted</span>
+							</div>
+							<div class="swatch" style="background: #7c3aed; color: #f5f3ff">
+								<span class="swatch__box" style="background: #7c3aed"></span><span class="swatch__hex">#7c3aed border</span>
+							</div>
+							<div class="swatch" style="background: #a78bfa; color: #3b0764">
+								<span class="swatch__box" style="background: #a78bfa"></span><span class="swatch__hex">#a78bfa primary</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p style="margin-top: 24px; font-size: 0.875rem; color: #64748b">
+			Семантические цвета (success, danger) — общие для всех тем или настраиваются отдельно.
+		</p>
+	</body>
+</html>

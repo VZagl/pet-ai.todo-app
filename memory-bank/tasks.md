@@ -81,13 +81,15 @@
 
 ### Новые компоненты
 
-| Компонент                     | Назначение                                                            | Зависимости                |
-| ----------------------------- | --------------------------------------------------------------------- | -------------------------- |
-| `ThemeProvider`               | Контекст тем, применение CSS переменных на `document.documentElement` | storage, media query       |
-| `useTheme`                    | Хук доступа к theme state и setters                                   | ThemeProvider              |
-| `ThemeToggle`                 | Переключатель Color Scheme (авто/light/dark)                          | useTheme                   |
-| `ThemeSelector`               | Селектор Theme Variant с превью                                       | useTheme                   |
-| `ThemeSettings` (опционально) | Обёртка: ThemeToggle + ThemeSelector в dropdown                       | ThemeToggle, ThemeSelector |
+| Компонент           | Назначение                                                            | Зависимости                                   |
+| ------------------- | --------------------------------------------------------------------- | --------------------------------------------- |
+| `ThemeProvider`     | Контекст тем, применение CSS переменных на `document.documentElement` | storage, media query                          |
+| `useTheme`          | Хук доступа к theme state и setters                                   | ThemeProvider                                 |
+| `ThemeToggle`       | Переключатель светлая/тёмная (sun/moon иконки)                        | useTheme                                      |
+| `SettingsButton`    | Кнопка открытия модалки настроек (settings иконка)                    | —                                             |
+| `SettingsModal`     | Модальное окно настроек (overlay + табы)                              | useTheme                                      |
+| `ThemeSelectionTab` | Таб выбора темы: мини-карточки, Принять/Отказаться                    | useTheme                                      |
+| `HeaderControls`    | Контейнер: ThemeToggle \| LanguageSwitcher \| SettingsButton (flex)   | ThemeToggle, LanguageSwitcher, SettingsButton |
 
 ### Затрагиваемые компоненты
 
@@ -113,7 +115,8 @@ App.tsx
   └── ThemeProvider (новый)
         └── TodoProvider
               └── TodoApp
-                    ├── header: LanguageSwitcher, ThemeSettings
+                    ├── header: HeaderControls (ThemeToggle | LanguageSwitcher | SettingsButton)
+                    ├── SettingsModal (при открытии)
                     ├── TodoInput, TodoList, TodoFooter
 ```
 
@@ -132,11 +135,8 @@ App.tsx
    - [ ] `default` — текущая палитра Option B (light + dark варианты)
 
 3. **Определить палитры для 5 тем**
-   - [ ] Default: текущая палитра Option B (сохранить как есть)
-   - [ ] Ocean: синие/голубые акценты
-   - [ ] Forest: зелёные акценты
-   - [ ] Sunset: оранжевые/янтарные акценты
-   - [ ] Lavender: фиолетовые акценты
+   - [x] Default: Option B light/dark (см. creative-theming-palettes.md)
+   - [x] Ocean, Forest, Sunset, Lavender: light и dark варианты утверждены
 
 ### Phase 2: ThemeContext и useTheme
 
@@ -172,18 +172,19 @@ App.tsx
 ### Phase 4: UI компоненты
 
 10. **Создать `ThemeToggle`**
-    - [ ] Кнопка или сегментированный контрол: авто / светлая / тёмная
-    - [ ] Иконки: солнце, луна, авто (опционально)
+    - [ ] Кнопка: sun.svg / moon.svg в зависимости от темы
+    - [ ] Цвет меняется при переключении
     - [ ] Доступность: aria-label, keyboard nav
 
-11. **Создать `ThemeSelector`**
-    - [ ] Список тем с превью: Default (по умолчанию) + Ocean, Forest, Sunset, Lavender
-    - [ ] Вариант «По умолчанию» — текущая палитра Option B
-    - [ ] Выбор темы по клику
-    - [ ] Стили в духе LanguageSwitcher (dropdown)
+11. **Создать `SettingsButton` и `SettingsModal`**
+    - [ ] SettingsButton: иконка settings.svg, открывает модалку
+    - [ ] SettingsModal: overlay (непрозрачный/размытый, блокирует события), размер как todo-app
+    - [ ] Кнопка закрытия (close.svg), подтверждение при несохранённых изменениях
+    - [ ] Табы: ThemeSelectionTab (мини-карточки тем, индикатор, Принять/Отказаться)
 
-12. **Интеграция в TodoApp**
-    - [ ] Добавить `ThemeSettings` (или отдельно ThemeToggle + ThemeSelector) в header
+12. **Создать `HeaderControls` и интегрировать**
+    - [ ] Контейнер с flex: ThemeToggle | LanguageSwitcher | SettingsButton
+    - [ ] Позиционирование в header (top-right)
     - [ ] Обернуть App в ThemeProvider
 
 ### Phase 5: Тестирование и доработка
@@ -201,16 +202,15 @@ App.tsx
     - [ ] Тесты: `pnpm test`
     - [ ] Ручная проверка всех тем и схем
 
-## Creative Phases Required
+## Creative Phases
 
-- [ ] **UI/UX Design** — уточнение требований к UI компонентам (см. Requirements → UI компоненты):
-  - Переключатель Color Scheme: формат (кнопки, сегменты, иконки), расположение
-  - Селектор Theme Variant: формат превью (полоски, круги, карточки), способ выбора; обязательно включить вариант «По умолчанию» (Default) — текущие цвета
-  - Компонент настроек тем: компоновка в header (рядом с LanguageSwitcher, объединённый dropdown, два отдельных контрола и т.д.)
-  - Поведение dropdown / popover, accessibility
-- [ ] **Цветовые палитры** — финальные значения для Ocean, Forest, Sunset, Lavender (light + dark):
-  - Default: текущая палитра Option B — сохранить как есть (dark уже есть; light — определить или использовать как копию для light-режима)
-  - Ocean, Forest, Sunset, Lavender: определить light и dark варианты, акценты для каждой темы.
+- [x] **UI/UX Design** — ✅ ЗАВЕРШЕНО  
+       **Документ:** [`memory-bank/creative/creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
+       **Решения:** ThemeToggle (sun/moon) слева от LanguageSwitcher; SettingsButton справа; контейнер HeaderControls с flex; SettingsModal с overlay (блокирует события), табами, подтверждением при несохранённых изменениях; ThemeSelectionTab — мини-карточки тем, индикатор выбора через цвета палитры текущей темы (light/dark); кнопки Принять/Отказаться.
+- [x] **Цветовые палитры** — ✅ ЗАВЕРШЕНО  
+       **Документ:** [`memory-bank/creative/creative-theming-palettes.md`](creative/creative-theming-palettes.md)  
+       **Превью:** [`memory-bank/creative/theme-palettes-preview.html`](creative/theme-palettes-preview.html)  
+       **Решения:** Default (Option B light/dark), Ocean, Forest, Sunset, Lavender — полные палитры с токенами bg, surface, text, text-muted, border, primary и др.
 
 ## Dependencies
 
@@ -231,7 +231,8 @@ App.tsx
 
 - [x] Инициализация (VAN)
 - [x] Планирование (PLAN)
-- [ ] Creative phases (если требуется)
+- [x] Creative phase UI/UX (см. creative-theming-uiux.md)
+- [x] Creative phase Цветовые палитры (см. creative-theming-palettes.md)
 - [ ] Phase 1: Токены и темы
 - [ ] Phase 2: ThemeContext, useTheme
 - [ ] Phase 3: Рефакторинг стилей
@@ -240,8 +241,7 @@ App.tsx
 
 ## Next Steps
 
-1. **Если нужны Creative phases:** запустить `/creative` для дизайна UI переключателей и цветовых палитр.
-2. **Если Creative не требуется:** перейти к `/build` и начать с Phase 1.
+1. **Реализация:** перейти к `/build` и начать с Phase 1 (токены, ThemeProvider, UI компоненты).
 
 ---
 

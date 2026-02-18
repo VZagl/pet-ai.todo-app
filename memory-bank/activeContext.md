@@ -10,8 +10,9 @@ PLAN complete → CREATIVE / BUILD
 
 ## Next Steps
 
-1. **Обязательная следующая фаза:** `/creative` — дизайн UI переключателей (ThemeToggle, ThemeSelector) и цветовых палитр для 4 тем
-2. После Creative: `/build` — реализация по плану (Phase 1–5)
+1. **Creative phase UI/UX:** ✅ завершён — [`memory-bank/creative/creative-theming-uiux.md`](creative/creative-theming-uiux.md)
+2. **Creative phase Цветовые палитры:** ✅ завершён — [`memory-bank/creative/creative-theming-palettes.md`](creative/creative-theming-palettes.md)
+3. **Реализация:** `/build` — Phase 1–5 (токены, ThemeProvider, UI компоненты)
 
 ## Context for AI
 

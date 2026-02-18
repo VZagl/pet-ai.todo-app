@@ -7,6 +7,10 @@
 	padding: 0;
 	overflow: hidden;
 	list-style: none;
+
+	&__sortable-item {
+		list-style: none;
+	}
 }
 
 .todo-list-empty {

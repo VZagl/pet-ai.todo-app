@@ -15,7 +15,14 @@
 		"ariaToggle": "Отметить задачу \"{{text}}\" как {{status}}",
 		"statusCompleted": "невыполненную",
 		"statusActive": "выполненную",
-		"ariaDelete": "Удалить задачу \"{{text}}\""
+		"ariaDelete": "Удалить задачу \"{{text}}\"",
+		"ariaEdit": "Редактировать задачу \"{{text}}\"",
+		"ariaGrip": "Перетащить задачу \"{{text}}\"",
+		"ariaSave": "Сохранить изменения",
+		"ariaCancel": "Отменить редактирование",
+		"ariaEditInput": "Редактировать текст задачи",
+		"errorEmpty": "Введите текст задачи",
+		"errorMaxLength": "Максимальная длина задачи: {{max}} символов"
 	},
 	"todoList": {
 		"empty": "Нет задач для отображения"

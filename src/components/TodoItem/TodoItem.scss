@@ -3,6 +3,7 @@
 
 .todo-item {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
 	@include transition(background-color);
@@ -16,10 +17,52 @@
 
 	&__content {
 		display: flex;
-		flex: 1;
+		flex-grow: 1;
 		align-items: center;
 		gap: $space-3;
-		min-width: 0; /* Для корректного text-overflow */
+		width: 100%;
+
+		&--editing {
+			border-radius: $radius-sm;
+			background-color: $color-bg-hover;
+		}
+	}
+
+	&__grip {
+		display: flex;
+		flex-shrink: 0;
+		justify-content: center;
+		align-items: center;
+		cursor: grab;
+		margin: calc(-1 * #{$space-2});
+		border-radius: $radius-sm;
+		padding: $space-2;
+		touch-action: none; /* предотвращает скролл при касании grip на сенсорных экранах */
+		color: $color-text-muted;
+
+		&:active {
+			cursor: grabbing;
+		}
+
+		&:hover {
+			background-color: $color-bg-hover;
+			color: $color-text;
+		}
+
+		img {
+			width: 1rem;
+			height: 1rem;
+			pointer-events: none;
+		}
+	}
+
+	&--dragging {
+		opacity: 0.5;
+		cursor: grabbing;
+
+		.todo-item__grip {
+			cursor: grabbing;
+		}
 	}
 
 	&__checkbox {
@@ -43,29 +86,132 @@
 		text-decoration: line-through;
 	}
 
-	&__delete {
+	&__edit-wrapper {
+		flex: 1 0 auto;
+	}
+
+	&__edit {
+		box-sizing: border-box;
+		width: 100%;
+		@include transition(border-color);
+		border: 2px solid transparent;
+		border-radius: $radius-sm;
+		background-color: transparent;
+		padding: 0;
+		color: $color-text;
+		font-size: $font-size-base;
+		line-height: 1.5;
+		font-family: inherit;
+
+		&:focus {
+			outline: none;
+			border-color: $color-primary;
+		}
+
+		&--error {
+			border-color: $color-danger;
+		}
+	}
+
+	&__btn {
 		display: flex;
 		flex-shrink: 0;
 		justify-content: center;
 		align-items: center;
-		@include transition(background-color, color);
+		@include transition(background-color, color, opacity);
 		cursor: pointer;
 		border: none;
 		border-radius: $radius-sm;
 		background-color: transparent;
+		padding: 0;
 		width: $space-8;
 		height: $space-8;
-		color: $color-text-muted;
-		font-size: 1.75rem;
-		line-height: 1;
 
-		&:hover {
-			background-color: $color-danger;
-			color: $color-on-primary;
+		&:disabled {
+			opacity: 0.5;
+			cursor: default;
 		}
 
-		&:focus {
-			@include focus-outline($color-primary);
+		&--save {
+			background-color: $color-success;
+
+			img {
+				filter: brightness(0) invert(1);
+				width: 1rem;
+				height: 1rem;
+			}
+
+			&:hover {
+				opacity: 0.9;
+			}
+
+			&:focus {
+				@include focus-outline($color-success);
+			}
 		}
+
+		&--cancel {
+			background-color: $color-primary;
+
+			img {
+				filter: brightness(0) invert(1);
+				width: 1rem;
+				height: 1rem;
+			}
+
+			&:hover {
+				opacity: 0.9;
+			}
+
+			&:focus {
+				@include focus-outline($color-primary);
+			}
+		}
+
+		&--edit {
+			color: $color-text-muted;
+
+			img {
+				width: 1rem;
+				height: 1rem;
+			}
+
+			&:hover:not(:disabled) {
+				background-color: $color-bg-hover;
+				color: $color-text;
+			}
+
+			&:focus {
+				@include focus-outline($color-primary);
+			}
+		}
+
+		&--delete {
+			color: $color-text-muted;
+			font-size: 1.75rem;
+			line-height: 1;
+
+			&:hover:not(:disabled) {
+				background-color: $color-danger;
+				color: $color-on-primary;
+			}
+
+			&:focus {
+				@include focus-outline($color-primary);
+			}
+		}
+	}
+
+	&__error {
+		margin: $space-2 0 0;
+		padding: 0;
+		padding-left: calc(1.25rem + #{$space-3}); /* checkbox width + gap */
+		width: 100%;
+		color: $color-danger;
+		font-size: $font-size-sm;
+	}
+
+	&--error &__edit {
+		border-color: $color-danger;
 	}
 }

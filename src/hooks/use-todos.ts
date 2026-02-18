@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { STORAGE_KEY } from '../constants/todo';
 import type { i_todo } from '../types/todo';
-import { generateId, getActiveCount } from '../utils/todo-helpers';
+import { generateId, getActiveCount, mergeReorderedItems } from '../utils/todo-helpers';
 import { useLocalStorage } from './use-local-storage';
 
 /**
@@ -62,6 +62,17 @@ export function useTodos() {
 		[setTodos],
 	);
 
+	/**
+	 * Изменяет порядок задач
+	 * @param reorderedItems - Переупорядоченный массив задач
+	 */
+	const reorderTodos = useCallback(
+		(reorderedItems: i_todo[]) => {
+			setTodos((prev) => mergeReorderedItems(prev, reorderedItems));
+		},
+		[setTodos],
+	);
+
 	// Подсчет активных и завершённых задач
 	const activeCount = getActiveCount(todos);
 	const completedCount = todos.length - activeCount;
@@ -74,5 +85,6 @@ export function useTodos() {
 		toggleTodo,
 		deleteTodo,
 		updateTodo,
+		reorderTodos,
 	};
 }

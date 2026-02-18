@@ -2,7 +2,18 @@
 
 ## Current Task
 
-Нет активной задачи. Запустить `/van` для инициализации.
+**Task ID:** theming-001  
+**Название:** Двухслойная система тематизации (Color Scheme + Theme Variants)  
+**Уровень:** Level 3 — Intermediate Feature  
+**Ветка:** `feat/theming-001-two-layer-theming`  
+**Источник:** [`memory-bank/backlog.md`](backlog.md) (строки 25–60)
+
+**Статус:** Инициализация → PLAN mode
+
+**Слой 1:** Color Scheme (светлый/тёмный режим)  
+**Слой 2:** Theme Variants (Ocean, Forest, Sunset, Lavender)
+
+**Следующий шаг:** `/plan` для детального планирования
 
 ---
 

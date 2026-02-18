@@ -10,7 +10,7 @@
 **Название:** Двухслойная система тематизации (Color Scheme + Theme Variants)  
 **Уровень:** Level 3 — Intermediate Feature  
 **Ветка:** `feat/theming-001-two-layer-theming`  
-**Статус:** ✅ BUILD complete → REFLECT
+**Статус:** ✅ BUILD complete → ✅ REFLECT complete → ARCHIVE
 
 **Creative phase UI/UX:** ✅ завершён — [`creative-theming-uiux.md`](creative/creative-theming-uiux.md)  
 **Creative phase Цветовые палитры:** ✅ завершён — [`creative-theming-palettes.md`](creative/creative-theming-palettes.md)
@@ -29,7 +29,9 @@
 **Линт:** ✅ pnpm lint  
 **Тесты:** useTheme (3), ThemeToggle (2) — проходят
 
-**Следующий шаг:** `/reflect` для ревью задачи
+**Рефлексия:** ✅ [`reflection-theming-001.md`](reflection/reflection-theming-001.md)
+
+**Следующий шаг:** `/archive` для финализации документации задачи
 
 ---
 

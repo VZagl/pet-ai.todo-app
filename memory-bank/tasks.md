@@ -8,7 +8,7 @@
 **Ветка:** `feat/theming-001-two-layer-theming`  
 **Источник:** [`memory-bank/backlog.md`](backlog.md) (строки 25–60)
 
-**Статус:** PLAN complete → CREATIVE / BUILD mode
+**Статус:** BUILD complete → REFLECT complete → ARCHIVE
 
 **Слой 1:** Color Scheme (светлый/тёмный режим)  
 **Слой 2:** Theme Variants (Ocean, Forest, Sunset, Lavender)
@@ -235,11 +235,21 @@ App.tsx
 - [x] Phase 3: Рефакторинг стилей
 - [x] Phase 4: UI компоненты
 - [x] Phase 5: Тестирование
+- [x] Рефлексия (REFLECT)
+- [ ] Архивация (ARCHIVE)
+
+## Reflection Highlights
+
+- **What Went Well:** Creative phase до реализации; Challenges & Mitigations в плане; структура theme-definitions; draft-паттерн с подтверждением; поэтапный рефакторинг SCSS.
+- **Challenges:** Типизация draftScheme vs ColorScheme; минорные расхождения в bg-hover между палитрами и кодом.
+- **Lessons Learned:** CSS Custom Properties на documentElement; storage event для синхронизации вкладок; matchMedia mock в тестах; draft-паттерн для модалок настроек.
+- **Next Steps:** Добавить UI для выбора «авто» (опционально); сверка палитр с кодом; расширить тесты для SettingsModal/ThemeSelectionTab.
 
 ## Next Steps
 
 1. **Реализация:** ✅ BUILD завершён.
-2. **Рефлексия:** перейти к `/reflect` для ревью задачи.
+2. **Рефлексия:** ✅ REFLECT завершён — [`memory-bank/reflection/reflection-theming-001.md`](reflection/reflection-theming-001.md)
+3. **Архивация:** перейти к `/archive` для финализации документации задачи.
 
 ---
 

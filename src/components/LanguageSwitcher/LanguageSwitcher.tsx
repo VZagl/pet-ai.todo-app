@@ -35,7 +35,9 @@ export const LanguageSwitcher = () => {
 	const supportedLngs = (Array.isArray(i18n.options.supportedLngs) ? i18n.options.supportedLngs : []).filter(
 		(l: unknown): l is string => l !== 'cimode' && typeof l === 'string',
 	);
-	const sortedLanguages = [...supportedLngs].sort((a, b) => t('language.name', { lng: a }).localeCompare(t('language.name', { lng: b })));
+	const sortedLanguages = [...supportedLngs].sort((a, b) =>
+		t('language.name', { lng: a }).localeCompare(t('language.name', { lng: b })),
+	);
 
 	const handleLanguageChange = useCallback(
 		(lng: string) => {

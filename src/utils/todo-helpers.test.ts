@@ -166,7 +166,10 @@ describe('todoHelpers', () => {
 		});
 
 		it('должен сохранять порядок элементов, не входящих в reorderedItems', () => {
-			const todosWithExtra: i_todo[] = [...todos, { id: '4', text: 'Fourth', completed: false, createdAt: 4 }];
+			const todosWithExtra: i_todo[] = [
+				...todos,
+				{ id: '4', text: 'Fourth', completed: false, createdAt: 4 },
+			];
 			const reordered = [todos[1], todos[0]];
 
 			const result = mergeReorderedItems(todosWithExtra, reordered);

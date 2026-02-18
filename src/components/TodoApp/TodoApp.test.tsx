@@ -2,19 +2,24 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { STORAGE_KEY } from '../../constants/todo';
+import { ThemeProvider } from '../../contexts/ThemeProvider';
 import { TodoProvider } from '../../contexts/TodoProvider';
+import i18n from '../../i18n/config';
 import { TodoApp } from './TodoApp';
 
 function renderTodoApp() {
 	return render(
-		<TodoProvider>
-			<TodoApp />
-		</TodoProvider>,
+		<ThemeProvider>
+			<TodoProvider>
+				<TodoApp />
+			</TodoProvider>
+		</ThemeProvider>,
 	);
 }
 
 describe('TodoApp - Integration', () => {
-	beforeEach(() => {
+	beforeEach(async () => {
+		await i18n.changeLanguage('ru');
 		localStorage.clear();
 	});
 

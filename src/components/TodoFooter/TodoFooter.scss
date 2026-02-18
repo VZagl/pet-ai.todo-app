@@ -2,8 +2,8 @@
 @use '../../styles/mixins' as *;
 
 .todo-footer {
-	flex-shrink: 0;
 	display: flex;
+	flex-shrink: 0;
 	flex-direction: column; // Mobile: начинаем с вертикального layout
 	align-items: stretch;
 	gap: $space-4;
@@ -12,10 +12,10 @@
 
 	&__counter {
 		display: flex;
-		align-items: baseline;
 		justify-content: center; // Mobile: центрируем счётчик
+		align-items: baseline;
 		gap: $space-1;
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 		font-size: $font-size-sm;
 	}
 

@@ -10,11 +10,10 @@ IDLE — ожидание новой задачи
 
 ## Next Steps
 
-1. Запустить `/van [описание задачи]` для начала новой задачи
+Запустить `/van [описание задачи]` для начала новой задачи
 
 ## Context for AI
 
 - Проект: pet.todo — TO-DO Application
 - Стек: React 19, Vite 7, TypeScript 5.9, SCSS (sass-embedded), i18next
-- Последняя завершённая задача: drag-drop-001 (Drag & Drop для сортировки задач)
-- Архив: [`memory-bank/archive/archive-drag-drop-001.md`](archive/archive-drag-drop-001.md)
+- Последняя завершённая задача: testing-fixes-001 (Исправить падающие тесты)

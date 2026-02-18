@@ -8,9 +8,13 @@ module.exports = {
 	bracketSpacing: true,
 	bracketSameLine: false,
 	arrowParens: 'always',
-	printWidth: 140,
+	printWidth: 110,
 	semi: true,
 	embeddedLanguageFormatting: 'auto',
-	plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-organize-attributes', 'prettier-plugin-css-order'],
+	plugins: [
+		'prettier-plugin-organize-imports',
+		'prettier-plugin-organize-attributes',
+		'prettier-plugin-css-order',
+	],
 	organizeImportsSkipDestructiveCodeActions: true,
 };

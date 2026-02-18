@@ -13,27 +13,27 @@
 		flex: 1;
 		height: 48px;
 		@include transition(border-color, box-shadow);
-		border: 2px solid $color-border;
+		border: 2px solid var(--color-border);
 		border-radius: $radius-md;
-		background-color: $color-surface;
+		background-color: var(--color-surface);
 		padding: $space-3 $space-4;
-		color: $color-text;
+		color: var(--color-text);
 		font-size: $font-size-base;
 		line-height: 1.5;
 
 		&::placeholder {
-			color: $color-text-muted;
+			color: var(--color-text-muted);
 		}
 
 		&:focus {
-			@include focus-shadow($color-primary, 0.25);
+			@include focus-shadow(var(--color-primary), var(--color-focus-ring));
 		}
 
 		&--error {
-			border-color: $color-danger;
+			border-color: var(--color-danger);
 
 			&:focus {
-				@include focus-shadow($color-danger, 0.25);
+				@include focus-shadow(var(--color-danger), var(--color-danger-focus));
 			}
 		}
 	}
@@ -44,12 +44,12 @@
 		align-items: center;
 		height: 48px;
 		@include transition(background-color, transform);
-		@include button-hover($color-primary, $color-primary-hover);
+		@include button-hover(var(--color-primary), var(--color-primary-hover));
 		cursor: pointer;
 		border: none;
 		border-radius: $radius-md;
 		padding: $space-3 $space-6;
-		color: $color-on-primary;
+		color: var(--color-on-primary);
 		font-weight: $font-weight-medium;
 		font-size: $font-size-base;
 		white-space: nowrap;
@@ -61,17 +61,17 @@
 		&:disabled {
 			opacity: 0.65;
 			cursor: not-allowed;
-			background-color: $color-border;
+			background-color: var(--color-border);
 		}
 
 		&:focus {
-			@include focus-outline($color-primary);
+			@include focus-outline(var(--color-primary));
 		}
 	}
 
 	&__error {
 		margin: $space-2 0 0 0;
-		color: $color-danger;
+		color: var(--color-danger);
 		font-size: $font-size-sm;
 	}
 }

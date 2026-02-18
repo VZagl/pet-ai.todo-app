@@ -1,6 +1,7 @@
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+import i18n from '../../i18n/config';
 import type { FilterType } from '../../types/todo';
 import { TodoFooter } from './TodoFooter';
 
@@ -8,7 +9,11 @@ describe('TodoFooter', () => {
 	const mockOnFilterChange = vi.fn();
 
 	/** Props по умолчанию для TodoFooter (формат по фильтру) */
-	const getProps = (overrides?: { activeCount?: number; completedCount?: number; currentFilter?: FilterType }) => ({
+	const getProps = (overrides?: {
+		activeCount?: number;
+		completedCount?: number;
+		currentFilter?: FilterType;
+	}) => ({
 		activeCount: 5,
 		completedCount: 7,
 		currentFilter: 'all' as FilterType,
@@ -16,7 +21,8 @@ describe('TodoFooter', () => {
 		...overrides,
 	});
 
-	beforeEach(() => {
+	beforeEach(async () => {
+		await i18n.changeLanguage('ru');
 		mockOnFilterChange.mockClear();
 	});
 
@@ -70,10 +76,14 @@ describe('TodoFooter', () => {
 		});
 
 		it('фильтр completed: склонение завершено', () => {
-			const { rerender } = render(<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />);
+			const { rerender } = render(
+				<TodoFooter {...getProps({ activeCount: 0, completedCount: 1, currentFilter: 'completed' })} />,
+			);
 			expect(screen.getByText(/1 задача завершена/)).toBeInTheDocument();
 
-			rerender(<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />);
+			rerender(
+				<TodoFooter {...getProps({ activeCount: 0, completedCount: 2, currentFilter: 'completed' })} />,
+			);
 			expect(screen.getByText(/2 задачи завершено/)).toBeInTheDocument();
 		});
 	});

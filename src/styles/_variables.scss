@@ -1,35 +1,4 @@
-// === Цвета ===
-// Option B — тёмный вариант (creative-app-redesign)
-
-// Primary
-$color-primary: #3b82f6;
-$color-primary-hover: #2563eb;
-/** Цвет текста на primary-фоне (кнопки, акценты) */
-$color-on-primary: #fff;
-
-// Semantic
-$color-danger: #dc3545;
-$color-success: #28a745; // для будущего использования
-
-// Text
-$color-text: #f1f5f9;
-$color-text-muted: #94a3b8;
-
-// Borders
-$color-border: #334155;
-$color-border-light: #475569;
-
-// Backgrounds
-$color-bg: #1e293b;
-$color-bg-hover: #334155;
-$color-surface: #0f172a;
-
-// Gradients
-$gradient-bg: linear-gradient(180deg, #1e293b 0%, #17202e 100%);
-
 // === Spacing ===
-// Оставляем CSS custom properties для динамического использования
-// Определяем SCSS переменные для статических значений
 $space-1: 0.25rem;
 $space-2: 0.5rem;
 $space-3: 0.75rem;

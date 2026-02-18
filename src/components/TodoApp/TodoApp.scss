@@ -3,11 +3,12 @@
 
 .todo-app {
 	display: flex;
+	position: relative;
 	flex: 1;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: $gradient-bg;
+	background: var(--gradient-bg);
 	padding: $space-4 $space-3; // Mobile: начинаем с малого padding
 	min-height: 0;
 	overflow: hidden;
@@ -30,7 +31,7 @@
 
 	&__title {
 		margin: 0 0 $space-2 0;
-		color: $color-text;
+		color: var(--color-text);
 		font-weight: $font-weight-semibold;
 		font-size: $font-size-2xl;
 		letter-spacing: 0.05em;
@@ -38,7 +39,7 @@
 
 	&__subtitle {
 		margin: 0;
-		color: $color-text-muted;
+		color: var(--color-text-muted);
 		font-weight: $font-weight-light;
 		font-size: $font-size-sm; // Mobile: начинаем с малого размера
 	}
@@ -54,7 +55,7 @@
 		flex: 1;
 		min-height: 0;
 		overflow-y: scroll; /* всегда виден, даже при пустом списке */
-		scrollbar-color: $color-border $color-surface;
+		scrollbar-color: var(--color-border) var(--color-surface);
 
 		/* Firefox */
 		scrollbar-width: thin;
@@ -64,14 +65,14 @@
 			width: 8px;
 		}
 		&::-webkit-scrollbar-track {
-			background: $color-surface;
+			background: var(--color-surface);
 		}
 		&::-webkit-scrollbar-thumb {
 			border-radius: 9999px;
-			background: $color-border;
+			background: var(--color-border);
 		}
 		&::-webkit-scrollbar-thumb:hover {
-			background: $color-border-light;
+			background: var(--color-border-light);
 		}
 	}
 }

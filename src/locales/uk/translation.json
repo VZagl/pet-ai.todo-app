@@ -51,5 +51,16 @@
 	"language": {
 		"name": "Українська",
 		"switcherLabel": "Вибір мови"
+	},
+	"theme": {
+		"toggleLight": "Світла тема",
+		"toggleDark": "Темна тема",
+		"settingsLabel": "Налаштування",
+		"settingsTabTheme": "Вибір теми",
+		"accept": "Прийняти",
+		"reject": "Відхилити",
+		"unsavedTitle": "Налаштування не були підтверджені",
+		"unsavedSave": "Вийти зі збереженням змін",
+		"unsavedDiscard": "Вийти без збереження"
 	}
 }

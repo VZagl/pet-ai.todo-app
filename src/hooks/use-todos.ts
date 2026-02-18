@@ -34,7 +34,9 @@ export function useTodos() {
 	 */
 	const toggleTodo = useCallback(
 		(id: string) => {
-			setTodos((prev) => prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
+			setTodos((prev) =>
+				prev.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)),
+			);
 		},
 		[setTodos],
 	);
